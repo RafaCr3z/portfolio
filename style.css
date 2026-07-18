@@ -595,14 +595,14 @@ a:hover {
   background: currentColor;
 }
 
-/* ---------- Certifications ---------- */
-.certs-list {
+/* ---------- Certifications & Education ---------- */
+.certs-list, .edu-list {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
 
-.cert-card {
+.cert-card, .edu-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -612,28 +612,29 @@ a:hover {
   align-items: center;
 }
 
-.cert-info {
+.cert-info, .edu-info {
   display: flex;
   flex-direction: column;
 }
 
-.cert-name {
+.cert-name, .edu-title {
   font-size: 1rem;
   font-weight: 600;
 }
 
-.cert-issuer {
+.cert-issuer, .edu-subtitle {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
 
-.cert-status {
+.cert-status, .edu-date {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   padding: 4px 12px;
   border-radius: 50px;
   border: 1px solid var(--border);
   color: var(--text-muted);
+  white-space: nowrap;
 }
 
 .cert-status.active {

@@ -25,6 +25,7 @@
           <li><a href="#about">Sobre</a></li>
           <li><a href="#projects">Projetos</a></li>
           <li><a href="#skills">Competências</a></li>
+          <li><a href="#education">Educação</a></li>
           <li><a href="#certs">Certificações</a></li>
           <li><a href="#contact" class="cta-link">Contacto</a></li>
         </ul>
@@ -37,14 +38,14 @@
     <div class="hero-content">
       <div class="hero-badge">
         <span class="dot"></span>
-        Licenciado em Eng. Informática
+        Finalista Eng. Informática | Elegível ATIVAR.pt
       </div>
       <h1 class="hero-title">
         <span>Rafael Cruz</span><br />
         Security Automation
       </h1>
       <p class="hero-subtitle">
-        Focado no desenvolvimento de infraestruturas seguras e automação de processos. Especializado na interseção de <strong>Redes</strong>, <strong>SecDevOps</strong> e <strong>Cloud Security</strong>.
+        Finalista de Engenharia Informática (IPCB) focado na interseção de <strong>Redes</strong>, <strong>SecDevOps</strong> e <strong>Automação de Segurança</strong>. Elegível para o programa de estágios profissionais ATIVAR.pt (IEFP).
       </p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">Ver Projetos</a>
@@ -93,10 +94,10 @@
         <div class="about-content">
           <div class="about-text">
             <p>
-              Sou finalista em <strong>Engenharia Informática</strong>. O meu foco principal reside no desenho de fluxos inteligentes de automação e na monitorização proativa de infraestruturas cloud e de rede.
+              Sou estudante finalista de <strong>Engenharia Informática</strong> na Escola Superior de Tecnologia de Castelo Branco (IPCB-ESTCB). O meu foco principal reside no desenho de fluxos inteligentes de automação e na monitorização de infraestruturas cloud e de rede.
             </p>
             <p>
-              Desenvolvo soluções práticas que reduzem a dependência de intervenções manuais, diminuem o tempo de resposta a incidentes (MTTR) e garantem a integridade de dados e conformidade regulamentar.
+              Tenho total disponibilidade para <strong>relocalização geográfica</strong>, facilidade de adaptação a novos ambientes de trabalho e interesse em funções técnicas dinâmicas como Security Automation Engineer, Cloud Security ou Analista SOC.
             </p>
           </div>
           <div class="about-features">
@@ -104,14 +105,14 @@
               <div class="feat-icon">⚙️</div>
               <div>
                 <div class="feat-title">Automação & Orquestração</div>
-                <div class="feat-desc">Implementação de engines de auto-remediação baseados em webhooks e scripts eficientes.</div>
+                <div class="feat-desc">Implementação de engines de auto-remediação baseados em webhooks e scripts eficientes de Python/PowerShell.</div>
               </div>
             </div>
             <div class="feat-item">
               <div class="feat-icon">☁️</div>
               <div>
                 <div class="feat-title">Práticas de SecDevOps</div>
-                <div class="feat-desc">Controlo de drift, eliminação de segredos permanentes em CI/CD com OIDC e testes estáticos de IaC.</div>
+                <div class="feat-desc">Controlo de drift, pipelines de CI/CD seguros com autenticação federada OIDC e análise estática de IaC.</div>
               </div>
             </div>
           </div>
@@ -134,14 +135,14 @@
         <!-- Projeto 1 -->
         <div class="project-card">
           <div class="project-header">
-            <h3 class="project-title">NetDevOps Self-Healing Platform</h3>
-            <span class="project-badge">MTTR: 2h → 20s</span>
+            <h3 class="project-title">Automação e Self-Healing de Redes</h3>
+            <span class="project-badge">MTTR: 120m → &lt;20s</span>
           </div>
           <p class="project-desc">
-            Uma solução de engenharia de rede automatizada que deteta alterações não autorizadas ou falhas de configuração em circuitos VPN/MPLS. O sistema orquestra webhooks, valida o contexto para evitar falsos positivos e atua de forma autónoma via SSH.
+            <strong>Triagem e Diagnóstico Inteligente:</strong> Arquitetura NetDevOps desenvolvida em parceria com a ARTE, I.P., com lógica de pré-verificação para isolar falhas em circuitos VPN/MPLS em menos de 10 segundos, mitigando falsos positivos. <strong>Auto-Remediação (Circuito Fechado):</strong> Correção autónoma de desvios de configuração (config drift) via Python/Netmiko. <strong>Auditoria e Monitorização:</strong> Logs históricos no MongoDB e dashboards no Metabase para análise de KPIs.
           </p>
           <div class="project-flow">
-            PRTG Monitoring -> n8n Webhook -> Python Remediation Logic -> NetBox SoT comparison -> MongoDB Audit Logs
+            PRTG Monitoring ➔ n8n Webhook ➔ Python Remediation (Netmiko) ➔ NetBox SoT ➔ MongoDB & Metabase Dashboards
           </div>
           <div class="project-tags">
             <span class="tag">Python</span>
@@ -150,7 +151,8 @@
             <span class="tag">Netmiko</span>
             <span class="tag">PRTG</span>
             <span class="tag">MongoDB</span>
-            <span class="tag">Docker Compose</span>
+            <span class="tag">Metabase</span>
+            <span class="tag">Docker</span>
           </div>
           <div class="project-links">
             <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank">
@@ -163,22 +165,24 @@
         <!-- Projeto 2 -->
         <div class="project-card">
           <div class="project-header">
-            <h3 class="project-title">CityGuards Secure Infrastructure</h3>
-            <span class="project-badge">Multi-Cloud IaC</span>
+            <h3 class="project-title">Plataforma Multi-Cloud (CityGuards)</h3>
+            <span class="project-badge">Azure &amp; GCP</span>
           </div>
           <p class="project-desc">
-            Desenho de uma arquitetura híbrida segura abrangendo serviços aplicacionais na Azure e GCP. O provisionamento é totalmente definido por código (IaC) e orquestrado por pipelines de CI/CD protegidos com autenticação efémera (OIDC) e análise estática de conformidade regulamentar.
+            <strong>Arquitetura Híbrida:</strong> Ecossistema Azure PaaS + GCP com um motor local de tolerância a falhas (NLP heurístico) para resiliência na ingestão de dados. <strong>Pipelines SecDevOps:</strong> Automação do deploy via Bicep/Terraform e CI/CD em GitHub Actions com OIDC. <strong>Segurança e Conformidade:</strong> Hashing bcrypt (work factor 10), mitigação de fugas em REST APIs e auditoria de conformidade (RGPD e US CLOUD Act).
           </p>
           <div class="project-flow">
-            Bicep & Terraform -> GitHub Actions (OIDC Auth) -> Checkov Policy Scan -> Azure PaaS & GCP Cloud Run
+            Bicep &amp; Terraform ➔ GitHub Actions (OIDC) ➔ Checkov SAST ➔ Azure PaaS &amp; GCP Cloud Run
           </div>
           <div class="project-tags">
             <span class="tag">Azure PaaS</span>
             <span class="tag">GCP Cloud</span>
             <span class="tag">Bicep</span>
             <span class="tag">Terraform</span>
-            <span class="tag">OIDC Authentication</span>
-            <span class="tag">Checkov SAST</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">OIDC</span>
+            <span class="tag">bcrypt (WF 10)</span>
+            <span class="tag">NLP Heurístico</span>
           </div>
           <div class="project-links">
             <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank">
@@ -211,6 +215,7 @@
             <span class="skill-tag">Firewalls Palo Alto & Fortinet</span>
             <span class="skill-tag">Análise de Tráfego Wireshark</span>
             <span class="skill-tag">Auditoria OpenVAS & Nmap</span>
+            <span class="skill-tag">PKI (OpenSSL)</span>
           </div>
         </div>
 
@@ -233,6 +238,7 @@
             <span class="skill-tag">Shell Scripting (Bash)</span>
             <span class="skill-tag">PowerShell Automation</span>
             <span class="skill-tag">Gestão de Dados MongoDB</span>
+            <span class="skill-tag">SQL (MySQL)</span>
           </div>
         </div>
 
@@ -243,6 +249,42 @@
             <span class="skill-tag">Linux Kali (Auditoria)</span>
             <span class="skill-tag">Windows Server Active Directory</span>
           </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Education ---------- -->
+  <section class="section" id="education">
+    <div class="container">
+      <span class="section-label">Educação</span>
+      <h2 class="section-title">Percurso Académico & Internacional</h2>
+      
+      <div class="edu-list">
+        
+        <div class="edu-card">
+          <div class="edu-info">
+            <span class="edu-title">Licenciatura em Engenharia Informática</span>
+            <span class="edu-subtitle">Instituto Politécnico de Castelo Branco (IPCB-ESTCB) | Média Atual: 14.65/20</span>
+          </div>
+          <span class="edu-date">2023 — 2026 (Previso)</span>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-info">
+            <span class="edu-title">Programa Erasmus+ (Plóiești, Roménia)</span>
+            <span class="edu-subtitle">Universidade de Petróleo e Gás de Ploiesti | Liderança e Gestão da Mudança para a Sustentabilidade</span>
+          </div>
+          <span class="edu-date">Abr 2026</span>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-info">
+            <span class="edu-title">Programa Erasmus+ (Weimar, Alemanha)</span>
+            <span class="edu-subtitle">Universidade Bauhaus-Weimar | Augmented Pasts: Hacking history with digital tools from the future</span>
+          </div>
+          <span class="edu-date">Fev 2025 — Mar 2025</span>
         </div>
 
       </div>
@@ -313,12 +355,18 @@
           <a href="mailto:rafael.lourenco.cruz20@gmail.com" class="contact-btn">
             ✉️ Email
           </a>
+          <a href="tel:+351935264794" class="contact-btn">
+            📞 +351 935 264 794
+          </a>
           <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" class="contact-btn">
             💼 LinkedIn
           </a>
           <a href="https://github.com/RafaCr3z" target="_blank" class="contact-btn">
             🐙 GitHub
           </a>
+          <div class="contact-btn" style="cursor: default; opacity: 0.8;">
+            📍 Louriçal, Portugal
+          </div>
         </div>
       </div>
     </div>
