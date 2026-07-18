@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Automation Engineer — Portfólio</title>
+  <meta name="description" content="Portfólio de Security Automation Engineer — Automação de Redes, SecDevOps, Cloud Security. Projetos com impacto real: MTTR de 2h para 20s." />
+  <meta name="keywords" content="Security Automation, NetDevOps, Cloud Security, SOC, SIEM, SecDevOps, Portfolio" />
+  <meta name="author" content="Security Automation Engineer" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Security Automation Engineer — Portfólio" />
+  <meta property="og:description" content="Automação de Redes, SecDevOps e Cloud Security com impacto mensurável." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (terminal icon) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background Particles -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <span class="logo-bracket">{</span>sec<span class="logo-slash">/</span>auto<span class="logo-bracket">}</span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#projects">Projetos</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#labs">Labs</a></li>
+        <li><a href="#certs">Certificações</a></li>
+        <li><a href="#contact" class="nav-cta">Contacto</a></li>
+      </ul>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          Disponível para oportunidades
+        </div>
+
+        <h1 class="hero-title">
+          Security<br />
+          <span class="gradient-text">Automation</span><br />
+          Engineer
+        </h1>
+
+        <p class="hero-subtitle">
+          Finalista de Engenharia Informática. Construo infraestruturas seguras e automatizadas 
+          na interseção entre <strong>Redes</strong>, <strong>SecDevOps</strong> e 
+          <strong>Cloud Security</strong>.
+        </p>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-value">
+              2h → <span class="highlight" data-count="20" data-suffix="s">0s</span>
+            </div>
+            <div class="metric-label">MTTR Reduzido</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value" data-count="93" data-suffix="%" data-prefix="-">0%</div>
+            <div class="metric-label">Intervenções Manuais</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value" data-count="2" data-suffix=" Clouds">0 Clouds</div>
+            <div class="metric-label">Infraestrutura Híbrida</div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            Ver Projetos
+          </a>
+          <a href="#contact" class="btn btn-ghost">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Fale Comigo
+          </a>
+        </div>
+
+        <div class="hero-terminal reveal">
+          <div class="terminal">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">portfolio@kali:~</span>
+            </div>
+            <div class="terminal-body" id="terminal-text">
+              <div><span class="prompt">~$</span><span class="cursor-blink"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Sobre Mim</span>
+        <h2 class="section-title">Segurança com propósito.<br/>Automação com impacto.</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal reveal-delay-1">
+          <p>
+            Sou finalista de <strong>Engenharia Informática</strong> com uma paixão profunda pela 
+            interseção entre redes, segurança e automação. Acredito que a melhor defesa é uma 
+            infraestrutura que se protege e repara a si própria.
+          </p>
+          <p>
+            O meu percurso combina experiência prática com <strong>SIEMs</strong> (Wazuh, Splunk), 
+            <strong>firewalls</strong> (Palo Alto, Fortinet), e ferramentas de <strong>Infrastructure 
+            as Code</strong> (Terraform, Bicep, Ansible) para construir sistemas que não só detetam 
+            ameaças — mas respondem autonomamente.
+          </p>
+          <p>
+            Procuro funções como <strong>Security Automation Engineer</strong>, <strong>Cloud Security 
+            Engineer</strong> ou <strong>SOC Analyst L1/L2</strong> onde possa aplicar estas competências 
+            em ambientes reais de produção.
+          </p>
+        </div>
+
+        <div class="about-highlights reveal reveal-delay-2">
+          <div class="highlight-card">
+            <div class="highlight-icon cyan">🔧</div>
+            <div>
+              <div class="highlight-title">Automação de Redes</div>
+              <div class="highlight-desc">Self-healing de VPN/MPLS com Python, redução de MTTR em 99.7%</div>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon emerald">☁️</div>
+            <div>
+              <div class="highlight-title">Cloud Security</div>
+              <div class="highlight-desc">Infraestrutura Multi-Cloud (Azure + GCP) com OIDC e conformidade RGPD</div>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon purple">🛡️</div>
+            <div>
+              <div class="highlight-title">SecDevOps</div>
+              <div class="highlight-desc">Pipelines CI/CD seguros com SAST, container scanning e secrets management</div>
+            </div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-icon amber">📊</div>
+            <div>
+              <div class="highlight-title">SIEM & Monitoring</div>
+              <div class="highlight-desc">Implementação de Wazuh e Splunk com custom rules e dashboards SOC</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS
+       ============================================================ -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Projetos</span>
+        <h2 class="section-title">Construído para resolver<br/>problemas reais.</h2>
+        <p class="section-subtitle">
+          Cada projeto nasceu de um desafio real e demonstra autonomia técnica, desde a arquitetura até à implementação.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: NetDevOps Self-Healing -->
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-card-inner">
+            <div class="project-visual">
+              <div class="project-diagram">
+<pre>
+  ┌──────────┐   alerta   ┌──────────┐  webhook  ┌──────────┐
+  │   PRTG   │ ─────────▶ │   n8n    │ ────────▶ │  Python  │
+  │ (Monitor)│            │(Orquestr.)│           │ (Engine) │
+  └──────────┘            └──────────┘           └────┬─────┘
+                                                      │
+                          ┌──────────┐  SSH/Netmiko   │
+                          │  NetBox  │ ◀──────────────┘
+                          │  (SoT)   │        │
+                          └──────────┘        ▼
+                                        ┌──────────┐
+                          ┌──────────┐  │ Switches/ │
+                          │ MongoDB  │  │ Routers   │
+                          │  (Logs)  │  └──────────┘
+                          └──────────┘
+</pre>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-number">01 / Projeto Principal</div>
+              <h3 class="project-name">NetDevOps Self-Healing</h3>
+              <p class="project-tagline">Automação e Auto-Correção de Redes</p>
+              <p class="project-description">
+                Arquitetura NetDevOps que deteta, diagnostica e corrige autonomamente desvios 
+                de configuração em circuitos VPN/MPLS. Lógica de pré-verificação para filtrar 
+                falsos positivos e scripts Python (Netmiko via SSH) para correção com rollback 
+                automático.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">n8n</span>
+                <span class="tag">NetBox</span>
+                <span class="tag">PRTG</span>
+                <span class="tag">MongoDB</span>
+                <span class="tag">Netmiko</span>
+                <span class="tag">Docker</span>
+              </div>
+              <div class="project-metrics">
+                <div>
+                  <div class="project-metric-value">2h → 20s</div>
+                  <div class="project-metric-label">MTTR Reduzido</div>
+                </div>
+                <div>
+                  <div class="project-metric-value">-83%</div>
+                  <div class="project-metric-label">Falsos Positivos</div>
+                </div>
+                <div>
+                  <div class="project-metric-value">-93%</div>
+                  <div class="project-metric-label">Interv. Manuais</div>
+                </div>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                  Código
+                </a>
+                <a href="#" class="project-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Documentação
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: CityGuards -->
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-card-inner">
+            <div class="project-visual">
+              <div class="project-diagram">
+<pre>
+  ┌──────────────────────────────────────────────┐
+  │              GitHub Actions                   │
+  │       (CI/CD com autenticação OIDC)          │
+  └───────┬──────────────────────┬───────────────┘
+          │ Bicep                │ Terraform
+          ▼                     ▼
+  ┌──────────────────┐  ┌──────────────────┐
+  │   Azure PaaS     │  │      GCP         │
+  │  ┌────────────┐  │  │  ┌────────────┐  │
+  │  │ App Service │  │  │  │ Cloud Run  │  │
+  │  │ (REST API)  │  │  │  │ (Workers)  │  │
+  │  └──────┬─────┘  │  │  └──────┬─────┘  │
+  │  ┌──────▼─────┐  │  │  ┌──────▼─────┐  │
+  │  │ Azure SQL  │  │  │  │ Cloud SQL  │  │
+  │  │ (Dados EU) │  │  │  │ (Dados US) │  │
+  │  └────────────┘  │  │  └────────────┘  │
+  │  ┌────────────┐  │  │  ┌────────────┐  │
+  │  │ Key Vault  │  │  │  │ Secret Mgr │  │
+  │  └────────────┘  │  │  └────────────┘  │
+  └──────────────────┘  └──────────────────┘
+</pre>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-number">02 / Projeto Principal</div>
+              <h3 class="project-name">CityGuards</h3>
+              <p class="project-tagline">Plataforma Multi-Cloud Segura</p>
+              <p class="project-description">
+                Infraestrutura híbrida Azure PaaS + GCP com deploys automatizados via Bicep e 
+                GitHub Actions usando autenticação OIDC (zero secrets). Inclui segurança aplicacional 
+                (bcrypt, mitigação de fugas em REST APIs) e auditoria de conformidade multi-jurisdição 
+                (RGPD / US CLOUD Act).
+              </p>
+              <div class="project-tags">
+                <span class="tag">Azure</span>
+                <span class="tag">GCP</span>
+                <span class="tag">Bicep</span>
+                <span class="tag">Terraform</span>
+                <span class="tag">GitHub Actions</span>
+                <span class="tag">OIDC</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Python</span>
+              </div>
+              <div class="project-metrics">
+                <div>
+                  <div class="project-metric-value">OIDC</div>
+                  <div class="project-metric-label">Zero Secrets CI/CD</div>
+                </div>
+                <div>
+                  <div class="project-metric-value">RGPD</div>
+                  <div class="project-metric-label">Conformidade EU</div>
+                </div>
+                <div>
+                  <div class="project-metric-value">5 Scans</div>
+                  <div class="project-metric-label">Security Pipeline</div>
+                </div>
+              </div>
+              <div class="project-links">
+                <a href="#" class="project-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                  Código
+                </a>
+                <a href="#" class="project-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Documentação
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS
+       ============================================================ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Competências</span>
+        <h2 class="section-title">Stack técnico.</h2>
+        <p class="section-subtitle">
+          Ferramentas e tecnologias que uso para construir, proteger e automatizar infraestruturas.
+        </p>
+      </div>
+
+      <div class="skills-categories">
+
+        <!-- Cybersecurity & Networking -->
+        <div class="skill-category reveal reveal-delay-1">
+          <div class="skill-category-icon">🛡️</div>
+          <h3 class="skill-category-title">Cibersegurança & Redes</h3>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Wazuh (SIEM)</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Splunk (SIEM)</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Palo Alto / Fortinet</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Wireshark / Nmap</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>OpenVAS</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Automation & SecDevOps -->
+        <div class="skill-category reveal reveal-delay-2">
+          <div class="skill-category-icon">⚙️</div>
+          <h3 class="skill-category-title">Automação & SecDevOps</h3>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Ansible</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Terraform</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Bicep / ARM</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>GitHub Actions (CI/CD)</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>n8n / NetBox / PRTG</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Cloud & Systems -->
+        <div class="skill-category reveal reveal-delay-3">
+          <div class="skill-category-icon">☁️</div>
+          <h3 class="skill-category-title">Cloud & Sistemas</h3>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Microsoft Azure</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Google Cloud (GCP)</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Docker</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Linux (Ubuntu / Kali)</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Windows Server</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Languages -->
+        <div class="skill-category reveal reveal-delay-1">
+          <div class="skill-category-icon">💻</div>
+          <h3 class="skill-category-title">Linguagens</h3>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Python</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Bash</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>PowerShell</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>YAML / HCL / JSON</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Security Practices -->
+        <div class="skill-category reveal reveal-delay-2">
+          <div class="skill-category-icon">🔒</div>
+          <h3 class="skill-category-title">Práticas de Segurança</h3>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>SAST / DAST</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Vulnerability Scanning</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Secrets Management</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Compliance (RGPD)</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Methodologies -->
+        <div class="skill-category reveal reveal-delay-3">
+          <div class="skill-category-icon">📋</div>
+          <h3 class="skill-category-title">Metodologias</h3>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>NetDevOps / GitOps</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Infrastructure as Code</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>Policy as Code</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+            <li class="skill-item">
+              <span class="skill-name"><span class="skill-dot"></span>MITRE ATT&amp;CK</span>
+              <div class="skill-level">
+                <span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar filled"></span><span class="skill-bar"></span><span class="skill-bar"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LABS / POCS
+       ============================================================ -->
+  <section class="section" id="labs">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Laboratórios</span>
+        <h2 class="section-title">Aprender fazendo.</h2>
+        <p class="section-subtitle">
+          PoCs e laboratórios práticos que demonstram competências específicas em cenários realistas.
+        </p>
+      </div>
+
+      <div class="labs-grid">
+
+        <div class="lab-card reveal reveal-delay-1">
+          <div class="lab-icon">🔍</div>
+          <h3 class="lab-title">Wazuh Attack Detection</h3>
+          <p class="lab-desc">
+            Cluster Wazuh em Docker com simulação de ataques (brute-force, privilege escalation). 
+            Custom rules XML com MITRE ATT&CK mapping e dashboard em tempo real.
+          </p>
+          <div class="lab-tags">
+            <span class="lab-tag">Wazuh</span>
+            <span class="lab-tag">Docker</span>
+            <span class="lab-tag">MITRE</span>
+            <span class="lab-tag">Python</span>
+          </div>
+          <div class="lab-status">
+            <span class="status-dot live"></span>
+            Concluído
+          </div>
+        </div>
+
+        <div class="lab-card reveal reveal-delay-2">
+          <div class="lab-icon">📊</div>
+          <h3 class="lab-title">Splunk SOC Dashboard</h3>
+          <p class="lab-desc">
+            Mini-SOC com Splunk Free. Ingestão de Sysmon + auth.log, dashboards de detecção, 
+            alertas automáticos e playbook de Incident Response documentado.
+          </p>
+          <div class="lab-tags">
+            <span class="lab-tag">Splunk</span>
+            <span class="lab-tag">Sysmon</span>
+            <span class="lab-tag">SPL</span>
+            <span class="lab-tag">IR</span>
+          </div>
+          <div class="lab-status">
+            <span class="status-dot live"></span>
+            Concluído
+          </div>
+        </div>
+
+        <div class="lab-card reveal reveal-delay-3">
+          <div class="lab-icon">🧱</div>
+          <h3 class="lab-title">Firewall Policy-as-Code</h3>
+          <p class="lab-desc">
+            Políticas Palo Alto definidas como código (Terraform/Python). Pipeline CI/CD com 
+            drift detection e rollback automático via canary testing.
+          </p>
+          <div class="lab-tags">
+            <span class="lab-tag">Palo Alto</span>
+            <span class="lab-tag">Terraform</span>
+            <span class="lab-tag">GitHub Actions</span>
+          </div>
+          <div class="lab-status">
+            <span class="status-dot wip"></span>
+            Em progresso
+          </div>
+        </div>
+
+        <div class="lab-card reveal reveal-delay-1">
+          <div class="lab-icon">🛡️</div>
+          <h3 class="lab-title">CIS Hardening Automation</h3>
+          <p class="lab-desc">
+            Playbooks Ansible para CIS Benchmark Level 1 em Ubuntu Server. Idempotência 
+            total com relatórios de compliance automáticos via OpenSCAP.
+          </p>
+          <div class="lab-tags">
+            <span class="lab-tag">Ansible</span>
+            <span class="lab-tag">CIS</span>
+            <span class="lab-tag">OpenSCAP</span>
+          </div>
+          <div class="lab-status">
+            <span class="status-dot wip"></span>
+            Em progresso
+          </div>
+        </div>
+
+        <div class="lab-card reveal reveal-delay-2">
+          <div class="lab-icon">🔬</div>
+          <h3 class="lab-title">Sigma Threat Hunting</h3>
+          <p class="lab-desc">
+            Conversão de Sigma rules para queries Splunk/Wazuh. Script Python para hunting 
+            retroativo em logs offline com relatório HTML de findings.
+          </p>
+          <div class="lab-tags">
+            <span class="lab-tag">Sigma</span>
+            <span class="lab-tag">Python</span>
+            <span class="lab-tag">pySigma</span>
+          </div>
+          <div class="lab-status">
+            <span class="status-dot planned"></span>
+            Planeado
+          </div>
+        </div>
+
+        <div class="lab-card reveal reveal-delay-3">
+          <div class="lab-icon">🌐</div>
+          <h3 class="lab-title">Zero Trust Network Lab</h3>
+          <p class="lab-desc">
+            Implementação de micro-segmentação com pfSense e Wireguard. Políticas de 
+            acesso baseadas em identidade com logging centralizado.
+          </p>
+          <div class="lab-tags">
+            <span class="lab-tag">pfSense</span>
+            <span class="lab-tag">Wireguard</span>
+            <span class="lab-tag">Zero Trust</span>
+          </div>
+          <div class="lab-status">
+            <span class="status-dot planned"></span>
+            Planeado
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CERTIFICATIONS
+       ============================================================ -->
+  <section class="section" id="certs">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Certificações</span>
+        <h2 class="section-title">Aprendizagem contínua.</h2>
+        <p class="section-subtitle">
+          Certificações concluídas e em preparação para validar competências técnicas.
+        </p>
+      </div>
+
+      <div class="certs-grid">
+
+        <div class="cert-card reveal reveal-delay-1">
+          <div class="cert-icon completed">🏅</div>
+          <div>
+            <div class="cert-name">CompTIA Security+</div>
+            <div class="cert-issuer">CompTIA</div>
+          </div>
+          <span class="cert-badge done">Concluído</span>
+        </div>
+
+        <div class="cert-card reveal reveal-delay-2">
+          <div class="cert-icon progress">📘</div>
+          <div>
+            <div class="cert-name">AZ-500: Azure Security Engineer</div>
+            <div class="cert-issuer">Microsoft</div>
+          </div>
+          <span class="cert-badge wip">Em prep.</span>
+        </div>
+
+        <div class="cert-card reveal reveal-delay-3">
+          <div class="cert-icon progress">📘</div>
+          <div>
+            <div class="cert-name">CCD — Certified Cyber Defender</div>
+            <div class="cert-issuer">CCD Certification</div>
+          </div>
+          <span class="cert-badge wip">Em prep.</span>
+        </div>
+
+        <div class="cert-card reveal reveal-delay-4">
+          <div class="cert-icon progress">📘</div>
+          <div>
+            <div class="cert-name">HashiCorp Terraform Associate</div>
+            <div class="cert-issuer">HashiCorp</div>
+          </div>
+          <span class="cert-badge wip">Em prep.</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Contacto</span>
+        <h2 class="section-title">Vamos conversar.</h2>
+      </div>
+
+      <div class="contact-wrapper">
+
+        <div class="contact-info reveal reveal-delay-1">
+          <h3>Disponível para<br/>novas oportunidades.</h3>
+          <p>
+            Estou à procura de posições como Security Automation Engineer, Cloud Security Engineer 
+            ou SOC Analyst. Se a tua equipa valoriza automação, segurança e mentalidade DevOps, 
+            gostaria de falar contigo.
+          </p>
+
+          <div class="contact-channels">
+            <a href="mailto:teu@email.com" class="contact-channel">
+              <div class="contact-channel-icon">✉️</div>
+              <div>
+                <div class="contact-channel-label">Email</div>
+                <div class="contact-channel-value">teu@email.com</div>
+              </div>
+            </a>
+            <a href="https://linkedin.com/in/teu-perfil" class="contact-channel" target="_blank">
+              <div class="contact-channel-icon">💼</div>
+              <div>
+                <div class="contact-channel-label">LinkedIn</div>
+                <div class="contact-channel-value">linkedin.com/in/teu-perfil</div>
+              </div>
+            </a>
+            <a href="https://github.com/teu-user" class="contact-channel" target="_blank">
+              <div class="contact-channel-icon">🐙</div>
+              <div>
+                <div class="contact-channel-label">GitHub</div>
+                <div class="contact-channel-value">github.com/teu-user</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal reveal-delay-2" onsubmit="event.preventDefault(); alert('Mensagem enviada! (Demo)')">
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" placeholder="O teu nome" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="teu@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" placeholder="Em que posso ajudar?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Enviar Mensagem
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">
+        Construído com <span class="heart">♥</span> e muito café · 2025
+      </p>
+      <div class="footer-links">
+        <a href="https://github.com/teu-user" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/teu-perfil" target="_blank">LinkedIn</a>
+        <a href="#hero">↑ Topo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
