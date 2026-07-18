@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rafael Cruz — Security Automation & Cloud Security</title>
-  <meta name="description" content="Portfólio minimalista de Rafael Cruz — Security Automation Engineer, Cloud Security & SOC." />
-  <meta name="keywords" content="Security Automation, NetDevOps, Cloud Security, SOC, SIEM, SecDevOps, Portfolio" />
+  <title>Rafael Cruz — Engenharia Informática | Security Automation</title>
+  <meta name="description" content="Portfólio Profissional de Rafael Cruz — Engenheiro Informático com foco em Security Automation, Cloud Security e SecDevOps." />
+  <meta name="keywords" content="Engenharia Informática, Security Automation, NetDevOps, Cloud Security, SecDevOps, Portfolio" />
   <meta name="author" content="Rafael Cruz" />
 
   <!-- Favicon -->
@@ -19,36 +19,64 @@
   <header class="header">
     <div class="container">
       <nav class="nav">
-        <a href="#" class="logo">rcruz@portfolio:~</a>
+        <a href="#" class="logo">rcruz<span>.dev</span></a>
         <ul class="nav-links">
           <li><a href="#about">Sobre</a></li>
           <li><a href="#projects">Projetos</a></li>
           <li><a href="#skills">Competências</a></li>
           <li><a href="#labs">Labs</a></li>
           <li><a href="#certs">Certificações</a></li>
-          <li><a href="#contact">Contacto</a></li>
+          <li><a href="#contact" class="cta-link">Contacto</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- ---------- Hero ---------- -->
-  <section class="hero">
-    <div class="container">
-      <h1 class="hero-title">Rafael Cruz</h1>
+  <section class="hero container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Licenciado em Eng. Informática
+      </div>
+      <h1 class="hero-title">
+        <span>Rafael Cruz</span><br />
+        Security Automation
+      </h1>
       <p class="hero-subtitle">
-        Finalista de Engenharia Informática focado na interseção entre <strong>Redes</strong>, <strong>SecDevOps</strong> e <strong>Automação de Segurança</strong>. Construo infraestruturas seguras e sistemas auto-corretivos.
+        Focado no desenvolvimento de infraestruturas seguras e automação de processos. Especializado na interseção de <strong>Redes</strong>, <strong>SecDevOps</strong> e <strong>Cloud Security</strong>.
       </p>
-      <div class="hero-links">
-        <a href="https://github.com/RafaCr3z" target="_blank" class="btn">
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" class="btn">
-          LinkedIn
-        </a>
-        <a href="#contact" class="btn btn-primary">
-          Contactar
-        </a>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Ver Projetos</a>
+        <a href="#contact" class="btn">Falar Comigo</a>
+      </div>
+    </div>
+    
+    <div class="hero-code-card">
+      <div class="card-header">
+        <div class="card-dots">
+          <span class="card-dot"></span>
+          <span class="card-dot"></span>
+          <span class="card-dot"></span>
+        </div>
+        <div class="card-title">remediation_engine.py</div>
+      </div>
+      <div class="card-body">
+<span class="keyword">def</span> <span class="function">remediate_drift</span>(device, desired_config):
+    <span class="comment"># Comparar running-config com o NetBox SoT</span>
+    drift = compare(device.get_config(), desired_config)
+    
+    <span class="keyword">if</span> drift:
+        log.info(<span class="string">f"Drift detetado no dispositivo: {device.id}"</span>)
+        <span class="comment"># Aplicar comandos de auto-correção via Netmiko</span>
+        success = device.apply_config(drift.commands)
+        
+        <span class="keyword">if</span> success and device.verify_connectivity():
+            log.info(<span class="string">"Correção efetuada com sucesso. MTTR &lt; 20s."</span>)
+            <span class="keyword">return</span> True
+        <span class="keyword">else</span>:
+            device.rollback()
+            <span class="keyword">return</span> False</span>
       </div>
     </div>
   </section>
@@ -56,70 +84,102 @@
   <!-- ---------- About ---------- -->
   <section class="section" id="about">
     <div class="container">
-      <h2 class="section-title">Sobre</h2>
-      <p style="color: var(--text-secondary); margin-bottom: 16px;">
-        Especializo-me em desenhar soluções automatizadas para reduzir incidentes de rede e segurança. O meu trabalho foca-se em implementar práticas modernas de GitOps, Infrastructure as Code (IaC), monitorização proativa com dashboards correlacionados e pipelines de CI/CD focados em segurança operacional.
-      </p>
-      <p style="color: var(--text-secondary);">
-        Procuro oportunidades como <strong>Security Automation Engineer</strong>, <strong>Cloud Security Engineer</strong> ou <strong>Analista SOC L1/L2</strong>.
-      </p>
+      <span class="section-label">Apresentação</span>
+      <h2 class="section-title">Engenharia aplicada à segurança de sistemas</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Sou finalista em <strong>Engenharia Informática</strong>. O meu foco principal reside no desenho de fluxos inteligentes de automação e na monitorização proativa de infraestruturas cloud e de rede.
+          </p>
+          <p>
+            Desenvolvo soluções práticas que reduzem a dependência de intervenções manuais, diminuem o tempo de resposta a incidentes (MTTR) e garantem a integridade de dados e conformidade regulamentar.
+          </p>
+        </div>
+        <div class="about-features">
+          <div class="feat-item">
+            <div class="feat-icon">⚙️</div>
+            <div>
+              <div class="feat-title">Automação & Orquestração</div>
+              <div class="feat-desc">Implementação de engines de auto-remediação baseados em webhooks e scripts eficientes.</div>
+            </div>
+          </div>
+          <div class="feat-item">
+            <div class="feat-icon">☁️</div>
+            <div>
+              <div class="feat-title">Práticas de SecDevOps</div>
+              <div class="feat-desc">Controlo de drift, eliminação de segredos permanentes em CI/CD com OIDC e testes estáticos de IaC.</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ---------- Projects ---------- -->
   <section class="section" id="projects">
     <div class="container">
-      <h2 class="section-title">Projetos</h2>
-      
-      <div class="project-list">
+      <span class="section-label">Portfólio de Engenharia</span>
+      <h2 class="section-title">Projetos em Destaque</h2>
+      <p class="section-desc">
+        Desenvolvimentos completos onde apliquei conceitos avançados de computação, arquitetura de software, redes e infraestrutura.
+      </p>
+
+      <div class="projects-grid">
         
         <!-- Projeto 1 -->
-        <div class="project-item">
+        <div class="project-card">
           <div class="project-header">
-            <h3 class="project-title">NetDevOps Self-Healing</h3>
-            <span class="project-meta">MTTR: 2h → 20s</span>
+            <h3 class="project-title">NetDevOps Self-Healing Platform</h3>
+            <span class="project-badge">MTTR: 2h → 20s</span>
           </div>
           <p class="project-desc">
-            Arquitetura de auto-correção de rede que deteta config drift em circuitos VPN/MPLS, valida o alerta para evitar falsos positivos e aplica comandos de mitigação autónomos via SSH com verificação pós-correção e rollback.
+            Uma solução de engenharia de rede automatizada que deteta alterações não autorizadas ou falhas de configuração em circuitos VPN/MPLS. O sistema orquestra webhooks, valida o contexto para evitar falsos positivos e atua de forma autónoma via SSH.
           </p>
-          <div class="project-spec">PRTG (Alert) -> n8n (Webhooks) -> Python Engine (Netmiko) -> NetBox (Source of Truth) -> MongoDB Logs</div>
+          <div class="project-flow">
+            PRTG Monitoring -> n8n Webhook -> Python Remediation Logic -> NetBox SoT comparison -> MongoDB Audit Logs
+          </div>
           <div class="project-tags">
             <span class="tag">Python</span>
-            <span class="tag">NetBox</span>
+            <span class="tag">NetBox SoT</span>
             <span class="tag">n8n</span>
+            <span class="tag">Netmiko</span>
             <span class="tag">PRTG</span>
             <span class="tag">MongoDB</span>
-            <span class="tag">Docker</span>
+            <span class="tag">Docker Compose</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/RafaCr3z" target="_blank">Código</a>
-            <span style="color: var(--border);">·</span>
-            <a href="https://github.com/RafaCr3z" target="_blank">Design Doc</a>
+            <a href="https://github.com/RafaCr3z" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              Ver Repositório
+            </a>
           </div>
         </div>
 
         <!-- Projeto 2 -->
-        <div class="project-item">
+        <div class="project-card">
           <div class="project-header">
-            <h3 class="project-title">CityGuards Multi-Cloud</h3>
-            <span class="project-meta">SecDevOps & Compliance</span>
+            <h3 class="project-title">CityGuards Secure Infrastructure</h3>
+            <span class="project-badge">Multi-Cloud IaC</span>
           </div>
           <p class="project-desc">
-            Desenho e implementação de infraestrutura híbrida segura (Azure + GCP) com deploys de Infrastructure as Code via Bicep e GitHub Actions. Utiliza autenticação OIDC para eliminar credenciais permanentes em CI/CD, hashing bcrypt e auditoria de conformidade regulamentar.
+            Desenho de uma arquitetura híbrida segura abrangendo serviços aplicacionais na Azure e GCP. O provisionamento é totalmente definido por código (IaC) e orquestrado por pipelines de CI/CD protegidos com autenticação efémera (OIDC) e análise estática de conformidade regulamentar.
           </p>
-          <div class="project-spec">Azure App Service + SQL (EU Data) | GCP Cloud Run + Cloud SQL (US Data) | Actions OIDC Auth</div>
+          <div class="project-flow">
+            Bicep & Terraform -> GitHub Actions (OIDC Auth) -> Checkov Policy Scan -> Azure PaaS & GCP Cloud Run
+          </div>
           <div class="project-tags">
-            <span class="tag">Azure</span>
-            <span class="tag">GCP</span>
+            <span class="tag">Azure PaaS</span>
+            <span class="tag">GCP Cloud</span>
             <span class="tag">Bicep</span>
             <span class="tag">Terraform</span>
-            <span class="tag">GitHub Actions</span>
-            <span class="tag">Checkov</span>
+            <span class="tag">OIDC Authentication</span>
+            <span class="tag">Checkov SAST</span>
           </div>
           <div class="project-links">
-            <a href="https://github.com/RafaCr3z" target="_blank">Código</a>
-            <span style="color: var(--border);">·</span>
-            <a href="https://github.com/RafaCr3z" target="_blank">Security Matrix</a>
+            <a href="https://github.com/RafaCr3z" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              Ver Repositório
+            </a>
           </div>
         </div>
 
@@ -130,38 +190,56 @@
   <!-- ---------- Skills ---------- -->
   <section class="section" id="skills">
     <div class="container">
-      <h2 class="section-title">Competências</h2>
+      <span class="section-label">Competências Técnicas</span>
+      <h2 class="section-title">Especializações e Ferramentas</h2>
+      <p class="section-desc">
+        A minha formação e projetos práticos cobrem as principais ferramentas utilizadas em ambientes DevSecOps e operações de segurança.
+      </p>
+
       <div class="skills-grid">
-        <div>
-          <h3 class="skill-cat-title">Segurança & Monitorização</h3>
-          <ul class="skill-cat-list">
-            <li>SIEM (Wazuh, Splunk)</li>
-            <li>Firewalls (Palo Alto, Fortinet, pfSense)</li>
-            <li>Análise de tráfego (Wireshark, Nmap, OpenVAS)</li>
-          </ul>
+        
+        <div class="skill-category">
+          <h3 class="skill-cat-title">SecOps & Cibersegurança</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Wazuh (SIEM)</span>
+            <span class="skill-tag">Splunk Enterprise</span>
+            <span class="skill-tag">Firewalls Palo Alto & Fortinet</span>
+            <span class="skill-tag">Análise de Tráfego Wireshark</span>
+            <span class="skill-tag">Auditoria OpenVAS & Nmap</span>
+          </div>
         </div>
-        <div>
-          <h3 class="skill-cat-title">SecDevOps & Infraestrutura</h3>
-          <ul class="skill-cat-list">
-            <li>Ansible, Terraform, Bicep</li>
-            <li>CI/CD (GitHub Actions)</li>
-            <li>Linux (Ubuntu, Kali), Azure, GCP, Docker</li>
-          </ul>
+
+        <div class="skill-category">
+          <h3 class="skill-cat-title">Infraestrutura como Código & Cloud</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Terraform</span>
+            <span class="skill-tag">Bicep</span>
+            <span class="skill-tag">Ansible Engine</span>
+            <span class="skill-tag">GitHub Actions CI/CD</span>
+            <span class="skill-tag">Docker Containerization</span>
+            <span class="skill-tag">Cloud Providers (Azure, GCP)</span>
+          </div>
         </div>
-        <div>
-          <h3 class="skill-cat-title">Linguagens</h3>
-          <ul class="skill-cat-list">
-            <li>Python (Scripting, Automação)</li>
-            <li>Bash, PowerShell</li>
-          </ul>
+
+        <div class="skill-category">
+          <h3 class="skill-cat-title">Desenvolvimento & Scripting</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python (Engine Development)</span>
+            <span class="skill-tag">Shell Scripting (Bash)</span>
+            <span class="skill-tag">PowerShell Automation</span>
+            <span class="skill-tag">Gestão de Dados MongoDB</span>
+          </div>
         </div>
-        <div>
-          <h3 class="skill-cat-title">Metodologias</h3>
-          <ul class="skill-cat-list">
-            <li>GitOps, Network-as-Code</li>
-            <li>Hardening de Sistemas (CIS Benchmarks)</li>
-          </ul>
+
+        <div class="skill-category">
+          <h3 class="skill-cat-title">Sistemas Operativos</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Linux Ubuntu Server</span>
+            <span class="skill-tag">Linux Kali (Auditoria)</span>
+            <span class="skill-tag">Windows Server Active Directory</span>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -169,42 +247,55 @@
   <!-- ---------- Labs ---------- -->
   <section class="section" id="labs">
     <div class="container">
-      <h2 class="section-title">Laboratórios & PoCs</h2>
-      <div class="labs-list">
+      <span class="section-label">Laboratórios Práticos</span>
+      <h2 class="section-title">PoCs & Ambientes de Teste</h2>
+      <p class="section-desc">
+        Pequenos cenários montados localmente para validar integrações, técnicas de deteção de intrusões e testes de ferramentas.
+      </p>
+
+      <div class="labs-grid">
         
-        <div class="lab-item">
-          <h4 class="lab-title">Wazuh Attack Detection</h4>
-          <p class="lab-desc">Cluster Wazuh em Docker com simulação de brute-force SSH, rules customizadas e MITRE mapping.</p>
-          <div class="lab-meta">
-            <span class="lab-tag">Wazuh</span>
-            <span class="lab-status done">Concluído</span>
+        <div class="lab-card">
+          <div class="lab-card-top">
+            <h4 class="lab-title">Wazuh Incident Detection</h4>
+            <p class="lab-desc">Instalação de agentes em sandbox virtualizada para monitorizar tentativas de escalação de privilégios e ataques bruteforce em portas SSH.</p>
+          </div>
+          <div class="lab-footer">
+            <span class="lab-tech">Wazuh · Docker</span>
+            <span class="lab-status done"><span class="status-dot"></span>Concluído</span>
           </div>
         </div>
 
-        <div class="lab-item">
-          <h4 class="lab-title">Splunk SOC Dashboard</h4>
-          <p class="lab-desc">Visualização e correlação de logs do Windows Sysmon e auth.log em alertas centralizados.</p>
-          <div class="lab-meta">
-            <span class="lab-tag">Splunk</span>
-            <span class="lab-status done">Concluído</span>
+        <div class="lab-card">
+          <div class="lab-card-top">
+            <h4 class="lab-title">Splunk Log Aggregation</h4>
+            <p class="lab-desc">Configuração de ingestão de logs do Windows Event Viewer (via Sysmon) para criação de dashboards de login anómalos.</p>
+          </div>
+          <div class="lab-footer">
+            <span class="lab-tech">Splunk · Sysmon</span>
+            <span class="lab-status done"><span class="status-dot"></span>Concluído</span>
           </div>
         </div>
 
-        <div class="lab-item">
-          <h4 class="lab-title">Palo Alto Policy-as-Code</h4>
-          <p class="lab-desc">Gestão de políticas de firewall como código usando Terraform e pipelines automáticos.</p>
-          <div class="lab-meta">
-            <span class="lab-tag">Terraform</span>
-            <span class="lab-status">Em prep.</span>
+        <div class="lab-card">
+          <div class="lab-card-top">
+            <h4 class="lab-title">Palo Alto Policy Automation</h4>
+            <p class="lab-desc">Ambiente simulado em EVE-NG para testar a aplicação de novas regras de firewall de forma programática através de APIs REST.</p>
+          </div>
+          <div class="lab-footer">
+            <span class="lab-tech">API REST · Python</span>
+            <span class="lab-status"><span class="status-dot"></span>Em prep.</span>
           </div>
         </div>
 
-        <div class="lab-item">
-          <h4 class="lab-title">Ansible CIS Hardening</h4>
-          <p class="lab-desc">Playbooks para validação e remediação CIS Benchmark Level 1 em servidores Linux.</p>
-          <div class="lab-meta">
-            <span class="lab-tag">Ansible</span>
-            <span class="lab-status">Planeado</span>
+        <div class="lab-card">
+          <div class="lab-card-top">
+            <h4 class="lab-title">CIS Server Hardening</h4>
+            <p class="lab-desc">Playbook modular para automatizar a desativação de serviços desnecessários e parametrização de permissões críticas de ficheiros linux.</p>
+          </div>
+          <div class="lab-footer">
+            <span class="lab-tech">Ansible · Ubuntu</span>
+            <span class="lab-status"><span class="status-dot"></span>Planeado</span>
           </div>
         </div>
 
@@ -215,40 +306,57 @@
   <!-- ---------- Certifications ---------- -->
   <section class="section" id="certs">
     <div class="container">
-      <h2 class="section-title">Certificações</h2>
-      <ul class="certs-list">
-        <li class="cert-item">
-          <span>CompTIA Security+</span>
-          <span class="cert-status" style="color: var(--success);">Concluída</span>
-        </li>
-        <li class="cert-item">
-          <span>AZ-500: Azure Security Engineer</span>
+      <span class="section-label">Certificação Profissional</span>
+      <h2 class="section-title">Validação de Competências</h2>
+      
+      <div class="certs-list">
+        
+        <div class="cert-card">
+          <div class="cert-info">
+            <span class="cert-name">CompTIA Security+</span>
+            <span class="cert-issuer">CompTIA (Cibersegurança e Redes Seguras)</span>
+          </div>
+          <span class="cert-status active">Ativa</span>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-info">
+            <span class="cert-name">AZ-500: Microsoft Azure Security Engineer</span>
+            <span class="cert-issuer">Microsoft (Segurança em Cloud Híbrida)</span>
+          </div>
           <span class="cert-status">Em preparação</span>
-        </li>
-        <li class="cert-item">
-          <span>CCD — Certified Cyber Defender</span>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-info">
+            <span class="cert-name">CCD — Certified Cyber Defender</span>
+            <span class="cert-issuer">CyberDefenders (Monitorização & Resposta a Incidentes SOC)</span>
+          </div>
           <span class="cert-status">Em preparação</span>
-        </li>
-      </ul>
+        </div>
+
+      </div>
     </div>
   </section>
 
   <!-- ---------- Contact ---------- -->
   <section class="section" id="contact">
     <div class="container">
-      <h2 class="section-title">Contacto</h2>
-      <div class="contact-links">
-        <div class="contact-item">
-          <span class="contact-label">Email</span>
-          <a href="mailto:rafael.lourenco.cruz20@gmail.com">rafael.lourenco.cruz20@gmail.com</a>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">LinkedIn</span>
-          <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank">in/rafael-cruz-7159092b2</a>
-        </div>
-        <div class="contact-item">
-          <span class="contact-label">GitHub</span>
-          <a href="https://github.com/RafaCr3z" target="_blank">github.com/RafaCr3z</a>
+      <div class="contact-wrapper">
+        <h2 class="contact-title">Entrar em Contacto</h2>
+        <p class="contact-desc">
+          Se procura um profissional dedicado para equipas de Automação de Segurança, DevSecOps ou analista técnico no SOC, envie-me uma mensagem.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:rafael.lourenco.cruz20@gmail.com" class="contact-btn">
+            ✉️ Email
+          </a>
+          <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" class="contact-btn">
+            💼 LinkedIn
+          </a>
+          <a href="https://github.com/RafaCr3z" target="_blank" class="contact-btn">
+            🐙 GitHub
+          </a>
         </div>
       </div>
     </div>
@@ -258,9 +366,10 @@
   <footer class="footer">
     <div class="container">
       <span>© 2026 Rafael Cruz</span>
-      <span>Construído de forma minimalista</span>
+      <span>Engenharia Informática & Segurança</span>
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
