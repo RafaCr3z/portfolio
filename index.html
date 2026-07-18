@@ -138,9 +138,11 @@
             <h3 class="project-title">Automação e Self-Healing de Redes</h3>
             <span class="project-badge">MTTR: 120m → &lt;20s</span>
           </div>
-          <p class="project-desc">
-            <strong>Triagem e Diagnóstico Inteligente:</strong> Arquitetura NetDevOps desenvolvida em parceria com a ARTE, I.P., com lógica de pré-verificação para isolar falhas em circuitos VPN/MPLS em menos de 10 segundos, mitigando falsos positivos. <strong>Auto-Remediação (Circuito Fechado):</strong> Correção autónoma de desvios de configuração (config drift) via Python/Netmiko. <strong>Auditoria e Monitorização:</strong> Logs históricos no MongoDB e dashboards no Metabase para análise de KPIs.
-          </p>
+          <ul class="project-bullets">
+            <li><strong>Triagem e Diagnóstico Inteligente:</strong> Arquitetura NetDevOps desenvolvida em parceria com a ARTE, I.P., com lógica de pré-verificação para isolar falhas em circuitos VPN/MPLS em menos de 10 segundos, mitigando falsos positivos causados por falhas físicas.</li>
+            <li><strong>Auto-Remediação (Circuito Fechado):</strong> Desenvolvimento de scripts em Python (Netmiko via SSH) para correção autónoma de desvios de configuração (configuration drift), reduzindo o MTTR de 120 minutos para menos de 20 segundos.</li>
+            <li><strong>Auditoria e Monitorização:</strong> Centralização de logs históricos em MongoDB (Docker) e criação de dashboards em Metabase para análise de KPIs de fiabilidade.</li>
+          </ul>
           <div class="project-flow">
             PRTG Monitoring ➔ n8n Webhook ➔ Python Remediation (Netmiko) ➔ NetBox SoT ➔ MongoDB & Metabase Dashboards
           </div>
@@ -168,9 +170,11 @@
             <h3 class="project-title">Plataforma Multi-Cloud (CityGuards)</h3>
             <span class="project-badge">Azure &amp; GCP</span>
           </div>
-          <p class="project-desc">
-            <strong>Arquitetura Híbrida:</strong> Ecossistema Azure PaaS + GCP com um motor local de tolerância a falhas (NLP heurístico) para resiliência na ingestão de dados. <strong>Pipelines SecDevOps:</strong> Automação do deploy via Bicep/Terraform e CI/CD em GitHub Actions com OIDC. <strong>Segurança e Conformidade:</strong> Hashing bcrypt (work factor 10), mitigação de fugas em REST APIs e auditoria de conformidade (RGPD e US CLOUD Act).
-          </p>
+          <ul class="project-bullets">
+            <li><strong>Arquitetura Híbrida:</strong> Ecossistema Azure PaaS + GCP com um motor local de tolerância a falhas (NLP heurístico) para resiliência na ingestão de dados.</li>
+            <li><strong>Pipelines SecDevOps:</strong> Automação do deploy de infraestrutura via Bicep e CI/CD em GitHub Actions utilizando autenticação federada OpenID Connect (OIDC).</li>
+            <li><strong>Segurança e Conformidade:</strong> Integração de hashing bcrypt (work factor 10), mitigação de fugas de dados em REST APIs e auditoria de conformidade com o RGPD e US CLOUD Act.</li>
+          </ul>
           <div class="project-flow">
             Bicep &amp; Terraform ➔ GitHub Actions (OIDC) ➔ Checkov SAST ➔ Azure PaaS &amp; GCP Cloud Run
           </div>
