@@ -64,20 +64,18 @@
       </div>
       <div class="card-body">
 <span class="keyword">def</span> <span class="function">remediate_drift</span>(device, desired_config):
-    <span class="comment"># Comparar running-config com o NetBox SoT</span>
+    <span class="comment"># Comparar running-config com NetBox (SoT)</span>
     drift = compare(device.get_config(), desired_config)
-    
-    <span class="keyword">if</span> drift:
-        log.info(<span class="string">f"Drift detetado no dispositivo: {device.id}"</span>)
-        <span class="comment"># Aplicar comandos de auto-correção via Netmiko</span>
-        success = device.apply_config(drift.commands)
-        
-        <span class="keyword">if</span> success and device.verify_connectivity():
-            log.info(<span class="string">"Correção efetuada com sucesso. MTTR &lt; 20s."</span>)
-            <span class="keyword">return</span> True
-        <span class="keyword">else</span>:
-            device.rollback()
-            <span class="keyword">return</span> False</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> drift:
+        <span class="keyword">return</span> True
+
+    log.info(<span class="string">f"Drift detetado em {device.id} | Acionando remediação"</span>)
+    <span class="keyword">try</span>:
+        <span class="comment"># Tentativa primária via API REST (FortiOS)</span>
+        <span class="keyword">return</span> fortios_api.apply_patch(device, drift)
+    <span class="keyword">except</span> LicenseWriteRestriction:
+        <span class="comment"># Fallback determinístico via Netmiko / SSH</span>
+        <span class="keyword">return</span> netmiko_ssh.apply_commands(device, drift.commands)
       </div>
     </div>
   </section>
@@ -135,23 +133,28 @@
         <!-- Projeto 1 -->
         <div class="project-card">
           <div class="project-header">
-            <h3 class="project-title">Automação e Self-Healing de Redes</h3>
-            <span class="project-badge">MTTR: 120m → &lt;20s</span>
+            <h3 class="project-title">Automação e Self-Healing de Redes (Closed-Loop)</h3>
+            <span class="project-badge">MTTD: &lt;10s · MTTR: 40-70s</span>
           </div>
           <ul class="project-bullets">
-            <li><strong>Triagem e Diagnóstico Inteligente:</strong> Arquitetura NetDevOps desenvolvida em parceria com a ARTE, I.P., com lógica de pré-verificação para isolar falhas em circuitos VPN/MPLS em menos de 10 segundos, mitigando falsos positivos causados por falhas físicas.</li>
-            <li><strong>Auto-Remediação (Circuito Fechado):</strong> Desenvolvimento de scripts em Python (Netmiko via SSH) para correção autónoma de desvios de configuração (configuration drift), reduzindo o MTTR de 120 minutos para menos de 20 segundos.</li>
-            <li><strong>Auditoria e Monitorização:</strong> Centralização de logs históricos em MongoDB (Docker) e criação de dashboards em Metabase para análise de KPIs de fiabilidade.</li>
+            <li><strong>Arquitetura &amp; Resiliência:</strong> Solução NetDevOps desenvolvida em parceria com a ARTE, I.P. para elevar a resiliência e a disponibilidade de redes híbridas críticas (Overlay VPN IPsec sobre Underlay MPLS).</li>
+            <li><strong>Triagem e Diagnóstico Inteligente (Fase 1):</strong> Integração do PRTG com NetBox (Fonte Única da Verdade) e API REST do FortiOS (FortiGate), orquestrados via n8n orientado a eventos. Redução do MTTD em mais de 95% (de 15–30 min para &lt;10s) com diagnóstico diferencial e alertas de causa-raiz no Telegram.</li>
+            <li><strong>Autorremediação Híbrida em Circuito Fechado (Fase 2):</strong> Motor de execução determinístico que combina API REST com fallback automático em Python (Netmiko / SSH) para contornar restrições de licença, recuperando incidentes sem intervenção humana e fixando o MTTR entre 40 a 70 segundos.</li>
+            <li><strong>Chaos Engineering &amp; Auditoria:</strong> Resiliência validada com metodologias de Chaos Engineering em ambiente virtualizado (VMware) e auditada de ponta a ponta com persistência em MongoDB e dashboards no Metabase.</li>
           </ul>
           <div class="project-flow">
-            PRTG Monitoring ➔ n8n Webhook ➔ Python Remediation (Netmiko) ➔ NetBox SoT ➔ MongoDB & Metabase Dashboards
+            PRTG + FortiOS API ➔ n8n Event-Driven ➔ NetBox (SoT) ➔ Motor Híbrido (REST / Netmiko) ➔ Telegram &amp; Metabase
           </div>
           <div class="project-tags">
             <span class="tag">Python</span>
+            <span class="tag">FortiOS REST API</span>
             <span class="tag">NetBox SoT</span>
             <span class="tag">n8n</span>
-            <span class="tag">Netmiko</span>
+            <span class="tag">Netmiko (SSH)</span>
             <span class="tag">PRTG</span>
+            <span class="tag">Chaos Engineering</span>
+            <span class="tag">VMware</span>
+            <span class="tag">Telegram Alerts</span>
             <span class="tag">MongoDB</span>
             <span class="tag">Metabase</span>
             <span class="tag">Docker</span>
