@@ -52,14 +52,14 @@
     <div class="hero-content">
       <div class="hero-badge">
         <span class="dot"></span>
-        Licenciado em Eng. Informática | Elegível ATIVAR.pt
+        Disponibilidade Imediata · Elegível IEFP ATIVAR.pt (Nível 6)
       </div>
       <h1 class="hero-title">
         <span>Rafael Cruz</span><br />
         Security Automation
       </h1>
       <p class="hero-subtitle">
-        Licenciado em Engenharia Informática (IPCB) focado na interseção de <strong>Redes</strong>, <strong>SecDevOps</strong> e <strong>Automação de Segurança</strong>. Elegível para o programa de estágios profissionais ATIVAR.pt (IEFP).
+        Engenheiro Informático focado em <strong>Automação de Redes (NetDevOps)</strong>, <strong>SecDevOps</strong> e <strong>Cibersegurança Defensiva</strong>. Foco na redução de MTTR operacional, mitigação de configuration drift e observabilidade de infraestruturas críticas.
       </p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">Ver Projetos</a>
@@ -78,14 +78,14 @@
       </div>
       <div class="card-body">
 <span class="keyword">def</span> <span class="function">remediate_drift</span>(device, desired_config):
-    <span class="comment"># Comparar running-config com NetBox (SoT)</span>
+    <span class="comment"># Comparar running-config com NetBox (SSOT)</span>
     drift = compare(device.get_config(), desired_config)
     <span class="keyword">if</span> <span class="keyword">not</span> drift:
         <span class="keyword">return</span> True
 
     log.info(<span class="string">f"Drift detetado em {device.id} | Acionando remediação"</span>)
     <span class="keyword">try</span>:
-        <span class="comment"># Tentativa primária via API REST (FortiOS)</span>
+        <span class="comment"># Tentativa primária via API REST (Fortinet FortiOS)</span>
         <span class="keyword">return</span> fortios_api.apply_patch(device, drift)
     <span class="keyword">except</span> LicenseWriteRestriction:
         <span class="comment"># Fallback determinístico via Netmiko / SSH</span>
@@ -106,25 +106,25 @@
         <div class="about-content">
           <div class="about-text">
             <p>
-              Sou licenciado em <strong>Engenharia Informática</strong> pela Escola Superior de Tecnologia de Castelo Branco (IPCB-ESTCB). O meu foco principal reside no desenho de fluxos inteligentes de automação e na monitorização de infraestruturas cloud e de rede.
+              Engenheiro Informático focado em <strong>Automação de Redes (NetDevOps)</strong>, <strong>SecDevOps</strong> e <strong>Cibersegurança Defensiva</strong>. Experiência no desenvolvimento de PoCs para autorremediação <em>closed-loop</em>, telemetria orientada a eventos, pipelines CI/CD com autenticação federada (OIDC na Azure) e monitorização SIEM.
             </p>
             <p>
-              Tenho total disponibilidade para <strong>relocalização geográfica</strong>, facilidade de adaptação a novos ambientes de trabalho e interesse em funções técnicas dinâmicas como Security Automation Engineer, Cloud Security ou Analista SOC.
+              Foco na redução de MTTR operacional, mitigação de <em>configuration drift</em> e observabilidade de infraestruturas críticas. Disponibilidade imediata para novos desafios profissionais e elegível para Estágio Profissional IEFP (Medida ATIVAR.pt, Nível 6).
             </p>
           </div>
           <div class="about-features">
             <div class="feat-item">
               <div class="feat-icon">⚙️</div>
               <div>
-                <div class="feat-title">Automação & Orquestração</div>
-                <div class="feat-desc">Implementação de engines de auto-remediação baseados em webhooks e scripts eficientes de Python/PowerShell.</div>
+                <div class="feat-title">Automação NetDevOps & Telemetria</div>
+                <div class="feat-desc">Desenvolvimento de PoCs para autorremediação em ciclo fechado e telemetria orientada a eventos.</div>
               </div>
             </div>
             <div class="feat-item">
               <div class="feat-icon">☁️</div>
               <div>
-                <div class="feat-title">Práticas de SecDevOps</div>
-                <div class="feat-desc">Controlo de drift, pipelines de CI/CD seguros com autenticação federada OIDC e análise estática de IaC.</div>
+                <div class="feat-title">SecDevOps & Cloud Security</div>
+                <div class="feat-desc">Aprovisionamento IaC via Bicep/Terraform e CI/CD protegido com autenticação federada OIDC.</div>
               </div>
             </div>
           </div>
@@ -137,9 +137,9 @@
   <section class="section" id="projects">
     <div class="container">
       <span class="section-label">Portfólio de Engenharia</span>
-      <h2 class="section-title">Projetos em Destaque</h2>
+      <h2 class="section-title">Experiência em Engenharia e Projetos Técnicos</h2>
       <p class="section-desc">
-        Desenvolvimentos completos onde apliquei conceitos avançados de computação, arquitetura de software, redes e infraestrutura.
+        Projetos práticos onde apliquei conceitos avançados de computação, automação de redes, arquitetura de software e segurança de infraestruturas.
       </p>
 
       <div class="projects-grid">
@@ -147,28 +147,28 @@
         <!-- Projeto 1 -->
         <div class="project-card">
           <div class="project-header">
-            <h3 class="project-title">Automação e Self-Healing de Redes (Closed-Loop)</h3>
-            <span class="project-badge">Classificação: 19/20 · MTTR: 40–70s · MTTD: &lt;10s</span>
+            <h3 class="project-title">Automação NetDevOps e Resiliência em Ciclo Fechado (PoC)</h3>
+            <span class="project-badge">Classificação: 19 / 20 · MTTR: 40–70s · MTTD: &lt;10s</span>
           </div>
           <p class="project-desc">
-            <strong>Projeto Final de Licenciatura:</strong> Solução NetDevOps desenvolvida em parceria com a ARTE, I.P. para elevar a resiliência e a disponibilidade de redes híbridas críticas (Overlay VPN IPsec sobre Underlay MPLS).
+            <strong>Projeto Final de Licenciatura (Parceria: ARTE, I.P.):</strong> Arquitetura orientada a eventos para elevar a resiliência e a disponibilidade de redes híbridas críticas (Overlay VPN IPsec sobre Underlay MPLS).
           </p>
           <ul class="project-bullets">
-            <li><strong>Triagem e Diagnóstico Inteligente (Fase 1):</strong> Integração do PRTG com NetBox (Fonte Única da Verdade) e API REST do FortiOS (FortiGate), orquestrados via n8n orientado a eventos. Redução do MTTD em mais de 95% (de 15–30 min para &lt;10s) com diagnóstico diferencial e alertas de causa-raiz no Telegram.</li>
-            <li><strong>Autorremediação Híbrida em Circuito Fechado (Fase 2):</strong> Motor de execução determinístico que combina API REST com fallback automático em Python (Netmiko / SSH) para contornar restrições de licença, recuperando incidentes sem intervenção humana e fixando o MTTR entre 40 a 70 segundos.</li>
-            <li><strong>Chaos Engineering &amp; Auditoria:</strong> Resiliência validada com metodologias de Chaos Engineering em ambiente virtualizado (VMware) e auditada de ponta a ponta com persistência em MongoDB e dashboards no Metabase.</li>
+            <li><strong>Triagem Diferencial &amp; Pre-Check:</strong> Arquitetura orientada a eventos para isolamento de falhas entre Underlay (MPLS) e Overlay (IPsec) via PRTG (&lt; 10s), com sonda preventiva ICMP para suprimir falsos positivos em falhas físicas.</li>
+            <li><strong>Motor Híbrido de Autorremediação:</strong> Mitigação de <em>configuration drift</em> via REST API do FortiOS (com fallback programático em Python/Netmiko via SSH), reduzindo o MTTR em testes de 30 min para 40–70s.</li>
+            <li><strong>SSOT, Auditoria e Observabilidade:</strong> Conciliação com NetBox como SSOT, persistência de telemetria em MongoDB (Docker) e painéis em Metabase para validação de resiliência sobre 24 ensaios de Chaos Engineering.</li>
           </ul>
           <div class="project-flow">
-            PRTG + FortiOS API ➔ n8n Event-Driven ➔ NetBox (SoT) ➔ Motor Híbrido (REST / Netmiko) ➔ Telegram &amp; Metabase
+            PRTG + FortiOS REST API ➔ n8n Event-Driven ➔ NetBox (SSOT) ➔ Motor Híbrido (REST / Netmiko) ➔ Telegram &amp; Metabase
           </div>
           <div class="project-tags">
             <span class="tag">Python</span>
-            <span class="tag">FortiOS REST API</span>
-            <span class="tag">NetBox</span>
+            <span class="tag">Fortinet FortiOS</span>
+            <span class="tag">NetBox (SSOT)</span>
             <span class="tag">n8n</span>
             <span class="tag">Netmiko (SSH)</span>
             <span class="tag">PRTG</span>
-            <span class="tag">Chaos Engineering</span>
+            <span class="tag">Chaos Engineering (24 ensaios)</span>
             <span class="tag">VMware</span>
             <span class="tag">MongoDB</span>
             <span class="tag">Metabase</span>
@@ -186,26 +186,30 @@
         <!-- Projeto 2 -->
         <div class="project-card">
           <div class="project-header">
-            <h3 class="project-title">Plataforma Multi-Cloud (CityGuards)</h3>
-            <span class="project-badge">Azure &amp; GCP</span>
+            <h3 class="project-title">Plataforma Multi-Cloud Segura e Resiliente (CityGuards)</h3>
+            <span class="project-badge">Classificação: 20 / 20 · Multi-Cloud IaC</span>
           </div>
+          <p class="project-desc">
+            <strong>Projeto de Engenharia:</strong> Plataforma híbrida de alta resiliência e conformidade regulamentar combinando serviços Azure PaaS e Google Cloud Platform (GCP).
+          </p>
           <ul class="project-bullets">
-            <li><strong>Arquitetura Híbrida:</strong> Ecossistema Azure PaaS + GCP com um motor local de tolerância a falhas (NLP heurístico) para resiliência na ingestão de dados.</li>
-            <li><strong>Pipelines SecDevOps:</strong> Automação do deploy de infraestrutura via Bicep e CI/CD em GitHub Actions utilizando autenticação federada OpenID Connect (OIDC).</li>
-            <li><strong>Segurança e Conformidade:</strong> Integração de hashing bcrypt (work factor 10), mitigação de fugas de dados em REST APIs e auditoria de conformidade com o RGPD e US CLOUD Act.</li>
+            <li><strong>Arquitetura Híbrida &amp; Fallback:</strong> API em Node.js interoperável entre Azure e GCP Firestore, com dupla resiliência (<em>graceful degradation</em> para heurística local e fallback <em>offline</em> de microsserviço Docker em ACI).</li>
+            <li><strong>Robustez Transacional &amp; Segurança:</strong> Controlo de concorrência com transações atómicas no Firestore para gamificação, mitigação de fugas de dados via sanitização de respostas e <em>hashing</em> seguro com bcrypt.</li>
+            <li><strong>SecDevOps, IaC &amp; Soberania:</strong> Aprovisionamento automatizado de infraestrutura via Bicep, pipeline CI/CD no GitHub Actions com autenticação federada OIDC e análise de conformidade RGPD vs. US CLOUD Act.</li>
           </ul>
           <div class="project-flow">
-            Bicep &amp; Terraform ➔ GitHub Actions (OIDC) ➔ Checkov SAST ➔ Azure PaaS &amp; GCP Cloud Run
+            Bicep &amp; Terraform ➔ GitHub Actions (OIDC) ➔ Checkov SAST ➔ Azure PaaS &amp; GCP Cloud Run (Firestore)
           </div>
           <div class="project-tags">
-            <span class="tag">Azure PaaS</span>
-            <span class="tag">GCP Cloud</span>
+            <span class="tag">Microsoft Azure</span>
+            <span class="tag">GCP Firestore</span>
+            <span class="tag">Docker (ACI)</span>
             <span class="tag">Bicep</span>
             <span class="tag">Terraform</span>
-            <span class="tag">GitHub Actions</span>
-            <span class="tag">OIDC</span>
-            <span class="tag">bcrypt (WF 10)</span>
-            <span class="tag">NLP Heurístico</span>
+            <span class="tag">GitHub Actions (OIDC)</span>
+            <span class="tag">Node.js / Express</span>
+            <span class="tag">bcrypt</span>
+            <span class="tag">RGPD &amp; US CLOUD Act</span>
           </div>
           <div class="project-links">
             <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank">
@@ -225,52 +229,64 @@
       <span class="section-label">Competências Técnicas</span>
       <h2 class="section-title">Especializações e Ferramentas</h2>
       <p class="section-desc">
-        A minha formação e projetos práticos cobrem as principais ferramentas utilizadas em ambientes DevSecOps e operações de segurança.
+        Competências práticas aplicadas em projetos de engenharia, infraestrutura e operações de segurança.
       </p>
 
       <div class="skills-grid">
         
         <div class="skill-category">
-          <h3 class="skill-cat-title">SecOps & Cibersegurança</h3>
+          <h3 class="skill-cat-title">Cibersegurança e SOC</h3>
           <div class="skill-tags">
-            <span class="skill-tag">Wazuh (SIEM)</span>
-            <span class="skill-tag">Splunk Enterprise</span>
-            <span class="skill-tag">Firewalls Palo Alto & Fortinet</span>
-            <span class="skill-tag">Análise de Tráfego Wireshark</span>
-            <span class="skill-tag">Auditoria OpenVAS & Nmap</span>
+            <span class="skill-tag">SIEM (Wazuh, Splunk)</span>
+            <span class="skill-tag">Firewalls (Fortinet FortiOS, Palo Alto, pfSense)</span>
+            <span class="skill-tag">Análise PCAP (Wireshark)</span>
+            <span class="skill-tag">Nmap</span>
+            <span class="skill-tag">OpenVAS</span>
             <span class="skill-tag">PKI (OpenSSL)</span>
+            <span class="skill-tag">MITRE ATT&amp;CK</span>
+            <span class="skill-tag">Hardening de Sistemas</span>
           </div>
         </div>
 
         <div class="skill-category">
-          <h3 class="skill-cat-title">Infraestrutura como Código & Cloud</h3>
+          <h3 class="skill-cat-title">Redes e Automação (NetDevOps)</h3>
           <div class="skill-tags">
+            <span class="skill-tag">NetBox (SSOT)</span>
+            <span class="skill-tag">n8n</span>
+            <span class="skill-tag">PRTG Network Monitor</span>
+            <span class="skill-tag">Python (Netmiko, Requests)</span>
+            <span class="skill-tag">Ansible</span>
             <span class="skill-tag">Terraform</span>
             <span class="skill-tag">Bicep</span>
-            <span class="skill-tag">Ansible Engine</span>
-            <span class="skill-tag">GitHub Actions CI/CD</span>
+            <span class="skill-tag">VPNs IPsec</span>
+            <span class="skill-tag">Roteamento / MPLS</span>
+            <span class="skill-tag">REST APIs</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3 class="skill-cat-title">Cloud e SecDevOps</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Microsoft Azure</span>
+            <span class="skill-tag">Google Cloud Platform (GCP)</span>
+            <span class="skill-tag">GitHub Actions (CI/CD com OIDC)</span>
             <span class="skill-tag">Docker Containerization</span>
-            <span class="skill-tag">Cloud Providers (Azure, GCP)</span>
+            <span class="skill-tag">Linux (Ubuntu, Kali)</span>
+            <span class="skill-tag">Windows Server</span>
+            <span class="skill-tag">GitOps</span>
+            <span class="skill-tag">OWASP Top 10</span>
           </div>
         </div>
 
         <div class="skill-category">
-          <h3 class="skill-cat-title">Desenvolvimento & Scripting</h3>
+          <h3 class="skill-cat-title">Linguagens e Dados</h3>
           <div class="skill-tags">
-            <span class="skill-tag">Python (Engine Development)</span>
-            <span class="skill-tag">Shell Scripting (Bash)</span>
-            <span class="skill-tag">PowerShell Automation</span>
-            <span class="skill-tag">Gestão de Dados MongoDB</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Bash</span>
+            <span class="skill-tag">PowerShell</span>
+            <span class="skill-tag">JavaScript (Node.js / Express)</span>
             <span class="skill-tag">SQL (MySQL)</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3 class="skill-cat-title">Sistemas Operativos</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Linux Ubuntu Server</span>
-            <span class="skill-tag">Linux Kali (Auditoria)</span>
-            <span class="skill-tag">Windows Server Active Directory</span>
+            <span class="skill-tag">NoSQL (MongoDB, Firestore)</span>
           </div>
         </div>
 
@@ -281,31 +297,31 @@
   <!-- ---------- Education ---------- -->
   <section class="section" id="education">
     <div class="container">
-      <span class="section-label">Educação</span>
-      <h2 class="section-title">Percurso Académico & Internacional</h2>
+      <span class="section-label">Formação Académica</span>
+      <h2 class="section-title">Formação Académica e Mobilidade Internacional</h2>
       
       <div class="edu-list">
         
         <div class="edu-card">
           <div class="edu-info">
             <span class="edu-title">Licenciatura em Engenharia Informática</span>
-            <span class="edu-subtitle">Instituto Politécnico de Castelo Branco (IPCB-ESTCB) | Média Final: 15/20</span>
+            <span class="edu-subtitle">Instituto Politécnico de Castelo Branco (IPCB-ESTCB) | Média Final: 15 / 20</span>
           </div>
-          <span class="edu-date">2023 — 2026 (Concluída)</span>
+          <span class="edu-date">Set 2023 — Set 2026</span>
         </div>
 
         <div class="edu-card">
           <div class="edu-info">
-            <span class="edu-title">Programa Erasmus+ (Plóiești, Roménia)</span>
-            <span class="edu-subtitle">Universidade de Petróleo e Gás de Ploiesti | Liderança e Gestão da Mudança para a Sustentabilidade</span>
+            <span class="edu-title">Universidade de Petróleo e Gás de Ploiești (Erasmus+ BIP)</span>
+            <span class="edu-subtitle">Leadership and Change Management Towards Sustainability · Ploiești, Roménia</span>
           </div>
           <span class="edu-date">Abr 2026</span>
         </div>
 
         <div class="edu-card">
           <div class="edu-info">
-            <span class="edu-title">Programa Erasmus+ (Weimar, Alemanha)</span>
-            <span class="edu-subtitle">Universidade Bauhaus-Weimar | Augmented Pasts: Hacking history with digital tools from the future</span>
+            <span class="edu-title">Universidade Bauhaus-Weimar (Erasmus+ BIP)</span>
+            <span class="edu-subtitle">Augmented Pasts: Digital Tools and Cultural Heritage · Weimar, Alemanha</span>
           </div>
           <span class="edu-date">Fev 2025 — Mar 2025</span>
         </div>
