@@ -143,6 +143,12 @@ a:hover {
   color: var(--accent);
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -171,6 +177,42 @@ a:hover {
 .nav-links .cta-link:hover {
   background: rgba(255, 255, 255, 0.9);
   color: var(--bg-primary);
+}
+
+/* Language Switcher */
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  user-select: none;
+}
+
+.lang-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.lang-btn .lang-opt {
+  transition: color var(--transition);
+}
+
+.lang-btn .lang-opt.active {
+  color: var(--accent);
+}
+
+.lang-btn .lang-divider {
+  color: var(--border-hover);
+  font-weight: 400;
 }
 
 /* ---------- Hero ---------- */
