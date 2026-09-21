@@ -48,6 +48,7 @@ const translations = {
     p1_bullet1: "<strong>Triagem Diferencial &amp; Pre-Check:</strong> Arquitetura orientada a eventos para isolamento de falhas entre Underlay (MPLS) e Overlay (IPsec) via PRTG (&lt; 10s), com sonda preventiva ICMP para suprimir falsos positivos em falhas físicas.",
     p1_bullet2: "<strong>Motor Híbrido de Autorremediação:</strong> Mitigação de <em>configuration drift</em> via REST API do FortiOS (com fallback programático em Python/Netmiko via SSH), reduzindo o MTTR em testes de 30 min para 40–70s.",
     p1_bullet3: "<strong>SSOT, Auditoria e Observabilidade:</strong> Conciliação com NetBox como SSOT, persistência de telemetria em MongoDB (Docker) e painéis em Metabase para validação de resiliência sobre 24 ensaios de Chaos Engineering.",
+    p1_flow: "PRTG + FortiOS REST API ➔ n8n Event-Driven ➔ NetBox (SSOT) ➔ Motor Híbrido (REST / Netmiko) ➔ Telegram &amp; Metabase",
     p1_link: "Ver no LinkedIn",
 
     // Project 2
@@ -57,6 +58,7 @@ const translations = {
     p2_bullet1: "<strong>Arquitetura Híbrida &amp; Fallback:</strong> API em Node.js interoperável entre Azure e GCP Firestore, com dupla resiliência (<em>graceful degradation</em> para heurística local e fallback <em>offline</em> de microsserviço Docker em ACI).",
     p2_bullet2: "<strong>Robustez Transacional &amp; Segurança:</strong> Controlo de concorrência com transações atómicas no Firestore para gamificação, mitigação de fugas de dados via sanitização de respostas e <em>hashing</em> seguro com bcrypt.",
     p2_bullet3: "<strong>SecDevOps, IaC &amp; Soberania:</strong> Aprovisionamento automatizado de infraestrutura via Bicep, pipeline CI/CD no GitHub Actions com autenticação federada OIDC e análise de conformidade RGPD vs. US CLOUD Act.",
+    p2_flow: "Bicep &amp; Terraform ➔ GitHub Actions (OIDC) ➔ Checkov SAST ➔ Azure PaaS &amp; GCP Cloud Run (Firestore)",
     p2_link: "Ver no LinkedIn",
 
     // Skills
@@ -139,6 +141,7 @@ const translations = {
     p1_bullet1: "<strong>Differential Triage &amp; Pre-Check:</strong> Event-driven architecture for fault isolation between Underlay (MPLS) and Overlay (IPsec) via PRTG (&lt; 10s), using preventive ICMP probing to suppress false positives on physical outages.",
     p1_bullet2: "<strong>Hybrid Self-Healing Engine:</strong> Configuration drift mitigation via FortiOS REST API (with programmatic fallback in Python/Netmiko over SSH), reducing MTTR in tests from 30 min to 40–70s.",
     p1_bullet3: "<strong>SSOT, Auditing &amp; Observability:</strong> Reconciliation with NetBox as SSOT, telemetry persistence in MongoDB (Docker), and Metabase dashboards for resilience validation across 24 Chaos Engineering trials.",
+    p1_flow: "PRTG + FortiOS REST API ➔ n8n Event-Driven ➔ NetBox (SSOT) ➔ Hybrid Engine (REST / Netmiko) ➔ Telegram &amp; Metabase",
     p1_link: "View on LinkedIn",
 
     // Project 2
@@ -148,6 +151,7 @@ const translations = {
     p2_bullet1: "<strong>Hybrid Architecture &amp; Fallback:</strong> Interoperable Node.js API across Azure and GCP Firestore, featuring dual resilience (graceful degradation to local heuristics and offline Docker microservice fallback on ACI).",
     p2_bullet2: "<strong>Transactional Robustness &amp; Security:</strong> Concurrency control with atomic Firestore transactions for gamification, response sanitization to prevent data leaks, and secure bcrypt hashing.",
     p2_bullet3: "<strong>SecDevOps, IaC &amp; Sovereignty:</strong> Automated infrastructure provisioning via Bicep, GitHub Actions CI/CD with federated OIDC authentication, and GDPR vs. US CLOUD Act compliance auditing.",
+    p2_flow: "Bicep &amp; Terraform ➔ GitHub Actions (OIDC) ➔ Checkov SAST ➔ Azure PaaS &amp; GCP Cloud Run (Firestore)",
     p2_link: "View on LinkedIn",
 
     // Skills
@@ -189,24 +193,39 @@ const translations = {
 };
 
 // Current language (defaults to stored language or 'pt')
-let currentLang = localStorage.getItem('preferred_lang') || 'pt';
+let currentLang = 'pt';
+try {
+  const saved = localStorage.getItem('preferred_lang');
+  if (saved && (saved === 'pt' || saved === 'en')) {
+    currentLang = saved;
+  }
+} catch (e) {
+  console.warn('localStorage not available:', e);
+}
 
 function setLanguage(lang) {
   if (!translations[lang]) return;
   currentLang = lang;
-  localStorage.setItem('preferred_lang', lang);
+  try {
+    localStorage.setItem('preferred_lang', lang);
+  } catch (e) {
+    // ignore
+  }
+
   document.documentElement.lang = lang === 'pt' ? 'pt-PT' : 'en';
 
   // Update all elements with data-i18n
-  document.querySelectorAll('[data-i18n]').forEach(el => {
+  const elements = document.querySelectorAll('[data-i18n]');
+  elements.forEach(function(el) {
     const key = el.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key] !== undefined) {
+    if (translations[lang] && Object.prototype.hasOwnProperty.call(translations[lang], key)) {
       el.innerHTML = translations[lang][key];
     }
   });
 
   // Update toggle button active indicator
-  document.querySelectorAll('.lang-btn').forEach(btn => {
+  const buttons = document.querySelectorAll('.lang-btn');
+  buttons.forEach(function(btn) {
     if (btn.getAttribute('data-lang') === lang) {
       btn.classList.add('active');
     } else {
@@ -215,31 +234,44 @@ function setLanguage(lang) {
   });
 }
 
-// Language switch buttons event listener
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetLang = btn.getAttribute('data-lang');
-      if (targetLang) {
-        setLanguage(targetLang);
-      }
-    });
-  });
+// Expose globally for inline onclick
+window.setLanguage = setLanguage;
 
-  // Set initial language
+// Global event delegation for clicks on .lang-btn
+document.addEventListener('click', function(e) {
+  const btn = e.target && e.target.closest ? e.target.closest('.lang-btn') : null;
+  if (btn) {
+    const targetLang = btn.getAttribute('data-lang');
+    if (targetLang) {
+      setLanguage(targetLang);
+    }
+  }
+});
+
+// Initialize on DOM ready or immediately if already loaded
+function init() {
   setLanguage(currentLang);
 
   // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+      const href = this.getAttribute('href');
+      if (href && href !== '#') {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
       }
     });
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
