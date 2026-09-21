@@ -206,30 +206,25 @@ function setLanguage(lang) {
   });
 
   // Update toggle button active indicator
-  document.querySelectorAll('.lang-opt').forEach(opt => {
-    if (opt.getAttribute('data-lang') === lang) {
-      opt.classList.add('active');
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    if (btn.getAttribute('data-lang') === lang) {
+      btn.classList.add('active');
     } else {
-      opt.classList.remove('active');
+      btn.classList.remove('active');
     }
   });
 }
 
-// Language switch button event listener
+// Language switch buttons event listener
 document.addEventListener('DOMContentLoaded', () => {
-  const langToggle = document.getElementById('langToggle');
-  if (langToggle) {
-    langToggle.addEventListener('click', (e) => {
-      const clickedOpt = e.target.closest('.lang-opt');
-      if (clickedOpt) {
-        const targetLang = clickedOpt.getAttribute('data-lang');
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetLang = btn.getAttribute('data-lang');
+      if (targetLang) {
         setLanguage(targetLang);
-      } else {
-        // Toggle if clicked anywhere on the button
-        setLanguage(currentLang === 'pt' ? 'en' : 'pt');
       }
     });
-  }
+  });
 
   // Set initial language
   setLanguage(currentLang);
