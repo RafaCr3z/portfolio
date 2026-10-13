@@ -1,227 +1,576 @@
-<!-- Build trigger: 2026-09-21T01:59:00 -->
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-PT" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rafael Cruz — Engenharia Informática | Security Automation</title>
-  <meta name="description" content="Portfólio Profissional de Rafael Cruz — Engenheiro Informático com foco em Security Automation, Cloud Security e SecDevOps." />
-  <meta name="keywords" content="Engenharia Informática, Security Automation, NetDevOps, Cloud Security, SecDevOps, Portfolio" />
+  <title>Rafael Cruz — Security Automation & NetDevOps Engineer</title>
+  <meta name="description" content="Portfólio Profissional de Rafael Cruz — Engenheiro Informático focado em Security Automation, NetDevOps, SecDevOps e Cibersegurança Defensiva." />
+  <meta name="keywords" content="Rafael Cruz, Security Automation, NetDevOps, Closed-Loop Remediation, SecDevOps, Cloud Security, Fortinet, NetBox, Python" />
   <meta name="author" content="Rafael Cruz" />
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
 
-  <!-- Open Graph / LinkedIn / Social Preview -->
+  <!-- Open Graph / Social Previews -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://rafacr3z.github.io/portfolio/" />
-  <meta property="og:title" content="Rafael Cruz — Engenharia Informática | Security Automation" />
-  <meta property="og:description" content="Portfólio de Engenharia: Automação NetDevOps de Ciclo Fechado (FortiOS REST API, NetBox SoT, Python) e Plataforma Multi-Cloud Segura." />
-  <meta property="og:image" content="https://rafacr3z.github.io/portfolio/rafael.jpg" />
+  <meta property="og:title" content="Rafael Cruz — Security Automation & NetDevOps Engineer" />
+  <meta property="og:description" content="Engenharia de Automação de Redes, Autorremediação em Ciclo Fechado (FortiOS REST API + NetBox SSOT) e Infraestrutura Multi-Cloud Resiliente." />
+  <meta property="og:image" content="https://rafacr3z.github.io/portfolio/avatar_rafael.jpg" />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://rafacr3z.github.io/portfolio/" />
-  <meta property="twitter:title" content="Rafael Cruz — Engenharia Informática | Security Automation" />
-  <meta property="twitter:description" content="Portfólio de Engenharia: Automação NetDevOps de Ciclo Fechado e Plataforma Multi-Cloud Segura." />
-  <meta property="twitter:image" content="https://rafacr3z.github.io/portfolio/rafael.jpg" />
-
-  <link rel="stylesheet" href="style.css?v=20260921_04" />
+  <link rel="stylesheet" href="style.css?v=20261013_v2" />
 </head>
 <body>
 
-  <!-- ---------- Header ---------- -->
+  <!-- ==================== Header & Navigation ==================== -->
   <header class="header">
     <div class="container">
       <nav class="nav">
-        <a href="#" class="logo">Rafael Cruz</a>
+        <div class="nav-left">
+          <!-- Theme Toggle (Dark / Light) -->
+          <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+            <svg id="themeIconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg id="themeIconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+
+          <!-- Language Switcher -->
+          <div class="lang-switcher">
+            <button type="button" class="lang-btn active" data-lang="pt" id="btnLangPt">PT</button>
+            <button type="button" class="lang-btn" data-lang="en" id="btnLangEn">EN</button>
+          </div>
+        </div>
+
         <div class="nav-right">
           <ul class="nav-links">
-            <li><a href="#about" data-i18n="nav_about">Sobre</a></li>
-            <li><a href="#projects" data-i18n="nav_projects">Projetos</a></li>
-            <li><a href="#skills" data-i18n="nav_skills">Competências</a></li>
-            <li><a href="#education" data-i18n="nav_education">Educação</a></li>
-            <li><a href="#certs" data-i18n="nav_certs">Certificações</a></li>
-            <li><a href="#contact" class="cta-link" data-i18n="nav_contact">Contacto</a></li>
+            <li><a href="#expertise" class="nav-link" data-i18n="nav_expertise">Expertise</a></li>
+            <li><a href="#history" class="nav-link" data-i18n="nav_history">Histórico</a></li>
+            <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projetos</a></li>
+            <li><a href="#writeups" class="nav-link" data-i18n="nav_writeups">Writeups</a></li>
+            <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contacto</a></li>
           </ul>
-          <div class="lang-switcher">
-            <button type="button" class="lang-btn active" data-lang="pt" id="btnLangPt" onclick="setLanguage('pt')" aria-label="Mudar para Português">PT</button>
-            <button type="button" class="lang-btn" data-lang="en" id="btnLangEn" onclick="setLanguage('en')" aria-label="Switch to English">EN</button>
-          </div>
+
+          <!-- CV Download Badge (Inspiração Leandro Costa) -->
+          <a href="curriculo_rafael_cruz.pdf" download="Curriculo_Rafael_Cruz.pdf" class="cv-badge-btn" id="cvHeaderBtn" title="Descarregar Currículo em PDF" data-i18n-title="cv_tooltip">
+            <svg class="cv-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <span>CV (PDF)</span>
+          </a>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- ---------- Hero ---------- -->
-  <section class="hero container">
-    <div class="hero-content">
-      <div class="hero-badge" data-i18n="hero_badge">
-        <span class="dot"></span>
-        Disponibilidade Imediata · Elegível IEFP ATIVAR.pt (Nível 6)
-      </div>
-      <h1 class="hero-title" data-i18n="hero_title">
-        <span>Rafael Cruz</span><br />
-        Security Automation
-      </h1>
-      <p class="hero-subtitle" data-i18n="hero_subtitle">
-        Engenheiro Informático focado em <strong>Automação de Redes (NetDevOps)</strong>, <strong>SecDevOps</strong> e <strong>Cibersegurança Defensiva</strong>. Foco na redução de MTTR operacional, mitigação de configuration drift e observabilidade de infraestruturas críticas.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary" data-i18n="hero_btn_projects">Ver Projetos</a>
-        <a href="#contact" class="btn" data-i18n="hero_btn_contact">Falar Comigo</a>
-      </div>
+  <!-- ==================== Hero Section ==================== -->
+  <section class="hero" id="hero">
+    <!-- Dynamic Cyber Green Vector Ribbon Wave (Visual Signiture) -->
+    <div class="hero-wave-canvas" aria-hidden="true">
+      <svg class="hero-wave-svg" viewBox="0 0 1440 600" fill="none" preserveAspectRatio="none">
+        <path class="wave-ribbon" d="M -100,320 C 200,420 400,180 750,290 C 1100,400 1250,150 1600,250" stroke="#10b981" stroke-width="1.8" stroke-opacity="0.75" />
+        <path class="wave-ribbon" d="M -100,340 C 220,440 420,200 770,310 C 1120,420 1270,170 1600,270" stroke="#059669" stroke-width="1.2" stroke-opacity="0.55" />
+        <path class="wave-ribbon" d="M -100,300 C 180,400 380,160 730,270 C 1080,380 1230,130 1600,230" stroke="#06b6d4" stroke-width="1.2" stroke-opacity="0.45" />
+        <path class="wave-ribbon" d="M -100,360 C 240,460 440,220 790,330 C 1140,440 1290,190 1600,290" stroke="#10b981" stroke-width="1.0" stroke-opacity="0.35" />
+        <path class="wave-ribbon" d="M -100,280 C 160,380 360,140 710,250 C 1060,360 1210,110 1600,210" stroke="#059669" stroke-width="0.8" stroke-opacity="0.25" />
+        <path class="wave-ribbon" d="M -100,380 C 260,480 460,240 810,350 C 1160,460 1310,210 1600,310" stroke="#06b6d4" stroke-width="0.7" stroke-opacity="0.20" />
+      </svg>
     </div>
-    
-    <div class="hero-code-card">
-      <div class="card-header">
-        <div class="card-dots">
-          <span class="card-dot"></span>
-          <span class="card-dot"></span>
-          <span class="card-dot"></span>
-        </div>
-        <div class="card-title">remediation_engine.py</div>
-      </div>
-      <div class="card-body">
-<span class="keyword">def</span> <span class="function">remediate_drift</span>(device, desired_config):
-    <span class="comment" data-i18n="code_comment_1"># Comparar running-config com NetBox (SSOT)</span>
-    drift = compare(device.get_config(), desired_config)
-    <span class="keyword">if</span> <span class="keyword">not</span> drift:
-        <span class="keyword">return</span> True
 
-    log.info(<span class="string" data-i18n="code_log_1">f"Drift detetado em {device.id} | Acionando remediação"</span>)
-    <span class="keyword">try</span>:
-        <span class="comment" data-i18n="code_comment_2"># Tentativa primária via API REST (Fortinet FortiOS)</span>
-        <span class="keyword">return</span> fortios_api.apply_patch(device, drift)
-    <span class="keyword">except</span> LicenseWriteRestriction:
-        <span class="comment" data-i18n="code_comment_3"># Fallback determinístico via Netmiko / SSH</span>
-        <span class="keyword">return</span> netmiko_ssh.apply_commands(device, drift.commands)
+    <div class="container hero-container">
+      <div class="hero-main">
+        <!-- Direct Social Links above Name (Leandro touch) -->
+        <div class="hero-social-links">
+          <a href="https://github.com/RafaCr3z" target="_blank" rel="noopener noreferrer" class="hero-social-link" title="GitHub Profile">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" rel="noopener noreferrer" class="hero-social-link" title="LinkedIn Profile">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="mailto:rafael.lourenco.cruz20@gmail.com" class="hero-social-link" title="Enviar Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </a>
+        </div>
+
+        <div class="hero-status-pill" data-i18n="hero_status">
+          <span class="status-dot"></span>
+          Disponibilidade Imediata · Elegível IEFP ATIVAR.pt (Nível 6)
+        </div>
+
+        <h1 class="hero-name" data-i18n="hero_name">Rafael Cruz</h1>
+        <h2 class="hero-role" data-i18n="hero_role">Security Automation & NetDevOps Engineer</h2>
+
+        <p class="hero-bio" data-i18n="hero_bio">
+          Engenheiro Informático especializado em <strong>Automação de Redes (NetDevOps)</strong>, <strong>SecDevOps</strong> e <strong>Cibersegurança Defensiva</strong>. Foco em autorremediação <em>closed-loop</em>, mitigação de <em>configuration drift</em> via REST APIs e redução comprovada de MTTR operacional de 30 min para &lt; 70 segundos.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#projects" class="btn btn-primary" data-i18n="btn_explore_projects">Explorar Projetos</a>
+          <a href="curriculo_rafael_cruz.pdf" download="Curriculo_Rafael_Cruz.pdf" class="btn btn-secondary" data-i18n="btn_download_cv">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Descarregar CV
+          </a>
+          <a href="#contact" class="btn btn-ghost" data-i18n="btn_contact_me">Falar Comigo ➔</a>
+        </div>
+      </div>
+
+      <!-- Professional Circular Headshot (Monochrome / High-Contrast Portrait) -->
+      <div class="hero-avatar-wrapper">
+        <div class="hero-avatar-frame">
+          <img src="avatar_rafael.jpg" alt="Rafael Cruz — Security Automation Engineer" class="hero-avatar-img" />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ---------- About ---------- -->
-  <section class="section" id="about">
+  <!-- ==================== Section 1: Expertise & Certifications ==================== -->
+  <section class="section" id="expertise">
     <div class="container">
-      <span class="section-label" data-i18n="about_label">Apresentação</span>
-      <h2 class="section-title" data-i18n="about_title">Engenharia aplicada à segurança de sistemas</h2>
-      <div class="about-grid">
-        <div class="about-image-wrapper">
-          <img src="rafael.jpg" alt="Rafael Cruz" class="about-image" />
+      <span class="section-label" data-i18n="expertise_label">Especialização Técnica</span>
+      <h2 class="section-title" data-i18n="expertise_title">Expertise</h2>
+      <p class="section-desc" data-i18n="expertise_desc">
+        Competências estratégicas divididas em três pilares fundamentais, combinando código determinístico, segurança em nuvem e observabilidade de infraestruturas.
+      </p>
+
+      <!-- 3 Strategic Pillars (Leandro Costa Style) -->
+      <div class="expertise-grid">
+        
+        <!-- Pillar 1 -->
+        <div class="expertise-card">
+          <div class="expertise-icon-wrapper">⚙️</div>
+          <h3 class="expertise-card-title" data-i18n="p1_card_title">NetDevOps & Closed-Loop Remediation</h3>
+          <p class="expertise-card-desc" data-i18n="p1_card_desc">
+            Engenharia de automação orientada a eventos para redes críticas. Conceção de autorremediação em ciclo fechado com mitigação de <strong>configuration drift</strong>, integração com <strong>Fortinet FortiOS REST API</strong> e <strong>NetBox como SSOT</strong>. Redução validada de MTTR de 30 min para 40–70s sobre 24 ensaios de Chaos Engineering.
+          </p>
+          <div class="expertise-tags">
+            <span class="tech-tag">FortiOS REST API</span>
+            <span class="tech-tag">NetBox (SSOT)</span>
+            <span class="tech-tag">Python (Netmiko)</span>
+            <span class="tech-tag">n8n Event-Driven</span>
+            <span class="tech-tag">PRTG Probing</span>
+            <span class="tech-tag">Chaos Engineering</span>
+          </div>
         </div>
-        <div class="about-content">
-          <div class="about-text">
-            <p data-i18n="about_p1">
-              Engenheiro Informático focado em <strong>Automação de Redes (NetDevOps)</strong>, <strong>SecDevOps</strong> e <strong>Cibersegurança Defensiva</strong>. Experiência no desenvolvimento de PoCs para autorremediação <em>closed-loop</em>, telemetria orientada a eventos, pipelines CI/CD com autenticação federada (OIDC na Azure) e monitorização SIEM.
-            </p>
-            <p data-i18n="about_p2">
-              Foco na redução de MTTR operacional, mitigação de <em>configuration drift</em> e observabilidade de infraestruturas críticas. Disponibilidade imediata para novos desafios profissionais e elegível para Estágio Profissional IEFP (Medida ATIVAR.pt, Nível 6).
-            </p>
+
+        <!-- Pillar 2 -->
+        <div class="expertise-card">
+          <div class="expertise-icon-wrapper">☁️</div>
+          <h3 class="expertise-card-title" data-i18n="p2_card_title">Cloud Security & SecDevOps</h3>
+          <p class="expertise-card-desc" data-i18n="p2_card_desc">
+            Aprovisionamento automatizado de infraestruturas via <strong>IaC (Bicep & Terraform)</strong> em <strong>Microsoft Azure e GCP</strong>. Pipelines de CI/CD sem credenciais estáticas protegidas por <strong>autenticação federada OIDC</strong>, análise estática SAST (Checkov) e conformidade regulamentar com <strong>RGPD vs. US CLOUD Act</strong>.
+          </p>
+          <div class="expertise-tags">
+            <span class="tech-tag">Microsoft Azure</span>
+            <span class="tech-tag">GCP Cloud Run</span>
+            <span class="tech-tag">Bicep / Terraform</span>
+            <span class="tech-tag">GitHub Actions (OIDC)</span>
+            <span class="tech-tag">Docker Containers</span>
+            <span class="tech-tag">Zero Trust & IAM</span>
           </div>
-          <div class="about-features">
-            <div class="feat-item">
-              <div class="feat-icon">⚙️</div>
-              <div>
-                <div class="feat-title" data-i18n="about_feat1_title">Automação NetDevOps & Telemetria</div>
-                <div class="feat-desc" data-i18n="about_feat1_desc">Desenvolvimento de PoCs para autorremediação em ciclo fechado e telemetria orientada a eventos.</div>
-              </div>
-            </div>
-            <div class="feat-item">
-              <div class="feat-icon">☁️</div>
-              <div>
-                <div class="feat-title" data-i18n="about_feat2_title">SecDevOps & Cloud Security</div>
-                <div class="feat-desc" data-i18n="about_feat2_desc">Aprovisionamento IaC via Bicep/Terraform e CI/CD protegido com autenticação federada OIDC.</div>
-              </div>
-            </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="expertise-card">
+          <div class="expertise-icon-wrapper">🛡️</div>
+          <h3 class="expertise-card-title" data-i18n="p3_card_title">Defensive Security & Observability</h3>
+          <p class="expertise-card-desc" data-i18n="p3_card_desc">
+            Operações defensivas, monitorização e análise forense de incidentes. Auditoria de tráfego de rede via <strong>Wireshark (PCAP)</strong>, enriquecimento e correlação de logs em <strong>SIEM (Wazuh, Splunk)</strong>, avaliações de vulnerabilidades com <strong>OpenVAS/Nmap</strong> e mapeamento ao framework <strong>MITRE ATT&CK</strong>.
+          </p>
+          <div class="expertise-tags">
+            <span class="tech-tag">SIEM (Wazuh & Splunk)</span>
+            <span class="tech-tag">PCAP & Wireshark</span>
+            <span class="tech-tag">MITRE ATT&CK</span>
+            <span class="tech-tag">Syslog & Telemetria</span>
+            <span class="tech-tag">Metabase & MongoDB</span>
+            <span class="tech-tag">Hardening OS</span>
           </div>
+        </div>
+
+      </div>
+
+      <!-- Integrated Certifications Section -->
+      <div class="certs-container">
+        <div class="certs-header">
+          <div class="certs-heading">
+            <span>🔒</span>
+            <span data-i18n="certs_subhead">Validação e Certificações Oficiais</span>
+          </div>
+          <span class="cert-status-badge">● Credenciais Ativas</span>
+        </div>
+
+        <div class="certs-grid">
+          
+          <div class="cert-badge-card">
+            <div class="cert-icon">☁️</div>
+            <div class="cert-details">
+              <div class="cert-name">AWS Academy Graduate — Cloud Security Foundations</div>
+              <div class="cert-issuer">Amazon Web Services (AWS)</div>
+            </div>
+            <span class="cert-status-badge">Ativa</span>
+          </div>
+
+          <div class="cert-badge-card">
+            <div class="cert-icon">⚙️</div>
+            <div class="cert-details">
+              <div class="cert-name">AWS Academy Graduate — Cloud Operations</div>
+              <div class="cert-issuer">Amazon Web Services (AWS)</div>
+            </div>
+            <span class="cert-status-badge">Ativa</span>
+          </div>
+
+          <div class="cert-badge-card">
+            <div class="cert-icon">🌐</div>
+            <div class="cert-details">
+              <div class="cert-name">AWS Academy Graduate — Cloud Foundations</div>
+              <div class="cert-issuer">Amazon Web Services (AWS)</div>
+            </div>
+            <span class="cert-status-badge">Ativa</span>
+          </div>
+
+          <div class="cert-badge-card">
+            <div class="cert-icon">📊</div>
+            <div class="cert-details">
+              <div class="cert-name">Neo4j Certified Professional</div>
+              <div class="cert-issuer">Neo4j Graph Database</div>
+            </div>
+            <span class="cert-status-badge">Ativa</span>
+          </div>
+
+          <div class="cert-badge-card">
+            <div class="cert-icon">🔬</div>
+            <div class="cert-details">
+              <div class="cert-name">Neo4j Graph Data Science Certification</div>
+              <div class="cert-issuer">Neo4j Data Science</div>
+            </div>
+            <span class="cert-status-badge">Ativa</span>
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ---------- Projects ---------- -->
+  <!-- ==================== Section 2: Career History (Interactive Timeline) ==================== -->
+  <section class="section" id="history">
+    <div class="container">
+      <span class="section-label" data-i18n="history_label">Percurso & Experiência</span>
+      <h2 class="section-title" data-i18n="history_title">Career History</h2>
+      <p class="section-desc" data-i18n="history_desc">
+        Progressão académica e técnica focada em engenharia de sistemas, colaborações com a indústria e programas internacionais de especialização.
+      </p>
+
+      <div class="timeline-wrapper">
+        <div class="timeline-track" aria-hidden="true"></div>
+
+        <div class="timeline-items">
+          
+          <!-- Node 1: Licenciatura -->
+          <div class="timeline-node">
+            <div class="timeline-card">
+              <div class="timeline-date">2023 — 2026</div>
+              <div class="timeline-role" data-i18n="hist_1_role">Licenciatura em Engenharia Informática</div>
+              <div class="timeline-org">IPCB — ESTCB · Média Final: 15 / 20</div>
+              <p class="timeline-desc" data-i18n="hist_1_desc">
+                Formação profunda em algoritmos, redes de computadores, arquitetura de sistemas operacionais, bases de dados e segurança de informação.
+              </p>
+            </div>
+            <div class="timeline-marker">🎓</div>
+          </div>
+
+          <!-- Node 2: Capstone ARTE I.P. -->
+          <div class="timeline-node">
+            <div class="timeline-card">
+              <div class="timeline-date">2024 — 2025</div>
+              <div class="timeline-role" data-i18n="hist_2_role">Investigação NetDevOps (PoC)</div>
+              <div class="timeline-org">Parceria de Indústria: ARTE, I.P.</div>
+              <p class="timeline-desc" data-i18n="hist_2_desc">
+                Desenvolvimento de arquitetura orientada a eventos para autorremediação em redes híbridas de missão crítica (Classificação: 19 / 20).
+              </p>
+            </div>
+            <div class="timeline-marker">🚀</div>
+          </div>
+
+          <!-- Node 3: Erasmus Weimar -->
+          <div class="timeline-node">
+            <div class="timeline-card">
+              <div class="timeline-date">Fev 2025 — Mar 2025</div>
+              <div class="timeline-role" data-i18n="hist_3_role">Erasmus+ BIP Mobilidade</div>
+              <div class="timeline-org">Bauhaus-Universität Weimar (Alemanha)</div>
+              <p class="timeline-desc" data-i18n="hist_3_desc">
+                Programa intensivo europeu: Augmented Pasts — Ferramentas digitais avançadas, processamento e preservação de património tecnológico.
+              </p>
+            </div>
+            <div class="timeline-marker">🌍</div>
+          </div>
+
+          <!-- Node 4: Erasmus Roménia -->
+          <div class="timeline-node">
+            <div class="timeline-card">
+              <div class="timeline-date">Abr 2026</div>
+              <div class="timeline-role" data-i18n="hist_4_role">Erasmus+ BIP Internacional</div>
+              <div class="timeline-org">Univ. Petróleo e Gás Ploiești (Roménia)</div>
+              <p class="timeline-desc" data-i18n="hist_4_desc">
+                Especialização intensiva: Leadership & Change Management Towards Sustainability aplicada a equipas e projetos tecnológicos.
+              </p>
+            </div>
+            <div class="timeline-marker">🌐</div>
+          </div>
+
+          <!-- Node 5: Estado Atual / Disponibilidade -->
+          <div class="timeline-node">
+            <div class="timeline-card" style="border-color: rgba(16, 185, 129, 0.4);">
+              <div class="timeline-date">2026 — Presente</div>
+              <div class="timeline-role" data-i18n="hist_5_role">Disponível para Integração</div>
+              <div class="timeline-org" style="color: var(--accent-emerald);">Security Automation / NetDevOps</div>
+              <p class="timeline-desc" data-i18n="hist_5_desc">
+                Disponibilidade imediata para equipas de engenharia e operações defensivas. Elegível para Estágio Profissional IEFP (ATIVAR.pt Nível 6).
+              </p>
+            </div>
+            <div class="timeline-marker" style="background: var(--accent-emerald); color: #04120b;">💼</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Section 3: Personal Projects (Architecture Showcases) ==================== -->
   <section class="section" id="projects">
     <div class="container">
       <span class="section-label" data-i18n="projects_label">Portfólio de Engenharia</span>
-      <h2 class="section-title" data-i18n="projects_title">Experiência em Engenharia e Projetos Técnicos</h2>
+      <h2 class="section-title" data-i18n="projects_title">Personal Projects</h2>
       <p class="section-desc" data-i18n="projects_desc">
-        Projetos práticos onde apliquei conceitos avançados de computação, automação de redes, arquitetura de software e segurança de infraestruturas.
+        Projetos práticos de elevada complexidade demonstrados com diagramas de topologia de rede, métricas de observabilidade e arquitetura de sistemas.
       </p>
 
-      <div class="projects-grid">
+      <div class="projects-container">
         
-        <!-- Projeto 1 -->
-        <div class="project-card">
-          <div class="project-header">
+        <!-- ================= Projeto 1: NetDevOps Closed-Loop ================= -->
+        <div class="project-showcase-card">
+          <div class="project-left">
+            <div class="project-badge-row">
+              <span class="project-grade-pill" data-i18n="p1_grade">Classificação: 19 / 20 · Parceria ARTE, I.P.</span>
+              <span class="tech-tag" style="color: var(--accent-emerald);">MTTR: 40–70s (-96%)</span>
+              <span class="tech-tag">MTTD: &lt; 10s</span>
+            </div>
+
             <h3 class="project-title" data-i18n="p1_title">Automação NetDevOps e Resiliência em Ciclo Fechado (PoC)</h3>
-            <span class="project-badge" data-i18n="p1_badge">Classificação: 19 / 20 · MTTR: 40–70s · MTTD: &lt;10s</span>
+
+            <p class="project-lead" data-i18n="p1_lead">
+              <strong>Projeto Final de Licenciatura:</strong> Arquitetura orientada a eventos para elevar a resiliência e a disponibilidade de redes híbridas críticas (Overlay VPN IPsec sobre Underlay MPLS).
+            </p>
+
+            <ul class="project-key-points">
+              <li data-i18n="p1_bullet1"><strong>Triagem Diferencial &amp; Pre-Check:</strong> Isolamento de falhas entre Underlay (MPLS) e Overlay (IPsec) via PRTG em &lt; 10s, recorrendo a sonda preventiva ICMP para suprimir falsos alarmes em falhas físicas de transporte.</li>
+              <li data-i18n="p1_bullet2"><strong>Motor Híbrido de Autorremediação:</strong> Mitigação automatizada de <em>configuration drift</em> via REST API do FortiOS com fallback determinístico em Python/Netmiko (SSH), reduzindo o MTTR de 30 min para 40–70s.</li>
+              <li data-i18n="p1_bullet3"><strong>SSOT &amp; Chaos Engineering:</strong> Conciliação contínua com NetBox como fonte única de verdade (SSOT), telemetria persistida em MongoDB e validação empírica em 24 ensaios de injeção de falhas com 100% de sucesso.</li>
+            </ul>
+
+            <div class="project-pipeline-tag" data-i18n="p1_pipeline">
+              PRTG + FortiOS REST API ➔ n8n Orchestrator ➔ NetBox (SSOT) ➔ Motor Híbrido ➔ Telegram &amp; Metabase
+            </div>
+
+            <div class="project-tags-list">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Fortinet FortiOS</span>
+              <span class="tech-tag">NetBox (SSOT)</span>
+              <span class="tech-tag">n8n</span>
+              <span class="tech-tag">Netmiko (SSH)</span>
+              <span class="tech-tag">PRTG</span>
+              <span class="tech-tag">Chaos Engineering</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">Metabase</span>
+              <span class="tech-tag">Docker</span>
+            </div>
+
+            <div class="project-action-links">
+              <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span data-i18n="btn_view_linkedin">Ver Artigo no LinkedIn</span>
+              </a>
+              <button type="button" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" onclick="openWriteupModal(1)" data-i18n="btn_read_poc_brief">
+                Ler Análise da Topologia ➔
+              </button>
+            </div>
           </div>
-          <p class="project-desc" data-i18n="p1_lead">
-            <strong>Projeto Final de Licenciatura (Parceria: ARTE, I.P.):</strong> Arquitetura orientada a eventos para elevar a resiliência e a disponibilidade de redes híbridas críticas (Overlay VPN IPsec sobre Underlay MPLS).
-          </p>
-          <ul class="project-bullets">
-            <li data-i18n="p1_bullet1"><strong>Triagem Diferencial &amp; Pre-Check:</strong> Arquitetura orientada a eventos para isolamento de falhas entre Underlay (MPLS) e Overlay (IPsec) via PRTG (&lt; 10s), com sonda preventiva ICMP para suprimir falsos positivos em falhas físicas.</li>
-            <li data-i18n="p1_bullet2"><strong>Motor Híbrido de Autorremediação:</strong> Mitigação de <em>configuration drift</em> via REST API do FortiOS (com fallback programático em Python/Netmiko via SSH), reduzindo o MTTR em testes de 30 min para 40–70s.</li>
-            <li data-i18n="p1_bullet3"><strong>SSOT, Auditoria e Observabilidade:</strong> Conciliação com NetBox como SSOT, persistência de telemetria em MongoDB (Docker) e painéis em Metabase para validação de resiliência sobre 24 ensaios de Chaos Engineering.</li>
-          </ul>
-          <div class="project-flow" data-i18n="p1_flow">
-            PRTG + FortiOS REST API ➔ n8n Event-Driven ➔ NetBox (SSOT) ➔ Motor Híbrido (REST / Netmiko) ➔ Telegram &amp; Metabase
-          </div>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Fortinet FortiOS</span>
-            <span class="tag">NetBox (SSOT)</span>
-            <span class="tag">n8n</span>
-            <span class="tag">Netmiko (SSH)</span>
-            <span class="tag">PRTG</span>
-            <span class="tag">Chaos Engineering (24 ensaios)</span>
-            <span class="tag">VMware</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">Metabase</span>
-            <span class="tag">Docker</span>
-            <span class="tag">NetDevOps</span>
-          </div>
-          <div class="project-links">
-            <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              <span data-i18n="p1_link">Ver no LinkedIn</span>
-            </a>
+
+          <!-- Interactive Network Architecture Blueprint (Inspiração Diagrama AWS Leandro) -->
+          <div class="project-right">
+            <div class="blueprint-card">
+              <div class="blueprint-bar">
+                <div class="blueprint-dots">
+                  <span class="b-dot red"></span>
+                  <span class="b-dot yellow"></span>
+                  <span class="b-dot green"></span>
+                </div>
+                <div class="blueprint-name">closed_loop_topology.svg</div>
+                <div class="blueprint-status">● Live Telemetry</div>
+              </div>
+
+              <div class="blueprint-canvas">
+                <svg class="blueprint-svg" viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Connection Lines -->
+                  <path d="M 80,60 L 230,60" stroke="#10b981" stroke-width="2" stroke-dasharray="4 3" />
+                  <path d="M 230,60 L 380,60" stroke="#10b981" stroke-width="2" />
+                  <path d="M 230,60 L 230,150" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4 3" />
+                  <path d="M 230,150 L 100,230" stroke="#34d399" stroke-width="2" />
+                  <path d="M 230,150 L 360,230" stroke="#34d399" stroke-width="2" />
+                  <path d="M 100,230 L 230,230" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" />
+                  <path d="M 230,230 L 360,230" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" />
+
+                  <!-- Node 1: Underlay MPLS / IPsec -->
+                  <rect x="20" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
+                  <text x="80" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">Underlay / IPsec</text>
+                  <text x="80" y="73" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">FortiOS VPN Hub</text>
+
+                  <!-- Node 2: PRTG Sonda -->
+                  <rect x="170" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="1.5" />
+                  <text x="230" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">PRTG Probing</text>
+                  <text x="230" y="73" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">MTTD &lt; 10s</text>
+
+                  <!-- Node 3: n8n Event Broker -->
+                  <rect x="320" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
+                  <text x="380" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">n8n Workflow</text>
+                  <text x="380" y="73" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Event-Driven Hook</text>
+
+                  <!-- Node 4: NetBox SSOT -->
+                  <rect x="170" y="125" width="120" height="50" rx="8" fill="#131e2c" stroke="#06b6d4" stroke-width="1.5" />
+                  <text x="230" y="148" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">NetBox SSOT</text>
+                  <text x="230" y="163" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Golden Config</text>
+
+                  <!-- Node 5: Hybrid Remediation Engine -->
+                  <rect x="30" y="205" width="140" height="55" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="2" />
+                  <text x="100" y="228" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">Hybrid Engine</text>
+                  <text x="100" y="243" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">REST API + Netmiko</text>
+
+                  <!-- Node 6: Observability / Telegram -->
+                  <rect x="290" y="205" width="140" height="55" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
+                  <text x="360" y="228" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">Auditoria &amp; Logs</text>
+                  <text x="360" y="243" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">MongoDB &amp; Metabase</text>
+                </svg>
+              </div>
+
+              <div class="blueprint-metrics-bar">
+                <div class="metric-item">
+                  <div class="metric-val">40–70s</div>
+                  <div class="metric-lbl">MTTR Real</div>
+                </div>
+                <div class="metric-item">
+                  <div class="metric-val">&lt; 10s</div>
+                  <div class="metric-lbl">Detetado (MTTD)</div>
+                </div>
+                <div class="metric-item">
+                  <div class="metric-val">24 / 24</div>
+                  <div class="metric-lbl">Chaos Tests</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Projeto 2 -->
-        <div class="project-card">
-          <div class="project-header">
+        <!-- ================= Projeto 2: CityGuards Multi-Cloud ================= -->
+        <div class="project-showcase-card">
+          <div class="project-left">
+            <div class="project-badge-row">
+              <span class="project-grade-pill" data-i18n="p2_grade">Classificação: 20 / 20 · Engenharia de Software</span>
+              <span class="tech-tag" style="color: var(--accent-cyan);">Multi-Cloud IaC</span>
+              <span class="tech-tag">Azure &amp; GCP</span>
+            </div>
+
             <h3 class="project-title" data-i18n="p2_title">Plataforma Multi-Cloud Segura e Resiliente (CityGuards)</h3>
-            <span class="project-badge" data-i18n="p2_badge">Classificação: 20 / 20 · Multi-Cloud IaC</span>
+
+            <p class="project-lead" data-i18n="p2_lead">
+              <strong>Projeto de Engenharia:</strong> Plataforma híbrida de alta resiliência e conformidade regulamentar combinando serviços Azure PaaS e Google Cloud Platform (GCP).
+            </p>
+
+            <ul class="project-key-points">
+              <li data-i18n="p2_bullet1"><strong>Arquitetura Híbrida &amp; Fallback:</strong> API desacoplada em Node.js com dupla resiliência (<em>graceful degradation</em> para heurística local e fallback <em>offline</em> de microsserviço Docker em Azure Container Instances - ACI).</li>
+              <li data-i18n="p2_bullet2"><strong>Robustez Transacional &amp; Segurança:</strong> Transações atómicas no Firestore contra concorrência, sanitização estrita de respostas contra exfiltração de dados e <em>hashing</em> criptográfico com bcrypt.</li>
+              <li data-i18n="p2_bullet3"><strong>SecDevOps, IaC &amp; Soberania:</strong> Aprovisionamento automatizado de infraestrutura via Bicep/Terraform, pipeline CI/CD no GitHub Actions com autenticação federada OIDC e análise de conformidade RGPD vs. US CLOUD Act.</li>
+            </ul>
+
+            <div class="project-pipeline-tag" data-i18n="p2_pipeline">
+              Bicep &amp; Terraform ➔ GitHub Actions (OIDC) ➔ Checkov SAST ➔ Azure App Service &amp; GCP Firestore
+            </div>
+
+            <div class="project-tags-list">
+              <span class="tech-tag">Microsoft Azure</span>
+              <span class="tech-tag">GCP Firestore</span>
+              <span class="tech-tag">Docker (ACI)</span>
+              <span class="tech-tag">Bicep</span>
+              <span class="tech-tag">Terraform</span>
+              <span class="tech-tag">GitHub Actions (OIDC)</span>
+              <span class="tech-tag">Node.js / Express</span>
+              <span class="tech-tag">bcrypt</span>
+              <span class="tech-tag">RGPD Compliance</span>
+            </div>
+
+            <div class="project-action-links">
+              <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span data-i18n="btn_view_linkedin">Ver no LinkedIn</span>
+              </a>
+              <button type="button" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" onclick="openWriteupModal(2)" data-i18n="btn_read_cloud_brief">
+                Ler Análise Multi-Cloud ➔
+              </button>
+            </div>
           </div>
-          <p class="project-desc" data-i18n="p2_lead">
-            <strong>Projeto de Engenharia:</strong> Plataforma híbrida de alta resiliência e conformidade regulamentar combinando serviços Azure PaaS e Google Cloud Platform (GCP).
-          </p>
-          <ul class="project-bullets">
-            <li data-i18n="p2_bullet1"><strong>Arquitetura Híbrida &amp; Fallback:</strong> API em Node.js interoperável entre Azure e GCP Firestore, com dupla resiliência (<em>graceful degradation</em> para heurística local e fallback <em>offline</em> de microsserviço Docker em ACI).</li>
-            <li data-i18n="p2_bullet2"><strong>Robustez Transacional &amp; Segurança:</strong> Controlo de concorrência com transações atómicas no Firestore para gamificação, mitigação de fugas de dados via sanitização de respostas e <em>hashing</em> seguro com bcrypt.</li>
-            <li data-i18n="p2_bullet3"><strong>SecDevOps, IaC &amp; Soberania:</strong> Aprovisionamento automatizado de infraestrutura via Bicep, pipeline CI/CD no GitHub Actions com autenticação federada OIDC e análise de conformidade RGPD vs. US CLOUD Act.</li>
-          </ul>
-          <div class="project-flow" data-i18n="p2_flow">
-            Bicep &amp; Terraform ➔ GitHub Actions (OIDC) ➔ Checkov SAST ➔ Azure PaaS &amp; GCP Cloud Run (Firestore)
-          </div>
-          <div class="project-tags">
-            <span class="tag">Microsoft Azure</span>
-            <span class="tag">GCP Firestore</span>
-            <span class="tag">Docker (ACI)</span>
-            <span class="tag">Bicep</span>
-            <span class="tag">Terraform</span>
-            <span class="tag">GitHub Actions (OIDC)</span>
-            <span class="tag">Node.js / Express</span>
-            <span class="tag">bcrypt</span>
-            <span class="tag">RGPD &amp; US CLOUD Act</span>
-          </div>
-          <div class="project-links">
-            <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              <span data-i18n="p2_link">Ver no LinkedIn</span>
-            </a>
+
+          <!-- Architecture Blueprint Graphic (Multi-Cloud Topology) -->
+          <div class="project-right">
+            <div class="blueprint-card">
+              <div class="blueprint-bar">
+                <div class="blueprint-dots">
+                  <span class="b-dot red"></span>
+                  <span class="b-dot yellow"></span>
+                  <span class="b-dot green"></span>
+                </div>
+                <div class="blueprint-name">multicloud_resilience.svg</div>
+                <div class="blueprint-status" style="color: var(--accent-cyan);">● Zero Secret Leaks</div>
+              </div>
+
+              <div class="blueprint-canvas">
+                <svg class="blueprint-svg" viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Flow Paths -->
+                  <path d="M 70,140 L 170,80" stroke="#06b6d4" stroke-width="2" />
+                  <path d="M 70,140 L 170,200" stroke="#10b981" stroke-width="2" stroke-dasharray="4 3" />
+                  <path d="M 290,80 L 380,140" stroke="#06b6d4" stroke-width="2" />
+                  <path d="M 290,200 L 380,140" stroke="#10b981" stroke-width="2" />
+                  <path d="M 230,110 L 230,170" stroke="#34d399" stroke-width="1.8" stroke-dasharray="3 3" />
+
+                  <!-- Node: Client Request -->
+                  <rect x="10" y="115" width="100" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
+                  <text x="60" y="138" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600" text-anchor="middle">HTTPS Client</text>
+                  <text x="60" y="153" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">TLS 1.3 / Strict</text>
+
+                  <!-- Node: Azure App Service -->
+                  <rect x="160" y="55" width="140" height="52" rx="8" fill="#131e2c" stroke="#06b6d4" stroke-width="2" />
+                  <text x="230" y="78" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">Azure PaaS Service</text>
+                  <text x="230" y="93" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">Bicep IaC Provisioned</text>
+
+                  <!-- Node: Fallback Docker ACI -->
+                  <rect x="160" y="175" width="140" height="52" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="1.5" />
+                  <text x="230" y="198" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">GCP Firestore &amp; Run</text>
+                  <text x="230" y="213" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">Atomic Tx &amp; Microservices</text>
+
+                  <!-- Node: OIDC CI/CD Pipeline -->
+                  <rect x="330" y="115" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
+                  <text x="390" y="138" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600" text-anchor="middle">GitHub Actions</text>
+                  <text x="390" y="153" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">OIDC (Zero Secrets)</text>
+                </svg>
+              </div>
+
+              <div class="blueprint-metrics-bar">
+                <div class="metric-item">
+                  <div class="metric-val">20 / 20</div>
+                  <div class="metric-lbl">Classificação</div>
+                </div>
+                <div class="metric-item">
+                  <div class="metric-val">OIDC</div>
+                  <div class="metric-lbl">Auth Federada</div>
+                </div>
+                <div class="metric-item">
+                  <div class="metric-val">100%</div>
+                  <div class="metric-lbl">IaC Automatizado</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -229,202 +578,159 @@
     </div>
   </section>
 
-  <!-- ---------- Skills ---------- -->
-  <section class="section" id="skills">
+  <!-- ==================== Section 4: Technical Writeups (Top 5% Canditade Feature) ==================== -->
+  <section class="section" id="writeups">
     <div class="container">
-      <span class="section-label" data-i18n="skills_label">Competências Técnicas</span>
-      <h2 class="section-title" data-i18n="skills_title">Especializações e Ferramentas</h2>
-      <p class="section-desc" data-i18n="skills_desc">
-        Competências práticas aplicadas em projetos de engenharia, infraestrutura e operações de segurança.
+      <span class="section-label" data-i18n="writeups_label">Artigos &amp; Investigação</span>
+      <h2 class="section-title" data-i18n="writeups_title">Writeups &amp; Engineering Notes</h2>
+      <p class="section-desc" data-i18n="writeups_desc">
+        Notas de engenharia e análises técnicas detalhadas sobre desafios reais resolvidos em automação de redes, segurança em CI/CD e resiliência de sistemas.
       </p>
 
-      <div class="skills-grid">
+      <div class="writeups-grid">
         
-        <div class="skill-category">
-          <h3 class="skill-cat-title" data-i18n="skill_cat1">Cibersegurança e SOC</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">SIEM (Wazuh, Splunk)</span>
-            <span class="skill-tag">Firewalls (Fortinet FortiOS, Palo Alto, pfSense)</span>
-            <span class="skill-tag">Análise PCAP (Wireshark)</span>
-            <span class="skill-tag">Nmap</span>
-            <span class="skill-tag">OpenVAS</span>
-            <span class="skill-tag">PKI (OpenSSL)</span>
-            <span class="skill-tag">MITRE ATT&amp;CK</span>
-            <span class="skill-tag">Hardening de Sistemas</span>
+        <!-- Writeup 1 -->
+        <div class="writeup-card">
+          <div class="writeup-meta">
+            <span>#01 · NETDEVOPS</span>
+            <span>6 min leitura</span>
           </div>
+          <h3 class="writeup-title" data-i18n="w1_title">Remediação Closed-Loop de Configuration Drift em FortiOS via REST API e NetBox</h3>
+          <p class="writeup-snippet" data-i18n="w1_snippet">
+            Como projetar um motor de autorremediação determinístico para firewalls Fortinet com NetBox como SSOT, superando limitações de escrita de licença de teste através de fallback por Netmiko.
+          </p>
+          <button type="button" class="writeup-action-btn" onclick="openWriteupModal(1)">
+            <span data-i18n="btn_read_brief">Ler Resumo Técnico</span> ➔
+          </button>
         </div>
 
-        <div class="skill-category">
-          <h3 class="skill-cat-title" data-i18n="skill_cat2">Redes e Automação (NetDevOps)</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">NetBox (SSOT)</span>
-            <span class="skill-tag">n8n</span>
-            <span class="skill-tag">PRTG Network Monitor</span>
-            <span class="skill-tag">Python (Netmiko, Requests)</span>
-            <span class="skill-tag">Ansible</span>
-            <span class="skill-tag">Terraform</span>
-            <span class="skill-tag">Bicep</span>
-            <span class="skill-tag">VPNs IPsec</span>
-            <span class="skill-tag">Roteamento / MPLS</span>
-            <span class="skill-tag">REST APIs</span>
+        <!-- Writeup 2 -->
+        <div class="writeup-card">
+          <div class="writeup-meta">
+            <span>#02 · SECDEVOPS</span>
+            <span>4 min leitura</span>
           </div>
+          <h3 class="writeup-title" data-i18n="w2_title">Eliminando Segredos Estáticos em CI/CD: Autenticação Federada com GitHub Actions e Azure OIDC</h3>
+          <p class="writeup-snippet" data-i18n="w2_snippet">
+            Eliminação total de credenciais estáticas de longa duração em pipelines de IaC. Configuração de confiança federada no Azure AD / Entra ID com verificação de compliance no Checkov.
+          </p>
+          <button type="button" class="writeup-action-btn" onclick="openWriteupModal(2)">
+            <span data-i18n="btn_read_brief">Ler Resumo Técnico</span> ➔
+          </button>
         </div>
 
-        <div class="skill-category">
-          <h3 class="skill-cat-title" data-i18n="skill_cat3">Cloud e SecDevOps</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Microsoft Azure</span>
-            <span class="skill-tag">Google Cloud Platform (GCP)</span>
-            <span class="skill-tag">GitHub Actions (CI/CD com OIDC)</span>
-            <span class="skill-tag">Docker Containerization</span>
-            <span class="skill-tag">Linux (Ubuntu, Kali)</span>
-            <span class="skill-tag">Windows Server</span>
-            <span class="skill-tag">GitOps</span>
-            <span class="skill-tag">OWASP Top 10</span>
+        <!-- Writeup 3 -->
+        <div class="writeup-card">
+          <div class="writeup-meta">
+            <span>#03 · MULTI-CLOUD</span>
+            <span>5 min leitura</span>
           </div>
-        </div>
-
-        <div class="skill-category">
-          <h3 class="skill-cat-title" data-i18n="skill_cat4">Linguagens e Dados</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Bash</span>
-            <span class="skill-tag">PowerShell</span>
-            <span class="skill-tag">JavaScript (Node.js / Express)</span>
-            <span class="skill-tag">SQL (MySQL)</span>
-            <span class="skill-tag">NoSQL (MongoDB, Firestore)</span>
-          </div>
+          <h3 class="writeup-title" data-i18n="w3_title">Arquitetura Multi-Cloud Resiliente: Mitigando Falhas com Fallback Desacoplado entre Azure e GCP</h3>
+          <p class="writeup-snippet" data-i18n="w3_snippet">
+            Estratégias de graceful degradation em serviços críticos: garantia de atomicidade de dados no Firestore aliada a microsserviços desacoplados em ACI e análise do impacto do US CLOUD Act.
+          </p>
+          <button type="button" class="writeup-action-btn" onclick="openWriteupModal(3)">
+            <span data-i18n="btn_read_brief">Ler Resumo Técnico</span> ➔
+          </button>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ---------- Education ---------- -->
-  <section class="section" id="education">
-    <div class="container">
-      <span class="section-label" data-i18n="edu_label">Formação Académica</span>
-      <h2 class="section-title" data-i18n="edu_title">Formação Académica e Mobilidade Internacional</h2>
-      
-      <div class="edu-list">
-        
-        <div class="edu-card">
-          <div class="edu-info">
-            <span class="edu-title" data-i18n="edu1_title">Licenciatura em Engenharia Informática</span>
-            <span class="edu-subtitle" data-i18n="edu1_subtitle">Instituto Politécnico de Castelo Branco (IPCB-ESTCB) | Média Final: 15 / 20</span>
-          </div>
-          <span class="edu-date" data-i18n="edu1_date">Set 2023 — Set 2026</span>
-        </div>
-
-        <div class="edu-card">
-          <div class="edu-info">
-            <span class="edu-title" data-i18n="edu2_title">Universidade de Petróleo e Gás de Ploiești (Erasmus+ BIP)</span>
-            <span class="edu-subtitle" data-i18n="edu2_subtitle">Leadership and Change Management Towards Sustainability · Ploiești, Roménia</span>
-          </div>
-          <span class="edu-date" data-i18n="edu2_date">Abr 2026</span>
-        </div>
-
-        <div class="edu-card">
-          <div class="edu-info">
-            <span class="edu-title" data-i18n="edu3_title">Universidade Bauhaus-Weimar (Erasmus+ BIP)</span>
-            <span class="edu-subtitle" data-i18n="edu3_subtitle">Augmented Pasts: Digital Tools and Cultural Heritage · Weimar, Alemanha</span>
-          </div>
-          <span class="edu-date" data-i18n="edu3_date">Fev 2025 — Mar 2025</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------- Certifications ---------- -->
-  <section class="section" id="certs">
-    <div class="container">
-      <span class="section-label" data-i18n="certs_label">Certificação Profissional</span>
-      <h2 class="section-title" data-i18n="certs_title">Validação de Competências</h2>
-      
-      <div class="certs-list">
-        
-        <div class="cert-card">
-          <div class="cert-info">
-            <span class="cert-name">AWS Academy Graduate - Cloud Security Foundations</span>
-            <span class="cert-issuer">AWS Academy</span>
-          </div>
-          <span class="cert-status active" data-i18n="cert_active">Ativa</span>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-info">
-            <span class="cert-name">AWS Academy Graduate - Cloud Operations</span>
-            <span class="cert-issuer">AWS Academy</span>
-          </div>
-          <span class="cert-status active" data-i18n="cert_active">Ativa</span>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-info">
-            <span class="cert-name">AWS Academy Graduate - Cloud Foundations</span>
-            <span class="cert-issuer">AWS Academy</span>
-          </div>
-          <span class="cert-status active" data-i18n="cert_active">Ativa</span>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-info">
-            <span class="cert-name">Neo4j Certified Professional</span>
-            <span class="cert-issuer">Neo4j</span>
-          </div>
-          <span class="cert-status active" data-i18n="cert_active">Ativa</span>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-info">
-            <span class="cert-name">Neo4j Graph Data Science Certification</span>
-            <span class="cert-issuer">Neo4j</span>
-          </div>
-          <span class="cert-status active" data-i18n="cert_active">Ativa</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------- Contact ---------- -->
+  <!-- ==================== Section 5: Contact & Channels ==================== -->
   <section class="section" id="contact">
     <div class="container">
-      <div class="contact-wrapper">
-        <h2 class="contact-title" data-i18n="contact_title">Entrar em Contacto</h2>
-        <p class="contact-desc" data-i18n="contact_desc">
-          Se procura um profissional dedicado para equipas de Automação de Segurança, DevSecOps ou analista técnico no SOC, envie-me uma mensagem.
-        </p>
-        <div class="contact-links">
-          <a href="mailto:rafael.lourenco.cruz20@gmail.com" class="contact-btn">
-            ✉️ Email
-          </a>
-          <a href="tel:+351935264794" class="contact-btn">
-            📞 +351 935 264 794
-          </a>
-          <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" class="contact-btn">
-            💼 LinkedIn
-          </a>
-          <a href="https://github.com/RafaCr3z" target="_blank" class="contact-btn">
-            🐙 GitHub
-          </a>
-          <div class="contact-btn" style="cursor: default; opacity: 0.8;" data-i18n="contact_location">
-            📍 Portugal
+      <div class="contact-container">
+        
+        <div class="contact-left">
+          <span class="section-label" data-i18n="contact_label">Comunicação Direta</span>
+          <h2 class="section-title" data-i18n="contact_title">Entrar em Contacto</h2>
+          <p class="contact-desc-text" data-i18n="contact_desc">
+            Se a sua organização procura um engenheiro com perfil analítico e prático em <strong>Security Automation</strong>, <strong>SecDevOps</strong> ou analista técnico de <strong>SOC</strong>, estou disponível para conversas e processos de recrutamento.
+          </p>
+
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="curriculo_rafael_cruz.pdf" download="Curriculo_Rafael_Cruz.pdf" class="btn btn-primary" data-i18n="btn_download_cv_full">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Descarregar Currículo Completo (PDF)
+            </a>
           </div>
         </div>
+
+        <div class="contact-channels-grid">
+          
+          <!-- Email Button with Copy Feature -->
+          <div class="contact-channel-btn" onclick="copyEmailToClipboard()" title="Clique para copiar o email">
+            <div class="channel-icon">✉️</div>
+            <div class="channel-info">
+              <div class="channel-label" data-i18n="ch_email_lbl">Email (Clique p/ Copiar)</div>
+              <div class="channel-val">rafael.lourenco.cruz20@gmail.com</div>
+            </div>
+          </div>
+
+          <!-- Phone Link -->
+          <a href="tel:+351935264794" class="contact-channel-btn">
+            <div class="channel-icon">📞</div>
+            <div class="channel-info">
+              <div class="channel-label" data-i18n="ch_phone_lbl">Contacto Telefónico</div>
+              <div class="channel-val">+351 935 264 794</div>
+            </div>
+          </a>
+
+          <!-- LinkedIn Link -->
+          <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" rel="noopener noreferrer" class="contact-channel-btn">
+            <div class="channel-icon">💼</div>
+            <div class="channel-info">
+              <div class="channel-label">LinkedIn</div>
+              <div class="channel-val">in/rafael-cruz-7159092b2</div>
+            </div>
+          </a>
+
+          <!-- GitHub Link -->
+          <a href="https://github.com/RafaCr3z" target="_blank" rel="noopener noreferrer" class="contact-channel-btn">
+            <div class="channel-icon">🐙</div>
+            <div class="channel-info">
+              <div class="channel-label">GitHub</div>
+              <div class="channel-val">github.com/RafaCr3z</div>
+            </div>
+          </a>
+
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ---------- Footer ---------- -->
+  <!-- ==================== Footer ==================== -->
   <footer class="footer">
-    <div class="container">
-      <span data-i18n="footer_copy">© 2026 Rafael Cruz</span>
-      <span data-i18n="footer_desc">Engenharia Informática & Segurança</span>
+    <div class="container footer-content">
+      <div class="footer-copy">
+        © 2026 Rafael Cruz · <span data-i18n="footer_role">Engenharia Informática &amp; Security Automation</span>
+      </div>
+      <div class="footer-status-tag">
+        <span class="status-dot"></span>
+        <span data-i18n="footer_status">Status: Disponível (ATIVAR.pt Nível 6)</span>
+      </div>
     </div>
   </footer>
 
-  <script src="script.js?v=20260921_04"></script>
+  <!-- ==================== Technical Writeup Modal ==================== -->
+  <div class="brief-modal" id="writeupModal" aria-hidden="true" role="dialog">
+    <div class="brief-modal-content">
+      <button type="button" class="brief-close-btn" onclick="closeWriteupModal()" aria-label="Fechar modal">✕</button>
+      
+      <div id="modalContentDynamic">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification for Copy -->
+  <div class="copy-toast" id="copyToast">
+    ✓ Email copiado para a área de transferência!
+  </div>
+
+  <script src="script.js?v=20261013_v2"></script>
 </body>
 </html>
