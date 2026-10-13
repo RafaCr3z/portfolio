@@ -747,6 +747,8 @@ button {
 .timeline-wrapper {
   position: relative;
   padding: 40px 0 20px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Central glowing trace line */
@@ -755,8 +757,9 @@ button {
   top: 50%;
   left: 0;
   right: 0;
+  min-width: 1160px;
   height: 3px;
-  background: linear-gradient(90deg, transparent 0%, var(--accent-emerald) 15%, var(--accent-emerald) 85%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, var(--accent-emerald) 10%, var(--accent-emerald) 90%, transparent 100%);
   box-shadow: 0 0 12px var(--accent-emerald-glow);
   transform: translateY(-50%);
   z-index: 1;
@@ -764,8 +767,9 @@ button {
 
 .timeline-items {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(7, minmax(160px, 1fr));
+  gap: 16px;
+  min-width: 1160px;
   position: relative;
   z-index: 2;
 }
@@ -1417,4 +1421,61 @@ button {
   .contact-channels-grid {
     grid-template-columns: 1fr;
   }
+  .languages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Languages Block ---------- */
+.languages-wrapper {
+  margin-top: 36px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 28px 32px;
+}
+.languages-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 20px;
+}
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.language-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition-fast);
+}
+.language-card:hover {
+  border-color: var(--border-highlight);
+  transform: translateY(-2px);
+}
+.lang-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lang-level {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-emerald);
+  background: var(--bg-pill);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
 }
