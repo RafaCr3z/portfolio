@@ -580,25 +580,6 @@ function init() {
     });
   });
 
-  // CV Header Button Fallback (If PDF is not present, triggers browser print view)
-  const cvBtn = document.getElementById('cvHeaderBtn');
-  if (cvBtn) {
-    cvBtn.addEventListener('click', function(e) {
-      // Check if curriculo_rafael_cruz.pdf exists; if not, graceful fallback to prompt or window.print
-      fetch('curriculo_rafael_cruz.pdf', { method: 'HEAD' })
-        .then(response => {
-          if (!response.ok) {
-            // Trigger clean print view if PDF file not yet placed
-            e.preventDefault();
-            window.print();
-          }
-        })
-        .catch(() => {
-          // Fallback
-        });
-    });
-  }
-
   setupScrollSpy();
 }
 
