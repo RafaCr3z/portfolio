@@ -410,10 +410,28 @@
         Projetos práticos de elevada complexidade demonstrados com métricas reais, conformidade regulamentar e diagramas interativos de arquitetura.
       </p>
 
+      <!-- Track Selector Filter Tabs -->
+      <div class="project-track-tabs" role="tablist" aria-label="Project Tracks">
+        <button type="button" class="track-tab active" onclick="filterProjectTrack('all', this)" data-track="all">
+          <span data-i18n="track_all">Todos os Projetos</span>
+          <span class="track-tab-count">4</span>
+        </button>
+        <button type="button" class="track-tab" onclick="filterProjectTrack('cloud', this)" data-track="cloud">
+          <span>☁️</span>
+          <span data-i18n="track_cloud">Track A: Cloud, NetDevOps &amp; SRE</span>
+          <span class="track-tab-count">2</span>
+        </button>
+        <button type="button" class="track-tab" onclick="filterProjectTrack('backend', this)" data-track="backend">
+          <span>💻</span>
+          <span data-i18n="track_backend">Track B: Software Engineering &amp; Backend</span>
+          <span class="track-tab-count">3</span>
+        </button>
+      </div>
+
       <div class="projects-container">
         
         <!-- ================= Projeto 1: NetDevOps Closed-Loop ================= -->
-        <div class="project-showcase-card">
+        <div class="project-showcase-card" data-track="cloud">
           <div class="project-left">
             <div class="project-badge-row">
               <span class="project-grade-pill" data-i18n="p1_grade">Classificação: 19 / 20 · Parceria: ARTE, I.P. · Out 2025 – Jun 2026</span>
@@ -560,7 +578,7 @@
         </div>
 
         <!-- ================= Projeto 2: CityGuards Multi-Cloud ================= -->
-        <div class="project-showcase-card">
+        <div class="project-showcase-card" data-track="cloud backend">
           <div class="project-left">
             <div class="project-badge-row">
               <span class="project-grade-pill" data-i18n="p2_grade">Classificação: 20 / 20 · Projeto de Engenharia Cloud · Fev 2026 – Mai 2026</span>
@@ -679,6 +697,186 @@
                 <div class="metric-item">
                   <div class="metric-val">OIDC</div>
                   <div class="metric-lbl">Zero Segredos</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= Projeto 3: PDS Design Patterns Monorepo ================= -->
+        <div class="project-showcase-card" data-track="backend">
+          <div class="project-left">
+            <div class="project-badge-row">
+              <span class="project-grade-pill" data-i18n="p3_grade">Engenharia de Software · Padrões de Desenho 2024/25</span>
+              <span class="tech-tag" style="color: var(--accent-emerald);">Padrões GoF</span>
+              <span class="tech-tag">Clean Architecture &amp; SOLID</span>
+              <span class="tech-tag">Monorepo Estruturado</span>
+            </div>
+
+            <h3 class="project-title" data-i18n="p3_title">Padrões de Desenho de Software &amp; Arquitetura Modular (PDS Monorepo)</h3>
+
+            <p class="project-lead" data-i18n="p3_lead">
+              <strong>Monorepo de Engenharia de Software:</strong> Tecnologias: Java 17/21, Padrões GoF (State, Strategy, Observer, Factory, Command, Singleton), Princípios SOLID, Modelação UML. Soluções empresariais desacoplando lógica de domínio e interfaces.
+            </p>
+
+            <ul class="project-key-points">
+              <li data-i18n="p3_bullet1"><strong>EST Global Airways (Reserva &amp; Gestão de Voos):</strong> Sistema de pesquisa multicritério, cálculo dinâmico de gamas tarifárias por milhagem e taxas aeroportuárias, gestão integral de reservas com ID único alfanumérico e ciclo pós-venda (alteração de datas, lugares e cancelamento com reembolso).</li>
+              <li data-i18n="p3_bullet2"><strong>Banco do FaroEST (Refactoring &amp; Packs de Expansão):</strong> Modernização de software legado com transição de lógica monolítica procedural para arquitetura orientada a estados (<em>State Pattern</em>), desacoplamento de eventos (<em>Observer</em>) e extensibilidade de regras de jogo sem quebra de contratos.</li>
+              <li data-i18n="p3_bullet3"><strong>Engenharia de Software &amp; Diagramas UML:</strong> Aplicação rigorosa dos princípios SOLID (SRP, OCP, DIP), polimorfismo, interfaces defensivas, tratamento de exceções customizadas e modelação arquitetural através de diagramas de classes UML estruturados.</li>
+            </ul>
+
+            <div class="project-pipeline-tag" data-i18n="p3_pipeline">
+              Java 17/21 ➔ GoF Patterns (State, Strategy, Observer) ➔ SOLID &amp; Clean Architecture ➔ UML Class Modeling
+            </div>
+
+            <div class="project-tags-list">
+              <span class="tech-tag">Java 17/21</span>
+              <span class="tech-tag">GoF Design Patterns</span>
+              <span class="tech-tag">State &amp; Strategy</span>
+              <span class="tech-tag">Observer &amp; Factory</span>
+              <span class="tech-tag">Clean Architecture</span>
+              <span class="tech-tag">SOLID Principles</span>
+              <span class="tech-tag">OOP &amp; Polimorfismo</span>
+              <span class="tech-tag">UML Modeling</span>
+            </div>
+
+            <div class="project-action-links">
+              <a href="https://github.com/RafaCr3z/pds-software-design-patterns" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span data-i18n="btn_view_github">Ver no GitHub</span>
+              </a>
+              <a href="https://github.com/RafaCr3z/pds-software-design-patterns#readme" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" data-i18n="btn_pds_docs">
+                Explorar Arquitetura ➔
+              </a>
+            </div>
+          </div>
+
+          <!-- UML Diagram Showcase Graphic -->
+          <div class="project-right">
+            <div class="blueprint-card">
+              <div class="blueprint-bar">
+                <div class="blueprint-dots">
+                  <span class="b-dot red"></span>
+                  <span class="b-dot yellow"></span>
+                  <span class="b-dot green"></span>
+                </div>
+                <div class="blueprint-name">pds_classes.jpeg (UML Architecture)</div>
+                <div class="blueprint-status" style="color: var(--accent-emerald);">● Design Patterns GoF</div>
+              </div>
+
+              <div class="blueprint-tabs">
+                <button type="button" class="bp-tab active" data-i18n="bp_tab_uml">Diagrama UML de Classes</button>
+              </div>
+
+              <div class="blueprint-canvas">
+                <div class="bp-view active">
+                  <img src="pds_classes.jpeg" alt="Diagrama de Classes UML PDS" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/pds-software-design-patterns', '_blank')">
+                  <p class="blueprint-img-note" data-i18n="bp_uml_note">▲ Diagrama de Classes UML (Modelação de Domínio e Padrões GoF · Clique p/ repositório)</p>
+                </div>
+              </div>
+
+              <div class="blueprint-metrics-bar">
+                <div class="metric-item">
+                  <div class="metric-val" data-i18n="p3_metric1_val">6+ GoF</div>
+                  <div class="metric-lbl" data-i18n="p3_metric1_lbl">Padrões de Desenho</div>
+                </div>
+                <div class="metric-item">
+                  <div class="metric-val" data-i18n="p3_metric2_val">100%</div>
+                  <div class="metric-lbl" data-i18n="p3_metric2_lbl">SOLID Clean Code</div>
+                </div>
+                <div class="metric-item">
+                  <div class="metric-val" data-i18n="p3_metric3_val">2</div>
+                  <div class="metric-lbl" data-i18n="p3_metric3_lbl">Sistemas (Airways + Banco)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= Projeto 4: FelixBus Travel Platform ================= -->
+        <div class="project-showcase-card" data-track="backend">
+          <div class="project-left">
+            <div class="project-badge-row">
+              <span class="project-grade-pill" data-i18n="p4_grade">Engenharia Web &amp; Backend · Arquitetura MVC Enterprise</span>
+              <span class="tech-tag" style="color: var(--accent-emerald);">Java &amp; Servlets</span>
+              <span class="tech-tag">MySQL RDBMS</span>
+              <span class="tech-tag">RBAC Security</span>
+            </div>
+
+            <h3 class="project-title" data-i18n="p4_title">Plataforma Empresarial de Gestão e Reserva de Transportes (FelixBus)</h3>
+
+            <p class="project-lead" data-i18n="p4_lead">
+              <strong>Plataforma Web de Mobilidade e Faturação:</strong> Tecnologias: Java (JSP, Servlets), MySQL, Apache Tomcat, HTML5/CSS3/JavaScript. Sistema completo de gestão de rotas de autocarro, emissão de bilhetes, controlo de lotação e perfis de acesso.
+            </p>
+
+            <ul class="project-key-points">
+              <li data-i18n="p4_bullet1"><strong>Padrão de Desenho MVC (Model-View-Controller):</strong> Desacoplamento estruturado entre a camada de apresentação (JSP/JSTL), controladores de lógica de negócio em Servlets Java e camada de persistência com padrões DAO (Data Access Object) e DTO.</li>
+              <li data-i18n="p4_bullet2"><strong>Modelação Relacional &amp; Integridade Transacional:</strong> Esquema relacional MySQL em 3ª Forma Normal (3NF) com chaves estrangeiras, restrições de integridade, índices de pesquisa e transações ACID para garantir consistência na reserva concorrente de lugares.</li>
+              <li data-i18n="p4_bullet3"><strong>Segurança e Controlo de Acessos RBAC:</strong> Gestão de sessões HTTP autenticadas com segregação de permissões em 3 níveis (Administrador, Operador e Passageiro), sanitização contra injeção SQL via <code>PreparedStatement</code> e validação defensiva de formulários.</li>
+            </ul>
+
+            <div class="project-pipeline-tag" data-i18n="p4_pipeline">
+              JSP &amp; Frontend ➔ Java Servlets (Controllers) ➔ Business Logic (Services) ➔ DAO / MySQL RDBMS (ACID)
+            </div>
+
+            <div class="project-tags-list">
+              <span class="tech-tag">Java (JSP / Servlets)</span>
+              <span class="tech-tag">MVC Architecture</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">DAO / DTO</span>
+              <span class="tech-tag">RBAC Security</span>
+              <span class="tech-tag">Apache Tomcat</span>
+              <span class="tech-tag">ACID Transactions</span>
+              <span class="tech-tag">PreparedStatement (Anti-SQLi)</span>
+            </div>
+
+            <div class="project-action-links">
+              <a href="https://github.com/RafaCr3z/felixbus-travel-platform" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span data-i18n="btn_view_github">Ver no GitHub</span>
+              </a>
+              <a href="https://github.com/RafaCr3z/felixbus-travel-platform#readme" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" data-i18n="btn_felixbus_docs">
+                Ver Repositório ➔
+              </a>
+            </div>
+          </div>
+
+          <!-- Web Portal Architecture Graphic -->
+          <div class="project-right">
+            <div class="blueprint-card">
+              <div class="blueprint-bar">
+                <div class="blueprint-dots">
+                  <span class="b-dot red"></span>
+                  <span class="b-dot yellow"></span>
+                  <span class="b-dot green"></span>
+                </div>
+                <div class="blueprint-name">felixbus_home.png (Web Portal)</div>
+                <div class="blueprint-status" style="color: var(--accent-emerald);">● MVC &amp; MySQL RDBMS</div>
+              </div>
+
+              <div class="blueprint-tabs">
+                <button type="button" class="bp-tab active" data-i18n="bp_tab_webportal">Interface da Plataforma</button>
+              </div>
+
+              <div class="blueprint-canvas">
+                <div class="bp-view active">
+                  <img src="felixbus_home.png" alt="Portal FelixBus Travel Platform" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/felixbus-travel-platform', '_blank')">
+                  <p class="blueprint-img-note" data-i18n="bp_felixbus_note">▲ Portal de Reservas e Bilhética FelixBus (Interface MVC Web · Clique p/ repositório)</p>
+                </div>
+              </div>
+
+              <div class="blueprint-metrics-bar">
+                <div class="metric-item">
+                  <div class="metric-val" data-i18n="p4_metric1_val">MVC</div>
+                  <div class="metric-lbl" data-i18n="p4_metric1_lbl">Camadas Desacopladas</div>
+                </div>
+                <div class="metric-item">
+                  <div class="metric-val" data-i18n="p4_metric2_val">RBAC</div>
+                  <div class="metric-lbl" data-i18n="p4_metric2_lbl">3 Níveis de Acesso</div>
+                </div>
+                <div class="metric-item">
+                  <div class="metric-val" data-i18n="p4_metric3_val">ACID</div>
+                  <div class="metric-lbl" data-i18n="p4_metric3_lbl">Reservas Concorrentes</div>
                 </div>
               </div>
             </div>

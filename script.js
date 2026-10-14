@@ -68,6 +68,10 @@ const translations = {
     projects_label: "Experiência de Engenharia",
     projects_title: "Projetos Técnicos",
     projects_desc: "Projetos práticos de elevada complexidade demonstrados com métricas reais, conformidade regulamentar e diagramas interativos de arquitetura.",
+    track_all: "Todos os Projetos",
+    track_cloud: "Track A: Cloud, NetDevOps &amp; SRE",
+    track_backend: "Track B: Software Engineering &amp; Backend",
+    btn_view_github: "Ver no GitHub",
 
     p1_grade: "Classificação: 19 / 20 · Parceria: ARTE, I.P. · Out 2025 – Jun 2026",
     p1_title: "Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)",
@@ -92,6 +96,40 @@ const translations = {
     p2_pipeline: "Bicep Declarativo ➔ GitHub Actions OIDC (azure/login@v2) ➔ Checkov SAST ➔ Azure App Service & GCP Firestore",
     btn_read_cloud_brief: "Ler Análise Multi-Cloud ➔",
     btn_view_linkedin: "Ver no LinkedIn",
+
+    p3_grade: "Engenharia de Software · Padrões de Desenho 2024/25",
+    p3_title: "Padrões de Desenho de Software &amp; Arquitetura Modular (PDS Monorepo)",
+    p3_lead: "<strong>Monorepo de Engenharia de Software:</strong> Tecnologias: Java 17/21, Padrões GoF (State, Strategy, Observer, Factory, Command, Singleton), Princípios SOLID, Modelação UML. Soluções empresariais desacoplando lógica de domínio e interfaces.",
+    p3_bullet1: "<strong>EST Global Airways (Reserva &amp; Gestão de Voos):</strong> Sistema de pesquisa multicritério, cálculo dinâmico de gamas tarifárias por milhagem e taxas aeroportuárias, gestão integral de reservas com ID único alfanumérico e ciclo pós-venda (alteração de datas, lugares e cancelamento com reembolso).",
+    p3_bullet2: "<strong>Banco do FaroEST (Refactoring &amp; Packs de Expansão):</strong> Modernização de software legado com transição de lógica monolítica procedural para arquitetura orientada a estados (<em>State Pattern</em>), desacoplamento de eventos (<em>Observer</em>) e extensibilidade de regras de jogo sem quebra de contratos.",
+    p3_bullet3: "<strong>Engenharia de Software &amp; Diagramas UML:</strong> Aplicação rigorosa dos princípios SOLID (SRP, OCP, DIP), polimorfismo, interfaces defensivas, tratamento de exceções customizadas e modelação arquitetural através de diagramas de classes UML estruturados.",
+    p3_pipeline: "Java 17/21 ➔ GoF Patterns (State, Strategy, Observer) ➔ SOLID &amp; Clean Architecture ➔ UML Class Modeling",
+    bp_tab_uml: "Diagrama UML de Classes",
+    bp_uml_note: "▲ Diagrama de Classes UML (Modelação de Domínio e Padrões GoF · Clique p/ repositório)",
+    p3_metric1_val: "6+ GoF",
+    p3_metric1_lbl: "Padrões de Desenho",
+    p3_metric2_val: "100%",
+    p3_metric2_lbl: "SOLID Clean Code",
+    p3_metric3_val: "2",
+    p3_metric3_lbl: "Sistemas (Airways + Banco)",
+    btn_pds_docs: "Explorar Arquitetura ➔",
+
+    p4_grade: "Engenharia Web &amp; Backend · Arquitetura MVC Enterprise",
+    p4_title: "Plataforma Empresarial de Gestão e Reserva de Transportes (FelixBus)",
+    p4_lead: "<strong>Plataforma Web de Mobilidade e Faturação:</strong> Tecnologias: Java (JSP, Servlets), MySQL, Apache Tomcat, HTML5/CSS3/JavaScript. Sistema completo de gestão de rotas de autocarro, emissão de bilhetes, controlo de lotação e perfis de acesso.",
+    p4_bullet1: "<strong>Padrão de Desenho MVC (Model-View-Controller):</strong> Desacoplamento estruturado entre a camada de apresentação (JSP/JSTL), controladores de lógica de negócio em Servlets Java e camada de persistência com padrões DAO (Data Access Object) e DTO.",
+    p4_bullet2: "<strong>Modelação Relacional &amp; Integridade Transacional:</strong> Esquema relacional MySQL em 3ª Forma Normal (3NF) com chaves estrangeiras, restrições de integridade, índices de pesquisa e transações ACID para garantir consistência na reserva concorrente de lugares.",
+    p4_bullet3: "<strong>Segurança e Controlo de Acessos RBAC:</strong> Gestão de sessões HTTP autenticadas com segregação de permissões em 3 níveis (Administrador, Operador e Passageiro), sanitização contra injeção SQL via <code>PreparedStatement</code> e validação defensiva de formulários.",
+    p4_pipeline: "JSP &amp; Frontend ➔ Java Servlets (Controllers) ➔ Business Logic (Services) ➔ DAO / MySQL RDBMS (ACID)",
+    bp_tab_webportal: "Interface da Plataforma",
+    bp_felixbus_note: "▲ Portal de Reservas e Bilhética FelixBus (Interface MVC Web · Clique p/ repositório)",
+    p4_metric1_val: "MVC",
+    p4_metric1_lbl: "Camadas Desacopladas",
+    p4_metric2_val: "RBAC",
+    p4_metric2_lbl: "3 Níveis de Acesso",
+    p4_metric3_val: "ACID",
+    p4_metric3_lbl: "Reservas Concorrentes",
+    btn_felixbus_docs: "Ver Repositório ➔",
 
     // Writeups
     writeups_label: "Artigos &amp; Investigação",
@@ -190,6 +228,10 @@ const translations = {
     projects_label: "Engineering Experience",
     projects_title: "Technical Projects",
     projects_desc: "Complex hands-on projects demonstrated with real-world metrics, regulatory compliance, and interactive architecture blueprints.",
+    track_all: "All Projects",
+    track_cloud: "Track A: Cloud, NetDevOps &amp; SRE",
+    track_backend: "Track B: Software Engineering &amp; Backend",
+    btn_view_github: "View on GitHub",
 
     p1_grade: "Grade: 19 / 20 · Industry Partnership: ARTE, I.P. · Oct 2025 – Jun 2026",
     p1_title: "NetDevOps Closed-Loop Automation & Network Resilience (PoC)",
@@ -214,6 +256,40 @@ const translations = {
     p2_pipeline: "Declarative Bicep ➔ GitHub Actions OIDC (azure/login@v2) ➔ Checkov SAST ➔ Azure App Service & GCP Firestore",
     btn_read_cloud_brief: "Read Multi-Cloud Brief ➔",
     btn_view_linkedin: "View on LinkedIn",
+
+    p3_grade: "Software Engineering · Design Patterns 2024/25",
+    p3_title: "Software Design Patterns &amp; Modular Architecture (PDS Monorepo)",
+    p3_lead: "<strong>Software Engineering Monorepo:</strong> Technologies: Java 17/21, GoF Patterns (State, Strategy, Observer, Factory, Command, Singleton), SOLID Principles, UML Modeling. Enterprise domain modeling decoupling business logic and user interfaces.",
+    p3_bullet1: "<strong>EST Global Airways (Flight Booking &amp; Fleet Management):</strong> Multi-criteria search engine, dynamic fare bands factoring mileage and airport surcharges, complete booking lifecycle with unique alphanumeric IDs, and post-sale management (date/seat changes and cancellation with refund).",
+    p3_bullet2: "<strong>Banco do FaroEST (Legacy Refactoring &amp; Expansion Packs):</strong> Legacy game modernization transitioning from monolithic procedural code to a state-driven architecture (<em>State Pattern</em>), decoupled event handling (<em>Observer</em>), and extensible rule sets without contract regression.",
+    p3_bullet3: "<strong>Software Engineering &amp; UML Diagrams:</strong> Rigorous adherence to SOLID principles (SRP, OCP, DIP), polymorphism, defensive interfaces, custom exception handling, and structural domain architecture mapped through structured UML class diagrams.",
+    p3_pipeline: "Java 17/21 ➔ GoF Patterns (State, Strategy, Observer) ➔ SOLID &amp; Clean Architecture ➔ UML Class Modeling",
+    bp_tab_uml: "UML Class Diagram",
+    bp_uml_note: "▲ UML Class Diagram (Domain Modeling &amp; GoF Patterns · Click to view repo)",
+    p3_metric1_val: "6+ GoF",
+    p3_metric1_lbl: "Design Patterns",
+    p3_metric2_val: "100%",
+    p3_metric2_lbl: "SOLID Clean Code",
+    p3_metric3_val: "2",
+    p3_metric3_lbl: "Systems (Airways + Bank)",
+    btn_pds_docs: "Explore Architecture ➔",
+
+    p4_grade: "Web Engineering &amp; Backend · Enterprise MVC Architecture",
+    p4_title: "Enterprise Travel &amp; Ticketing Management Platform (FelixBus)",
+    p4_lead: "<strong>Mobility &amp; Ticketing Web Platform:</strong> Technologies: Java (JSP, Servlets), MySQL, Apache Tomcat, HTML5/CSS3/JavaScript. Comprehensive management system for bus routes, ticket issuance, occupancy tracking, and multi-tier access control.",
+    p4_bullet1: "<strong>MVC Design Pattern (Model-View-Controller):</strong> Structured decoupling between the presentation layer (JSP/JSTL), business controllers in Java Servlets, and persistence layers using DAO (Data Access Object) and DTO patterns.",
+    p4_bullet2: "<strong>Relational Modeling &amp; Transactional Integrity:</strong> 3rd Normal Form (3NF) MySQL schema with foreign key constraints, search indexes, and ACID transactions to ensure database consistency during concurrent seat booking.",
+    p4_bullet3: "<strong>RBAC Security &amp; Access Control:</strong> Authenticated HTTP session management with 3-tier role segregation (Administrator, Operator, Passenger), SQL injection protection via <code>PreparedStatement</code>, and defensive form validation.",
+    p4_pipeline: "JSP &amp; Frontend ➔ Java Servlets (Controllers) ➔ Business Logic (Services) ➔ DAO / MySQL RDBMS (ACID)",
+    bp_tab_webportal: "Platform Interface",
+    bp_felixbus_note: "▲ FelixBus Booking &amp; Ticketing Portal (MVC Web Interface · Click to view repo)",
+    p4_metric1_val: "MVC",
+    p4_metric1_lbl: "Decoupled Layers",
+    p4_metric2_val: "RBAC",
+    p4_metric2_lbl: "3 Access Levels",
+    p4_metric3_val: "ACID",
+    p4_metric3_lbl: "Concurrent Bookings",
+    btn_felixbus_docs: "View Repository ➔",
 
     // Writeups
     writeups_label: "Technical Research & Articles",
@@ -672,6 +748,60 @@ function setupScrollSpy() {
 }
 
 // ============================================================
+// Project Track Filter (Dual-Track Architecture Showcase)
+// ============================================================
+function filterProjectTrack(track, btn) {
+  // Update active state on track buttons
+  document.querySelectorAll('.track-tab').forEach(b => b.classList.remove('active'));
+  if (btn) {
+    btn.classList.add('active');
+  } else {
+    const matchingBtn = document.querySelector(`.track-tab[data-track="${track}"]`);
+    if (matchingBtn) matchingBtn.classList.add('active');
+  }
+
+  // Filter project cards
+  const cards = document.querySelectorAll('.project-showcase-card');
+  cards.forEach(card => {
+    const cardTracks = (card.getAttribute('data-track') || '').split(' ');
+    if (track === 'all' || cardTracks.includes(track)) {
+      card.classList.remove('track-hidden');
+    } else {
+      card.classList.add('track-hidden');
+    }
+  });
+
+  // Deep linking URL hash management
+  if (track === 'cloud') {
+    history.replaceState(null, '', '#cloud');
+  } else if (track === 'backend') {
+    history.replaceState(null, '', '#backend');
+  } else if (window.location.hash === '#cloud' || window.location.hash === '#backend') {
+    history.replaceState(null, '', '#projects');
+  }
+}
+window.filterProjectTrack = filterProjectTrack;
+
+function handleTrackHash() {
+  const hash = window.location.hash.toLowerCase();
+  if (hash === '#cloud') {
+    filterProjectTrack('cloud');
+    const projSec = document.getElementById('projects');
+    if (projSec) {
+      projSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  } else if (hash === '#backend') {
+    filterProjectTrack('backend');
+    const projSec = document.getElementById('projects');
+    if (projSec) {
+      projSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  } else {
+    filterProjectTrack('all');
+  }
+}
+
+// ============================================================
 // Initialization on DOM Ready
 // ============================================================
 function init() {
@@ -711,6 +841,10 @@ function init() {
   });
 
   setupScrollSpy();
+
+  // Initialize track hash routing
+  handleTrackHash();
+  window.addEventListener('hashchange', handleTrackHash);
 }
 
 if (document.readyState === 'loading') {
