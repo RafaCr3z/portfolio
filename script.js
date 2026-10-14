@@ -77,6 +77,11 @@ const translations = {
     p1_bullet3: "<strong>SSoT, Auditoria e Observabilidade:</strong> Reconciliação dinâmica de IPAM com o NetBox (SSoT), persistência forense de syslogs em MongoDB (Docker) e dashboards SRE/MTTR em Metabase ao longo de 24 ensaios de <em>Chaos Engineering</em> (conformidade ISO 27001).",
     p1_pipeline: "PRTG (Webhooks) ➔ n8n Orchestrator ➔ NetBox (SSoT/IPAM) ➔ FortiOS REST API / Netmiko SSH ➔ MongoDB, Metabase & Telegram",
     btn_read_poc_brief: "Ler Análise da Topologia ➔",
+    bp_tab_logical: "Blueprint Lógico",
+    bp_tab_arte: "Topologia Real ARTE",
+    bp_tab_macro: "Macro NetDevOps",
+    bp_tab_multicloud: "Fluxo Multi-Cloud",
+    bp_tab_dashboard: "Painel Real Autarquia",
 
     p2_grade: "Classificação: 20 / 20 · Projeto de Engenharia Cloud · Fev 2026 – Mai 2026",
     p2_title: "Plataforma Multi-Cloud Segura e Resiliente (CityGuards)",
@@ -194,6 +199,11 @@ const translations = {
     p1_bullet3: "<strong>SSoT, Auditing & Observability:</strong> Dynamic IPAM reconciliation with NetBox (SSoT), forensic syslog persistence in MongoDB (Docker), and SRE/MTTR dashboards in Metabase across 24 <em>Chaos Engineering</em> trials (ISO 27001 compliance).",
     p1_pipeline: "PRTG (Webhooks) ➔ n8n Orchestrator ➔ NetBox (SSoT/IPAM) ➔ FortiOS REST API / Netmiko SSH ➔ MongoDB, Metabase & Telegram",
     btn_read_poc_brief: "Read Topology Brief ➔",
+    bp_tab_logical: "Logical Blueprint",
+    bp_tab_arte: "Real ARTE Topology",
+    bp_tab_macro: "Macro NetDevOps",
+    bp_tab_multicloud: "Multi-Cloud Flow",
+    bp_tab_dashboard: "Real City Dashboard",
 
     p2_grade: "Grade: 20 / 20 · Cloud Engineering Project · Feb 2026 – May 2026",
     p2_title: "Secure & Resilient Multi-Cloud Platform (CityGuards)",
@@ -247,44 +257,86 @@ const writeupData = {
   1: {
     pt: {
       title: "Remediação Closed-Loop de Configuration Drift em FortiOS via REST API e NetBox",
-      meta: "NetDevOps · Fortinet FortiGate · NetBox SSoT/IPAM · Chaos Engineering · ISO 27001",
+      meta: "NetDevOps · Fortinet FortiGate · NetBox SSoT/IPAM · Chaos Engineering · ISO 27001 · Classificação: 19 / 20",
       content: `
-        <h4>1. O Problema: Degradação Silenciosa e Drift de Configuração</h4>
-        <p>Em redes híbridas empresariais com túneis VPN IPsec IKEv2 sobre MPLS, alterações manuais de administradores ou falhas transitórias criam <em>configuration drift</em> em Gateway, Phase 2 CIDR, Firewall Policies ou SAs. Tradicionalmente, a deteção depende de tickets de utilizadores e a resolução manual demora em média 30 a 45 minutos (MTTR elevado).</p>
-        
-        <h4>2. A Solução Arquitetural Orientada a Eventos</h4>
-        <p>Concebi e implementei uma arquitetura em ciclo fechado composta por blocos integrados:</p>
+        <div class="writeup-diagram-box">
+          <img src="figura4_topologia_arte.png" alt="Topologia ARTE I.P." class="writeup-img">
+          <p class="writeup-img-caption">Figura: Topologia da infraestrutura híbrida da ARTE, I.P. (Sede HUB FortiGate vs. Loja do Cidadão SPOKE FortiGate sob Underlay MPLS e Overlay IPsec).</p>
+        </div>
+
+        <h4>1. O Problema: Degradação Silenciosa e Configuration Drift</h4>
+        <p>Em infraestruturas críticas com túneis VPN IPsec IKEv2 estabelecidos sobre redes de transporte sobredimensionadas (Underlay MPLS), desvios manuais de configuração (<em>configuration drift</em>) em gateways remotos, seletores CIDR da Phase 2, rotas estáticas ou regras de filtragem de firewall geram quebras de conectividade silenciosas. No modelo operacional tradicional, a deteção depende da abertura reativa de tickets por utilizadores finais, resultando num <strong>MTTR médio de 15 a 30 minutos</strong> e dependência humana de engenheiros de nível sénior.</p>
+
+        <h4>2. Arquitetura Modular em Ciclo Fechado (Closed-Loop)</h4>
+        <p>Desenvolvida em parceria com a <strong>ARTE — Agência para a Reforma Tecnológica do Estado</strong>, a arquitetura implementa o paradigma NetDevOps através de 5 módulos desacoplados:</p>
         <ul>
-          <li><strong>Detetor Diferencial (PRTG):</strong> Sondagem contínua com verificação preventiva ICMP (<em>Pre-Check</em>) para distinguir falhas de camada física (cabo/fibra rompida) de falhas lógicas de túnel IPsec, suprimindo falsos positivos (&lt;10s, redução &gt;95% do MTTD).</li>
-          <li><strong>Barramento de Eventos (n8n):</strong> Acionamento reativo por webhook HTTP imediatamente após alerta do sensor.</li>
-          <li><strong>Single Source of Truth (NetBox):</strong> Reconciliação dinâmica de IPAM e consulta da <em>golden configuration</em> declarativa do dispositivo via REST API para validação de discrepâncias.</li>
-          <li><strong>Motor Híbrido de Remediação:</strong> Tentativa prioritária de aplicação de patch via <code>FortiOS REST API</code> com Token e Trusted Hosts, convergindo em <strong>4–7 segundos</strong>. Em caso de restrição de escrita, aciona contingência determinística via <code>Python + Netmiko (SSH)</code>.</li>
-          <li><strong>Auditoria e Observabilidade SRE:</strong> Registo forense imutável de syslogs em MongoDB (Docker), notificação instantânea no Telegram e dashboards SRE/MTTR em tempo real no Metabase (conformidade ISO 27001).</li>
+          <li><strong>Detetor de Falhas e Telemetria Diferencial (PRTG):</strong> Sondagem contínua das interfaces com validação preventiva ICMP (<em>Pre-Check</em>) para o IP do router de underlay na filial. Se a sonda ICMP falhar fisicamente, o sistema diagnostica corte de energia/enlace físico e inibe falsos alertas de software, reduzindo o <strong>MTTD para &lt; 10s (&gt;95% de redução)</strong>.</li>
+          <li><strong>Barramento de Eventos e Orquestração (n8n):</strong> Acionamento reativo por Webhook HTTP em tempo real, sem necessidade de polling intensivo, garantindo execução idempotente do fluxo de remediação.</li>
+          <li><strong>Single Source of Truth / IPAM (NetBox):</strong> Consulta da <em>golden configuration</em> declarativa do dispositivo via REST API, validando discrepâncias nos blocos de endereçamento, sub-redes e interfaces.</li>
+          <li><strong>Motor Híbrido de Remediação (REST API & Netmiko SSH):</strong>
+            <ul>
+              <li><strong>Fase 1 (Ambiente de Testes / Sandbox):</strong> Perante restrições de escrita na API em licenças de avaliação dos FortiGates virtuais, concebi scripts determinísticos em Python utilizando a biblioteca <code>Netmiko</code> sobre SSH (<code>remediate_config.py</code>, <code>remediate_phase2.py</code>, <code>remediate_tunnel.py</code>) com controlo de exceções e idempotência.</li>
+              <li><strong>Fase 2 (Ambiente Comercial / Produção):</strong> Ativação de licenças comerciais com acesso pleno à <code>FortiOS REST API</code> via tokens de serviço e <em>Trusted Hosts</em> (eliminação de credenciais estáticas). Remediação cirúrgica direta em endpoints CMDB (<code>/api/v2/cmdb/vpn.ipsec/phase2-interface</code> e <code>/api/v2/cmdb/router/static</code>), cobrindo Gateway incorreto, sub-redes da Phase 2, políticas de firewall e ressincronização das Security Associations (SAs).</li>
+            </ul>
+          </li>
+          <li><strong>Auditoria Forense e Observabilidade SRE:</strong> Registo imutável de todos os eventos e tempos de transição numa base de dados <strong>MongoDB (Docker)</strong>, notificações críticas instantâneas no <strong>Telegram</strong> e dashboards analíticos de MTTR e causa-raiz em <strong>Metabase</strong>, cumprindo as diretrizes de rastreabilidade da norma <strong>ISO 27001</strong>.</li>
         </ul>
 
+        <div class="writeup-diagram-box">
+          <img src="figura3_netdevops_arquitetura.png" alt="Arquitetura NetDevOps Macro" class="writeup-img">
+          <p class="writeup-img-caption">Figura: Fluxo sequencial integrado de deteção (PRTG), orquestração (n8n), validação (NetBox SSoT), remediação (FortiOS) e persistência analítica (MongoDB/Metabase).</p>
+        </div>
+
         <h4>3. Validação Experimental com Chaos Engineering</h4>
-        <p>A arquitetura foi submetida a <strong>24 ensaios empíricos</strong> de injeção de falhas (interrupção intencional de túnel, alteração de chaves pré-partilhadas IKE e simulação de corte de enlace). Em todos os ensaios, a autorrecuperação concluiu com <strong>100% de sucesso</strong>, reduzindo o ciclo forense total para <strong>40 a 70 segundos</strong> vs. 30 minutos manuais (Classificação: 19 / 20).</p>
+        <p>A resiliência da solução foi submetida a <strong>24 ensaios empíricos</strong> de injeção intencional de falhas em ambiente virtualizado (VMware Workstation Pro): alteração forçada de gateways, corrupção de propostas de Phase 2, bloqueio de políticas de firewall e simulação de corte de alimentação elétrica. Resultados obtidos:</p>
+        <ul>
+          <li><strong>Convergência do Motor de Remediação:</strong> A retificação ativa da anomalia no FortiOS concluiu-se consistentemente entre <strong>4 e 7 segundos</strong>.</li>
+          <li><strong>Ciclo Forense Total:</strong> Desde o disparo da sonda, passando pela orquestração, remediação, gravação no MongoDB e notificação Telegram, o tempo total situou-se entre <strong>40 e 70 segundos</strong> (face aos 30 minutos do processo manual).</li>
+          <li><strong>Taxa de Sucesso:</strong> 100% de autorrecuperação sem intervenção humana nos cenários elegíveis e despiste preciso imediato no cenário de corte de energia via Pre-Check ICMP.</li>
+          <li><strong>Reconhecimento Académico:</strong> Projeto defendido e aprovado com a nota de <strong>19 / 20 valores</strong>.</li>
+        </ul>
       `
     },
     en: {
       title: "Closed-Loop Remediation of Configuration Drift in FortiOS via REST API & NetBox",
-      meta: "NetDevOps · Fortinet FortiGate · NetBox SSoT/IPAM · Chaos Engineering · ISO 27001",
+      meta: "NetDevOps · Fortinet FortiGate · NetBox SSoT/IPAM · Chaos Engineering · ISO 27001 · Grade: 19 / 20",
       content: `
+        <div class="writeup-diagram-box">
+          <img src="figura4_topologia_arte.png" alt="ARTE I.P. Hybrid Topology" class="writeup-img">
+          <p class="writeup-img-caption">Figure: Hybrid infrastructure topology for ARTE, I.P. (Hub FortiGate vs. Spoke FortiGate connected via MPLS Underlay and IPsec Overlay).</p>
+        </div>
+
         <h4>1. The Problem: Silent Degradation and Configuration Drift</h4>
-        <p>In enterprise hybrid networks running IPsec IKEv2 VPN tunnels over MPLS, manual changes or transient glitches cause configuration drift across Gateways, Phase 2 CIDRs, Firewall Policies, or Security Associations. Detection traditionally relies on human ticketing, resulting in high MTTR (30–45 minutes).</p>
-        
-        <h4>2. Event-Driven Architectural Solution</h4>
-        <p>I architected and engineered a closed-loop automated system structured across integrated modules:</p>
+        <p>In critical enterprise backbones relying on IPsec IKEv2 tunnels over leased Underlay MPLS circuits, unintended configuration drift (gateway misconfigurations, mismatched Phase 2 CIDR selectors, altered firewall filtering policies) creates silent outages. Traditional network operations depend on end-user incident tickets, causing average <strong>MTTR to skyrocket to 15–30 minutes</strong> and demanding manual senior engineer intervention.</p>
+
+        <h4>2. Event-Driven Closed-Loop Architecture</h4>
+        <p>Engineered in partnership with <strong>ARTE (State Agency for Technological Reform)</strong>, this architecture implements the NetDevOps paradigm through 5 decoupled building blocks:</p>
         <ul>
-          <li><strong>Differential Probing (PRTG):</strong> Continuous telemetry with ICMP pre-checks to distinguish physical carrier failures from logical IPsec renegotiations, eliminating false alarms (&lt;10s, &gt;95% MTTD reduction).</li>
-          <li><strong>Event Orchestration (n8n):</strong> Event webhook triggered instantly upon metric threshold alarms.</li>
-          <li><strong>Single Source of Truth (NetBox):</strong> Dynamic IPAM reconciliation and declarative golden config audit via REST API.</li>
-          <li><strong>Hybrid Remediation Engine:</strong> Primary automated patching via <code>FortiOS REST API</code> with Token and Trusted Hosts, converging in <strong>4–7 seconds</strong>. When encountering sandbox/write barriers, the engine seamlessly invokes deterministic <code>Python + Netmiko (SSH)</code> contingency.</li>
-          <li><strong>SRE Observability & Audit Trail:</strong> Forensic syslog persistence in MongoDB (Docker), real-time alerts via Telegram Bot, and SRE/MTTR dashboards in Metabase (ISO 27001 compliance).</li>
+          <li><strong>Fault Detection & Differential Telemetry (PRTG):</strong> Continuous monitoring with preventive ICMP probing (<em>Pre-Check</em>) targeting the remote branch underlay router IP. If the physical link or power fails, software remediation is inhibited, suppressing false positives and dropping <strong>MTTD to &lt; 10s (&gt;95% reduction)</strong>.</li>
+          <li><strong>Event Bus & Orchestration (n8n):</strong> Reactive event handling via real-time HTTP Webhooks, eliminating expensive polling and ensuring idempotent workflow execution.</li>
+          <li><strong>Single Source of Truth / IPAM (NetBox):</strong> Queries the declarative golden configuration via REST API, validating addressing anomalies and interface bindings.</li>
+          <li><strong>Hybrid Remediation Engine (REST API & Netmiko SSH):</strong>
+            <ul>
+              <li><strong>Phase 1 (Sandbox Testing):</strong> Faced with trial license REST API write restrictions on virtual FortiGates, I developed deterministic Python scripts with the <code>Netmiko</code> library over SSH (<code>remediate_config.py</code>, <code>remediate_phase2.py</code>, <code>remediate_tunnel.py</code>) incorporating strict exception handling and idempotency.</li>
+              <li><strong>Phase 2 (Production / Commercial License):</strong> Leveraging commercial licensing enabled direct access to the <code>FortiOS REST API</code> via API Tokens and <em>Trusted Hosts</em> (Zero Trust management). Surgical configuration patches target CMDB endpoints (<code>/api/v2/cmdb/vpn.ipsec/phase2-interface</code> and <code>/api/v2/cmdb/router/static</code>), correcting gateways, Phase 2 subnets, firewall filtering, and forcing SA renegotiation.</li>
+            </ul>
+          </li>
+          <li><strong>Forensic Auditing & SRE Observability:</strong> Immutable audit logs persisted in <strong>MongoDB (Docker)</strong>, instant high-priority alerts dispatched via <strong>Telegram Bot</strong>, and operational SRE/MTTR telemetry visualized in real-time on <strong>Metabase</strong>, strictly aligned with <strong>ISO 27001</strong> traceability standards.</li>
         </ul>
 
+        <div class="writeup-diagram-box">
+          <img src="figura3_netdevops_arquitetura.png" alt="NetDevOps Macro Architecture" class="writeup-img">
+          <p class="writeup-img-caption">Figure: Macro architecture and sequential control flow between PRTG, n8n, NetBox, FortiOS REST API / Netmiko SSH, and MongoDB/Metabase auditing.</p>
+        </div>
+
         <h4>3. Empirical Validation via Chaos Engineering</h4>
-        <p>The system was tested across <strong>24 rigorous Chaos Engineering trials</strong> involving deliberate PSK corruptions, interface teardowns, and route deletions. Closed-loop recovery completed with <strong>100% success</strong>, slashing the total forensic cycle to <strong>40–70 seconds</strong> vs. 30 minutes manually (Grade: 19 / 20).</p>
+        <p>The system was evaluated across <strong>24 rigorous fault injection trials</strong> in VMware Workstation Pro (simulating gateway tampering, Phase 2 proposal corruption, firewall policy blocks, and remote site electrical failures):</p>
+        <ul>
+          <li><strong>Remediation Engine Convergence:</strong> Active drift correction on FortiOS converged deterministically in <strong>4 to 7 seconds</strong>.</li>
+          <li><strong>Total Closed-Loop Forensic Cycle:</strong> From initial sensor alarm through remediation, MongoDB audit persistence, and Telegram dispatch, elapsed time averaged <strong>40 to 70 seconds</strong> (vs. 30 minutes manual).</li>
+          <li><strong>Success Rate:</strong> 100% autonomous resolution without human intervention in eligible failure scenarios, and instantaneous physical triage on power outages via ICMP Pre-Check.</li>
+          <li><strong>Academic Distinction:</strong> Successfully defended with a grade of <strong>19 / 20</strong>.</li>
+        </ul>
       `
     }
   },
@@ -293,80 +345,100 @@ const writeupData = {
       title: "Eliminando Segredos Estáticos em CI/CD: Autenticação Federada com GitHub Actions e Azure OIDC",
       meta: "SecDevOps · Zero Trust · Azure Entra ID · GitHub Actions OIDC · azure/login@v2 · Checkov",
       content: `
-        <h4>1. O Risco de Credenciais Estáticas em Pipelines</h4>
-        <p>O armazenamento de <em>Service Principal client secrets</em> de longa duração nas variáveis secretas de CI/CD representa uma das maiores superfícies de ataque para <em>supply chain compromises</em>. O vazamento acidental dessas credenciais concede acesso persistente não monitorizado aos recursos da cloud.</p>
-        
-        <h4>2. Implementação de Federação OpenID Connect (OIDC)</h4>
-        <p>Para mitigar este vetor, configurei uma relação de confiança federada direta entre o GitHub Actions e o Microsoft Entra ID:</p>
+        <h4>1. O Vetor de Risco das Credenciais Estáticas</h4>
+        <p>O armazenamento de <em>Service Principal secrets</em> de longa duração nas definições secretas de repositórios CI/CD representa uma das vulnerabilidades mais exploradas em ataques à cadeia de abastecimento de software (<em>supply chain compromises</em>). Uma fuga acidental em logs de build ou um commit inadvertido concede persistência não autorizada ao tenant de cloud da organização, exigindo rotações de emergência e auditorias complexas.</p>
+
+        <h4>2. Arquitetura de Confiança Federada com OpenID Connect (OIDC)</h4>
+        <p>Para implementar uma postura rigorosa de <strong>Zero Trust</strong>, configurei a federação de identidades entre o GitHub Actions e o Microsoft Entra ID (Azure AD), eliminando integralmente as palavras-passe estáticas:</p>
         <ul>
-          <li><strong>Tokens JWT Efêmeros:</strong> O runner do GitHub solicita um token de identidade OIDC assinado criptograficamente contendo claims verificadas (repositório, branch e ambiente).</li>
-          <li><strong>Troca de Token no Azure STS via <code>azure/login@v2</code>:</strong> O Azure Security Token Service valida a assinatura e as claims do GitHub, emitindo um <em>access token</em> temporário com validade curta sem necessidade de qualquer password ou secret armazenado.</li>
-          <li><strong>Least-Privilege RBAC & Bicep:</strong> Aprovisionamento declarativo via Bicep com injeção dinâmica de Connection Strings estritamente limitadas ao Resource Group do projeto.</li>
-          <li><strong>Segurança Shift-Left (Checkov SAST):</strong> O pipeline inclui varredura automática de conformidade IaC com <code>Checkov</code>, bloqueando qualquer merge com violações de regras de segurança ou permissões excessivas.</li>
+          <li><strong>Claims Criptográficas Efêmeras:</strong> O runner do GitHub gera um token de identidade OIDC (JWT) assinado digitalmente, contendo claims estritas: organização, repositório, branch específico (ex: <code>refs/heads/main</code>) e ambiente.</li>
+          <li><strong>Troca de Token no Azure STS (<code>azure/login@v2</code>):</strong> O Azure Security Token Service valida criptograficamente o emissor do GitHub (<code>https://token.actions.githubusercontent.com</code>) e emite um <em>access token</em> temporário com validade máxima de 60 minutos, limitado estritamente ao Resource Group do projeto.</li>
+          <li><strong>Aprovisionamento Declarativo via IaC Bicep:</strong> A infraestrutura é descrita em código declarativo Bicep, com injeção dinâmica de Connection Strings e chaves de instrumentação via funções nativas (<code>listKeys()</code>), evitando qualquer parâmetro sensível hardcoded no repositório.</li>
+          <li><strong>Segurança Shift-Left com Checkov SAST:</strong> Integração de análise estática de segurança no pipeline através do <code>Checkov</code>, inspecionando templates Bicep e Dockerfiles antes do deployment para prevenir portas de gestão desprotegidas, protocolos obsoletos ou permissões excessivas no RBAC.</li>
         </ul>
 
-        <h4>3. Resultados e Benefícios de Segurança</h4>
-        <p>Eliminação de 100% dos segredos estáticos, conformidade com os princípios de <em>Zero Trust Architecture</em> e auditoria granular de todas as operações de aprovisionamento nos logs do Azure Activity.</p>
+        <h4>3. Resultados e Impacto Operacional</h4>
+        <p>Redução a zero do risco de fuga de credenciais no repositório, rastreabilidade total de cada operação nos logs do Azure Activity vinculada ao commit SHA e ao workflow do GitHub, e conformidade integral com as melhores práticas de DevSecOps para ambientes de produção.</p>
       `
     },
     en: {
       title: "Eliminating Static Secrets in CI/CD: Federated Authentication with GitHub Actions & Azure OIDC",
       meta: "SecDevOps · Zero Trust · Azure Entra ID · GitHub Actions OIDC · azure/login@v2 · Checkov",
       content: `
-        <h4>1. The Threat of Long-Lived CI/CD Secrets</h4>
-        <p>Storing long-lived Service Principal client secrets inside CI/CD repositories constitutes a high-risk vector for supply chain breaches. An accidental token leak grants unauthorized, hard-to-detect persistent access into cloud estates.</p>
-        
-        <h4>2. Implementing OpenID Connect (OIDC) Federation</h4>
-        <p>To eliminate this threat surface, I engineered a direct federated identity trust relationship between GitHub Actions and Microsoft Entra ID:</p>
+        <h4>1. Threat Surface of Long-Lived CI/CD Secrets</h4>
+        <p>Storing long-lived Service Principal secrets inside CI/CD repository secrets remains one of the most exploited attack vectors in software supply chain compromises. Accidental leaks in build logs or rogue commits grant persistent, hard-to-detect administrative access into corporate cloud tenants, necessitating disruptive emergency key rotations.</p>
+
+        <h4>2. Federated Trust Architecture via OpenID Connect (OIDC)</h4>
+        <p>To enforce an uncompromising <strong>Zero Trust</strong> security posture, I engineered federated identity trust between GitHub Actions and Microsoft Entra ID (Azure AD), eliminating static credentials altogether:</p>
         <ul>
-          <li><strong>Ephemeral JWT Tokens:</strong> The GitHub workflow runner requests a cryptographically signed OIDC identity token containing verifiable claims (repository, branch, and environment).</li>
-          <li><strong>Token Exchange via <code>azure/login@v2</code>:</strong> Azure's Security Token Service validates the signature and claims against Entra ID, returning a short-lived access token without storing any secrets in GitHub.</li>
-          <li><strong>Least-Privilege RBAC & Bicep:</strong> Declarative Bicep provisioning with dynamic Connection String injection confined to target Resource Groups.</li>
-          <li><strong>Shift-Left IaC Security:</strong> Automated <code>Checkov</code> SAST scans to catch misconfigurations before deployment commits are reconciled.</li>
+          <li><strong>Ephemeral Cryptographic Claims:</strong> The GitHub workflow runner requests a digitally signed OIDC identity token (JWT) containing cryptographic claims: organization, repository, branch restriction (e.g., <code>refs/heads/main</code>), and deployment environment.</li>
+          <li><strong>Token Exchange via <code>azure/login@v2</code>:</strong> Azure's Security Token Service validates the GitHub token issuer (<code>https://token.actions.githubusercontent.com</code>) and issues a short-lived access token valid for at most 60 minutes, strictly constrained to the project's target Resource Group.</li>
+          <li><strong>Declarative IaC with Bicep:</strong> Cloud infrastructure is declared through modular Bicep templates with dynamic injection of connection strings and instrumentation keys via native functions (<code>listKeys()</code>), keeping repository configuration completely sanitized.</li>
+          <li><strong>Shift-Left Security with Checkov SAST:</strong> Automated static security scanning embedded into pull requests using <code>Checkov</code>, inspecting IaC templates and Dockerfiles to prevent exposed management ports, deprecated protocols, or overprivileged RBAC assignments.</li>
         </ul>
 
-        <h4>3. Security Outcomes</h4>
-        <p>Achieved 100% elimination of hardcoded secrets, verified Zero Trust operational compliance, and comprehensive auditability in Azure Activity logs.</p>
+        <h4>3. Operational Outcomes & Compliance</h4>
+        <p>100% elimination of hardcoded secrets, complete operational auditability in Azure Activity logs tied to specific commit SHAs and workflow runs, and full compliance with enterprise DevSecOps standards.</p>
       `
     }
   },
   3: {
     pt: {
       title: "Arquitetura Multi-Cloud Resiliente: Mitigando Falhas com Fallback Desacoplado entre Azure e GCP",
-      meta: "Multi-Cloud Architecture · Azure PaaS · GCP Firestore · db.runTransaction · FinOps · RGPD",
+      meta: "Multi-Cloud Architecture · Azure PaaS · GCP Firestore · db.runTransaction · FinOps · RGPD · Classificação: 20 / 20",
       content: `
-        <h4>1. Desafio de Disponibilidade e Conformidade</h4>
-        <p>Projetar uma plataforma de elevado tráfego capaz de suportar falhas regionais completas de fornecedor de nuvem (Cloud Outage) sem perda de integridade de dados e garantindo estrita conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD).</p>
-        
-        <h4>2. Padrões de Resiliência e Desacoplamento</h4>
+        <div class="writeup-diagram-box">
+          <img src="figura11_cityguards_multicloud_real.png" alt="CityGuards Multi-Cloud Dashboard" class="writeup-img">
+          <p class="writeup-img-caption">Figura: Painel operacional da plataforma CityGuards em arquitetura híbrida ativa (Microsoft Azure + GCP Firestore).</p>
+        </div>
+
+        <h4>1. O Desafio: Interoperabilidade Híbrida e Resiliência Operacional</h4>
+        <p>Desenvolver uma plataforma distribuída de reporte cívico e gestão de incidentes municipais (CityGuards) capaz de manter disponibilidade contínua, tolerância a falhas de fornecedores cloud individuais e rigorosa proteção de dados sensíveis de cidadãos em conformidade com o <strong>RGPD</strong>.</p>
+
+        <h4>2. Mecanismos Avançados de Engenharia e Fallback</h4>
         <ul>
-          <li><strong>Transações Atómicas no Firestore (<code>db.runTransaction</code>):</strong> Migração desacoplada de Azure Cosmos DB para GCP Firestore, prevenindo <em>race conditions</em> em atualizações de estado simultâneas com isolamento <em>multi-tenant</em> por município.</li>
-          <li><strong>Graceful Degradation:</strong> Dupla resiliência com <em>graceful degradation</em> de Azure AI Vision para NLP local e <em>fallback in-process</em> de geração de PDFs perante pausas FinOps no Azure Container Instances (ACI).</li>
-          <li><strong>Otimização FinOps:</strong> Controlo rigoroso de consumo de recursos computacionais através de escalamento reativo sob demanda.</li>
-          <li><strong>Análise de Soberania de Dados (RGPD vs. US CLOUD Act):</strong> Avaliação jurídica e técnica dos fluxos de dados transfronteiriços para garantir conformidade estrita de dados europeus.</li>
+          <li><strong>Persistência Desacoplada e Migração de Contingência:</strong> Durante o desenvolvimento, o esgotamento precoce de créditos estudantis no Azure Cosmos DB foi convertido numa oportunidade de engenharia de resiliência: a camada NoSQL foi migrada de forma totalmente desacoplada para o <strong>Google Cloud Firestore</strong>, mantendo o frontend e API no <strong>Azure App Service</strong> e os uploads no <strong>Azure Blob Storage</strong>.</li>
+          <li><strong>Consistência e Atomicidade ACID (<code>db.runTransaction</code>):</strong> Para evitar <em>race conditions</em> na atribuição de pontos de gamificação e resgate de vouchers cívicos sob concorrência intensa, todas as mutações de pontuação são orquestradas via transações atómicas ACID no Firestore, garantindo isolamento absoluto por município (<em>multi-tenant</em>).</li>
+          <li><strong>Graceful Degradation Dual (IA & Microsserviços):</strong>
+            <ul>
+              <li><strong>Azure AI Vision vs. NLP Local:</strong> Quando o serviço cognitivo atinge limites de quota ou latência excessiva, o backend aciona de forma transparente o algoritmo local <code>TextHeuristicFallback</code>, categorizando a ocorrência por padrões lexicais e semânticos ponderados sem interromper a submissão.</li>
+              <li><strong>Geração de PDFs em ACI com Fallback In-Process:</strong> Para controlo de custos <strong>FinOps</strong>, o microsserviço de geração de comprovativos em <em>Azure Container Instances (ACI)</em> só opera sob demanda; se a instância contentorizada estiver pausada ou indisponível, o sistema recorre imediatamente à geração <em>in-process</em> em Node.js com a paleta oficial da plataforma.</li>
+            </ul>
+          </li>
+          <li><strong>Soberania de Dados e Conformidade (RGPD vs. US CLOUD Act):</strong> Realização de um estudo aprofundado sobre soberania digital, analisando a compatibilidade entre a retenção de dados de cidadãos na União Europeia e os riscos de extraterritorialidade introduzidos pelo US CLOUD Act em fornecedores de computação sediados nos EUA.</li>
         </ul>
 
-        <h4>3. Classificação Máxima</h4>
-        <p>O projeto foi galardoado com a <strong>classificação máxima de 20 / 20 valores</strong>, elogiado pelo rigor na separação de responsabilidades e tratamento de casos limite de infraestrutura.</p>
+        <h4>3. Reconhecimento Máximo de Engenharia</h4>
+        <p>Pela robustez arquitetural, capacidade demonstrada de operar eficazmente entre clouds distintas (Azure e GCP) e elegância na gestão de falhas de infraestrutura, o projeto obteve a <strong>classificação máxima de 20 / 20 valores</strong>.</p>
       `
     },
     en: {
       title: "Resilient Multi-Cloud Architecture: Mitigating Failures with Decoupled Fallback across Azure and GCP",
-      meta: "Multi-Cloud Architecture · Azure PaaS · GCP Firestore · db.runTransaction · FinOps · GDPR",
+      meta: "Multi-Cloud Architecture · Azure PaaS · GCP Firestore · db.runTransaction · FinOps · GDPR · Grade: 20 / 20",
       content: `
-        <h4>1. High-Availability & Data Sovereignty Challenge</h4>
-        <p>Designing a high-throughput platform engineered to withstand full regional outages of a primary cloud provider while maintaining data integrity and complying with European General Data Protection Regulation (GDPR) mandates.</p>
-        
-        <h4>2. Resilience Patterns & Decoupled Architecture</h4>
+        <div class="writeup-diagram-box">
+          <img src="figura11_cityguards_multicloud_real.png" alt="CityGuards Multi-Cloud Dashboard" class="writeup-img">
+          <p class="writeup-img-caption">Figure: Operational management dashboard for CityGuards running on active hybrid multi-cloud architecture (Microsoft Azure + GCP Firestore).</p>
+        </div>
+
+        <h4>1. The Challenge: Hybrid Interoperability & Operational Resilience</h4>
+        <p>Engineering a distributed civic issue reporting and municipal asset management platform (CityGuards) capable of maintaining 99.9% uptime, surviving regional cloud provider outages, and guaranteeing citizen data protection in compliance with the European <strong>GDPR</strong>.</p>
+
+        <h4>2. Advanced Engineering Patterns & Graceful Fallbacks</h4>
         <ul>
-          <li><strong>Atomic Concurrency in Firestore (<code>db.runTransaction</code>):</strong> Decoupled migration from Azure Cosmos DB to GCP Firestore, preventing race conditions during high-volume simultaneous state changes with municipal multi-tenant isolation.</li>
-          <li><strong>Graceful Degradation:</strong> Dual resilience with graceful degradation of Azure AI Vision to local NLP heuristics and in-process PDF generation fallback during FinOps pauses on Azure Container Instances (ACI).</li>
-          <li><strong>FinOps Optimization:</strong> Tight cost control and resource scaling policies to prevent infrastructure over-provisioning.</li>
-          <li><strong>Data Sovereignty Assessment:</strong> Conducted technical analysis evaluating GDPR requirements against extraterritorial reach (US CLOUD Act) for cross-cloud communications.</li>
+          <li><strong>Decoupled Persistence & Contingency Migration:</strong> When educational credit limitations threatened Azure Cosmos DB availability, I spearheaded an agile migration to <strong>Google Cloud Firestore</strong>, establishing a truly decoupled hybrid multi-cloud topology: compute and blob ingestion hosted on <strong>Azure App Service & Blob Storage</strong>, with persistent state managed across <strong>GCP</strong>.</li>
+          <li><strong>ACID Transactional Atomicity (<code>db.runTransaction</code>):</strong> To prevent concurrency race conditions in civic gamification points and voucher redemption under heavy traffic spikes, all ledger mutations execute within atomic Firestore transactions (<code>db.runTransaction</code>), preserving multi-tenant municipal boundaries.</li>
+          <li><strong>Dual Graceful Degradation Patterns:</strong>
+            <ul>
+              <li><strong>Azure AI Vision vs. Local NLP:</strong> Should cognitive computer vision APIs encounter rate limits or latency degradation, the backend seamlessly triggers a local regex-based <code>TextHeuristicFallback</code> algorithm, classifying civic reports via lexical matching without stalling citizen submissions.</li>
+              <li><strong>FinOps Microservices with In-Process Fallback:</strong> To enforce strict <strong>FinOps</strong> cost discipline, the PDF generation microservice on <em>Azure Container Instances (ACI)</em> is spun up dynamically; if ACI is cold-starting or throttled, an in-process Node.js rendering fallback generates the branded certificate instantaneously.</li>
+            </ul>
+          </li>
+          <li><strong>Data Sovereignty Assessment (GDPR vs. US CLOUD Act):</strong> Comprehensive technical and legal analysis evaluating the storage of European civic records within EU cloud regions while mitigating extraterritorial access risks stemming from the US CLOUD Act.</li>
         </ul>
 
-        <h4>3. Maximum Grade</h4>
-        <p>Recognized with the <strong>maximum grade of 20 / 20</strong> for excellence in software architecture, fault-tolerant design, and cloud compliance.</p>
+        <h4>3. Maximum Engineering Grade</h4>
+        <p>Distinguished with the <strong>maximum grade of 20 / 20</strong> for technical excellence in distributed systems architecture, cross-cloud resilience, and proactive failure mitigation.</p>
       `
     }
   }
@@ -530,6 +602,45 @@ document.addEventListener('keydown', (e) => {
     closeWriteupModal();
   }
 });
+
+// ============================================================
+// Blueprint Interactive Tab Switching
+// ============================================================
+function switchBlueprintTab(projectId, tabName, btn) {
+  const card = btn.closest('.blueprint-card');
+  if (!card) return;
+
+  // Toggle active class on tab buttons
+  card.querySelectorAll('.bp-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Toggle views
+  card.querySelectorAll('.bp-view').forEach(v => {
+    v.style.display = 'none';
+    v.classList.remove('active');
+  });
+
+  const targetView = card.querySelector(`#bp${projectId}-view-${tabName}`);
+  if (targetView) {
+    targetView.style.display = 'block';
+    targetView.classList.add('active');
+  }
+
+  // Update blueprint name bar
+  const nameLabel = card.querySelector('.blueprint-name');
+  if (nameLabel) {
+    if (tabName === 'svg') {
+      nameLabel.textContent = projectId === 1 ? 'closed_loop_topology.svg' : 'multicloud_resilience.svg';
+    } else if (tabName === 'arte') {
+      nameLabel.textContent = 'figura4_topologia_arte.png (1344x477)';
+    } else if (tabName === 'macro') {
+      nameLabel.textContent = 'figura3_netdevops_arquitetura.png (1583x829)';
+    } else if (tabName === 'dashboard') {
+      nameLabel.textContent = 'figura11_cityguards_multicloud_real.png (1502x844)';
+    }
+  }
+}
+window.switchBlueprintTab = switchBlueprintTab;
 
 // ============================================================
 // Active Navbar Link Indicator on Scroll

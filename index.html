@@ -476,47 +476,69 @@
                 <div class="blueprint-status">● Live Telemetry</div>
               </div>
 
+              <!-- Blueprint Interactive Tabs -->
+              <div class="blueprint-tabs">
+                <button type="button" class="bp-tab active" onclick="switchBlueprintTab(1, 'svg', this)" data-i18n="bp_tab_logical">Blueprint Lógico</button>
+                <button type="button" class="bp-tab" onclick="switchBlueprintTab(1, 'arte', this)" data-i18n="bp_tab_arte">Topologia Real ARTE</button>
+                <button type="button" class="bp-tab" onclick="switchBlueprintTab(1, 'macro', this)" data-i18n="bp_tab_macro">Macro NetDevOps</button>
+              </div>
+
               <div class="blueprint-canvas">
-                <svg class="blueprint-svg" viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Connection Lines -->
-                  <path d="M 80,60 L 230,60" stroke="#10b981" stroke-width="2" stroke-dasharray="4 3" />
-                  <path d="M 230,60 L 380,60" stroke="#10b981" stroke-width="2" />
-                  <path d="M 230,60 L 230,150" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4 3" />
-                  <path d="M 230,150 L 100,230" stroke="#34d399" stroke-width="2" />
-                  <path d="M 230,150 L 360,230" stroke="#34d399" stroke-width="2" />
-                  <path d="M 100,230 L 230,230" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" />
-                  <path d="M 230,230 L 360,230" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" />
+                <!-- View 1: SVG Blueprint -->
+                <div id="bp1-view-svg" class="bp-view active">
+                  <svg class="blueprint-svg" viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Connection Lines -->
+                    <path d="M 80,60 L 230,60" stroke="#10b981" stroke-width="2" stroke-dasharray="4 3" />
+                    <path d="M 230,60 L 380,60" stroke="#10b981" stroke-width="2" />
+                    <path d="M 230,60 L 230,150" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4 3" />
+                    <path d="M 230,150 L 100,230" stroke="#34d399" stroke-width="2" />
+                    <path d="M 230,150 L 360,230" stroke="#34d399" stroke-width="2" />
+                    <path d="M 100,230 L 230,230" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" />
+                    <path d="M 230,230 L 360,230" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" />
 
-                  <!-- Node 1: Underlay MPLS / IPsec -->
-                  <rect x="20" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
-                  <text x="80" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">Underlay / IPsec</text>
-                  <text x="80" y="73" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">FortiOS VPN Hub</text>
+                    <!-- Node 1: Underlay MPLS / IPsec -->
+                    <rect x="20" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
+                    <text x="80" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">Underlay / IPsec</text>
+                    <text x="80" y="73" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">FortiOS VPN Hub</text>
 
-                  <!-- Node 2: PRTG Sonda -->
-                  <rect x="170" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="1.5" />
-                  <text x="230" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">PRTG Probing</text>
-                  <text x="230" y="73" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">MTTD &lt; 10s (&gt;95%)</text>
+                    <!-- Node 2: PRTG Sonda -->
+                    <rect x="170" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="1.5" />
+                    <text x="230" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">PRTG Probing</text>
+                    <text x="230" y="73" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">MTTD &lt; 10s (&gt;95%)</text>
 
-                  <!-- Node 3: n8n Event Broker -->
-                  <rect x="320" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
-                  <text x="380" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">n8n Orchestrator</text>
-                  <text x="380" y="73" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Event-Driven Hook</text>
+                    <!-- Node 3: n8n Event Broker -->
+                    <rect x="320" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
+                    <text x="380" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">n8n Orchestrator</text>
+                    <text x="380" y="73" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Event-Driven Hook</text>
 
-                  <!-- Node 4: NetBox SSOT -->
-                  <rect x="170" y="125" width="120" height="50" rx="8" fill="#131e2c" stroke="#06b6d4" stroke-width="1.5" />
-                  <text x="230" y="148" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">NetBox SSoT/IPAM</text>
-                  <text x="230" y="163" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Golden Config</text>
+                    <!-- Node 4: NetBox SSOT -->
+                    <rect x="170" y="125" width="120" height="50" rx="8" fill="#131e2c" stroke="#06b6d4" stroke-width="1.5" />
+                    <text x="230" y="148" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">NetBox SSoT/IPAM</text>
+                    <text x="230" y="163" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Golden Config</text>
 
-                  <!-- Node 5: Hybrid Remediation Engine -->
-                  <rect x="30" y="205" width="140" height="55" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="2" />
-                  <text x="100" y="228" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">Hybrid Engine</text>
-                  <text x="100" y="243" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">REST API (4–7s) / SSH</text>
+                    <!-- Node 5: Hybrid Remediation Engine -->
+                    <rect x="30" y="205" width="140" height="55" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="2" />
+                    <text x="100" y="228" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">Hybrid Engine</text>
+                    <text x="100" y="243" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">REST API (4–7s) / SSH</text>
 
-                  <!-- Node 6: Observability / Telegram -->
-                  <rect x="290" y="205" width="140" height="55" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
-                  <text x="360" y="228" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">Auditoria SRE</text>
-                  <text x="360" y="243" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">MongoDB, Metabase (ISO)</text>
-                </svg>
+                    <!-- Node 6: Observability / Telegram -->
+                    <rect x="290" y="205" width="140" height="55" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
+                    <text x="360" y="228" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">Auditoria SRE</text>
+                    <text x="360" y="243" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">MongoDB, Metabase (ISO)</text>
+                  </svg>
+                </div>
+
+                <!-- View 2: Topologia Real ARTE -->
+                <div id="bp1-view-arte" class="bp-view" style="display: none;">
+                  <img src="figura4_topologia_arte.png" alt="Topologia Real ARTE I.P." class="blueprint-real-img" onclick="openWriteupModal(1)">
+                  <p class="blueprint-img-note">▲ Topologia Real ARTE, I.P. (Do Relatório Técnico · Clique p/ expandir)</p>
+                </div>
+
+                <!-- View 3: Macro NetDevOps -->
+                <div id="bp1-view-macro" class="bp-view" style="display: none;">
+                  <img src="figura3_netdevops_arquitetura.png" alt="Macro Arquitetura NetDevOps" class="blueprint-real-img" onclick="openWriteupModal(1)">
+                  <p class="blueprint-img-note">▲ Macro Arquitetura NetDevOps (Do Relatório Técnico · Clique p/ expandir)</p>
+                </div>
               </div>
 
               <div class="blueprint-metrics-bar">
@@ -580,7 +602,7 @@
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 <span data-i18n="btn_view_linkedin">Ver no LinkedIn</span>
               </a>
-              <button type="button" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" onclick="openWriteupModal(2)" data-i18n="btn_read_cloud_brief">
+              <button type="button" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" onclick="openWriteupModal(3)" data-i18n="btn_read_cloud_brief">
                 Ler Análise Multi-Cloud ➔
               </button>
             </div>
@@ -599,35 +621,50 @@
                 <div class="blueprint-status" style="color: var(--accent-cyan);">● Zero Secret Leaks</div>
               </div>
 
+              <!-- Blueprint Interactive Tabs -->
+              <div class="blueprint-tabs">
+                <button type="button" class="bp-tab active" onclick="switchBlueprintTab(2, 'svg', this)" data-i18n="bp_tab_multicloud">Fluxo Multi-Cloud</button>
+                <button type="button" class="bp-tab" onclick="switchBlueprintTab(2, 'dashboard', this)" data-i18n="bp_tab_dashboard">Painel Real Autarquia</button>
+              </div>
+
               <div class="blueprint-canvas">
-                <svg class="blueprint-svg" viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Flow Paths -->
-                  <path d="M 70,140 L 170,80" stroke="#06b6d4" stroke-width="2" />
-                  <path d="M 70,140 L 170,200" stroke="#10b981" stroke-width="2" stroke-dasharray="4 3" />
-                  <path d="M 290,80 L 380,140" stroke="#06b6d4" stroke-width="2" />
-                  <path d="M 290,200 L 380,140" stroke="#10b981" stroke-width="2" />
-                  <path d="M 230,110 L 230,170" stroke="#34d399" stroke-width="1.8" stroke-dasharray="3 3" />
+                <!-- View 1: SVG Multi-Cloud -->
+                <div id="bp2-view-svg" class="bp-view active">
+                  <svg class="blueprint-svg" viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Flow Paths -->
+                    <path d="M 70,140 L 170,80" stroke="#06b6d4" stroke-width="2" />
+                    <path d="M 70,140 L 170,200" stroke="#10b981" stroke-width="2" stroke-dasharray="4 3" />
+                    <path d="M 290,80 L 380,140" stroke="#06b6d4" stroke-width="2" />
+                    <path d="M 290,200 L 380,140" stroke="#10b981" stroke-width="2" />
+                    <path d="M 230,110 L 230,170" stroke="#34d399" stroke-width="1.8" stroke-dasharray="3 3" />
 
-                  <!-- Node: Client Request -->
-                  <rect x="10" y="115" width="100" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
-                  <text x="60" y="138" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600" text-anchor="middle">HTTPS Client</text>
-                  <text x="60" y="153" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">TLS 1.3 Strict</text>
+                    <!-- Node: Client Request -->
+                    <rect x="10" y="115" width="100" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
+                    <text x="60" y="138" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600" text-anchor="middle">HTTPS Client</text>
+                    <text x="60" y="153" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">TLS 1.3 Strict</text>
 
-                  <!-- Node: Azure App Service -->
-                  <rect x="160" y="55" width="140" height="52" rx="8" fill="#131e2c" stroke="#06b6d4" stroke-width="2" />
-                  <text x="230" y="78" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">Azure App Service</text>
-                  <text x="230" y="93" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">Bicep IaC Declarativo</text>
+                    <!-- Node: Azure App Service -->
+                    <rect x="160" y="55" width="140" height="52" rx="8" fill="#131e2c" stroke="#06b6d4" stroke-width="2" />
+                    <text x="230" y="78" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">Azure App Service</text>
+                    <text x="230" y="93" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">Bicep IaC Declarativo</text>
 
-                  <!-- Node: Fallback Docker ACI -->
-                  <rect x="160" y="175" width="140" height="52" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="1.5" />
-                  <text x="230" y="198" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">GCP Firestore &amp; Run</text>
-                  <text x="230" y="213" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">ACID (db.runTransaction)</text>
+                    <!-- Node: Fallback Docker ACI -->
+                    <rect x="160" y="175" width="140" height="52" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="1.5" />
+                    <text x="230" y="198" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">GCP Firestore &amp; Run</text>
+                    <text x="230" y="213" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">ACID (db.runTransaction)</text>
 
-                  <!-- Node: OIDC CI/CD Pipeline -->
-                  <rect x="330" y="115" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
-                  <text x="390" y="138" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600" text-anchor="middle">GitHub Actions</text>
-                  <text x="390" y="153" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">OIDC (azure/login@v2)</text>
-                </svg>
+                    <!-- Node: OIDC CI/CD Pipeline -->
+                    <rect x="330" y="115" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
+                    <text x="390" y="138" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600" text-anchor="middle">GitHub Actions</text>
+                    <text x="390" y="153" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">OIDC (azure/login@v2)</text>
+                  </svg>
+                </div>
+
+                <!-- View 2: Dashboard Real Autarquia -->
+                <div id="bp2-view-dashboard" class="bp-view" style="display: none;">
+                  <img src="figura11_cityguards_multicloud_real.png" alt="Painel Real Autarquia CityGuards" class="blueprint-real-img" onclick="openWriteupModal(2)">
+                  <p class="blueprint-img-note">▲ Painel Real de Gestão Autárquica CityGuards (Do Relatório Técnico · Clique p/ expandir)</p>
+                </div>
               </div>
 
               <div class="blueprint-metrics-bar">

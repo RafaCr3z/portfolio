@@ -1048,6 +1048,70 @@ button {
   display: block;
 }
 
+.blueprint-tabs {
+  display: flex;
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 12px;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.bp-tab {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.bp-tab:hover {
+  color: var(--text-main);
+  border-color: var(--border-hover);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.bp-tab.active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.45);
+  color: var(--accent-emerald);
+  font-weight: 600;
+}
+
+.bp-view {
+  width: 100%;
+}
+
+.blueprint-real-img {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: contain;
+  display: block;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform var(--transition);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.blueprint-real-img:hover {
+  transform: scale(1.015);
+}
+
+.blueprint-img-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
 .blueprint-metrics-bar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1229,6 +1293,35 @@ button {
 .brief-modal-body ul {
   margin-left: 20px;
   margin-bottom: 16px;
+}
+
+.writeup-diagram-box {
+  margin: 22px 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-sm);
+}
+
+.writeup-img {
+  width: 100%;
+  height: auto;
+  max-height: 440px;
+  object-fit: contain;
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.writeup-img-caption {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-faint);
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid var(--border);
+  margin: 0 !important;
+  line-height: 1.5;
 }
 
 /* ---------- Section 5: Contact ---------- */
