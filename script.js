@@ -114,22 +114,24 @@ const translations = {
     p3_metric3_lbl: "Sistemas (Airways + Banco)",
     btn_pds_docs: "Explorar Arquitetura ➔",
 
-    p4_grade: "Engenharia Web &amp; Backend · Arquitetura MVC Enterprise",
-    p4_title: "Plataforma Empresarial de Gestão e Reserva de Transportes (FelixBus)",
-    p4_lead: "<strong>Plataforma Web de Mobilidade e Faturação:</strong> Tecnologias: Java (JSP, Servlets), MySQL, Apache Tomcat, HTML5/CSS3/JavaScript. Sistema completo de gestão de rotas de autocarro, emissão de bilhetes, controlo de lotação e perfis de acesso.",
-    p4_bullet1: "<strong>Padrão de Desenho MVC (Model-View-Controller):</strong> Desacoplamento estruturado entre a camada de apresentação (JSP/JSTL), controladores de lógica de negócio em Servlets Java e camada de persistência com padrões DAO (Data Access Object) e DTO.",
-    p4_bullet2: "<strong>Modelação Relacional &amp; Integridade Transacional:</strong> Esquema relacional MySQL em 3ª Forma Normal (3NF) com chaves estrangeiras, restrições de integridade, índices de pesquisa e transações ACID para garantir consistência na reserva concorrente de lugares.",
-    p4_bullet3: "<strong>Segurança e Controlo de Acessos RBAC:</strong> Gestão de sessões HTTP autenticadas com segregação de permissões em 3 níveis (Administrador, Operador e Passageiro), sanitização contra injeção SQL via <code>PreparedStatement</code> e validação defensiva de formulários.",
-    p4_pipeline: "JSP &amp; Frontend ➔ Java Servlets (Controllers) ➔ Business Logic (Services) ➔ DAO / MySQL RDBMS (ACID)",
-    bp_tab_webportal: "Interface da Plataforma",
-    bp_felixbus_note: "▲ Portal de Reservas e Bilhética FelixBus (Interface MVC Web · Clique p/ repositório)",
-    p4_metric1_val: "MVC",
-    p4_metric1_lbl: "Camadas Desacopladas",
-    p4_metric2_val: "RBAC",
-    p4_metric2_lbl: "3 Níveis de Acesso",
-    p4_metric3_val: "ACID",
-    p4_metric3_lbl: "Reservas Concorrentes",
-    btn_felixbus_docs: "Ver Repositório ➔",
+    p4_grade: "Microsserviços Distribuídos · Spring Cloud &amp; LGTM Observability",
+    p4_title: "Plataforma Distribuída de Partilha de Viagens (CarPooling PT)",
+    p4_lead: "<strong>Arquitetura de Microsserviços Corporativa:</strong> Tecnologias: Java 21 LTS, Spring Boot 3, Spring Cloud (Eureka, Gateway, OpenFeign), RabbitMQ (Topic Exchange + DLQ), Redis 7 (Cache-Aside &amp; Rate Limiting), PostgreSQL (Database-per-Service), Docker Compose (18 contentores), Kubernetes declarativo e Observabilidade LGTM.",
+    p4_bullet1: "<strong>Microsserviços Desacoplados &amp; Resiliência Distribuída:</strong> 11 módulos Maven (1 biblioteca partilhada + 10 microsserviços) com Service Discovery dinâmico (Netflix Eureka), API Gateway reativo com rate limiting Token Bucket em Redis, mensageria assíncrona por RabbitMQ com Dead Letter Queue e Circuit Breakers Resilience4j com fallbacks gracioso.",
+    p4_bullet2: "<strong>Suíte de 123 Testes Automatizados &amp; DevSecOps:</strong> Validação integral no Maven Reactor com 100% de aprovação (JUnit 5 + Mockito), migrações relacionais versionadas via Flyway com isolamento Database-per-Service, manifestos Kubernetes declarativos e auditoria de vulnerabilidades com Trivy.",
+    p4_bullet3: "<strong>Stack de Observabilidade LGTM &amp; Fórmulas de Negócio:</strong> Telemetria centralizada correlacionando métricas (Prometheus :9090), dashboards de JVM e tráfego (Grafana :3001), rastreio distribuído OTLP (Tempo :3200) e agregação de logs (Loki :3100), com algoritmo de distâncias Haversine, liquidações sandbox idempotentes e poupança de CO2.",
+    p4_pipeline: "API Gateway (Rate Limit) ➔ Eureka ➔ Spring Boot (OpenFeign / Circuit Breaker) ➔ RabbitMQ / Redis ➔ PostgreSQL &amp; LGTM Stack",
+    bp_tab_grafana: "Cockpit Grafana",
+    bp_tab_leaflet: "Rotas &amp; Leaflet",
+    bp_carpooling_note1: "▲ Cockpit de Observabilidade Grafana (JVM, RPS, Latência e Actuator · Clique p/ repositório)",
+    bp_carpooling_note2: "▲ Pesquisa de Viagens com Rotas Geodésicas e Mapa Leaflet (Clique p/ repositório)",
+    p4_metric1_val: "123 / 123",
+    p4_metric1_lbl: "Testes Automatizados",
+    p4_metric2_val: "18",
+    p4_metric2_lbl: "Contentores Docker (LGTM)",
+    p4_metric3_val: "11",
+    p4_metric3_lbl: "Módulos Maven",
+    btn_carpooling_docs: "Ver Arquitetura ➔",
 
     // Writeups
     writeups_label: "Artigos &amp; Investigação",
@@ -274,22 +276,24 @@ const translations = {
     p3_metric3_lbl: "Systems (Airways + Bank)",
     btn_pds_docs: "Explore Architecture ➔",
 
-    p4_grade: "Web Engineering &amp; Backend · Enterprise MVC Architecture",
-    p4_title: "Enterprise Travel &amp; Ticketing Management Platform (FelixBus)",
-    p4_lead: "<strong>Mobility &amp; Ticketing Web Platform:</strong> Technologies: Java (JSP, Servlets), MySQL, Apache Tomcat, HTML5/CSS3/JavaScript. Comprehensive management system for bus routes, ticket issuance, occupancy tracking, and multi-tier access control.",
-    p4_bullet1: "<strong>MVC Design Pattern (Model-View-Controller):</strong> Structured decoupling between the presentation layer (JSP/JSTL), business controllers in Java Servlets, and persistence layers using DAO (Data Access Object) and DTO patterns.",
-    p4_bullet2: "<strong>Relational Modeling &amp; Transactional Integrity:</strong> 3rd Normal Form (3NF) MySQL schema with foreign key constraints, search indexes, and ACID transactions to ensure database consistency during concurrent seat booking.",
-    p4_bullet3: "<strong>RBAC Security &amp; Access Control:</strong> Authenticated HTTP session management with 3-tier role segregation (Administrator, Operator, Passenger), SQL injection protection via <code>PreparedStatement</code>, and defensive form validation.",
-    p4_pipeline: "JSP &amp; Frontend ➔ Java Servlets (Controllers) ➔ Business Logic (Services) ➔ DAO / MySQL RDBMS (ACID)",
-    bp_tab_webportal: "Platform Interface",
-    bp_felixbus_note: "▲ FelixBus Booking &amp; Ticketing Portal (MVC Web Interface · Click to view repo)",
-    p4_metric1_val: "MVC",
-    p4_metric1_lbl: "Decoupled Layers",
-    p4_metric2_val: "RBAC",
-    p4_metric2_lbl: "3 Access Levels",
-    p4_metric3_val: "ACID",
-    p4_metric3_lbl: "Concurrent Bookings",
-    btn_felixbus_docs: "View Repository ➔",
+    p4_grade: "Distributed Microservices · Spring Cloud &amp; LGTM Observability",
+    p4_title: "Distributed Car-Pooling &amp; Mobility Platform (CarPooling PT)",
+    p4_lead: "<strong>Enterprise Microservices Architecture:</strong> Technologies: Java 21 LTS, Spring Boot 3, Spring Cloud (Eureka, Gateway, OpenFeign), RabbitMQ (Topic Exchange + DLQ), Redis 7 (Cache-Aside &amp; Rate Limiting), PostgreSQL (Database-per-Service), Docker Compose (18 containers), declarative Kubernetes, and full LGTM Observability.",
+    p4_bullet1: "<strong>Decoupled Microservices &amp; Resilience Patterns:</strong> 11 Maven modules (1 shared library + 10 executable microservices) with dynamic discovery (Eureka), reactive API Gateway with Redis Token Bucket rate limiting, RabbitMQ event-driven messaging with DLQ, and Resilience4j circuit breakers with graceful fallbacks.",
+    p4_bullet2: "<strong>123 Automated Tests Suite &amp; DevSecOps:</strong> Complete Maven Reactor validation with 100% pass rate (JUnit 5 + Mockito), versioned Flyway relational migrations with Database-per-Service isolation, declarative Kubernetes manifests, and Trivy filesystem vulnerability scanning.",
+    p4_bullet3: "<strong>LGTM Observability Stack &amp; Business Algorithms:</strong> Correlated telemetry linking metrics (Prometheus :9090), JVM/traffic dashboards (Grafana :3001), OTLP distributed tracing (Tempo :3200), and centralized logs (Loki :3100), paired with Haversine distance calculations, sandbox payment flows, and CO2 sustainability metrics.",
+    p4_pipeline: "API Gateway (Rate Limit) ➔ Eureka ➔ Spring Boot (OpenFeign / Circuit Breaker) ➔ RabbitMQ / Redis ➔ PostgreSQL &amp; LGTM Stack",
+    bp_tab_grafana: "Grafana Cockpit",
+    bp_tab_leaflet: "Routes &amp; Leaflet",
+    bp_carpooling_note1: "▲ Grafana Observability Cockpit (JVM, RPS, Latency and Actuator · Click to view repo)",
+    bp_carpooling_note2: "▲ Trip Search with Geodesic Routes and Leaflet Map (Click to view repo)",
+    p4_metric1_val: "123 / 123",
+    p4_metric1_lbl: "Automated Tests",
+    p4_metric2_val: "18",
+    p4_metric2_lbl: "Docker Containers (LGTM)",
+    p4_metric3_val: "11",
+    p4_metric3_lbl: "Maven Modules",
+    btn_carpooling_docs: "View Architecture ➔",
 
     // Writeups
     writeups_label: "Technical Research & Articles",
@@ -713,6 +717,10 @@ function switchBlueprintTab(projectId, tabName, btn) {
       nameLabel.textContent = 'figura3_netdevops_arquitetura.png (1583x829)';
     } else if (tabName === 'dashboard') {
       nameLabel.textContent = 'figura11_cityguards_multicloud_real.png (1502x844)';
+    } else if (tabName === 'grafana') {
+      nameLabel.textContent = 'carpooling_grafana.png (LGTM Observability)';
+    } else if (tabName === 'leaflet') {
+      nameLabel.textContent = 'carpooling_leaflet.png (Leaflet Routes & Trips)';
     }
   }
 }

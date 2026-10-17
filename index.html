@@ -793,55 +793,59 @@
           </div>
         </div>
 
-        <!-- ================= Projeto 4: FelixBus Travel Platform ================= -->
+        <!-- ================= Projeto 4: CarPooling PT ================= -->
         <div class="project-showcase-card" data-track="backend">
           <div class="project-left">
             <div class="project-badge-row">
-              <span class="project-grade-pill" data-i18n="p4_grade">Engenharia Web &amp; Backend · Arquitetura MVC Enterprise</span>
-              <span class="tech-tag" style="color: var(--accent-emerald);">Java &amp; Servlets</span>
-              <span class="tech-tag">MySQL RDBMS</span>
-              <span class="tech-tag">RBAC Security</span>
+              <span class="project-grade-pill" data-i18n="p4_grade">Microsserviços Distribuídos · Spring Cloud &amp; LGTM Observability</span>
+              <span class="tech-tag" style="color: var(--accent-emerald);">Java 21 · Spring Boot 3</span>
+              <span class="tech-tag">RabbitMQ &amp; Redis 7</span>
+              <span class="tech-tag">LGTM Stack</span>
+              <span class="tech-tag">Docker (18 Containers)</span>
             </div>
 
-            <h3 class="project-title" data-i18n="p4_title">Plataforma Empresarial de Gestão e Reserva de Transportes (FelixBus)</h3>
+            <h3 class="project-title" data-i18n="p4_title">Plataforma Distribuída de Partilha de Viagens (CarPooling PT)</h3>
 
             <p class="project-lead" data-i18n="p4_lead">
-              <strong>Plataforma Web de Mobilidade e Faturação:</strong> Tecnologias: Java (JSP, Servlets), MySQL, Apache Tomcat, HTML5/CSS3/JavaScript. Sistema completo de gestão de rotas de autocarro, emissão de bilhetes, controlo de lotação e perfis de acesso.
+              <strong>Arquitetura de Microsserviços Corporativa:</strong> Tecnologias: Java 21 LTS, Spring Boot 3, Spring Cloud (Eureka, Gateway, OpenFeign), RabbitMQ (Topic Exchange + DLQ), Redis 7 (Cache-Aside &amp; Rate Limiting), PostgreSQL (Database-per-Service), Docker Compose (18 contentores), Kubernetes declarativo e Observabilidade LGTM.
             </p>
 
             <ul class="project-key-points">
-              <li data-i18n="p4_bullet1"><strong>Padrão de Desenho MVC (Model-View-Controller):</strong> Desacoplamento estruturado entre a camada de apresentação (JSP/JSTL), controladores de lógica de negócio em Servlets Java e camada de persistência com padrões DAO (Data Access Object) e DTO.</li>
-              <li data-i18n="p4_bullet2"><strong>Modelação Relacional &amp; Integridade Transacional:</strong> Esquema relacional MySQL em 3ª Forma Normal (3NF) com chaves estrangeiras, restrições de integridade, índices de pesquisa e transações ACID para garantir consistência na reserva concorrente de lugares.</li>
-              <li data-i18n="p4_bullet3"><strong>Segurança e Controlo de Acessos RBAC:</strong> Gestão de sessões HTTP autenticadas com segregação de permissões em 3 níveis (Administrador, Operador e Passageiro), sanitização contra injeção SQL via <code>PreparedStatement</code> e validação defensiva de formulários.</li>
+              <li data-i18n="p4_bullet1"><strong>Microsserviços Desacoplados &amp; Resiliência Distribuída:</strong> 11 módulos Maven (1 biblioteca partilhada + 10 microsserviços) com Service Discovery dinâmico (Netflix Eureka), API Gateway reativo com rate limiting Token Bucket em Redis, mensageria assíncrona por RabbitMQ com Dead Letter Queue e Circuit Breakers Resilience4j com fallbacks gracioso.</li>
+              <li data-i18n="p4_bullet2"><strong>Suíte de 123 Testes Automatizados &amp; DevSecOps:</strong> Validação integral no Maven Reactor com 100% de aprovação (JUnit 5 + Mockito), migrações relacionais versionadas via Flyway com isolamento Database-per-Service, manifestos Kubernetes declarativos e auditoria de vulnerabilidades com Trivy.</li>
+              <li data-i18n="p4_bullet3"><strong>Stack de Observabilidade LGTM &amp; Fórmulas de Negócio:</strong> Telemetria centralizada correlacionando métricas (Prometheus :9090), dashboards de JVM e tráfego (Grafana :3001), rastreio distribuído OTLP (Tempo :3200) e agregação de logs (Loki :3100), com algoritmo de distâncias Haversine, liquidações sandbox idempotentes e poupança de CO2.</li>
             </ul>
 
             <div class="project-pipeline-tag" data-i18n="p4_pipeline">
-              JSP &amp; Frontend ➔ Java Servlets (Controllers) ➔ Business Logic (Services) ➔ DAO / MySQL RDBMS (ACID)
+              API Gateway (Rate Limit) ➔ Eureka ➔ Spring Boot (OpenFeign / Circuit Breaker) ➔ RabbitMQ / Redis ➔ PostgreSQL &amp; LGTM Stack
             </div>
 
             <div class="project-tags-list">
-              <span class="tech-tag">Java (JSP / Servlets)</span>
-              <span class="tech-tag">MVC Architecture</span>
-              <span class="tech-tag">MySQL</span>
-              <span class="tech-tag">DAO / DTO</span>
-              <span class="tech-tag">RBAC Security</span>
-              <span class="tech-tag">Apache Tomcat</span>
-              <span class="tech-tag">ACID Transactions</span>
-              <span class="tech-tag">PreparedStatement (Anti-SQLi)</span>
+              <span class="tech-tag">Java 21 LTS</span>
+              <span class="tech-tag">Spring Boot 3</span>
+              <span class="tech-tag">Spring Cloud (Eureka)</span>
+              <span class="tech-tag">RabbitMQ (AMQP/DLQ)</span>
+              <span class="tech-tag">Redis 7 (Cache-Aside)</span>
+              <span class="tech-tag">PostgreSQL (Flyway)</span>
+              <span class="tech-tag">Prometheus &amp; Grafana</span>
+              <span class="tech-tag">Grafana Tempo &amp; Loki</span>
+              <span class="tech-tag">JUnit 5 (123 Testes)</span>
+              <span class="tech-tag">Docker (18 Containers)</span>
+              <span class="tech-tag">Kubernetes Kustomize</span>
             </div>
 
             <div class="project-action-links">
-              <a href="https://github.com/RafaCr3z/felixbus-travel-platform" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
+              <a href="https://github.com/RafaCr3z/car-pooling-platform" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 <span data-i18n="btn_view_github">Ver no GitHub</span>
               </a>
-              <a href="https://github.com/RafaCr3z/felixbus-travel-platform#readme" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" data-i18n="btn_felixbus_docs">
-                Ver Repositório ➔
+              <a href="https://github.com/RafaCr3z/car-pooling-platform#readme" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" data-i18n="btn_carpooling_docs">
+                Ver Arquitetura ➔
               </a>
             </div>
           </div>
 
-          <!-- Web Portal Architecture Graphic -->
+          <!-- Microservices Architecture & Observability Graphic -->
           <div class="project-right">
             <div class="blueprint-card">
               <div class="blueprint-bar">
@@ -850,33 +854,38 @@
                   <span class="b-dot yellow"></span>
                   <span class="b-dot green"></span>
                 </div>
-                <div class="blueprint-name">felixbus_home.png (Web Portal)</div>
-                <div class="blueprint-status" style="color: var(--accent-emerald);">● MVC &amp; MySQL RDBMS</div>
+                <div class="blueprint-name">carpooling_grafana.png (LGTM Observability)</div>
+                <div class="blueprint-status" style="color: var(--accent-emerald);">● Spring Cloud &amp; LGTM</div>
               </div>
 
               <div class="blueprint-tabs">
-                <button type="button" class="bp-tab active" data-i18n="bp_tab_webportal">Interface da Plataforma</button>
+                <button type="button" class="bp-tab active" onclick="switchBlueprintTab(4, 'grafana', this)" data-i18n="bp_tab_grafana">Cockpit Grafana</button>
+                <button type="button" class="bp-tab" onclick="switchBlueprintTab(4, 'leaflet', this)" data-i18n="bp_tab_leaflet">Rotas &amp; Leaflet</button>
               </div>
 
               <div class="blueprint-canvas">
-                <div class="bp-view active">
-                  <img src="felixbus_home.png" alt="Portal FelixBus Travel Platform" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/felixbus-travel-platform', '_blank')">
-                  <p class="blueprint-img-note" data-i18n="bp_felixbus_note">▲ Portal de Reservas e Bilhética FelixBus (Interface MVC Web · Clique p/ repositório)</p>
+                <div id="bp4-view-grafana" class="bp-view active">
+                  <img src="carpooling_grafana.png" alt="Cockpit de Observabilidade Grafana" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/car-pooling-platform', '_blank')">
+                  <p class="blueprint-img-note" data-i18n="bp_carpooling_note1">▲ Cockpit de Observabilidade Grafana (JVM, RPS, Latência e Actuator · Clique p/ repositório)</p>
+                </div>
+                <div id="bp4-view-leaflet" class="bp-view" style="display: none;">
+                  <img src="carpooling_leaflet.png" alt="Pesquisa de Viagens e Rotas Leaflet" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/car-pooling-platform', '_blank')">
+                  <p class="blueprint-img-note" data-i18n="bp_carpooling_note2">▲ Pesquisa de Viagens com Rotas Geodésicas e Mapa Leaflet (Clique p/ repositório)</p>
                 </div>
               </div>
 
               <div class="blueprint-metrics-bar">
                 <div class="metric-item">
-                  <div class="metric-val" data-i18n="p4_metric1_val">MVC</div>
-                  <div class="metric-lbl" data-i18n="p4_metric1_lbl">Camadas Desacopladas</div>
+                  <div class="metric-val" data-i18n="p4_metric1_val">123 / 123</div>
+                  <div class="metric-lbl" data-i18n="p4_metric1_lbl">Testes Automatizados</div>
                 </div>
                 <div class="metric-item">
-                  <div class="metric-val" data-i18n="p4_metric2_val">RBAC</div>
-                  <div class="metric-lbl" data-i18n="p4_metric2_lbl">3 Níveis de Acesso</div>
+                  <div class="metric-val" data-i18n="p4_metric2_val">18</div>
+                  <div class="metric-lbl" data-i18n="p4_metric2_lbl">Contentores Docker (LGTM)</div>
                 </div>
                 <div class="metric-item">
-                  <div class="metric-val" data-i18n="p4_metric3_val">ACID</div>
-                  <div class="metric-lbl" data-i18n="p4_metric3_lbl">Reservas Concorrentes</div>
+                  <div class="metric-val" data-i18n="p4_metric3_val">11</div>
+                  <div class="metric-lbl" data-i18n="p4_metric3_lbl">Módulos Maven</div>
                 </div>
               </div>
             </div>

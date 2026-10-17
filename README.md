@@ -71,6 +71,16 @@ Explore the live portfolio at: **[https://rafacr3z.github.io/portfolio/](https:/
   - **Governance:** Comprehensive **GDPR vs. US CLOUD Act** data sovereignty assessment.
 - **Repository:** [`RafaCr3z/cityguards-platform-core`](https://github.com/RafaCr3z/cityguards-platform-core)
 
+### 3. 🚗 Distributed Car-Pooling Platform (CarPooling PT)
+- **Classification:** Personal Engineering Project
+- **Stack:** `Java 21 LTS`, `Spring Boot 3`, `Spring Cloud (Eureka, Gateway)`, `RabbitMQ (Topic Exchange + DLQ)`, `Redis 7 (Cache-Aside)`, `PostgreSQL`, `Docker Compose (18 Containers)`, `Kubernetes Kustomize`, `Stack LGTM (Prometheus, Grafana, Tempo, Loki)`.
+- **Operational Metrics:**
+  - **Modular Architecture:** 11 Maven modules (1 common-lib + 10 microservices).
+  - **Container Topology:** 18 containers in full LGTM observability deployment.
+  - **Automated Validation:** 123 tests (JUnit 5 + Mockito) with 100% pass rate in CI.
+  - **Reliability:** Token Bucket distributed rate limiting, Resilience4j Circuit Breakers, and simulated idempotent payment sandbox.
+- **Repository:** [`RafaCr3z/car-pooling-platform`](https://github.com/RafaCr3z/car-pooling-platform)
+
 ---
 
 ## 🔒 7 Official Technical Certifications
