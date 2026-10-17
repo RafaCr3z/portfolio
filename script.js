@@ -377,85 +377,121 @@ const writeupData = {
   1: {
     pt: {
       title: "Remediação Closed-Loop de Configuration Drift em FortiOS via REST API e NetBox",
-      meta: "NetDevOps · Fortinet FortiGate · NetBox SSoT/IPAM · Chaos Engineering · ISO 27001 · Classificação: 19 / 20",
+      meta: "NetDevOps · FortiOS v7.6.4 · NetBox SSoT/IPAM · Chaos Engineering (10 Cenários / 24 Incidentes) · ISO/IEC 27001 · Classificação: 19 / 20",
       content: `
         <div class="writeup-diagram-box">
           <img src="figura4_topologia_arte.png" alt="Topologia ARTE I.P." class="writeup-img">
-          <p class="writeup-img-caption">Figura: Topologia da infraestrutura híbrida da ARTE, I.P. (Sede HUB FortiGate vs. Loja do Cidadão SPOKE FortiGate sob Underlay MPLS e Overlay IPsec).</p>
+          <p class="writeup-img-caption">Figura: Topologia da infraestrutura híbrida da ARTE, I.P. (Sede HUB FortiGate vs. Loja do Cidadão SPOKE FortiGate sob Underlay MPLS <code>172.16.0.0/30</code> e Overlay IPsec IKEv2 <code>10.10.10.0/30</code>).</p>
         </div>
 
-        <h4>1. O Problema: Degradação Silenciosa e Configuration Drift</h4>
-        <p>Em infraestruturas críticas com túneis VPN IPsec IKEv2 estabelecidos sobre redes de transporte sobredimensionadas (Underlay MPLS), desvios manuais de configuração (<em>configuration drift</em>) em gateways remotos, seletores CIDR da Phase 2, rotas estáticas ou regras de filtragem de firewall geram quebras de conectividade silenciosas. No modelo operacional tradicional, a deteção depende da abertura reativa de tickets por utilizadores finais, resultando num <strong>MTTR médio de 15 a 30 minutos</strong> e dependência humana de engenheiros de nível sénior.</p>
+        <h4>1. Evolução Arquitetural: Do Diagnóstico Passivo (Projeto I) ao Self-Healing (Projeto II)</h4>
+        <p>Em infraestruturas críticas do Estado com túneis VPN IPsec IKEv2 sobre circuitos Underlay MPLS, desvios manuais de configuração (<em>configuration drift</em>) em gateways remotos, seletores CIDR da Phase 2 ou políticas de firewall geram quebras silenciosas com <strong>MTTR manual de 15 a 30 minutos</strong>. O trabalho decorreu em duas fases académicas em parceria com a <strong>ARTE, I.P. — Agência para a Reforma Tecnológica do Estado, I.P.</strong> (Decreto-Lei n.º 96/2025, ex-AMA):</p>
+        <ul>
+          <li><strong>Projeto I (Fev 2026 — Diagnóstico Granular Passivo):</strong> Conceção da topologia híbrida Hub-and-Spoke em <strong>VMware Workstation Pro (FortiOS v7.6.4)</strong> sobre 4 segmentos isolados (<code>VMnet2</code> OOB Management <code>10.0.0.0/24</code>, <code>VMnet5</code> WAN MPLS <code>172.16.0.0/30</code>, <code>VMnet4</code> Túnel IPsec <code>10.10.10.0/30</code> com IKEv2 AES256-SHA256 / AES-GCM DH Group 20 e DPD <em>On-Demand</em>, e <code>VMnet3</code> LAN Spoke <code>192.168.10.0/24</code>). Implementação de árvore de decisão em n8n que correlaciona telemetria PRTG e consulta SSH para distinguir falhas físicas de erros lógicos (Phase 1 vs. Phase 2) e alertar via Telegram (&lt; 3,2s).</li>
+          <li><strong>Projeto II (Jun 2026 — Remediação Closed-Loop Autonómica):</strong> Evolução para arquitetura de ciclo fechado (<em>Self-Healing</em>) integrando <strong>NetBox (SSoT/IPAM)</strong>, motor híbrido de remediação (<strong>Netmiko SSH</strong> em <code>/opt/venv_netmiko</code> sob PEP 668 no Ubuntu Server 24.04 LTS + <strong>FortiOS REST API CMDB</strong> nativa), escalonamento automático de operador WAN via <strong>SMTP Mailtrap</strong> e persistência forense em <strong>MongoDB + Metabase</strong>.</li>
+        </ul>
 
         <h4>2. Arquitetura Modular em Ciclo Fechado (Closed-Loop)</h4>
-        <p>Desenvolvida em parceria com a <strong>ARTE — Agência para a Reforma Tecnológica do Estado</strong> (Equipa de Engenharia: <strong>Rafael Cruz &amp; Rafael Victorino</strong>; Mentoria de Indústria: <strong>Nuno Batuca</strong> — Equipa de Comunicações da ARTE, I.P.; Orientação Académica: Prof. Doutor Vasco Soares e Prof. Doutor Alexandre Fonte), a arquitetura implementa o paradigma NetDevOps através de 5 módulos desacoplados:</p>
+        <p>Desenvolvida pela equipa de engenharia <strong>Rafael Lourenço Cruz &amp; Rafael Ginga Victorino</strong>, com mentoria de indústria do <strong>Eng.º Nuno Batuca</strong> (Equipa de Comunicações da ARTE, I.P.), orientação do <strong>Prof. Doutor Vasco Nuno da Gama de Jesus Soares</strong> e coorientação do <strong>Prof. Doutor Alexandre José Pereira Duro da Fonte</strong> (Júri: Presidente Prof. Doutor Osvaldo Arede dos Santos; Arguente Prof. Doutor Carlos Manuel de Oliveira Alves):</p>
         <ul>
-          <li><strong>Detetor de Falhas e Telemetria Diferencial (PRTG):</strong> Sondagem contínua das interfaces com validação preventiva ICMP (<em>Pre-Check</em>) para o IP do router de underlay na filial. Se a sonda ICMP falhar fisicamente, o sistema diagnostica corte de energia/enlace físico e inibe falsos alertas de software, reduzindo o <strong>MTTD para &lt; 10s (&gt;95% de redução)</strong>.</li>
-          <li><strong>Barramento de Eventos e Orquestração (n8n):</strong> Acionamento reativo por Webhook HTTP em tempo real, sem necessidade de polling intensivo, garantindo execução idempotente do fluxo de remediação.</li>
-          <li><strong>Single Source of Truth / IPAM (NetBox):</strong> Consulta da <em>golden configuration</em> declarativa do dispositivo via REST API, validando discrepâncias nos blocos de endereçamento, sub-redes e interfaces.</li>
-          <li><strong>Motor Híbrido de Remediação (REST API & Netmiko SSH):</strong>
+          <li><strong>Detetor de Falhas e Pre-Check ICMP (PRTG + n8n):</strong> Sonda HTTP Webhook dispara quando o tráfego do túnel cai para 0 KB/s. Antes de qualquer ação lógica, um nó de <em>Pre-Check ICMP</em> (<code>ping -c 2 -W 2 172.16.0.2</code>) valida a alcançabilidade física do Spoke: se <code>exitCode == 1</code>, o sistema diagnostica falha elétrica/hardware (<code>power_or_hardware_failure</code>) ou corte MPLS (<code>mpls_down</code>), inibindo tentativas inúteis de SSH/API e reduzindo o <strong>MTTD de ~15 min para &lt; 10s (&gt;95% de redução)</strong>.</li>
+          <li><strong>Single Source of Truth / IPAM (NetBox):</strong> Consulta declarativa da <em>golden configuration</em> via REST API (<code>GET /api/dcim/devices/?name=FGT-HUB</code>) para extrair os parâmetros canónicos validados antes de injetar correções no plano de controlo.</li>
+          <li><strong>Motor Híbrido de Remediação (Fase 1 SSH Netmiko vs. Fase 2 REST API CMDB):</strong>
             <ul>
-              <li><strong>Fase 1 (Ambiente de Testes / Sandbox):</strong> Perante restrições de escrita na API em licenças de avaliação dos FortiGates virtuais, concebi scripts determinísticos em Python utilizando a biblioteca <code>Netmiko</code> sobre SSH (<code>remediate_config.py</code>, <code>remediate_phase2.py</code>, <code>remediate_tunnel.py</code>) com controlo de exceções e idempotência.</li>
-              <li><strong>Fase 2 (Ambiente Comercial / Produção):</strong> Ativação de licenças comerciais com acesso pleno à <code>FortiOS REST API</code> via tokens de serviço e <em>Trusted Hosts</em> (eliminação de credenciais estáticas). Remediação cirúrgica direta em endpoints CMDB (<code>/api/v2/cmdb/vpn.ipsec/phase2-interface</code> e <code>/api/v2/cmdb/router/static</code>), cobrindo Gateway incorreto, sub-redes da Phase 2, políticas de firewall e ressincronização das Security Associations (SAs).</li>
+              <li><strong>Fase 1 (Licença Trial VM — SSH / Netmiko):</strong> Contornando o bloqueio de escrita HTTP PUT em licenças de avaliação de FortiGate-VM, scripts Python determinísticos (<code>remediate_config.py</code>, <code>remediate_phase2.py</code>, <code>remediate_tunnel.py</code>) executam via <code>Netmiko</code> sobre SSH em ambiente virtual isolado (<code>/opt/venv_netmiko</code>).</li>
+              <li><strong>Fase 2 (Licença Enterprise — Native FortiOS REST API CMDB):</strong> Com licenciamento comercial ativo e autenticação Zero Trust via Bearer Token (<code>apisecret</code> restrito a <code>10.0.0.60/32</code>), o orquestrador executa mutações cirúrgicas via <code>HTTP PUT</code> direto na CMDB (<code>/api/v2/cmdb/vpn.ipsec/phase1-interface/HUB-TO-SPOKE</code>, <code>phase2-interface</code> e <code>/api/v2/cmdb/firewall/policy/1</code> e <code>2</code>), atingindo eficiência transacional <em>R</em><sub>trans</sub> &ge; 90% (&lt; 2s por transação HTTP).</li>
             </ul>
           </li>
-          <li><strong>Auditoria Forense e Observabilidade SRE:</strong> Registo imutável de todos os eventos e tempos de transição numa base de dados <strong>MongoDB (Docker)</strong>, notificações críticas instantâneas no <strong>Telegram</strong> e dashboards analíticos de MTTR e causa-raiz em <strong>Metabase</strong>, cumprindo as diretrizes de rastreabilidade da norma <strong>ISO 27001</strong>.</li>
+          <li><strong>Auditoria Forense e Observabilidade SRE:</strong> Registo imutável em duas coleções MongoDB (<code>incident_runs</code> e <code>incident_runs_enterprise</code>), notificações críticas no <strong>Telegram</strong>, tickets de operador via <strong>SMTP Mailtrap</strong> e dashboards executivos de MTTR e taxa de sucesso em <strong>Metabase</strong> (alinhado com <strong>ISO/IEC 27001</strong>).</li>
         </ul>
 
         <div class="writeup-diagram-box">
           <img src="figura3_netdevops_arquitetura.png" alt="Arquitetura NetDevOps Macro" class="writeup-img">
-          <p class="writeup-img-caption">Figura: Fluxo sequencial integrado de deteção (PRTG), orquestração (n8n), validação (NetBox SSoT), remediação (FortiOS) e persistência analítica (MongoDB/Metabase).</p>
+          <p class="writeup-img-caption">Figura: Fluxo sequencial integrado de deteção (PRTG), orquestração (n8n), validação (NetBox SSoT), remediação híbrida (FortiOS) e persistência analítica (MongoDB/Metabase).</p>
         </div>
 
-        <h4>3. Validação Experimental com Chaos Engineering</h4>
-        <p>A resiliência da solução foi submetida a <strong>24 ensaios empíricos</strong> de injeção intencional de falhas em ambiente virtualizado (VMware Workstation Pro): alteração forçada de gateways, corrupção de propostas de Phase 2, bloqueio de políticas de firewall e simulação de corte de alimentação elétrica. Resultados obtidos:</p>
+        <h4>3. Validação Experimental com Chaos Engineering (10 Cenários A–J · 24 Incidentes)</h4>
+        <p>A plataforma foi submetida a uma bateria de <strong>10 cenários de Chaos Engineering</strong> (<strong>Cenários A a E</strong> na Fase 1 SSH/Netmiko e <strong>Cenários F a J</strong> na Fase 2 REST API CMDB), totalizando <strong>24 incidentes reais auditados em MongoDB</strong>:</p>
         <ul>
-          <li><strong>Convergência do Motor de Remediação:</strong> A retificação ativa da anomalia no FortiOS concluiu-se consistentemente entre <strong>4 e 7 segundos</strong>.</li>
-          <li><strong>Ciclo Forense Total:</strong> Desde o disparo da sonda, passando pela orquestração, remediação, gravação no MongoDB e notificação Telegram, o tempo total situou-se entre <strong>40 e 70 segundos</strong> (face aos 30 minutos do processo manual).</li>
-          <li><strong>Taxa de Sucesso:</strong> 100% de autorrecuperação sem intervenção humana nos cenários elegíveis e despiste preciso imediato no cenário de corte de energia via Pre-Check ICMP.</li>
-          <li><strong>Reconhecimento Académico:</strong> Projeto defendido e aprovado com a nota de <strong>19 / 20 valores</strong>.</li>
+          <li><strong>Fase 1 — Coleção <code>incident_runs</code> (13 incidentes, Cenários A–E):</strong>
+            <ul>
+              <li><strong>Cenário A (<code>mpls_down</code> — 4 incidentes / 30,8%):</strong> Corte do enlace WAN MPLS → escalonamento automático via SMTP Mailtrap (<code>escalated_to_provider</code>).</li>
+              <li><strong>Cenário B (<code>phase2_mismatch</code> — 2 incidentes / 15,4%):</strong> Corrupção de seletores CIDR da Phase 2 → <code>remediate_phase2.py</code> converge o túnel em <strong>7,0 segundos</strong> nos syslogs FortiOS (<code>15:58:23</code> → <code>15:58:30</code>).</li>
+              <li><strong>Cenário C (<code>zero_traffic</code> — 2 incidentes / 15,4%):</strong> Queda silenciosa das Security Associations → <code>remediate_tunnel.py</code> renegocia IKEv2 em <strong>7,0 segundos</strong> (<code>15:40:43</code> → <code>15:40:50</code>).</li>
+              <li><strong>Cenário D (<code>rgwy_mismatch</code> — 3 incidentes / 23,1%):</strong> Desvio de Remote Gateway na Phase 1 → <code>remediate_config.py</code> restaura <code>172.16.0.2</code> em <strong>4,0 segundos</strong> (<code>15:47:55</code> → <code>15:47:59</code>).</li>
+              <li><strong>Cenário E (<code>power_or_hardware_failure</code> — 2 incidentes / 15,4%):</strong> Falha elétrica simulada na filial → Pre-Check ICMP (<code>exitCode == 1</code>) aborta SSH imediatamente e emite alerta crítico de infraestrutura.</li>
+              <li><em>Balanço Fase 1:</em> <strong>7 <code>auto_recovered</code> (53,8% global = 100% das 7 falhas lógicas elegíveis)</strong>, 4 <code>escalated_to_provider</code> (30,8%) e 2 <code>power_or_hardware_failure</code> (15,4%).</li>
+            </ul>
+          </li>
+          <li><strong>Fase 2 — Coleção <code>incident_runs_enterprise</code> (11 incidentes, Cenários F–J):</strong>
+            <ul>
+              <li><strong>Cenários F (<code>mpls_down</code> — 1 inc. / 9,09%) &amp; G (<code>power_or_hardware_failure</code> — 2 inc. / 18,18%):</strong> Triagem física preventiva (<code>not_attempted</code>) com despacho SMTP Mailtrap / Telegram.</li>
+              <li><strong>Cenários H (<code>rgwy_mismatch</code> — 3 inc. / 27,27%) &amp; I (<code>phase2_mismatch</code> — 2 inc. / 18,18%):</strong> Remediação transacional via <code>HTTP PUT</code> direto na CMDB FortiOS (&lt; 2s).</li>
+              <li><strong>Cenário J (<code>policy_disabled</code> — 3 inc. / 27,27%):</strong> Reativação concorrente das Firewall Policies ID 1 e ID 2 (<code>{"status": "enable"}</code> em <code>/api/v2/cmdb/firewall/policy/</code>).</li>
+              <li><em>Balanço Fase 2:</em> <strong>8 <code>Success</code> / <code>auto_recovered</code> (72,7% global = 100% das 8 falhas lógicas elegíveis)</strong> e 3 <code>not_attempted</code> (27,3%).</li>
+            </ul>
+          </li>
+          <li><strong>Reconhecimento Académico:</strong> Projeto defendido perante júri na EST/IPCB e aprovado com a classificação final de <strong>19 / 20 valores</strong>.</li>
         </ul>
       `
     },
     en: {
       title: "Closed-Loop Remediation of Configuration Drift in FortiOS via REST API & NetBox",
-      meta: "NetDevOps · Fortinet FortiGate · NetBox SSoT/IPAM · Chaos Engineering · ISO 27001 · Grade: 19 / 20",
+      meta: "NetDevOps · FortiOS v7.6.4 · NetBox SSoT/IPAM · Chaos Engineering (10 Scenarios / 24 Incidents) · ISO/IEC 27001 · Grade: 19 / 20",
       content: `
         <div class="writeup-diagram-box">
           <img src="figura4_topologia_arte.png" alt="ARTE I.P. Hybrid Topology" class="writeup-img">
-          <p class="writeup-img-caption">Figure: Hybrid infrastructure topology for ARTE, I.P. (Hub FortiGate vs. Spoke FortiGate connected via MPLS Underlay and IPsec Overlay).</p>
+          <p class="writeup-img-caption">Figure: Hybrid infrastructure topology for ARTE, I.P. (Hub FortiGate vs. Citizen Shop Spoke FortiGate interconnected via MPLS Underlay <code>172.16.0.0/30</code> and IPsec IKEv2 Overlay <code>10.10.10.0/30</code>).</p>
         </div>
 
-        <h4>1. The Problem: Silent Degradation and Configuration Drift</h4>
-        <p>In critical enterprise backbones relying on IPsec IKEv2 tunnels over leased Underlay MPLS circuits, unintended configuration drift (gateway misconfigurations, mismatched Phase 2 CIDR selectors, altered firewall filtering policies) creates silent outages. Traditional network operations depend on end-user incident tickets, causing average <strong>MTTR to skyrocket to 15–30 minutes</strong> and demanding manual senior engineer intervention.</p>
+        <h4>1. Architectural Evolution: From Passive Diagnostics (Project I) to Self-Healing (Project II)</h4>
+        <p>In mission-critical public-sector backbones relying on IPsec IKEv2 tunnels over leased MPLS circuits, unintended configuration drift (gateway misconfigurations, mismatched Phase 2 CIDR selectors, or disabled firewall policies) creates silent outages with a manual <strong>MTTR of 15–30 minutes</strong>. Conducted across two academic stages in partnership with <strong>ARTE, I.P. — State Agency for Technological Reform</strong> (Decree-Law No. 96/2025, formerly AMA):</p>
+        <ul>
+          <li><strong>Project I (Feb 2026 — Granular Passive Diagnostics):</strong> Designed the Hub-and-Spoke hybrid testbed in <strong>VMware Workstation Pro (FortiOS v7.6.4)</strong> across 4 isolated network segments (<code>VMnet2</code> OOB Management <code>10.0.0.0/24</code>, <code>VMnet5</code> WAN MPLS <code>172.16.0.0/30</code>, <code>VMnet4</code> IPsec Tunnel <code>10.10.10.0/30</code> using IKEv2 AES256-SHA256 / AES-GCM DH Group 20 with On-Demand DPD, and <code>VMnet3</code> Spoke LAN <code>192.168.10.0/24</code>). Built an event-driven n8n decision tree correlating PRTG alerts and SSH diagnostics to separate physical link failures from logical IKE Phase 1/Phase 2 drift and dispatch Telegram alerts (&lt; 3.2s).</li>
+          <li><strong>Project II (Jun 2026 — Autonomous Closed-Loop Self-Healing):</strong> Evolved into a full closed-loop remediation platform integrating <strong>NetBox (SSoT/IPAM)</strong>, a dual-mode remediation engine (<strong>Netmiko SSH</strong> inside an isolated PEP 668 virtualenv <code>/opt/venv_netmiko</code> on Ubuntu Server 24.04 LTS + native <strong>FortiOS REST API CMDB</strong>), automated ISP ticket escalation via <strong>SMTP Mailtrap</strong>, and immutable forensic telemetry in <strong>MongoDB + Metabase</strong>.</li>
+        </ul>
 
         <h4>2. Event-Driven Closed-Loop Architecture</h4>
-        <p>Engineered in partnership with <strong>ARTE (State Agency for Technological Reform)</strong> (Engineering Team: <strong>Rafael Cruz &amp; Rafael Victorino</strong>; Industry Mentorship: <strong>Nuno Batuca</strong> — Communications Team at ARTE, I.P.; Academic Supervisors: Prof. Dr. Vasco Soares &amp; Prof. Dr. Alexandre Fonte), this architecture implements the NetDevOps paradigm through 5 decoupled building blocks:</p>
+        <p>Engineered by <strong>Rafael Lourenço Cruz &amp; Rafael Ginga Victorino</strong>, with industry mentorship from <strong>Eng. Nuno Batuca</strong> (Communications Team at ARTE, I.P.), supervised by <strong>Prof. Dr. Vasco Nuno da Gama de Jesus Soares</strong> and co-supervised by <strong>Prof. Dr. Alexandre José Pereira Duro da Fonte</strong> (Jury President: Prof. Dr. Osvaldo Arede dos Santos; Examiner: Prof. Dr. Carlos Manuel de Oliveira Alves):</p>
         <ul>
-          <li><strong>Fault Detection & Differential Telemetry (PRTG):</strong> Continuous monitoring with preventive ICMP probing (<em>Pre-Check</em>) targeting the remote branch underlay router IP. If the physical link or power fails, software remediation is inhibited, suppressing false positives and dropping <strong>MTTD to &lt; 10s (&gt;95% reduction)</strong>.</li>
-          <li><strong>Event Bus & Orchestration (n8n):</strong> Reactive event handling via real-time HTTP Webhooks, eliminating expensive polling and ensuring idempotent workflow execution.</li>
-          <li><strong>Single Source of Truth / IPAM (NetBox):</strong> Queries the declarative golden configuration via REST API, validating addressing anomalies and interface bindings.</li>
-          <li><strong>Hybrid Remediation Engine (REST API & Netmiko SSH):</strong>
+          <li><strong>Fault Detection &amp; ICMP Pre-Check (PRTG + n8n):</strong> Real-time HTTP Webhooks fire when tunnel traffic drops to 0 KB/s. Before attempting software remediation, an <em>ICMP Pre-Check</em> node (<code>ping -c 2 -W 2 172.16.0.2</code>) verifies physical underlay reachability: if <code>exitCode == 1</code>, the orchestrator classifies a branch power/hardware outage (<code>power_or_hardware_failure</code>) or WAN carrier cut (<code>mpls_down</code>), suppressing futile SSH/API calls and cutting <strong>MTTD from ~15 min to &lt; 10s (&gt;95% reduction)</strong>.</li>
+          <li><strong>Single Source of Truth / IPAM (NetBox):</strong> Queries the declarative golden configuration via REST API (<code>GET /api/dcim/devices/?name=FGT-HUB</code>) to retrieve canonical parameters prior to control-plane mutation.</li>
+          <li><strong>Hybrid Remediation Engine (Phase 1 SSH Netmiko vs. Phase 2 REST API CMDB):</strong>
             <ul>
-              <li><strong>Phase 1 (Sandbox Testing):</strong> Faced with trial license REST API write restrictions on virtual FortiGates, I developed deterministic Python scripts with the <code>Netmiko</code> library over SSH (<code>remediate_config.py</code>, <code>remediate_phase2.py</code>, <code>remediate_tunnel.py</code>) incorporating strict exception handling and idempotency.</li>
-              <li><strong>Phase 2 (Production / Commercial License):</strong> Leveraging commercial licensing enabled direct access to the <code>FortiOS REST API</code> via API Tokens and <em>Trusted Hosts</em> (Zero Trust management). Surgical configuration patches target CMDB endpoints (<code>/api/v2/cmdb/vpn.ipsec/phase2-interface</code> and <code>/api/v2/cmdb/router/static</code>), correcting gateways, Phase 2 subnets, firewall filtering, and forcing SA renegotiation.</li>
+              <li><strong>Phase 1 (VM Trial License — SSH / Netmiko):</strong> Bypassing HTTP PUT write restrictions on evaluation FortiGate-VMs, deterministic Python scripts (<code>remediate_config.py</code>, <code>remediate_phase2.py</code>, <code>remediate_tunnel.py</code>) execute over SSH via <code>Netmiko</code> in <code>/opt/venv_netmiko</code>.</li>
+              <li><strong>Phase 2 (Enterprise License — Native FortiOS REST API CMDB):</strong> With commercial licensing and Zero Trust Bearer Token authentication (<code>apisecret</code> restricted to <code>10.0.0.60/32</code>), n8n performs direct <code>HTTP PUT</code> mutations against CMDB endpoints (<code>/api/v2/cmdb/vpn.ipsec/phase1-interface/HUB-TO-SPOKE</code>, <code>phase2-interface</code>, and <code>/api/v2/cmdb/firewall/policy/1</code> &amp; <code>2</code>), achieving transactional efficiency <em>R</em><sub>trans</sub> &ge; 90% (&lt; 2s per HTTP call).</li>
             </ul>
           </li>
-          <li><strong>Forensic Auditing & SRE Observability:</strong> Immutable audit logs persisted in <strong>MongoDB (Docker)</strong>, instant high-priority alerts dispatched via <strong>Telegram Bot</strong>, and operational SRE/MTTR telemetry visualized in real-time on <strong>Metabase</strong>, strictly aligned with <strong>ISO 27001</strong> traceability standards.</li>
+          <li><strong>Forensic Auditing &amp; SRE Observability:</strong> Immutable records persisted across two MongoDB collections (<code>incident_runs</code> and <code>incident_runs_enterprise</code>), instant alerts via <strong>Telegram Bot</strong>, carrier escalation via <strong>SMTP Mailtrap</strong>, and live MTTR analytics in <strong>Metabase</strong> (aligned with <strong>ISO/IEC 27001</strong> traceability).</li>
         </ul>
 
         <div class="writeup-diagram-box">
           <img src="figura3_netdevops_arquitetura.png" alt="NetDevOps Macro Architecture" class="writeup-img">
-          <p class="writeup-img-caption">Figure: Macro architecture and sequential control flow between PRTG, n8n, NetBox, FortiOS REST API / Netmiko SSH, and MongoDB/Metabase auditing.</p>
+          <p class="writeup-img-caption">Figure: Macro architecture and sequential control flow across PRTG, n8n, NetBox SSoT, hybrid FortiOS remediation, and MongoDB/Metabase auditing.</p>
         </div>
 
-        <h4>3. Empirical Validation via Chaos Engineering</h4>
-        <p>The system was evaluated across <strong>24 rigorous fault injection trials</strong> in VMware Workstation Pro (simulating gateway tampering, Phase 2 proposal corruption, firewall policy blocks, and remote site electrical failures):</p>
+        <h4>3. Empirical Validation via Chaos Engineering (10 Scenarios A–J · 24 Incidents)</h4>
+        <p>The platform was validated across <strong>10 Chaos Engineering scenarios</strong> (<strong>Scenarios A–E</strong> in Phase 1 SSH/Netmiko and <strong>Scenarios F–J</strong> in Phase 2 REST API CMDB), totaling <strong>24 audited incidents in MongoDB</strong>:</p>
         <ul>
-          <li><strong>Remediation Engine Convergence:</strong> Active drift correction on FortiOS converged deterministically in <strong>4 to 7 seconds</strong>.</li>
-          <li><strong>Total Closed-Loop Forensic Cycle:</strong> From initial sensor alarm through remediation, MongoDB audit persistence, and Telegram dispatch, elapsed time averaged <strong>40 to 70 seconds</strong> (vs. 30 minutes manual).</li>
-          <li><strong>Success Rate:</strong> 100% autonomous resolution without human intervention in eligible failure scenarios, and instantaneous physical triage on power outages via ICMP Pre-Check.</li>
-          <li><strong>Academic Distinction:</strong> Successfully defended with a grade of <strong>19 / 20</strong>.</li>
+          <li><strong>Phase 1 — Collection <code>incident_runs</code> (13 incidents, Scenarios A–E):</strong>
+            <ul>
+              <li><strong>Scenario A (<code>mpls_down</code> — 4 incidents / 30.8%):</strong> WAN MPLS link cut → automated carrier ticket dispatch via SMTP Mailtrap (<code>escalated_to_provider</code>).</li>
+              <li><strong>Scenario B (<code>phase2_mismatch</code> — 2 incidents / 15.4%):</strong> Corrupted Phase 2 CIDR selectors → <code>remediate_phase2.py</code> converges tunnel in <strong>7.0 seconds</strong> in FortiOS syslogs (<code>15:58:23</code> → <code>15:58:30</code>).</li>
+              <li><strong>Scenario C (<code>zero_traffic</code> — 2 incidents / 15.4%):</strong> Frozen IPsec SAs → <code>remediate_tunnel.py</code> flushes and renegotiates IKEv2 in <strong>7.0 seconds</strong> (<code>15:40:43</code> → <code>15:40:50</code>).</li>
+              <li><strong>Scenario D (<code>rgwy_mismatch</code> — 3 incidents / 23.1%):</strong> Tampered Phase 1 Remote Gateway → <code>remediate_config.py</code> restores <code>172.16.0.2</code> in <strong>4.0 seconds</strong> (<code>15:47:55</code> → <code>15:47:59</code>).</li>
+              <li><strong>Scenario E (<code>power_or_hardware_failure</code> — 2 incidents / 15.4%):</strong> Simulated branch power loss → ICMP Pre-Check (<code>exitCode == 1</code>) aborts SSH immediately and dispatches a physical outage alert.</li>
+              <li><em>Phase 1 Breakdown:</em> <strong>7 <code>auto_recovered</code> (53.8% overall = 100% of 7 eligible logical faults)</strong>, 4 <code>escalated_to_provider</code> (30.8%), and 2 <code>power_or_hardware_failure</code> (15.4%).</li>
+            </ul>
+          </li>
+          <li><strong>Phase 2 — Collection <code>incident_runs_enterprise</code> (11 incidents, Scenarios F–J):</strong>
+            <ul>
+              <li><strong>Scenarios F (<code>mpls_down</code> — 1 inc. / 9.09%) &amp; G (<code>power_or_hardware_failure</code> — 2 inc. / 18.18%):</strong> Preventive physical triage (<code>not_attempted</code>) with SMTP Mailtrap / Telegram dispatch.</li>
+              <li><strong>Scenarios H (<code>rgwy_mismatch</code> — 3 inc. / 27.27%) &amp; I (<code>phase2_mismatch</code> — 2 inc. / 18.18%):</strong> Direct transactional <code>HTTP PUT</code> remediation on FortiOS CMDB (&lt; 2s).</li>
+              <li><strong>Scenario J (<code>policy_disabled</code> — 3 inc. / 27.27%):</strong> Dual concurrent <code>HTTP PUT</code> re-enabling Firewall Policies ID 1 and ID 2 (<code>{"status": "enable"}</code> on <code>/api/v2/cmdb/firewall/policy/</code>).</li>
+              <li><em>Phase 2 Breakdown:</em> <strong>8 <code>Success</code> / <code>auto_recovered</code> (72.7% overall = 100% of 8 eligible logical faults)</strong> and 3 <code>not_attempted</code> (27.3%).</li>
+            </ul>
+          </li>
+          <li><strong>Academic Distinction:</strong> Defended before the EST/IPCB examination jury and awarded a final grade of <strong>19 / 20</strong>.</li>
         </ul>
       `
     }
