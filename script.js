@@ -14,10 +14,10 @@ const translations = {
     nav_contact: "Contacto",
 
     // Hero Section
-    hero_status: '<span class="status-dot"></span> Disponibilidade Imediata · Elegível para Estágio Profissional (IEFP Nível 6 / +TALENTO)',
+    hero_status: '<span class="status-dot"></span> Disponibilidade Imediata (Remoto, Híbrido ou Mobilidade) · Elegível para Estágios +Talento (IEFP Nível 6)',
     hero_name: "Rafael Cruz",
-    hero_role: "Licenciado em Engenharia Informática · Redes, Cloud &amp; Backend Java",
-    hero_bio: "Recém-licenciado em Engenharia Informática pelo IPCB com foco prático em <strong>Automação de Redes (NetDevOps)</strong>, <strong>Sistemas &amp; Infraestrutura Cloud</strong> e <strong>Engenharia de Software Backend (Java / Spring Boot)</strong>. Experiência no desenvolvimento de protótipos em ciclo fechado (<em>closed-loop</em>), aprovisionamento declarativo (Azure Bicep / Terraform), pipelines CI/CD com autenticação federada (Azure OIDC) e microsserviços distribuídos com observabilidade LGTM.",
+    hero_role: "Licenciado em Engenharia Informática · Automação de Redes (NetDevOps), Cloud &amp; DevSecOps, SRE e Backend Java",
+    hero_bio: "Licenciado em Engenharia Informática focado em <strong>Automação de Redes (NetDevOps)</strong>, <strong>Cloud &amp; DevSecOps</strong> e <strong>SRE</strong>, com sólida base em <strong>Engenharia de Backend (Java / Spring Boot)</strong>. Experiência em projeto com parceiro público (ARTE, I.P. – ex-AMA) no desenvolvimento de sistemas de autorremediação em ciclo fechado (<em>closed-loop</em>), Infraestrutura como Código (IaC) e pipelines de CI/CD seguras. Procura integrar uma equipa de Engenharia de Redes, Cloud, Infraestrutura ou Backend (Júnior / Trainee).",
     btn_explore_projects: "Explorar Projetos",
     btn_contact_me: "Falar Comigo ➔",
 
@@ -48,22 +48,22 @@ const translations = {
     hist_1_desc: "Castelo Branco, Portugal. Formação sólida em redes, sistemas distribuídos, arquitetura computacional, bases de dados e segurança.",
 
     hist_2_role: "Operador de Atendimento ao Cliente",
-    hist_2_desc: "Monte Redondo, Leiria. Resolução ágil de incidentes sob pressão em períodos de tráfego intenso e reconciliação rigorosa de caixa.",
+    hist_2_desc: "Monte Redondo, Leiria, Portugal. Resolução ágil de incidentes sob pressão em períodos de tráfego intenso e cumprimento rigoroso de protocolos de reconciliação de caixa.",
 
-    hist_3_role: "Passados Aumentados (Erasmus+ BIP)",
-    hist_3_desc: "Weimar, Alemanha. Ferramentas digitais avançadas, processamento e preservação de património cultural tecnológico.",
+    hist_3_role: "Curso Intensivo: Ferramentas Digitais e Património Cultural",
+    hist_3_desc: "Weimar, Alemanha (Erasmus+ BIP). Ferramentas digitais avançadas, processamento e preservação de património cultural tecnológico.",
 
     hist_4_role: "Operador de Logística e Expedição",
-    hist_4_desc: "Marinha das Ondas. Operação logística de ritmo acelerado, controlo de inventário por terminais de armazém e turnos rotativos.",
+    hist_4_desc: "Marinha das Ondas, Portugal. Operação logística de ritmo acelerado, controlo de inventário por terminais de armazém e cumprimento de normas em turnos rotativos.",
 
-    hist_5_role: "Automação NetDevOps (PoC)",
-    hist_5_desc: "Projeto de Fim de Curso (19/20). Arquitetura orientada a eventos para autorrecuperação closed-loop em redes críticas IPsec/MPLS.",
+    hist_5_role: "Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)",
+    hist_5_desc: "Projeto de Fim de Curso (19/20) · Parceria: ARTE, I.P. (ex-AMA). Arquitetura orientada a eventos para autorrecuperação closed-loop em redes críticas (Overlay VPN IPsec sobre Underlay MPLS).",
 
-    hist_6_role: "Liderança & Gestão da Mudança",
+    hist_6_role: "Curso Intensivo: Liderança e Gestão da Mudança Rumo à Sustentabilidade",
     hist_6_desc: "Ploiești, Roménia (Erasmus+ BIP). Liderança e gestão da mudança rumo à sustentabilidade em organizações e equipas técnicas.",
 
-    hist_7_role: "Disponibilidade Imediata",
-    hist_7_desc: "Licenciado em Engenharia Informática disponível para oportunidades júnior em Redes, Cloud/SRE e Backend Java. Elegível para estágio profissional IEFP Nível 6 (+TALENTO).",
+    hist_7_role: "Disponibilidade Imediata (Remoto, Híbrido ou Mobilidade)",
+    hist_7_desc: "Licenciado em Engenharia Informática focado em Automação de Redes, Cloud/DevSecOps e SRE, com sólida base em Backend Java. Elegível para Estágios +Talento (IEFP Nível 6).",
 
     // Projects Section
     projects_label: "Experiência de Engenharia",
@@ -74,12 +74,12 @@ const translations = {
     track_backend: "Track B: Software Engineering &amp; Backend",
     btn_view_github: "Ver no GitHub",
 
-    p1_grade: "Classificação: 19 / 20 · Parceria: ARTE, I.P. · Out 2025 – Jun 2026",
+    p1_grade: "Classificação: 19 / 20 · Parceria: ARTE, I.P. (ex-AMA) · Set 2025 – Ago 2026",
     p1_title: "Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)",
-    p1_lead: "<strong>Projeto de Fim de Curso (Engenharia: Rafael Cruz &amp; Rafael Victorino · Mentoria: Nuno Batuca, Equipa de Comunicações da ARTE, I.P.):</strong> Tecnologias: n8n, Python, Fortinet, NetBox, MongoDB, Docker. Arquitetura orientada a eventos para elevar a resiliência e a disponibilidade de redes híbridas críticas (Overlay VPN IPsec sobre Underlay MPLS).",
-    p1_bullet1: "<strong>Triagem Diferencial (Underlay vs. Overlay):</strong> Orquestração orientada a eventos no n8n (via Webhooks PRTG) para isolar falhas entre MPLS e VPN IPsec IKEv2 em <strong>&lt;10s (redução &gt;95% do MTTD)</strong>, com sondas preventivas ICMP (<em>Pre-Check</em>) para despiste elétrico local.",
-    p1_bullet2: "<strong>Autorrecuperação Híbrida e CMDB:</strong> Mitigação autónoma de <em>configuration drift</em> (Gateway, Phase 2 CIDR, Firewall Policies e SAs) via REST API do FortiOS com Token/Trusted Hosts e contingência SSH (Netmiko), convergindo em <strong>4–7s (ciclo forense de 40–70s vs. 30 min)</strong>.",
-    p1_bullet3: "<strong>SSoT, Auditoria e Observabilidade:</strong> Reconciliação dinâmica de IPAM com o NetBox (SSoT), persistência forense de syslogs em MongoDB (Docker) e dashboards SRE/MTTR em Metabase ao longo de 24 ensaios de <em>Chaos Engineering</em> (conformidade ISO 27001).",
+    p1_lead: "<strong>Projeto de Fim de Curso (Parceria: ARTE, I.P. – ex-AMA · Equipa: Rafael Cruz &amp; Rafael Victorino · Mentoria: Nuno Batuca, ARTE, I.P.):</strong> Tecnologias: n8n, Python, Fortinet, NetBox, MongoDB, Docker. Arquitetura orientada a eventos para elevar a resiliência e a disponibilidade de redes híbridas críticas (Overlay VPN IPsec sobre Underlay MPLS).",
+    p1_bullet1: "<strong>Diagnóstico Diferencial Automatizado:</strong> Workflows orientados a eventos no n8n (via webhooks PRTG) que isolam falhas físicas (MPLS) de lógicas (VPN IPsec) em <strong>&lt;10s (-95% no MTTD)</strong>, com sondas ICMP preventivas contra falhas elétricas.",
+    p1_bullet2: "<strong>Motor de Autorremediação Híbrido:</strong> Correção automática de <em>configuration drift</em> em firewalls FortiGate (REST API e contingência SSH em Python/Netmiko), reduzindo o MTTR de <strong>~30 min manuais para ~60s no ciclo completo</strong> (convergência ativa do drift em 4–7s).",
+    p1_bullet3: "<strong>Fonte de Verdade (SSoT) e Auditoria:</strong> Validação dinâmica de IPAM no NetBox, registo estruturado de incidentes em MongoDB (Docker) e dashboards no Metabase, validados em 24 ensaios de <em>Chaos Engineering</em> (alinhados com a ISO 27001).",
     p1_pipeline: "PRTG (Webhooks) ➔ n8n Orchestrator ➔ NetBox (SSoT/IPAM) ➔ FortiOS REST API / Netmiko SSH ➔ MongoDB, Metabase & Telegram",
     btn_read_poc_brief: "Ler Análise da Topologia ➔",
     bp_tab_logical: "Blueprint Lógico",
@@ -90,10 +90,10 @@ const translations = {
 
     p2_grade: "Classificação: 20 / 20 · Projeto de Engenharia Cloud · Fev 2026 – Mai 2026",
     p2_title: "Plataforma Multi-Cloud Segura e Resiliente (CityGuards)",
-    p2_lead: "<strong>Projeto de Engenharia Cloud (Equipa: Diogo Oliveira, Rafael Cruz, Tiago Alves · Orientação: Prof. Osvaldo Santos):</strong> Tecnologias: Azure, GCP Firestore, Docker, Bicep, Node.js, OIDC. Plataforma híbrida de alta resiliência e conformidade regulamentar combinando serviços Azure PaaS e Google Cloud Platform (GCP).",
-    p2_bullet1: "<strong>Arquitetura Híbrida e Contingência:</strong> API em Node.js/Express interoperável entre Azure (App Service, Blob Storage, Functions) e GCP Firestore, com dupla resiliência (<em>graceful degradation</em> de Azure AI Vision para NLP local e <em>fallback in-process</em> de PDFs perante pausa FinOps no ACI).",
-    p2_bullet2: "<strong>Robustez Transacional e Persistência:</strong> Migração desacoplada de Azure Cosmos DB para GCP Firestore, controlo de concorrência via transações atómicas ACID (<code>db.runTransaction</code>), isolamento <em>multi-tenant</em> por município e sanitização de payloads contra <em>data leaks</em>.",
-    p2_bullet3: "<strong>SecDevOps, IaC, FinOps e Soberania:</strong> Aprovisionamento declarativo via Bicep com injeção dinâmica de <em>Connection Strings</em>, pipeline CI/CD no GitHub Actions com autenticação federada via OIDC (<code>azure/login@v2</code>), otimização FinOps e estudo de soberania RGPD vs. US CLOUD Act.",
+    p2_lead: "<strong>Projeto de Engenharia Cloud (Equipa: Diogo Oliveira, Rafael Cruz, Tiago Alves · Orientação: Prof. Osvaldo Santos):</strong> Tecnologias: Azure, GCP Firestore, Next.js, TypeScript, Node.js, Docker, Bicep, OIDC. Plataforma híbrida de alta resiliência e conformidade regulamentar combinando serviços Azure PaaS e Google Cloud Platform (GCP).",
+    p2_bullet1: "<strong>Arquitetura Multi-Cloud e Tolerância a Falhas:</strong> Arquitetura interoperável entre Microsoft Azure (App Service, Blob Storage, Functions e ACI) e GCP Firestore, com fallback local para classificação de texto e geração de relatórios em PDF (Docker).",
+    p2_bullet2: "<strong>Persistência e Concorrência:</strong> Migração desacoplada da base de dados NoSQL de Azure Cosmos DB para GCP Firestore e implementação de transações atómicas ACID (<code>db.runTransaction</code>) contra <em>race conditions</em> na gamificação, garantindo isolamento <em>multi-tenant</em>.",
+    p2_bullet3: "<strong>DevSecOps, IaC e FinOps:</strong> Automatização da infraestrutura no Azure com Bicep e pipelines CI/CD no GitHub Actions (autenticação OIDC sem segredos estáticos), otimizando o custo cloud para <strong>~72 €/mês (FinOps)</strong> e avaliando alternativas soberanas (RGPD vs. US CLOUD Act).",
     p2_pipeline: "Bicep Declarativo ➔ GitHub Actions OIDC (azure/login@v2) ➔ Checkov SAST ➔ Azure App Service & GCP Firestore",
     btn_read_cloud_brief: "Ler Análise Multi-Cloud ➔",
     btn_view_linkedin: "Ver no LinkedIn",
@@ -153,19 +153,19 @@ const translations = {
     // Languages
     languages_head: "Competências Linguísticas & Idiomas",
     lang_pt_lvl: "Língua Materna",
-    lang_en_lvl: "Profissional Pleno (C1)",
-    lang_es_lvl: "Operacional / Fluente (B2)",
+    lang_en_lvl: "C1 (Proficiência Profissional)",
+    lang_es_lvl: "B2 (Intermédio Avançado)",
 
     // Contact
     contact_label: "Comunicação Direta",
     contact_title: "Entrar em Contacto",
-    contact_desc: "Se a sua organização procura um profissional recém-licenciado com perfil analítico e prático em <strong>Redes &amp; NetDevOps</strong>, <strong>Cloud/SRE</strong> ou <strong>Backend Java / Spring Boot</strong>, estou totalmente disponível para conversas e processos de recrutamento (Disponibilidade Imediata · Elegível IEFP Nível 6 / +TALENTO).",
+    contact_desc: "Se a sua organização procura um profissional com perfil analítico e prático em <strong>Automação de Redes (NetDevOps)</strong>, <strong>Cloud &amp; DevSecOps</strong>, <strong>SRE</strong> ou <strong>Backend Java / Spring Boot</strong>, estou totalmente disponível para conversas e processos de recrutamento (Disponibilidade Imediata [Remoto, Híbrido ou Mobilidade] · Elegível para Estágios +Talento [IEFP Nível 6]).",
     ch_email_lbl: "Email (Clique p/ Copiar)",
     ch_phone_lbl: "Contacto Telefónico",
 
     // Footer
-    footer_role: "Redes, Cloud &amp; Backend Java",
-    footer_status: "Status: Disponibilidade Imediata (IEFP Nível 6 / +TALENTO)"
+    footer_role: "Automação de Redes, Cloud &amp; DevSecOps, SRE",
+    footer_status: "Status: Disponibilidade Imediata (Elegível Estágios +Talento · IEFP Nível 6)"
   },
 
   en: {
@@ -177,10 +177,10 @@ const translations = {
     nav_contact: "Contact",
 
     // Hero Section
-    hero_status: '<span class="status-dot"></span> Immediate Availability · Eligible for Professional Internship (IEFP Level 6 / +TALENTO)',
+    hero_status: '<span class="status-dot"></span> Immediate Availability (Remote, Hybrid or Relocation) · Eligible for +Talento Internships (IEFP Level 6)',
     hero_name: "Rafael Cruz",
-    hero_role: "BSc in Computer Science and Engineering · Networks, Cloud &amp; Backend Java",
-    hero_bio: "Recent Computer Science &amp; Engineering graduate (IPCB) with a hands-on focus on <strong>Network Automation (NetDevOps)</strong>, <strong>Systems &amp; Cloud Infrastructure</strong>, and <strong>Backend Software Engineering (Java / Spring Boot)</strong>. Experience developing closed-loop self-healing prototypes, declarative infrastructure provisioning (Azure Bicep / Terraform), federated CI/CD pipelines (Azure OIDC), and distributed microservices with LGTM observability.",
+    hero_role: "BSc in Computer Science and Engineering · Network Automation (NetDevOps), Cloud &amp; DevSecOps, SRE and Backend Java",
+    hero_bio: "Computer Science &amp; Engineering graduate focused on <strong>Network Automation (NetDevOps)</strong>, <strong>Cloud &amp; DevSecOps</strong>, and <strong>SRE</strong>, with strong foundations in <strong>Backend Engineering (Java / Spring Boot)</strong>. Experience in public partnership project (ARTE, I.P. – ex-AMA) engineering closed-loop self-healing systems, declarative Infrastructure as Code (IaC), and secure CI/CD pipelines. Seeking to join Network, Cloud, Infrastructure, or Backend engineering teams (Junior / Trainee).",
     btn_explore_projects: "Explore Projects",
     btn_contact_me: "Get in Touch ➔",
 
@@ -211,22 +211,22 @@ const translations = {
     hist_1_desc: "Castelo Branco, Portugal. Solid foundations in computer networks, distributed systems, computer architecture, databases, and security.",
 
     hist_2_role: "Customer Service Operator",
-    hist_2_desc: "Monte Redondo, Leiria. Agile incident resolution under pressure during high-traffic peaks and strict cash reconciliation protocols.",
+    hist_2_desc: "Monte Redondo, Leiria, Portugal. Fast incident resolution under pressure during high-traffic peaks and strict cash reconciliation protocols.",
 
-    hist_3_role: "Augmented Pasts (Erasmus+ BIP)",
-    hist_3_desc: "Weimar, Germany. Advanced digital tools, processing, and technological cultural heritage preservation.",
+    hist_3_role: "Intensive Course: Digital Tools and Cultural Heritage",
+    hist_3_desc: "Weimar, Germany (Erasmus+ BIP). Advanced digital tools, processing, and technological cultural heritage preservation.",
 
     hist_4_role: "Logistics & Dispatch Operator",
-    hist_4_desc: "Marinha das Ondas. Fast-paced logistics operations, terminal inventory control, and rotating shifts adherence.",
+    hist_4_desc: "Marinha das Ondas, Portugal. Fast-paced logistics operations, warehouse terminal inventory control, and rotating shifts compliance.",
 
-    hist_5_role: "NetDevOps Automation (PoC)",
-    hist_5_desc: "Capstone Engineering Project (19/20). Event-driven closed-loop self-healing architecture for critical IPsec/MPLS networks.",
+    hist_5_role: "NetDevOps Automation in Closed Loop & Network Resilience (PoC)",
+    hist_5_desc: "Capstone Engineering Project (19/20) · Partnership: ARTE, I.P. (ex-AMA). Event-driven architecture for closed-loop self-healing in critical networks (Overlay IPsec VPN over Underlay MPLS).",
 
-    hist_6_role: "Leadership & Change Management",
-    hist_6_desc: "Ploiești, Romania (Erasmus+ BIP). Leadership and change management towards sustainability in technical organizations.",
+    hist_6_role: "Intensive Course: Leadership and Change Management Towards Sustainability",
+    hist_6_desc: "Ploiești, Romania (Erasmus+ BIP). Leadership and change management towards sustainability in organizations and technical teams.",
 
-    hist_7_role: "Immediate Availability",
-    hist_7_desc: "Computer Science graduate available for junior roles in Networks, Cloud/SRE, and Backend Java. Eligible for the IEFP Level 6 (+TALENTO) internship program.",
+    hist_7_role: "Immediate Availability (Remote, Hybrid or Relocation)",
+    hist_7_desc: "Computer Science graduate focused on Network Automation, Cloud/DevSecOps, and SRE, with solid backend Java skills. Eligible for +Talento Internships (IEFP Level 6).",
 
     // Projects Section
     projects_label: "Engineering Experience",
@@ -237,12 +237,12 @@ const translations = {
     track_backend: "Track B: Software Engineering &amp; Backend",
     btn_view_github: "View on GitHub",
 
-    p1_grade: "Grade: 19 / 20 · Industry Partnership: ARTE, I.P. · Oct 2025 – Jun 2026",
+    p1_grade: "Grade: 19 / 20 · Industry Partnership: ARTE, I.P. (ex-AMA) · Sep 2025 – Aug 2026",
     p1_title: "NetDevOps Closed-Loop Automation & Network Resilience (PoC)",
-    p1_lead: "<strong>Capstone Engineering Project (Engineering: Rafael Cruz &amp; Rafael Victorino · Industry Mentorship: Nuno Batuca, Communications Team at ARTE, I.P.):</strong> Technologies: n8n, Python, Fortinet, NetBox, MongoDB, Docker. Event-driven architecture engineered to enhance resilience and availability in critical hybrid networks (IPsec VPN Overlay over MPLS Underlay).",
-    p1_bullet1: "<strong>Differential Triage (Underlay vs. Overlay):</strong> Event-driven orchestration in n8n (via PRTG Webhooks) isolating faults between MPLS and IPsec IKEv2 in <strong>&lt;10s (&gt;95% MTTD reduction)</strong>, using preventive ICMP probing (<em>Pre-Check</em>) for local electrical troubleshooting.",
-    p1_bullet2: "<strong>Hybrid Self-Healing & CMDB:</strong> Autonomous configuration drift mitigation (Gateway, Phase 2 CIDR, Firewall Policies, and SAs) via FortiOS REST API with Token/Trusted Hosts and SSH contingency (Netmiko), converging in <strong>4–7s (40–70s forensic cycle vs. 30 min)</strong>.",
-    p1_bullet3: "<strong>SSoT, Auditing & Observability:</strong> Dynamic IPAM reconciliation with NetBox (SSoT), forensic syslog persistence in MongoDB (Docker), and SRE/MTTR dashboards in Metabase across 24 <em>Chaos Engineering</em> trials (ISO 27001 compliance).",
+    p1_lead: "<strong>Capstone Engineering Project (Partnership: ARTE, I.P. – ex-AMA · Team: Rafael Cruz &amp; Rafael Victorino · Industry Mentorship: Nuno Batuca, ARTE, I.P.):</strong> Technologies: n8n, Python, Fortinet, NetBox, MongoDB, Docker. Event-driven architecture engineered to enhance resilience and availability in critical hybrid networks (Overlay IPsec VPN over Underlay MPLS).",
+    p1_bullet1: "<strong>Automated Differential Diagnostics:</strong> Event-driven workflows in n8n (via PRTG Webhooks) isolating physical (MPLS) from logical (IPsec VPN) faults in <strong>&lt;10s (-95% MTTD)</strong>, with preventive ICMP probes against electrical outages.",
+    p1_bullet2: "<strong>Hybrid Self-Healing Engine:</strong> Automated correction of configuration drift on FortiGate firewalls (REST API and SSH contingency in Python/Netmiko), cutting MTTR from <strong>~30 min manual to ~60s in full cycle</strong> (active drift convergence in 4–7s).",
+    p1_bullet3: "<strong>Single Source of Truth (SSoT) & Auditing:</strong> Dynamic IPAM validation in NetBox, structured incident logging in MongoDB (Docker), and Metabase dashboards, validated across 24 Chaos Engineering trials (aligned with ISO 27001).",
     p1_pipeline: "PRTG (Webhooks) ➔ n8n Orchestrator ➔ NetBox (SSoT/IPAM) ➔ FortiOS REST API / Netmiko SSH ➔ MongoDB, Metabase & Telegram",
     btn_read_poc_brief: "Read Topology Brief ➔",
     bp_tab_logical: "Logical Blueprint",
@@ -253,10 +253,10 @@ const translations = {
 
     p2_grade: "Grade: 20 / 20 · Cloud Engineering Project · Feb 2026 – May 2026",
     p2_title: "Secure & Resilient Multi-Cloud Platform (CityGuards)",
-    p2_lead: "<strong>Cloud Engineering Project (Team: Diogo Oliveira, Rafael Cruz, Tiago Alves · Academic Supervisor: Prof. Osvaldo Santos):</strong> Technologies: Azure, GCP Firestore, Docker, Bicep, Node.js, OIDC. High-resilience and regulatory-compliant hybrid platform combining Microsoft Azure PaaS and Google Cloud Platform (GCP).",
-    p2_bullet1: "<strong>Hybrid Architecture & Contingency:</strong> Interoperable Node.js/Express API across Azure (App Service, Blob Storage, Functions) and GCP Firestore with dual resilience (graceful degradation of Azure AI Vision to local NLP and in-process PDF fallback during FinOps pauses on ACI).",
-    p2_bullet2: "<strong>Transactional Integrity & Persistence:</strong> Decoupled migration from Azure Cosmos DB to GCP Firestore, concurrency control via ACID atomic transactions (<code>db.runTransaction</code>), multi-tenant isolation per municipality, and payload sanitization against data leaks.",
-    p2_bullet3: "<strong>SecDevOps, IaC, FinOps & Sovereignty:</strong> Declarative provisioning via Bicep with dynamic Connection String injection, GitHub Actions CI/CD with federated OIDC authentication (<code>azure/login@v2</code>), FinOps cost optimization, and GDPR vs. US CLOUD Act sovereignty analysis.",
+    p2_lead: "<strong>Cloud Engineering Project (Team: Diogo Oliveira, Rafael Cruz, Tiago Alves · Academic Supervisor: Prof. Osvaldo Santos):</strong> Technologies: Azure, GCP Firestore, Next.js, TypeScript, Node.js, Docker, Bicep, OIDC. High-resilience and regulatory-compliant hybrid platform combining Microsoft Azure PaaS and Google Cloud Platform (GCP).",
+    p2_bullet1: "<strong>Multi-Cloud Architecture & Fault Tolerance:</strong> Interoperable architecture between Microsoft Azure (App Service, Blob Storage, Functions, and ACI) and GCP Firestore, featuring local fallback for text classification and Docker PDF report generation.",
+    p2_bullet2: "<strong>Persistence & Concurrency:</strong> Decoupled migration of NoSQL database from Azure Cosmos DB to GCP Firestore and implementation of atomic ACID transactions (<code>db.runTransaction</code>) against gamification race conditions, guaranteeing multi-tenant isolation.",
+    p2_bullet3: "<strong>DevSecOps, IaC & FinOps:</strong> Infrastructure automation on Azure with Bicep and CI/CD pipelines in GitHub Actions (zero static secrets via OIDC authentication), optimizing cloud spend to <strong>~72 €/month (FinOps)</strong> and evaluating sovereign alternatives (GDPR vs. US CLOUD Act).",
     p2_pipeline: "Declarative Bicep ➔ GitHub Actions OIDC (azure/login@v2) ➔ Checkov SAST ➔ Azure App Service & GCP Firestore",
     btn_read_cloud_brief: "Read Multi-Cloud Brief ➔",
     btn_view_linkedin: "View on LinkedIn",
@@ -316,19 +316,19 @@ const translations = {
     // Languages
     languages_head: "Language Proficiencies",
     lang_pt_lvl: "Native Proficiency",
-    lang_en_lvl: "Full Professional (C1)",
-    lang_es_lvl: "Professional Working (B2)",
+    lang_en_lvl: "C1 (Full Professional)",
+    lang_es_lvl: "B2 (Advanced Intermediate)",
 
     // Contact
     contact_label: "Direct Communication",
     contact_title: "Get in Touch",
-    contact_desc: "If your organization is looking for a motivated graduate engineer in <strong>Networks &amp; NetDevOps</strong>, <strong>Cloud/SRE</strong>, or <strong>Backend Java / Spring Boot</strong>, I am open to conversations and hiring processes (Immediate Availability · Eligible for IEFP Level 6 / +TALENTO).",
+    contact_desc: "If your organization is looking for a motivated engineer with an analytical and practical profile in <strong>Network Automation (NetDevOps)</strong>, <strong>Cloud &amp; DevSecOps</strong>, <strong>SRE</strong>, or <strong>Backend Java / Spring Boot</strong>, I am open to conversations and hiring processes (Immediate Availability [Remote, Hybrid or Relocation] · Eligible for +Talento Internships [IEFP Level 6]).",
     ch_email_lbl: "Email (Click to Copy)",
     ch_phone_lbl: "Phone Call",
 
     // Footer
-    footer_role: "Networks, Cloud &amp; Backend Java",
-    footer_status: "Status: Immediate Availability (IEFP Level 6 / +TALENTO)"
+    footer_role: "Network Automation, Cloud &amp; DevSecOps, SRE",
+    footer_status: "Status: Immediate Availability (Eligible for +Talento Internships · IEFP Level 6)"
   }
 };
 
