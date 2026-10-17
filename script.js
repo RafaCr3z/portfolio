@@ -43,6 +43,10 @@ const translations = {
     history_label: "Educação & Experiência",
     history_title: "Career History",
     history_desc: "Linha cronológica integrando percurso académico, mobilidade internacional e experiência profissional complementar descritas no CV.",
+    timeline_hint: "Role a roda do rato, arraste ou use as setas para rodar a linha do tempo",
+    timeline_prev: "Anterior",
+    timeline_next: "Seguinte",
+    timeline_autoroll: "Rodagem Automática",
 
     hist_1_role: "Licenciatura em Engenharia Informática",
     hist_1_desc: "Castelo Branco, Portugal. Formação sólida em redes, sistemas distribuídos, arquitetura computacional, bases de dados e segurança.",
@@ -206,6 +210,10 @@ const translations = {
     history_label: "Education & Experience",
     history_title: "Career History",
     history_desc: "Chronological timeline integrating academic background, international mobility, and complementary professional experience from the CV.",
+    timeline_hint: "Scroll mouse wheel, drag or use arrows to roll the timeline",
+    timeline_prev: "Previous",
+    timeline_next: "Next",
+    timeline_autoroll: "Auto Roll",
 
     hist_1_role: "BSc in Computer Science and Engineering",
     hist_1_desc: "Castelo Branco, Portugal. Solid foundations in computer networks, distributed systems, computer architecture, databases, and security.",
@@ -812,6 +820,167 @@ function handleTrackHash() {
 }
 
 // ============================================================
+// Career History Timeline Rolling Animation & Controls
+// ============================================================
+function initTimelineRolling() {
+  const wrapper = document.getElementById('timelineWrapper');
+  const container = document.querySelector('.timeline-carousel-container');
+  const btnPrev = document.getElementById('timelineBtnPrev');
+  const btnNext = document.getElementById('timelineBtnNext');
+  const floatPrev = document.getElementById('timelineFloatPrev');
+  const floatNext = document.getElementById('timelineFloatNext');
+  const autoRollToggle = document.getElementById('timelineAutoRollToggle');
+
+  if (!wrapper) return;
+
+  let isAutoRolling = true;
+  let isHovered = false;
+  let isDragging = false;
+  let isPausedTemporarily = false;
+  let tempPauseTimeout = null;
+  let autoRollRafId = null;
+  const rollSpeed = 0.55; // Pixels per frame for smooth continuous rolling
+
+  function updateArrowStates() {
+    const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+    if (maxScroll <= 0) {
+      if (floatPrev) floatPrev.classList.add('disabled');
+      if (floatNext) floatNext.classList.add('disabled');
+      return;
+    }
+    if (floatPrev) {
+      if (wrapper.scrollLeft <= 8) {
+        floatPrev.classList.add('disabled');
+      } else {
+        floatPrev.classList.remove('disabled');
+      }
+    }
+    if (floatNext) {
+      if (wrapper.scrollLeft >= maxScroll - 8) {
+        floatNext.classList.add('disabled');
+      } else {
+        floatNext.classList.remove('disabled');
+      }
+    }
+  }
+
+  function pauseTemporarily(duration = 2500) {
+    isPausedTemporarily = true;
+    if (tempPauseTimeout) clearTimeout(tempPauseTimeout);
+    tempPauseTimeout = setTimeout(() => {
+      isPausedTemporarily = false;
+    }, duration);
+  }
+
+  // Continuous auto-roll loop
+  function stepAutoRoll() {
+    if (isAutoRolling && !isHovered && !isDragging && !isPausedTemporarily) {
+      const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
+      if (maxScroll > 10) {
+        if (wrapper.scrollLeft >= maxScroll - 2) {
+          // Reached the end: pause and smoothly reset to beginning
+          pauseTemporarily(2200);
+          wrapper.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          wrapper.scrollLeft += rollSpeed;
+        }
+        updateArrowStates();
+      }
+    }
+    autoRollRafId = requestAnimationFrame(stepAutoRoll);
+  }
+
+  // Start auto-roll loop
+  if (autoRollRafId) cancelAnimationFrame(autoRollRafId);
+  autoRollRafId = requestAnimationFrame(stepAutoRoll);
+
+  // Pause on hover
+  if (container) {
+    container.addEventListener('mouseenter', () => { isHovered = true; });
+    container.addEventListener('mouseleave', () => { isHovered = false; });
+  }
+
+  // Convert mouse wheel vertically to horizontal scroll
+  wrapper.addEventListener('wheel', (e) => {
+    // Only capture if timeline has horizontal overflow
+    if (wrapper.scrollWidth > wrapper.clientWidth) {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        wrapper.scrollLeft += e.deltaY * 0.95;
+        pauseTemporarily(2500);
+        updateArrowStates();
+      }
+    }
+  }, { passive: false });
+
+  // Mouse Drag-to-Scroll (Interactive Grab)
+  let startX = 0;
+  let scrollStart = 0;
+
+  wrapper.addEventListener('mousedown', (e) => {
+    if (wrapper.scrollWidth <= wrapper.clientWidth) return;
+    // Don't drag if clicking links or buttons
+    if (e.target.closest('a') || e.target.closest('button')) return;
+
+    isDragging = true;
+    wrapper.classList.add('dragging');
+    startX = e.pageX - wrapper.offsetLeft;
+    scrollStart = wrapper.scrollLeft;
+    pauseTemporarily(3000);
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - wrapper.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    wrapper.scrollLeft = scrollStart - walk;
+    updateArrowStates();
+  });
+
+  const stopDragging = () => {
+    if (isDragging) {
+      isDragging = false;
+      wrapper.classList.remove('dragging');
+      pauseTemporarily(2000);
+    }
+  };
+
+  window.addEventListener('mouseup', stopDragging);
+  wrapper.addEventListener('mouseleave', stopDragging);
+
+  // Step scroll buttons
+  const stepAmount = 300;
+  const scrollStep = (dir) => {
+    wrapper.scrollBy({ left: dir * stepAmount, behavior: 'smooth' });
+    pauseTemporarily(2500);
+    setTimeout(updateArrowStates, 350);
+  };
+
+  if (btnPrev) btnPrev.addEventListener('click', () => scrollStep(-1));
+  if (btnNext) btnNext.addEventListener('click', () => scrollStep(1));
+  if (floatPrev) floatPrev.addEventListener('click', () => scrollStep(-1));
+  if (floatNext) floatNext.addEventListener('click', () => scrollStep(1));
+
+  // Auto-roll toggle
+  if (autoRollToggle) {
+    autoRollToggle.addEventListener('click', () => {
+      isAutoRolling = !isAutoRolling;
+      if (isAutoRolling) {
+        autoRollToggle.classList.add('active');
+      } else {
+        autoRollToggle.classList.remove('active');
+      }
+    });
+  }
+
+  // Track scroll position for arrow styling
+  wrapper.addEventListener('scroll', updateArrowStates, { passive: true });
+  window.addEventListener('resize', updateArrowStates, { passive: true });
+  setTimeout(updateArrowStates, 300);
+}
+
+// ============================================================
 // Initialization on DOM Ready
 // ============================================================
 function init() {
@@ -851,6 +1020,9 @@ function init() {
   });
 
   setupScrollSpy();
+
+  // Initialize Career History Rolling Carousel
+  initTimelineRolling();
 
   // Initialize track hash routing
   handleTrackHash();
