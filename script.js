@@ -43,29 +43,44 @@ const translations = {
     history_label: "Educação & Experiência",
     history_title: "Career History",
     history_desc: "Linha cronológica integrando percurso académico, mobilidade internacional e experiência profissional complementar descritas no CV.",
-    timeline_hint: "Role a roda do rato, arraste ou use as setas para rodar a linha do tempo",
+    timeline_hint: "Arraste, use a roda do rato ou clique num marco para navegar",
     timeline_prev: "Anterior",
     timeline_next: "Seguinte",
-    timeline_autoroll: "Rodagem Automática",
+    timeline_autoroll: "Auto-Roll",
 
+    step_1_short: "IPCB",
+    step_2_short: "Brisa",
+    step_3_short: "Weimar",
+    step_4_short: "Lusiaves",
+    step_5_short: "ARTE PoC",
+    step_6_short: "Roménia",
+    step_7_short: "Presente",
+
+    hist_1_tag: "Académico · Nível 6 EQF",
     hist_1_role: "Licenciatura em Engenharia Informática",
     hist_1_desc: "Castelo Branco, Portugal. Formação sólida em redes, sistemas distribuídos, arquitetura computacional, bases de dados e segurança.",
 
+    hist_2_tag: "Operações &amp; SLA",
     hist_2_role: "Operador de Atendimento ao Cliente",
     hist_2_desc: "Monte Redondo, Leiria, Portugal. Resolução ágil de incidentes sob pressão em períodos de tráfego intenso e cumprimento rigoroso de protocolos de reconciliação de caixa.",
 
+    hist_3_tag: "Mobilidade Internacional",
     hist_3_role: "Curso Intensivo: Ferramentas Digitais e Património Cultural",
     hist_3_desc: "Weimar, Alemanha (Erasmus+ BIP). Ferramentas digitais avançadas, processamento e preservação de património cultural tecnológico.",
 
+    hist_4_tag: "Logística &amp; Sistemas",
     hist_4_role: "Operador de Logística e Expedição",
     hist_4_desc: "Marinha das Ondas, Portugal. Operação logística de ritmo acelerado, controlo de inventário por terminais de armazém e cumprimento de normas em turnos rotativos.",
 
+    hist_5_tag: "Capstone · Nota: 19 / 20",
     hist_5_role: "Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)",
     hist_5_desc: "Projeto de Fim de Curso (19/20) · Parceria: ARTE, I.P. (ex-AMA). Arquitetura orientada a eventos para autorrecuperação closed-loop em redes críticas (Overlay VPN IPsec sobre Underlay MPLS).",
 
+    hist_6_tag: "Mobilidade Internacional",
     hist_6_role: "Curso Intensivo: Liderança e Gestão da Mudança Rumo à Sustentabilidade",
     hist_6_desc: "Ploiești, Roménia (Erasmus+ BIP). Liderança e gestão da mudança rumo à sustentabilidade em organizações e equipas técnicas.",
 
+    hist_7_tag: "Open to Work · IEFP Nível 6",
     hist_7_role: "Disponibilidade Imediata (Remoto, Híbrido ou Mobilidade)",
     hist_7_desc: "Licenciado em Engenharia Informática focado em Automação de Redes, Cloud/DevSecOps e SRE, com sólida base em Backend Java. Elegível para Estágios +Talento (IEFP Nível 6).",
 
@@ -210,29 +225,44 @@ const translations = {
     history_label: "Education & Experience",
     history_title: "Career History",
     history_desc: "Chronological timeline integrating academic background, international mobility, and complementary professional experience from the CV.",
-    timeline_hint: "Scroll mouse wheel, drag or use arrows to roll the timeline",
+    timeline_hint: "Drag, scroll mouse wheel, or click any milestone to navigate",
     timeline_prev: "Previous",
     timeline_next: "Next",
-    timeline_autoroll: "Auto Roll",
+    timeline_autoroll: "Auto-Roll",
 
+    step_1_short: "IPCB",
+    step_2_short: "Brisa",
+    step_3_short: "Weimar",
+    step_4_short: "Lusiaves",
+    step_5_short: "ARTE PoC",
+    step_6_short: "Romania",
+    step_7_short: "Present",
+
+    hist_1_tag: "Academic · EQF Level 6",
     hist_1_role: "BSc in Computer Science and Engineering",
     hist_1_desc: "Castelo Branco, Portugal. Solid foundations in computer networks, distributed systems, computer architecture, databases, and security.",
 
+    hist_2_tag: "Operations &amp; SLA",
     hist_2_role: "Customer Service Operator",
     hist_2_desc: "Monte Redondo, Leiria, Portugal. Fast incident resolution under pressure during high-traffic peaks and strict cash reconciliation protocols.",
 
+    hist_3_tag: "International Mobility",
     hist_3_role: "Intensive Course: Digital Tools and Cultural Heritage",
     hist_3_desc: "Weimar, Germany (Erasmus+ BIP). Advanced digital tools, processing, and technological cultural heritage preservation.",
 
+    hist_4_tag: "Logistics &amp; Systems",
     hist_4_role: "Logistics & Dispatch Operator",
     hist_4_desc: "Marinha das Ondas, Portugal. Fast-paced logistics operations, warehouse terminal inventory control, and rotating shifts compliance.",
 
+    hist_5_tag: "Capstone · Grade: 19 / 20",
     hist_5_role: "NetDevOps Automation in Closed Loop & Network Resilience (PoC)",
     hist_5_desc: "Capstone Engineering Project (19/20) · Partnership: ARTE, I.P. (ex-AMA). Event-driven architecture for closed-loop self-healing in critical networks (Overlay IPsec VPN over Underlay MPLS).",
 
+    hist_6_tag: "International Mobility",
     hist_6_role: "Intensive Course: Leadership and Change Management Towards Sustainability",
     hist_6_desc: "Ploiești, Romania (Erasmus+ BIP). Leadership and change management towards sustainability in organizations and technical teams.",
 
+    hist_7_tag: "Open to Work · IEFP Level 6",
     hist_7_role: "Immediate Availability (Remote, Hybrid or Relocation)",
     hist_7_desc: "Computer Science graduate focused on Network Automation, Cloud/DevSecOps, and SRE, with solid backend Java skills. Eligible for +Talento Internships (IEFP Level 6).",
 
@@ -820,164 +850,355 @@ function handleTrackHash() {
 }
 
 // ============================================================
-// Career History Timeline Rolling Animation & Controls
+// Career History Timeline Rolling Engine (Physics, Stepper & Scrubber)
 // ============================================================
 function initTimelineRolling() {
   const wrapper = document.getElementById('timelineWrapper');
-  const container = document.querySelector('.timeline-carousel-container');
+  const container = document.getElementById('timelineCarouselContainer') || document.querySelector('.timeline-carousel-container');
   const btnPrev = document.getElementById('timelineBtnPrev');
   const btnNext = document.getElementById('timelineBtnNext');
   const floatPrev = document.getElementById('timelineFloatPrev');
   const floatNext = document.getElementById('timelineFloatNext');
   const autoRollToggle = document.getElementById('timelineAutoRollToggle');
+  const autoRollIcon = document.getElementById('timelineAutoRollIcon');
+  const scrubber = document.getElementById('timelineScrubber');
+  const scrubberFill = document.getElementById('timelineScrubberFill');
+  const scrubberThumb = document.getElementById('timelineScrubberThumb');
+  const activeStepLabel = document.getElementById('timelineActiveStep');
+  const stepPills = Array.from(document.querySelectorAll('.timeline-step-pill'));
+  const nodes = Array.from(document.querySelectorAll('.timeline-node'));
 
-  if (!wrapper) return;
+  if (!wrapper || nodes.length === 0) return;
 
+  // Sub-pixel floating-point scroll state (prevents integer scrollLeft quantization lock)
+  let currentScroll = wrapper.scrollLeft || 0;
+  let targetScroll = currentScroll;
+  let isInterpolating = false;
+
+  // Auto-roll state
   let isAutoRolling = true;
+  let autoDirection = 1; // 1 = forward, -1 = reverse (smooth ping-pong)
+  const autoSpeedPxPerSec = 54; // Smooth executive glide speed
   let isHovered = false;
   let isDragging = false;
-  let isPausedTemporarily = false;
-  let tempPauseTimeout = null;
-  let autoRollRafId = null;
-  const rollSpeed = 0.55; // Pixels per frame for smooth continuous rolling
+  let isScrubbing = false;
+  let pauseUntil = 0;
+  let explicitStepIndex = null;
+  let lastFrameTime = performance.now();
 
-  function updateArrowStates() {
-    const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
-    if (maxScroll <= 0) {
-      if (floatPrev) floatPrev.classList.add('disabled');
-      if (floatNext) floatNext.classList.add('disabled');
-      return;
+  function getMaxScroll() {
+    return Math.max(0, wrapper.scrollWidth - wrapper.clientWidth);
+  }
+
+  function clamp(val, min, max) {
+    return Math.max(min, Math.min(max, val));
+  }
+
+  function pauseAutoRoll(ms = 3200) {
+    pauseUntil = performance.now() + ms;
+  }
+
+  function setActiveStepUI(idx) {
+    const safeIdx = clamp(idx, 0, nodes.length - 1);
+    nodes.forEach((n, i) => {
+      if (i === safeIdx) n.classList.add('is-active');
+      else n.classList.remove('is-active');
+    });
+    stepPills.forEach((p, i) => {
+      if (i === safeIdx) p.classList.add('active');
+      else p.classList.remove('active');
+    });
+    if (activeStepLabel) {
+      activeStepLabel.textContent = String(safeIdx + 1).padStart(2, '0');
     }
+  }
+
+  function syncTelemetry() {
+    const maxScroll = getMaxScroll();
+    const ratio = maxScroll > 0 ? clamp(currentScroll / maxScroll, 0, 1) : 0;
+    const pct = (ratio * 100).toFixed(2) + '%';
+
+    if (scrubberFill) scrubberFill.style.width = pct;
+    if (scrubberThumb) scrubberThumb.style.left = pct;
+    if (scrubber) scrubber.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
+
+    // Update lateral arrow disabled states
     if (floatPrev) {
-      if (wrapper.scrollLeft <= 8) {
-        floatPrev.classList.add('disabled');
-      } else {
-        floatPrev.classList.remove('disabled');
-      }
+      if (currentScroll <= 6) floatPrev.classList.add('disabled');
+      else floatPrev.classList.remove('disabled');
     }
     if (floatNext) {
-      if (wrapper.scrollLeft >= maxScroll - 8) {
-        floatNext.classList.add('disabled');
-      } else {
-        floatNext.classList.remove('disabled');
-      }
+      if (currentScroll >= maxScroll - 6) floatNext.classList.add('disabled');
+      else floatNext.classList.remove('disabled');
+    }
+
+    // Determine active milestone node
+    if (explicitStepIndex !== null && isInterpolating) {
+      setActiveStepUI(explicitStepIndex);
+    } else {
+      explicitStepIndex = null;
+      const proportionalIdx = Math.round(ratio * (nodes.length - 1));
+      setActiveStepUI(proportionalIdx);
     }
   }
 
-  function pauseTemporarily(duration = 2500) {
-    isPausedTemporarily = true;
-    if (tempPauseTimeout) clearTimeout(tempPauseTimeout);
-    tempPauseTimeout = setTimeout(() => {
-      isPausedTemporarily = false;
-    }, duration);
+  // Scroll smoothly to center a specific node index (0..6)
+  function glideToNode(index) {
+    const safeIdx = clamp(index, 0, nodes.length - 1);
+    const node = nodes[safeIdx];
+    if (!node) return;
+    const maxScroll = getMaxScroll();
+
+    let desired;
+    if (safeIdx === 0) {
+      desired = 0;
+    } else if (safeIdx === nodes.length - 1) {
+      desired = maxScroll;
+    } else {
+      const nodeCenter = node.offsetLeft + node.offsetWidth / 2;
+      desired = nodeCenter - wrapper.clientWidth / 2;
+    }
+
+    explicitStepIndex = safeIdx;
+    targetScroll = clamp(desired, 0, maxScroll);
+    isInterpolating = true;
+    pauseAutoRoll(4000);
+    setActiveStepUI(safeIdx);
   }
 
-  // Continuous auto-roll loop
-  function stepAutoRoll() {
-    if (isAutoRolling && !isHovered && !isDragging && !isPausedTemporarily) {
-      const maxScroll = wrapper.scrollWidth - wrapper.clientWidth;
-      if (maxScroll > 10) {
-        if (wrapper.scrollLeft >= maxScroll - 2) {
-          // Reached the end: pause and smoothly reset to beginning
-          pauseTemporarily(2200);
-          wrapper.scrollTo({ left: 0, behavior: 'smooth' });
+  // High-precision 60/120Hz Physics Loop
+  function tick(now) {
+    const dt = Math.min((now - lastFrameTime) / 1000, 0.05);
+    lastFrameTime = now;
+    const maxScroll = getMaxScroll();
+
+    if (!isDragging && !isScrubbing && maxScroll > 4) {
+      if (isInterpolating) {
+        // Exponential Lerp Damping towards targetScroll
+        const diff = targetScroll - currentScroll;
+        if (Math.abs(diff) < 0.6) {
+          currentScroll = targetScroll;
+          isInterpolating = false;
+          explicitStepIndex = null;
         } else {
-          wrapper.scrollLeft += rollSpeed;
+          currentScroll += diff * (1 - Math.exp(-10 * dt));
         }
-        updateArrowStates();
+        wrapper.scrollLeft = currentScroll;
+        syncTelemetry();
+      } else if (isAutoRolling && !isHovered && now > pauseUntil) {
+        // Continuous sub-pixel glide with smooth ping-pong reversal at boundaries
+        currentScroll += autoDirection * autoSpeedPxPerSec * dt;
+
+        if (currentScroll >= maxScroll) {
+          currentScroll = maxScroll;
+          autoDirection = -1;
+          pauseAutoRoll(1600);
+        } else if (currentScroll <= 0) {
+          currentScroll = 0;
+          autoDirection = 1;
+          pauseAutoRoll(1600);
+        }
+
+        targetScroll = currentScroll;
+        wrapper.scrollLeft = currentScroll;
+        syncTelemetry();
       }
     }
-    autoRollRafId = requestAnimationFrame(stepAutoRoll);
+
+    requestAnimationFrame(tick);
   }
 
-  // Start auto-roll loop
-  if (autoRollRafId) cancelAnimationFrame(autoRollRafId);
-  autoRollRafId = requestAnimationFrame(stepAutoRoll);
+  requestAnimationFrame(tick);
 
-  // Pause on hover
+  // Hover pause on carousel
   if (container) {
     container.addEventListener('mouseenter', () => { isHovered = true; });
     container.addEventListener('mouseleave', () => { isHovered = false; });
   }
 
-  // Convert mouse wheel vertically to horizontal scroll
-  wrapper.addEventListener('wheel', (e) => {
-    // Only capture if timeline has horizontal overflow
-    if (wrapper.scrollWidth > wrapper.clientWidth) {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        wrapper.scrollLeft += e.deltaY * 0.95;
-        pauseTemporarily(2500);
-        updateArrowStates();
+  // Stepper Pill Clicks
+  stepPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const step = parseInt(pill.getAttribute('data-step') || '0', 10);
+      glideToNode(step);
+    });
+  });
+
+  // Clicking a card focuses that milestone
+  nodes.forEach((node, idx) => {
+    node.addEventListener('click', () => {
+      if (!hasDraggedSignificantly) {
+        glideToNode(idx);
       }
+    });
+  });
+
+  // Mouse Wheel -> Smooth Horizontal Target Glide
+  wrapper.addEventListener('wheel', (e) => {
+    const maxScroll = getMaxScroll();
+    if (maxScroll <= 0) return;
+
+    const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+    if (Math.abs(delta) > 0) {
+      // Allow vertical page scroll only if already at extreme boundary and scrolling further out
+      if ((currentScroll <= 1 && delta < 0) || (currentScroll >= maxScroll - 1 && delta > 0)) {
+        return;
+      }
+      e.preventDefault();
+      explicitStepIndex = null;
+      if (!isInterpolating) targetScroll = currentScroll;
+      targetScroll = clamp(targetScroll + delta * 1.35, 0, maxScroll);
+      isInterpolating = true;
+      pauseAutoRoll(3200);
     }
   }, { passive: false });
 
-  // Mouse Drag-to-Scroll (Interactive Grab)
-  let startX = 0;
-  let scrollStart = 0;
+  // Inertial Mouse Drag-to-Scroll
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+  let lastDragX = 0;
+  let lastDragTime = 0;
+  let velocityX = 0;
+  let hasDraggedSignificantly = false;
 
   wrapper.addEventListener('mousedown', (e) => {
-    if (wrapper.scrollWidth <= wrapper.clientWidth) return;
-    // Don't drag if clicking links or buttons
-    if (e.target.closest('a') || e.target.closest('button')) return;
+    if (getMaxScroll() <= 0) return;
+    if (e.target.closest('button') || e.target.closest('a')) return;
 
     isDragging = true;
+    isInterpolating = false;
+    explicitStepIndex = null;
+    hasDraggedSignificantly = false;
     wrapper.classList.add('dragging');
-    startX = e.pageX - wrapper.offsetLeft;
-    scrollStart = wrapper.scrollLeft;
-    pauseTemporarily(3000);
+
+    dragStartX = e.clientX;
+    lastDragX = e.clientX;
+    lastDragTime = performance.now();
+    dragStartScroll = currentScroll;
+    velocityX = 0;
+    pauseAutoRoll(4000);
   });
 
   window.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
     e.preventDefault();
-    const x = e.pageX - wrapper.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    wrapper.scrollLeft = scrollStart - walk;
-    updateArrowStates();
+
+    const now = performance.now();
+    const dx = e.clientX - dragStartX;
+    if (Math.abs(dx) > 6) hasDraggedSignificantly = true;
+
+    const dtMs = Math.max(1, now - lastDragTime);
+    const instantVel = ((lastDragX - e.clientX) / dtMs) * 1000;
+    velocityX = velocityX * 0.6 + instantVel * 0.4;
+
+    lastDragX = e.clientX;
+    lastDragTime = now;
+
+    const maxScroll = getMaxScroll();
+    currentScroll = clamp(dragStartScroll - dx * 1.15, 0, maxScroll);
+    targetScroll = currentScroll;
+    wrapper.scrollLeft = currentScroll;
+    syncTelemetry();
   });
 
-  const stopDragging = () => {
-    if (isDragging) {
-      isDragging = false;
-      wrapper.classList.remove('dragging');
-      pauseTemporarily(2000);
+  const endDrag = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    wrapper.classList.remove('dragging');
+
+    // Apply momentum flick projection
+    const maxScroll = getMaxScroll();
+    if (Math.abs(velocityX) > 60) {
+      targetScroll = clamp(currentScroll + velocityX * 0.28, 0, maxScroll);
+      isInterpolating = true;
     }
+    pauseAutoRoll(3200);
   };
 
-  window.addEventListener('mouseup', stopDragging);
-  wrapper.addEventListener('mouseleave', stopDragging);
+  window.addEventListener('mouseup', endDrag);
 
-  // Step scroll buttons
-  const stepAmount = 300;
-  const scrollStep = (dir) => {
-    wrapper.scrollBy({ left: dir * stepAmount, behavior: 'smooth' });
-    pauseTemporarily(2500);
-    setTimeout(updateArrowStates, 350);
+  // Interactive Progress Scrubber Bar (Click & Drag)
+  function scrubToClientX(clientX) {
+    if (!scrubber) return;
+    const rect = scrubber.getBoundingClientRect();
+    if (rect.width <= 0) return;
+    const ratio = clamp((clientX - rect.left) / rect.width, 0, 1);
+    const maxScroll = getMaxScroll();
+    explicitStepIndex = null;
+    targetScroll = ratio * maxScroll;
+    currentScroll = targetScroll;
+    isInterpolating = false;
+    wrapper.scrollLeft = currentScroll;
+    syncTelemetry();
+    pauseAutoRoll(3500);
+  }
+
+  if (scrubber) {
+    scrubber.addEventListener('mousedown', (e) => {
+      isScrubbing = true;
+      scrubToClientX(e.clientX);
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!isScrubbing) return;
+      e.preventDefault();
+      scrubToClientX(e.clientX);
+    });
+    window.addEventListener('mouseup', () => {
+      if (isScrubbing) {
+        isScrubbing = false;
+        pauseAutoRoll(3000);
+      }
+    });
+  }
+
+  // Prev / Next Step Buttons
+  const stepByCard = (dir) => {
+    const maxScroll = getMaxScroll();
+    const cardStep = 344; // 320px card + 24px gap
+    explicitStepIndex = null;
+    if (!isInterpolating) targetScroll = currentScroll;
+    targetScroll = clamp(targetScroll + dir * cardStep, 0, maxScroll);
+    isInterpolating = true;
+    pauseAutoRoll(3500);
   };
 
-  if (btnPrev) btnPrev.addEventListener('click', () => scrollStep(-1));
-  if (btnNext) btnNext.addEventListener('click', () => scrollStep(1));
-  if (floatPrev) floatPrev.addEventListener('click', () => scrollStep(-1));
-  if (floatNext) floatNext.addEventListener('click', () => scrollStep(1));
+  if (btnPrev) btnPrev.addEventListener('click', () => stepByCard(-1));
+  if (btnNext) btnNext.addEventListener('click', () => stepByCard(1));
+  if (floatPrev) floatPrev.addEventListener('click', () => stepByCard(-1));
+  if (floatNext) floatNext.addEventListener('click', () => stepByCard(1));
 
-  // Auto-roll toggle
+  // Auto-Roll Toggle Button
   if (autoRollToggle) {
     autoRollToggle.addEventListener('click', () => {
       isAutoRolling = !isAutoRolling;
       if (isAutoRolling) {
         autoRollToggle.classList.add('active');
+        if (autoRollIcon) autoRollIcon.textContent = '⏸';
+        pauseUntil = 0;
       } else {
         autoRollToggle.classList.remove('active');
+        if (autoRollIcon) autoRollIcon.textContent = '▶';
       }
     });
   }
 
-  // Track scroll position for arrow styling
-  wrapper.addEventListener('scroll', updateArrowStates, { passive: true });
-  window.addEventListener('resize', updateArrowStates, { passive: true });
-  setTimeout(updateArrowStates, 300);
+  // Sync on native touch scroll or window resize
+  wrapper.addEventListener('scroll', () => {
+    if (!isDragging && !isScrubbing && !isInterpolating && (!isAutoRolling || isHovered)) {
+      currentScroll = wrapper.scrollLeft;
+      targetScroll = currentScroll;
+      syncTelemetry();
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    const maxScroll = getMaxScroll();
+    currentScroll = clamp(currentScroll, 0, maxScroll);
+    targetScroll = clamp(targetScroll, 0, maxScroll);
+    syncTelemetry();
+  }, { passive: true });
+
+  setTimeout(syncTelemetry, 150);
 }
 
 // ============================================================

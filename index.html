@@ -314,132 +314,221 @@
         Linha cronológica integrando percurso académico, mobilidade internacional e experiência profissional complementar descritas no CV.
       </p>
 
-      <!-- Interactive Timeline Controls & Navigation Bar -->
-      <div class="timeline-controls-bar">
-        <div class="timeline-scroll-hint">
-          <span class="timeline-hint-pulse"></span>
-          <span class="timeline-hint-icon">🖱️</span>
-          <span data-i18n="timeline_hint">Role a roda do rato, arraste ou use as setas para rodar a linha do tempo</span>
+      <!-- Executive Timeline HUD: Milestone Stepper & Controls -->
+      <div class="timeline-hud">
+        <div class="timeline-stepper" id="timelineStepper" role="tablist" aria-label="Etapas do percurso">
+          <button type="button" class="timeline-step-pill active" data-step="0">
+            <span class="step-pill-idx">01</span>
+            <span class="step-pill-label" data-i18n="step_1_short">IPCB</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="1">
+            <span class="step-pill-idx">02</span>
+            <span class="step-pill-label" data-i18n="step_2_short">Brisa</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="2">
+            <span class="step-pill-idx">03</span>
+            <span class="step-pill-label" data-i18n="step_3_short">Weimar</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="3">
+            <span class="step-pill-idx">04</span>
+            <span class="step-pill-label" data-i18n="step_4_short">Lusiaves</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="4">
+            <span class="step-pill-idx">05</span>
+            <span class="step-pill-label" data-i18n="step_5_short">ARTE PoC</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="5">
+            <span class="step-pill-idx">06</span>
+            <span class="step-pill-label" data-i18n="step_6_short">Roménia</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="6">
+            <span class="step-pill-idx">07</span>
+            <span class="step-pill-label" data-i18n="step_7_short">Presente</span>
+          </button>
         </div>
+
         <div class="timeline-action-buttons">
-          <button type="button" class="timeline-ctrl-btn" id="timelineBtnPrev" aria-label="Recuar no percurso" title="Recuar">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <button type="button" class="timeline-ctrl-btn" id="timelineBtnPrev" aria-label="Recuar no percurso" title="Anterior">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
             <span data-i18n="timeline_prev">Anterior</span>
           </button>
           <button type="button" class="timeline-ctrl-btn timeline-autoroll-btn active" id="timelineAutoRollToggle" aria-label="Alternar rodagem automática" title="Rodagem Automática">
             <span class="autoroll-indicator"></span>
-            <span class="autoroll-icon">▶</span>
-            <span class="autoroll-text" data-i18n="timeline_autoroll">Rodagem Automática</span>
+            <span class="autoroll-icon" id="timelineAutoRollIcon">⏸</span>
+            <span class="autoroll-text" data-i18n="timeline_autoroll">Auto-Roll</span>
           </button>
-          <button type="button" class="timeline-ctrl-btn" id="timelineBtnNext" aria-label="Avançar no percurso" title="Avançar">
+          <button type="button" class="timeline-ctrl-btn" id="timelineBtnNext" aria-label="Avançar no percurso" title="Seguinte">
             <span data-i18n="timeline_next">Seguinte</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
         </div>
       </div>
 
-      <div class="timeline-carousel-container">
+      <div class="timeline-carousel-container" id="timelineCarouselContainer">
         <!-- Floating Lateral Arrow: Left -->
         <button type="button" class="timeline-float-arrow prev" id="timelineFloatPrev" aria-label="Recuar na linha do tempo" title="Recuar">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
         </button>
 
         <div class="timeline-wrapper" id="timelineWrapper">
-          <div class="timeline-track" aria-hidden="true">
-            <div class="timeline-track-pulse"></div>
-          </div>
-
           <div class="timeline-items" id="timelineItems">
-            
+            <!-- Continuous Horizontal Axis Track passing directly through all markers -->
+            <div class="timeline-track" aria-hidden="true">
+              <div class="timeline-track-pulse"></div>
+            </div>
+
             <!-- Node 1: IPCB Licenciatura -->
-            <div class="timeline-node">
+            <div class="timeline-node is-active" data-node-index="0">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">01</span>
+                <span class="timeline-date">Set 2023 — Set 2026</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">🎓</div>
+                <div class="timeline-stem"></div>
+              </div>
               <div class="timeline-card">
-                <div class="timeline-date">Set 2023 — Set 2026</div>
+                <div class="timeline-card-top">
+                  <span class="timeline-tag" data-i18n="hist_1_tag">Académico · Nível 6 EQF</span>
+                </div>
                 <div class="timeline-role" data-i18n="hist_1_role">Licenciatura em Engenharia Informática</div>
                 <div class="timeline-org">IPCB-ESTCB · Média Final: 15 / 20</div>
                 <p class="timeline-desc" data-i18n="hist_1_desc">
                   Castelo Branco, Portugal. Formação sólida em redes, sistemas distribuídos, arquitetura computacional, bases de dados e segurança.
                 </p>
               </div>
-              <div class="timeline-marker">🎓</div>
             </div>
 
             <!-- Node 2: Brisa -->
-            <div class="timeline-node">
+            <div class="timeline-node" data-node-index="1">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">02</span>
+                <span class="timeline-date">Jun 2024 — Ago 2024</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">🚗</div>
+                <div class="timeline-stem"></div>
+              </div>
               <div class="timeline-card">
-                <div class="timeline-date">Jun 2024 — Ago 2024</div>
+                <div class="timeline-card-top">
+                  <span class="timeline-tag" data-i18n="hist_2_tag">Operações &amp; SLA</span>
+                </div>
                 <div class="timeline-role" data-i18n="hist_2_role">Operador de Atendimento ao Cliente</div>
                 <div class="timeline-org">Brisa Auto-estradas de Portugal</div>
                 <p class="timeline-desc" data-i18n="hist_2_desc">
                   Monte Redondo, Leiria, Portugal. Resolução ágil de incidentes sob pressão em períodos de tráfego intenso e cumprimento rigoroso de protocolos de reconciliação de caixa.
                 </p>
               </div>
-              <div class="timeline-marker">🚗</div>
             </div>
 
             <!-- Node 3: Erasmus Weimar -->
-            <div class="timeline-node">
+            <div class="timeline-node" data-node-index="2">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">03</span>
+                <span class="timeline-date">Fev 2025 — Mar 2025</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">🏛️</div>
+                <div class="timeline-stem"></div>
+              </div>
               <div class="timeline-card">
-                <div class="timeline-date">Fev 2025 — Mar 2025</div>
+                <div class="timeline-card-top">
+                  <span class="timeline-tag" data-i18n="hist_3_tag">Mobilidade Internacional</span>
+                </div>
                 <div class="timeline-role" data-i18n="hist_3_role">Curso Intensivo: Ferramentas Digitais e Património Cultural</div>
                 <div class="timeline-org">Bauhaus-Universität Weimar (Erasmus+ BIP)</div>
                 <p class="timeline-desc" data-i18n="hist_3_desc">
                   Weimar, Alemanha. Ferramentas digitais avançadas, processamento e preservação de património cultural tecnológico.
                 </p>
               </div>
-              <div class="timeline-marker">🏛️</div>
             </div>
 
             <!-- Node 4: Lusiaves -->
-            <div class="timeline-node">
+            <div class="timeline-node" data-node-index="3">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">04</span>
+                <span class="timeline-date">Jun 2025 — Ago 2025</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">📦</div>
+                <div class="timeline-stem"></div>
+              </div>
               <div class="timeline-card">
-                <div class="timeline-date">Jun 2025 — Ago 2025</div>
+                <div class="timeline-card-top">
+                  <span class="timeline-tag" data-i18n="hist_4_tag">Logística &amp; Sistemas</span>
+                </div>
                 <div class="timeline-role" data-i18n="hist_4_role">Operador de Logística e Expedição</div>
                 <div class="timeline-org">Grupo Lusiaves</div>
                 <p class="timeline-desc" data-i18n="hist_4_desc">
                   Marinha das Ondas, Portugal. Operação logística de ritmo acelerado, controlo de inventário por terminais de armazém e cumprimento de normas em turnos rotativos.
                 </p>
               </div>
-              <div class="timeline-marker">📦</div>
             </div>
 
             <!-- Node 5: Capstone ARTE I.P. -->
-            <div class="timeline-node">
+            <div class="timeline-node" data-node-index="4">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">05</span>
+                <span class="timeline-date">Set 2025 — Ago 2026</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">🚀</div>
+                <div class="timeline-stem"></div>
+              </div>
               <div class="timeline-card">
-                <div class="timeline-date">Set 2025 — Ago 2026</div>
+                <div class="timeline-card-top">
+                  <span class="timeline-tag timeline-tag-highlight" data-i18n="hist_5_tag">Capstone · Nota: 19 / 20</span>
+                </div>
                 <div class="timeline-role" data-i18n="hist_5_role">Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)</div>
                 <div class="timeline-org">Projeto de Fim de Curso (19/20) · Parceria: ARTE, I.P. (ex-AMA)</div>
                 <p class="timeline-desc" data-i18n="hist_5_desc">
                   Arquitetura orientada a eventos para autorrecuperação closed-loop em redes críticas (Overlay VPN IPsec sobre Underlay MPLS).
                 </p>
               </div>
-              <div class="timeline-marker">🚀</div>
             </div>
 
             <!-- Node 6: Erasmus Ploiesti -->
-            <div class="timeline-node">
+            <div class="timeline-node" data-node-index="5">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">06</span>
+                <span class="timeline-date">Abr 2026</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">🌍</div>
+                <div class="timeline-stem"></div>
+              </div>
               <div class="timeline-card">
-                <div class="timeline-date">Abr 2026</div>
+                <div class="timeline-card-top">
+                  <span class="timeline-tag" data-i18n="hist_6_tag">Mobilidade Internacional</span>
+                </div>
                 <div class="timeline-role" data-i18n="hist_6_role">Curso Intensivo: Liderança e Gestão da Mudança Rumo à Sustentabilidade</div>
                 <div class="timeline-org">Universidade de Petróleo e Gás de Ploiești (Erasmus+ BIP)</div>
                 <p class="timeline-desc" data-i18n="hist_6_desc">
                   Ploiești, Roménia. Liderança e gestão da mudança rumo à sustentabilidade em organizações e equipas técnicas.
                 </p>
               </div>
-              <div class="timeline-marker">🌍</div>
             </div>
 
             <!-- Node 7: Presente / Disponibilidade -->
-            <div class="timeline-node">
-              <div class="timeline-card" style="border-color: rgba(16, 185, 129, 0.4);">
-                <div class="timeline-date">2026 — Presente</div>
+            <div class="timeline-node" data-node-index="6">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">07</span>
+                <span class="timeline-date">2026 — Presente</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker timeline-marker-emerald">💼</div>
+                <div class="timeline-stem"></div>
+              </div>
+              <div class="timeline-card timeline-card-featured">
+                <div class="timeline-card-top">
+                  <span class="timeline-tag timeline-tag-highlight" data-i18n="hist_7_tag">Open to Work · IEFP Nível 6</span>
+                </div>
                 <div class="timeline-role" data-i18n="hist_7_role">Disponibilidade Imediata (Remoto, Híbrido ou Mobilidade)</div>
                 <div class="timeline-org" style="color: var(--accent-emerald);">Elegível para Estágios +Talento (IEFP Nível 6)</div>
                 <p class="timeline-desc" data-i18n="hist_7_desc">
                   Licenciado em Engenharia Informática focado em Automação de Redes, Cloud/DevSecOps e SRE, com sólida base em Backend Java. Elegível para Estágios +Talento (IEFP Nível 6).
                 </p>
               </div>
-              <div class="timeline-marker" style="background: var(--accent-emerald); color: #04120b;">💼</div>
             </div>
 
           </div>
@@ -449,6 +538,25 @@
         <button type="button" class="timeline-float-arrow next" id="timelineFloatNext" aria-label="Avançar na linha do tempo" title="Avançar">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </button>
+      </div>
+
+      <!-- Interactive Progress Scrubber & Telemetry Bar -->
+      <div class="timeline-footer-bar">
+        <div class="timeline-counter">
+          <span class="counter-current" id="timelineActiveStep">01</span>
+          <span class="counter-sep">/</span>
+          <span class="counter-total">07</span>
+        </div>
+        <div class="timeline-scrubber" id="timelineScrubber" role="slider" aria-label="Progresso da linha do tempo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="timeline-scrubber-track">
+            <div class="timeline-scrubber-fill" id="timelineScrubberFill"></div>
+            <div class="timeline-scrubber-thumb" id="timelineScrubberThumb"></div>
+          </div>
+        </div>
+        <div class="timeline-scroll-hint">
+          <span class="timeline-hint-pulse"></span>
+          <span data-i18n="timeline_hint">Arraste, use a roda do rato ou clique num marco para navegar</span>
+        </div>
       </div>
     </div>
   </section>
