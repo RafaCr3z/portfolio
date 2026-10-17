@@ -49,9 +49,9 @@ const translations = {
     timeline_autoroll: "Auto-Roll",
 
     step_1_short: "IPCB",
-    step_2_short: "Brisa",
+    step_2_short: "Lusiaves",
     step_3_short: "Weimar",
-    step_4_short: "Lusiaves",
+    step_4_short: "Brisa",
     step_5_short: "ARTE PoC",
     step_6_short: "Roménia",
     step_7_short: "Presente",
@@ -60,17 +60,17 @@ const translations = {
     hist_1_role: "Licenciatura em Engenharia Informática",
     hist_1_desc: "Castelo Branco, Portugal. Formação sólida em redes, sistemas distribuídos, arquitetura computacional, bases de dados e segurança.",
 
-    hist_2_tag: "Operações &amp; SLA",
-    hist_2_role: "Operador de Atendimento ao Cliente",
-    hist_2_desc: "Monte Redondo, Leiria, Portugal. Resolução ágil de incidentes sob pressão em períodos de tráfego intenso e cumprimento rigoroso de protocolos de reconciliação de caixa.",
+    hist_2_tag: "Logística &amp; Sistemas",
+    hist_2_role: "Operador de Logística e Expedição",
+    hist_2_desc: "Marinha das Ondas, Portugal. Operação logística de ritmo acelerado, controlo de inventário por terminais de armazém e cumprimento de normas em turnos rotativos.",
 
     hist_3_tag: "Mobilidade Internacional",
     hist_3_role: "Curso Intensivo: Ferramentas Digitais e Património Cultural",
     hist_3_desc: "Weimar, Alemanha (Erasmus+ BIP). Ferramentas digitais avançadas, processamento e preservação de património cultural tecnológico.",
 
-    hist_4_tag: "Logística &amp; Sistemas",
-    hist_4_role: "Operador de Logística e Expedição",
-    hist_4_desc: "Marinha das Ondas, Portugal. Operação logística de ritmo acelerado, controlo de inventário por terminais de armazém e cumprimento de normas em turnos rotativos.",
+    hist_4_tag: "Operações &amp; SLA",
+    hist_4_role: "Operador de Atendimento ao Cliente",
+    hist_4_desc: "Monte Redondo, Leiria, Portugal. Resolução ágil de incidentes sob pressão em períodos de tráfego intenso e cumprimento rigoroso de protocolos de reconciliação de caixa.",
 
     hist_5_tag: "Capstone · Nota: 19 / 20",
     hist_5_role: "Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)",
@@ -231,9 +231,9 @@ const translations = {
     timeline_autoroll: "Auto-Roll",
 
     step_1_short: "IPCB",
-    step_2_short: "Brisa",
+    step_2_short: "Lusiaves",
     step_3_short: "Weimar",
-    step_4_short: "Lusiaves",
+    step_4_short: "Brisa",
     step_5_short: "ARTE PoC",
     step_6_short: "Romania",
     step_7_short: "Present",
@@ -242,17 +242,17 @@ const translations = {
     hist_1_role: "BSc in Computer Science and Engineering",
     hist_1_desc: "Castelo Branco, Portugal. Solid foundations in computer networks, distributed systems, computer architecture, databases, and security.",
 
-    hist_2_tag: "Operations &amp; SLA",
-    hist_2_role: "Customer Service Operator",
-    hist_2_desc: "Monte Redondo, Leiria, Portugal. Fast incident resolution under pressure during high-traffic peaks and strict cash reconciliation protocols.",
+    hist_2_tag: "Logistics &amp; Systems",
+    hist_2_role: "Logistics & Dispatch Operator",
+    hist_2_desc: "Marinha das Ondas, Portugal. Fast-paced logistics operations, warehouse terminal inventory control, and rotating shifts compliance.",
 
     hist_3_tag: "International Mobility",
     hist_3_role: "Intensive Course: Digital Tools and Cultural Heritage",
     hist_3_desc: "Weimar, Germany (Erasmus+ BIP). Advanced digital tools, processing, and technological cultural heritage preservation.",
 
-    hist_4_tag: "Logistics &amp; Systems",
-    hist_4_role: "Logistics & Dispatch Operator",
-    hist_4_desc: "Marinha das Ondas, Portugal. Fast-paced logistics operations, warehouse terminal inventory control, and rotating shifts compliance.",
+    hist_4_tag: "Operations &amp; SLA",
+    hist_4_role: "Customer Service Operator",
+    hist_4_desc: "Monte Redondo, Leiria, Portugal. Fast incident resolution under pressure during high-traffic peaks and strict cash reconciliation protocols.",
 
     hist_5_tag: "Capstone · Grade: 19 / 20",
     hist_5_role: "NetDevOps Automation in Closed Loop & Network Resilience (PoC)",
