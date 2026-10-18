@@ -70,7 +70,7 @@ const translations = {
     step_6_short: "Roménia",
     step_7_short: "Presente",
 
-    hist_1_date: "Out 2022 — Jun 2026",
+    hist_1_date: "Set 2023 — Set 2026",
     hist_1_tag: "Académico · Nível 6 EQF",
     hist_1_role: "Licenciatura em Engenharia Informática",
     hist_1_org: "IPCB-ESTCB · Média Final: 15 / 20",
@@ -306,7 +306,7 @@ const translations = {
     step_6_short: "Romania",
     step_7_short: "Present",
 
-    hist_1_date: "Oct 2022 — Jun 2026",
+    hist_1_date: "Sep 2023 — Sep 2026",
     hist_1_tag: "Academic · EQF Level 6",
     hist_1_role: "BSc in Computer Science and Engineering",
     hist_1_org: "IPCB-ESTCB · Final GPA: 15 / 20",
