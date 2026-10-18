@@ -43,8 +43,8 @@
         <div class="nav-right">
           <ul class="nav-links">
             <li><a href="#expertise" class="nav-link" data-i18n="nav_expertise">Expertise</a></li>
-            <li><a href="#history" class="nav-link" data-i18n="nav_history">Histórico</a></li>
             <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projetos</a></li>
+            <li><a href="#history" class="nav-link" data-i18n="nav_history">Histórico</a></li>
             <li><a href="#writeups" class="nav-link" data-i18n="nav_writeups">Writeups</a></li>
             <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contacto</a></li>
           </ul>
@@ -97,6 +97,21 @@
         <div class="hero-cta-group">
           <a href="#projects" class="btn btn-primary" data-i18n="btn_explore_projects">Explorar Projetos</a>
           <a href="#contact" class="btn btn-secondary" data-i18n="btn_contact_me">Falar Comigo ➔</a>
+        </div>
+
+        <!-- Direct Dual CV Downloads -->
+        <div class="hero-cv-group">
+          <div class="hero-cv-label" data-i18n="hero_cv_label">Curriculum Vitae (PDF):</div>
+          <div class="hero-cv-buttons">
+            <a href="CV_Rafael_Cruz_Redes_Cloud.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-pill" download="CV_Rafael_Cruz_Redes_Cloud.pdf">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span data-i18n="btn_cv_net">📄 CV Redes &amp; Cloud</span>
+            </a>
+            <a href="CV_Rafael_Cruz_Desenvolvimento_Software.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-pill" download="CV_Rafael_Cruz_Desenvolvimento_Software.pdf">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span data-i18n="btn_cv_dev">💻 CV Software &amp; Backend</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -213,7 +228,7 @@
             <span>🔒</span>
             <span data-i18n="certs_subhead">Certificações Técnicas Oficiais da Indústria</span>
           </div>
-          <span class="cert-status-badge">● 4 Certificações Ativas</span>
+          <span class="cert-status-badge" data-i18n="certs_active_badge">● 4 Certificações Ativas</span>
         </div>
 
         <div class="certs-grid">
@@ -223,9 +238,9 @@
             <div class="cert-icon" style="color: #ef4444;">🛡️</div>
             <div class="cert-details">
               <div class="cert-name">Fortinet NSE 2 Certified in Cybersecurity</div>
-              <div class="cert-issuer">Fortinet · Out 2026</div>
+              <div class="cert-issuer" data-i18n="cert_fortinet_nse2_date">Fortinet · Out 2026</div>
             </div>
-            <span class="cert-status-badge">Certificação</span>
+            <span class="cert-status-badge" data-i18n="cert_badge_label">Certificação</span>
           </div>
 
           <!-- Fortinet NSE 1 -->
@@ -233,9 +248,9 @@
             <div class="cert-icon" style="color: #ef4444;">🛡️</div>
             <div class="cert-details">
               <div class="cert-name">Fortinet NSE 1 Certified in Cybersecurity</div>
-              <div class="cert-issuer">Fortinet · Out 2026</div>
+              <div class="cert-issuer" data-i18n="cert_fortinet_nse1_date">Fortinet · Out 2026</div>
             </div>
-            <span class="cert-status-badge">Certificação</span>
+            <span class="cert-status-badge" data-i18n="cert_badge_label">Certificação</span>
           </div>
 
           <!-- Neo4j Certified Professional -->
@@ -243,9 +258,9 @@
             <div class="cert-icon" style="color: #06b6d4;">📊</div>
             <div class="cert-details">
               <div class="cert-name">Neo4j Certified Professional</div>
-              <div class="cert-issuer">Neo4j Graph Database · Fev 2026</div>
+              <div class="cert-issuer" data-i18n="cert_neo4j_pro_date">Neo4j Graph Database · Fev 2026</div>
             </div>
-            <span class="cert-status-badge">Certificação</span>
+            <span class="cert-status-badge" data-i18n="cert_badge_label">Certificação</span>
           </div>
 
           <!-- Neo4j Graph Data Science -->
@@ -253,9 +268,9 @@
             <div class="cert-icon" style="color: #06b6d4;">🔬</div>
             <div class="cert-details">
               <div class="cert-name">Neo4j Graph Data Science Certification</div>
-              <div class="cert-issuer">Neo4j Data Science · Fev 2026</div>
+              <div class="cert-issuer" data-i18n="cert_neo4j_gds_date">Neo4j Data Science · Fev 2026</div>
             </div>
-            <span class="cert-status-badge">Certificação</span>
+            <span class="cert-status-badge" data-i18n="cert_badge_label">Certificação</span>
           </div>
 
         </div>
@@ -265,7 +280,7 @@
             <span>☁️</span>
             <span data-i18n="certs_academic_subhead">Formações &amp; Credenciais Académicas (AWS Academy)</span>
           </div>
-          <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);">● 3 Credenciais AWS Academy</span>
+          <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);" data-i18n="certs_academic_badge">● 3 Credenciais AWS Academy</span>
         </div>
 
         <div class="certs-grid">
@@ -275,9 +290,9 @@
             <div class="cert-icon" style="color: #f59e0b;">⚙️</div>
             <div class="cert-details">
               <div class="cert-name">AWS Academy Graduate — Cloud Operations</div>
-              <div class="cert-issuer">Amazon Web Services · Jul 2026</div>
+              <div class="cert-issuer" data-i18n="cert_aws_ops_date">Amazon Web Services · Jul 2026</div>
             </div>
-            <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;">Académica</span>
+            <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;" data-i18n="cert_academic_label">Académica</span>
           </div>
 
           <!-- AWS Academy Cloud Security Foundations -->
@@ -285,9 +300,9 @@
             <div class="cert-icon" style="color: #f59e0b;">☁️</div>
             <div class="cert-details">
               <div class="cert-name">AWS Academy Graduate — Cloud Security Foundations</div>
-              <div class="cert-issuer">Amazon Web Services · Jun 2026</div>
+              <div class="cert-issuer" data-i18n="cert_aws_sec_date">Amazon Web Services · Jun 2026</div>
             </div>
-            <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;">Académica</span>
+            <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;" data-i18n="cert_academic_label">Académica</span>
           </div>
 
           <!-- AWS Academy Cloud Foundations -->
@@ -295,9 +310,9 @@
             <div class="cert-icon" style="color: #f59e0b;">🌐</div>
             <div class="cert-details">
               <div class="cert-name">AWS Academy Graduate — Cloud Foundations</div>
-              <div class="cert-issuer">Amazon Web Services · Mai 2026</div>
+              <div class="cert-issuer" data-i18n="cert_aws_found_date">Amazon Web Services · Mai 2026</div>
             </div>
-            <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;">Académica</span>
+            <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;" data-i18n="cert_academic_label">Académica</span>
           </div>
 
         </div>
@@ -305,269 +320,13 @@
     </div>
   </section>
 
-  <!-- ==================== Section 2: Career History (Interactive Timeline) ==================== -->
-  <section class="section" id="history">
-    <div class="container">
-      <span class="section-label" data-i18n="history_label">Educação & Experiência</span>
-      <h2 class="section-title" data-i18n="history_title">Career History</h2>
-      <p class="section-desc" data-i18n="history_desc">
-        Linha cronológica integrando percurso académico, mobilidade internacional e experiência profissional complementar descritas no CV.
-      </p>
-
-      <!-- Executive Timeline HUD: Milestone Stepper & Controls -->
-      <div class="timeline-hud">
-        <div class="timeline-stepper" id="timelineStepper" role="tablist" aria-label="Etapas do percurso">
-          <button type="button" class="timeline-step-pill active" data-step="0">
-            <span class="step-pill-idx">01</span>
-            <span class="step-pill-label" data-i18n="step_1_short">IPCB</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="1">
-            <span class="step-pill-idx">02</span>
-            <span class="step-pill-label" data-i18n="step_2_short">Lusiaves</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="2">
-            <span class="step-pill-idx">03</span>
-            <span class="step-pill-label" data-i18n="step_3_short">Weimar</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="3">
-            <span class="step-pill-idx">04</span>
-            <span class="step-pill-label" data-i18n="step_4_short">Brisa</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="4">
-            <span class="step-pill-idx">05</span>
-            <span class="step-pill-label" data-i18n="step_5_short">ARTE PoC</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="5">
-            <span class="step-pill-idx">06</span>
-            <span class="step-pill-label" data-i18n="step_6_short">Roménia</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="6">
-            <span class="step-pill-idx">07</span>
-            <span class="step-pill-label" data-i18n="step_7_short">Presente</span>
-          </button>
-        </div>
-
-        <div class="timeline-action-buttons">
-          <button type="button" class="timeline-ctrl-btn" id="timelineBtnPrev" aria-label="Recuar no percurso" title="Anterior">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span data-i18n="timeline_prev">Anterior</span>
-          </button>
-          <button type="button" class="timeline-ctrl-btn timeline-autoroll-btn active" id="timelineAutoRollToggle" aria-label="Alternar rodagem automática" title="Rodagem Automática">
-            <span class="autoroll-indicator"></span>
-            <span class="autoroll-icon" id="timelineAutoRollIcon">⏸</span>
-            <span class="autoroll-text" data-i18n="timeline_autoroll">Auto-Roll</span>
-          </button>
-          <button type="button" class="timeline-ctrl-btn" id="timelineBtnNext" aria-label="Avançar no percurso" title="Seguinte">
-            <span data-i18n="timeline_next">Seguinte</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
-      </div>
-
-      <div class="timeline-carousel-container" id="timelineCarouselContainer">
-        <!-- Floating Lateral Arrow: Left -->
-        <button type="button" class="timeline-float-arrow prev" id="timelineFloatPrev" aria-label="Recuar na linha do tempo" title="Recuar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-
-        <div class="timeline-wrapper" id="timelineWrapper">
-          <div class="timeline-items" id="timelineItems">
-            <!-- Continuous Horizontal Axis Track passing directly through all markers -->
-            <div class="timeline-track" aria-hidden="true">
-              <div class="timeline-track-pulse"></div>
-            </div>
-
-            <!-- Node 1: IPCB Licenciatura -->
-            <div class="timeline-node is-active" data-node-index="0">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">01</span>
-                <span class="timeline-date">Set 2023 — Set 2026</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">🎓</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag" data-i18n="hist_1_tag">Académico · Nível 6 EQF</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_1_role">Licenciatura em Engenharia Informática</div>
-                <div class="timeline-org">IPCB-ESTCB · Média Final: 15 / 20</div>
-                <p class="timeline-desc" data-i18n="hist_1_desc">
-                  Castelo Branco, Portugal. Formação sólida em redes, sistemas distribuídos, arquitetura computacional, bases de dados e segurança.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 2: Lusiaves -->
-            <div class="timeline-node" data-node-index="1">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">02</span>
-                <span class="timeline-date">Jun 2024 — Ago 2024</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">📦</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag" data-i18n="hist_2_tag">Logística &amp; Sistemas</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_2_role">Operador de Logística e Expedição</div>
-                <div class="timeline-org">Grupo Lusiaves</div>
-                <p class="timeline-desc" data-i18n="hist_2_desc">
-                  Marinha das Ondas, Portugal. Operação logística de ritmo acelerado, controlo de inventário por terminais de armazém e cumprimento de normas em turnos rotativos.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 3: Erasmus Weimar -->
-            <div class="timeline-node" data-node-index="2">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">03</span>
-                <span class="timeline-date">Fev 2025 — Mar 2025</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">🏛️</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag" data-i18n="hist_3_tag">Mobilidade Internacional</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_3_role">Curso Intensivo: Ferramentas Digitais e Património Cultural</div>
-                <div class="timeline-org">Bauhaus-Universität Weimar (Erasmus+ BIP)</div>
-                <p class="timeline-desc" data-i18n="hist_3_desc">
-                  Weimar, Alemanha. Ferramentas digitais avançadas, processamento e preservação de património cultural tecnológico.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 4: Brisa -->
-            <div class="timeline-node" data-node-index="3">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">04</span>
-                <span class="timeline-date">Jun 2025 — Ago 2025</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">🚗</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag" data-i18n="hist_4_tag">Operações &amp; SLA</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_4_role">Operador de Atendimento ao Cliente</div>
-                <div class="timeline-org">Brisa Auto-estradas de Portugal</div>
-                <p class="timeline-desc" data-i18n="hist_4_desc">
-                  Monte Redondo, Leiria, Portugal. Resolução ágil de incidentes sob pressão em períodos de tráfego intenso e cumprimento rigoroso de protocolos de reconciliação de caixa.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 5: Capstone ARTE I.P. -->
-            <div class="timeline-node" data-node-index="4">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">05</span>
-                <span class="timeline-date">Set 2025 — Ago 2026</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">🚀</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag timeline-tag-highlight" data-i18n="hist_5_tag">Capstone · Nota: 19 / 20</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_5_role">Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)</div>
-                <div class="timeline-org">Projeto de Fim de Curso (19/20) · Parceria: ARTE, I.P. (ex-AMA)</div>
-                <p class="timeline-desc" data-i18n="hist_5_desc">
-                  Arquitetura orientada a eventos para autorrecuperação closed-loop em redes críticas (Overlay VPN IPsec sobre Underlay MPLS).
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 6: Erasmus Ploiesti -->
-            <div class="timeline-node" data-node-index="5">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">06</span>
-                <span class="timeline-date">Abr 2026</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">🌍</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag" data-i18n="hist_6_tag">Mobilidade Internacional</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_6_role">Curso Intensivo: Liderança e Gestão da Mudança Rumo à Sustentabilidade</div>
-                <div class="timeline-org">Universidade de Petróleo e Gás de Ploiești (Erasmus+ BIP)</div>
-                <p class="timeline-desc" data-i18n="hist_6_desc">
-                  Ploiești, Roménia. Liderança e gestão da mudança rumo à sustentabilidade em organizações e equipas técnicas.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 7: Presente / Disponibilidade -->
-            <div class="timeline-node" data-node-index="6">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">07</span>
-                <span class="timeline-date">2026 — Presente</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker timeline-marker-emerald">💼</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card timeline-card-featured">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag timeline-tag-highlight" data-i18n="hist_7_tag">Open to Work · IEFP Nível 6</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_7_role">Disponibilidade Imediata (Remoto, Híbrido ou Mobilidade)</div>
-                <div class="timeline-org" style="color: var(--accent-emerald);">Elegível para Estágios +Talento (IEFP Nível 6)</div>
-                <p class="timeline-desc" data-i18n="hist_7_desc">
-                  Licenciado em Engenharia Informática focado em Automação de Redes, Cloud/DevSecOps e SRE, com sólida base em Backend Java. Elegível para Estágios +Talento (IEFP Nível 6).
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Floating Lateral Arrow: Right -->
-        <button type="button" class="timeline-float-arrow next" id="timelineFloatNext" aria-label="Avançar na linha do tempo" title="Avançar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
-      </div>
-
-      <!-- Interactive Progress Scrubber & Telemetry Bar -->
-      <div class="timeline-footer-bar">
-        <div class="timeline-counter">
-          <span class="counter-current" id="timelineActiveStep">01</span>
-          <span class="counter-sep">/</span>
-          <span class="counter-total">07</span>
-        </div>
-        <div class="timeline-scrubber" id="timelineScrubber" role="slider" aria-label="Progresso da linha do tempo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-          <div class="timeline-scrubber-track">
-            <div class="timeline-scrubber-fill" id="timelineScrubberFill"></div>
-            <div class="timeline-scrubber-thumb" id="timelineScrubberThumb"></div>
-          </div>
-        </div>
-        <div class="timeline-scroll-hint">
-          <span class="timeline-hint-pulse"></span>
-          <span data-i18n="timeline_hint">Arraste, use a roda do rato ou clique num marco para navegar</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== Section 3: Personal Projects (Architecture Showcases) ==================== -->
+  <!-- ==================== Section 2: Personal Projects (Architecture Showcases) ==================== -->
   <section class="section" id="projects">
     <div class="container">
       <span class="section-label" data-i18n="projects_label">Experiência de Engenharia</span>
       <h2 class="section-title" data-i18n="projects_title">Projetos Técnicos</h2>
       <p class="section-desc" data-i18n="projects_desc">
-        Projetos práticos de elevada complexidade demonstrados com métricas reais, conformidade regulamentar e diagramas interativos de arquitetura.
+        Projetos práticos demonstrados com métricas laboratoriais medidas, contextualização de ambiente e diagramas interativos de arquitetura.
       </p>
 
       <!-- Track Selector Filter Tabs -->
@@ -595,7 +354,7 @@
           <div class="project-left">
             <div class="project-badge-row">
               <span class="project-grade-pill" data-i18n="p1_grade">Classificação: 19 / 20 · Parceria: ARTE, I.P. (ex-AMA) · Set 2025 – Ago 2026</span>
-              <span class="tech-tag" style="color: var(--accent-emerald);">MTTR: ~60s ciclo completo (vs ~30 min)</span>
+              <span class="tech-tag" style="color: var(--accent-emerald);">MTTR Lab: ~60s ciclo completo</span>
               <span class="tech-tag">MTTD: &lt; 10s (-95% redução)</span>
               <span class="tech-tag">Convergência: 4–7s</span>
             </div>
@@ -603,13 +362,13 @@
             <h3 class="project-title" data-i18n="p1_title">Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)</h3>
 
             <p class="project-lead" data-i18n="p1_lead">
-              <strong>Projeto de Fim de Curso (Parceria: ARTE, I.P. – ex-AMA · Equipa: Rafael Cruz &amp; Rafael Victorino · Mentoria: Nuno Batuca, ARTE, I.P.):</strong> Tecnologias: n8n, Python, Fortinet, NetBox, MongoDB, Docker. Arquitetura orientada a eventos para elevar a resiliência e a disponibilidade de redes híbridas críticas (Overlay VPN IPsec sobre Underlay MPLS).
+              <strong>Protótipo de Fim de Curso em Laboratório Virtualizado (Parceria: ARTE, I.P. – ex-AMA · Equipa: Rafael Cruz &amp; Rafael Victorino · Mentoria: Nuno Batuca, ARTE, I.P.):</strong> Tecnologias: n8n, Python, Fortinet FortiGate, NetBox, MongoDB, Docker. Arquitetura orientada a eventos para autorrecuperação em ciclo fechado (<em>closed-loop</em>) em rede simulada (Overlay VPN IPsec sobre Underlay MPLS em VMware).<br><strong>Contribuição Individual:</strong> Desenvolvimento dos scripts de remediação determinística em Python (Netmiko), integração da REST API do FortiOS CMDB, modelos de dados no NetBox IPAM e automação dos nós de decisão no n8n.
             </p>
 
             <ul class="project-key-points">
-              <li data-i18n="p1_bullet1"><strong>Diagnóstico Diferencial Automatizado:</strong> Workflows orientados a eventos no n8n (via webhooks PRTG) que isolam falhas físicas (MPLS) de lógicas (VPN IPsec) em <strong>&lt;10s (-95% no MTTD)</strong>, com sondas ICMP preventivas contra falhas elétricas.</li>
-              <li data-i18n="p1_bullet2"><strong>Motor de Autorremediação Híbrido:</strong> Correção automática de <em>configuration drift</em> em firewalls FortiGate (REST API e contingência SSH em Python/Netmiko), reduzindo o MTTR de <strong>~30 min manuais para ~60s no ciclo completo</strong> (convergência ativa do drift em 4–7s).</li>
-              <li data-i18n="p1_bullet3"><strong>Fonte de Verdade (SSoT) e Auditoria:</strong> Validação dinâmica de IPAM no NetBox, registo estruturado de incidentes em MongoDB (Docker) e dashboards no Metabase, validados em 24 ensaios de <em>Chaos Engineering</em> (alinhados com a ISO 27001).</li>
+              <li data-i18n="p1_bullet1"><strong>Diagnóstico Diferencial Automatizado:</strong> Workflows no n8n disparados por webhooks do PRTG que isolam falhas físicas (MPLS) de lógicas (VPN IPsec) em <strong>&lt;10s (-95% no MTTD)</strong> através de pré-validação ICMP antes de comandos SSH/API.</li>
+              <li data-i18n="p1_bullet2"><strong>Motor Híbrido de Remediação (PoC):</strong> Correção automática de <em>configuration drift</em> no FortiGate (REST API direta e contingência SSH com Python/Netmiko para contornar limitações de licença de teste). Tempo de convergência ativa do drift medido entre <strong>4 e 7s</strong> (reduzindo o MTTR total do ciclo para <strong>~60s</strong> vs ~30 min de triagem manual).</li>
+              <li data-i18n="p1_bullet3"><strong>Fonte Canónica (SSoT) e Registo de Incidentes:</strong> Reconciliação com parâmetros canónicos no NetBox IPAM e persistência estruturada de auditoria em MongoDB (Docker) com painéis analíticos no Metabase, validados em <strong>24 ensaios de injeção de falhas (Chaos Engineering em ambiente de teste)</strong> alinhados com boas práticas de rastreabilidade (ISO 27001).</li>
             </ul>
 
             <div class="project-pipeline-tag" data-i18n="p1_pipeline">
@@ -623,7 +382,7 @@
               <span class="tech-tag">n8n</span>
               <span class="tech-tag">Netmiko (SSH)</span>
               <span class="tech-tag">PRTG</span>
-              <span class="tech-tag">Chaos Engineering</span>
+              <span class="tech-tag">Chaos Engineering (Lab)</span>
               <span class="tech-tag">MongoDB</span>
               <span class="tech-tag">Metabase</span>
               <span class="tech-tag">Docker</span>
@@ -631,9 +390,9 @@
             </div>
 
             <div class="project-action-links">
-              <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                <span data-i18n="btn_view_linkedin">Ver no LinkedIn</span>
+              <a href="https://github.com/RafaCr3z/netdevops-closed-loop-platform" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span data-i18n="btn_view_github">Ver no GitHub</span>
               </a>
               <button type="button" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" onclick="openWriteupModal(1)" data-i18n="btn_read_poc_brief">
                 Ler Análise da Topologia ➔
@@ -651,7 +410,7 @@
                   <span class="b-dot green"></span>
                 </div>
                 <div class="blueprint-name">closed_loop_topology.svg</div>
-                <div class="blueprint-status">● Live Telemetry</div>
+                <div class="blueprint-status" data-i18n="bp_status_netdevops">● Topologia & Telemetria</div>
               </div>
 
               <!-- Blueprint Interactive Tabs -->
@@ -709,28 +468,28 @@
                 <!-- View 2: Topologia Real ARTE -->
                 <div id="bp1-view-arte" class="bp-view" style="display: none;">
                   <img src="figura4_topologia_arte.png" alt="Topologia Real ARTE I.P." class="blueprint-real-img" onclick="openWriteupModal(1)">
-                  <p class="blueprint-img-note">▲ Topologia Real ARTE, I.P. (Do Relatório Técnico · Clique p/ expandir)</p>
+                  <p class="blueprint-img-note" data-i18n="bp_topo_note">▲ Topologia da Infraestrutura Híbrida ARTE, I.P. (Relatório Técnico · Clique p/ expandir)</p>
                 </div>
 
                 <!-- View 3: Macro NetDevOps -->
                 <div id="bp1-view-macro" class="bp-view" style="display: none;">
                   <img src="figura3_netdevops_arquitetura.png" alt="Macro Arquitetura NetDevOps" class="blueprint-real-img" onclick="openWriteupModal(1)">
-                  <p class="blueprint-img-note">▲ Macro Arquitetura NetDevOps (Do Relatório Técnico · Clique p/ expandir)</p>
+                  <p class="blueprint-img-note" data-i18n="bp_macro_note">▲ Diagrama do Fluxo de Remediação NetDevOps (Relatório Técnico · Clique p/ expandir)</p>
                 </div>
               </div>
 
               <div class="blueprint-metrics-bar">
                 <div class="metric-item">
-                  <div class="metric-val">4–7s</div>
-                  <div class="metric-lbl">Convergência Drift</div>
+                  <div class="metric-val" data-i18n="p1_metric1_val">4–7s</div>
+                  <div class="metric-lbl" data-i18n="p1_metric1_lbl">Convergência Drift (Lab)</div>
                 </div>
                 <div class="metric-item">
-                  <div class="metric-val">&lt; 10s</div>
-                  <div class="metric-lbl">Isolamento MTTD</div>
+                  <div class="metric-val" data-i18n="p1_metric2_val">&lt; 10s</div>
+                  <div class="metric-lbl" data-i18n="p1_metric2_lbl">Isolamento MTTD</div>
                 </div>
                 <div class="metric-item">
-                  <div class="metric-val">24 / 24</div>
-                  <div class="metric-lbl">Chaos Tests (19/20)</div>
+                  <div class="metric-val" data-i18n="p1_metric3_val">24 / 24</div>
+                  <div class="metric-lbl" data-i18n="p1_metric3_lbl">Ensaios Chaos Lab (19/20)</div>
                 </div>
               </div>
             </div>
@@ -750,13 +509,13 @@
             <h3 class="project-title" data-i18n="p2_title">Plataforma Multi-Cloud Segura e Resiliente (CityGuards)</h3>
 
             <p class="project-lead" data-i18n="p2_lead">
-              <strong>Projeto de Engenharia Cloud (Equipa: Diogo Oliveira, Rafael Cruz, Tiago Alves · Orientação: Prof. Osvaldo Santos):</strong> Tecnologias: Azure, GCP Firestore, Next.js, TypeScript, Node.js, Docker, Bicep, OIDC. Plataforma híbrida de alta resiliência e conformidade regulamentar combinando serviços Azure PaaS e Google Cloud Platform (GCP).
+              <strong>Projeto Académico de Engenharia Cloud (Equipa: Diogo Oliveira, Rafael Cruz, Tiago Alves · Orientação: Prof. Osvaldo Santos):</strong> Tecnologias: Azure, GCP Firestore, Next.js, TypeScript, Node.js, Docker, Bicep, OIDC. Plataforma híbrida ativa de reporte cívico combinando serviços Azure PaaS e Google Cloud Platform (GCP).<br><strong>Contribuição Individual:</strong> Engenharia do backend em Node.js/Express, migração desacoplada da camada NoSQL para GCP Firestore com transações atómicas ACID (<code>db.runTransaction</code>) e empacotamento do serviço de PDFs em Docker container.
             </p>
 
             <ul class="project-key-points">
-              <li data-i18n="p2_bullet1"><strong>Arquitetura Multi-Cloud e Tolerância a Falhas:</strong> Arquitetura interoperável entre Microsoft Azure (App Service, Blob Storage, Functions e ACI) e GCP Firestore, com fallback local para classificação de texto e geração de relatórios em PDF (Docker).</li>
-              <li data-i18n="p2_bullet2"><strong>Persistência e Concorrência:</strong> Migração desacoplada da base de dados NoSQL de Azure Cosmos DB para GCP Firestore e implementação de transações atómicas ACID (<code>db.runTransaction</code>) contra <em>race conditions</em> na gamificação, garantindo isolamento <em>multi-tenant</em>.</li>
-              <li data-i18n="p2_bullet3"><strong>DevSecOps, IaC e FinOps:</strong> Automatização da infraestrutura no Azure com Bicep e pipelines CI/CD no GitHub Actions (autenticação OIDC sem segredos estáticos), otimizando o custo cloud para <strong>~72 €/mês (FinOps)</strong> e avaliando alternativas soberanas (RGPD vs. US CLOUD Act).</li>
+              <li data-i18n="p2_bullet1"><strong>Arquitetura Híbrida e Degradação Graciosa:</strong> Interoperabilidade entre Microsoft Azure (App Service, Blob Storage, Functions e ACI) e GCP Firestore, com fallback heurístico local para classificação de texto e microsserviço de relatórios PDF em Docker.</li>
+              <li data-i18n="p2_bullet2"><strong>Persistência Desacoplada e Transações ACID:</strong> Migração desacoplada da persistência NoSQL para GCP Firestore e implementação de transações atómicas (<code>db.runTransaction</code>) para prevenir <em>race conditions</em> na gamificação cívica sob concorrência multi-tenant.</li>
+              <li data-i18n="p2_bullet3"><strong>Autenticação Federada e Otimização Cloud:</strong> Infraestrutura declarativa no Azure com Bicep e pipelines CI/CD no GitHub Actions usando federação OIDC (<code>azure/login@v2</code>) sem credenciais estáticas de longa duração, otimizando custos cloud para <strong>~72 €/mês (FinOps)</strong> e analisando soberania de dados (RGPD vs. US CLOUD Act).</li>
             </ul>
 
             <div class="project-pipeline-tag" data-i18n="p2_pipeline">
@@ -778,9 +537,9 @@
             </div>
 
             <div class="project-action-links">
-              <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                <span data-i18n="btn_view_linkedin">Ver no LinkedIn</span>
+              <a href="https://github.com/RafaCr3z/cityguards-platform-core" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span data-i18n="btn_view_github">Ver no GitHub</span>
               </a>
               <button type="button" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" onclick="openWriteupModal(3)" data-i18n="btn_read_cloud_brief">
                 Ler Análise Multi-Cloud ➔
@@ -798,7 +557,7 @@
                   <span class="b-dot green"></span>
                 </div>
                 <div class="blueprint-name">multicloud_resilience.svg</div>
-                <div class="blueprint-status" style="color: var(--accent-cyan);">● Zero Secret Leaks</div>
+                <div class="blueprint-status" style="color: var(--accent-cyan);" data-i18n="bp_status_cityguards">● Autenticação OIDC Federada</div>
               </div>
 
               <!-- Blueprint Interactive Tabs -->
@@ -843,29 +602,128 @@
                 <!-- View 2: Dashboard Real Autarquia -->
                 <div id="bp2-view-dashboard" class="bp-view" style="display: none;">
                   <img src="figura11_cityguards_multicloud_real.png" alt="Painel Real Autarquia CityGuards" class="blueprint-real-img" onclick="openWriteupModal(2)">
-                  <p class="blueprint-img-note">▲ Painel Real de Gestão Autárquica CityGuards (Do Relatório Técnico · Clique p/ expandir)</p>
+                  <p class="blueprint-img-note" data-i18n="bp_cg_dashboard_note">▲ Painel de Gestão Municipal CityGuards (Relatório Técnico · Clique p/ expandir)</p>
                 </div>
               </div>
 
               <div class="blueprint-metrics-bar">
                 <div class="metric-item">
-                  <div class="metric-val">20 / 20</div>
-                  <div class="metric-lbl">Classificação</div>
+                  <div class="metric-val" data-i18n="p2_metric1_val">20 / 20</div>
+                  <div class="metric-lbl" data-i18n="p2_metric1_lbl">Classificação Final</div>
                 </div>
                 <div class="metric-item">
-                  <div class="metric-val">ACID</div>
-                  <div class="metric-lbl">runTransaction</div>
+                  <div class="metric-val" data-i18n="p2_metric2_val">ACID</div>
+                  <div class="metric-lbl" data-i18n="p2_metric2_lbl">Transações Concorrentes</div>
                 </div>
                 <div class="metric-item">
-                  <div class="metric-val">OIDC</div>
-                  <div class="metric-lbl">Zero Segredos</div>
+                  <div class="metric-val" data-i18n="p2_metric3_val">OIDC</div>
+                  <div class="metric-lbl" data-i18n="p2_metric3_lbl">Sem Segredos Estáticos</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ================= Projeto 3: PDS Design Patterns Monorepo ================= -->
+        <!-- ================= Projeto 3: CarPooling PT (Reordered before PDS) ================= -->
+        <div class="project-showcase-card" data-track="backend">
+          <div class="project-left">
+            <div class="project-badge-row">
+              <span class="project-grade-pill" data-i18n="p4_grade">Microsserviços Distribuídos · Spring Cloud &amp; LGTM Observability</span>
+              <span class="tech-tag" style="color: var(--accent-emerald);">Java 21 · Spring Boot 3</span>
+              <span class="tech-tag">RabbitMQ &amp; Redis 7</span>
+              <span class="tech-tag">LGTM Stack</span>
+              <span class="tech-tag">Docker (18 Containers)</span>
+            </div>
+
+            <h3 class="project-title" data-i18n="p4_title">Plataforma Distribuída de Partilha de Viagens (CarPooling PT)</h3>
+
+            <p class="project-lead" data-i18n="p4_lead">
+              <strong>Arquitetura Distribuída de Microsserviços:</strong> Tecnologias: Java 21 LTS, Spring Boot 3, Spring Cloud (Eureka, Gateway, OpenFeign), RabbitMQ (Topic Exchange + DLQ), Redis 7 (Cache-Aside &amp; Rate Limiting), PostgreSQL (Database-per-Service), Docker Compose (18 contentores), Kubernetes declarativo e Observabilidade LGTM.
+            </p>
+
+            <ul class="project-key-points">
+              <li data-i18n="p4_bullet1"><strong>Microsserviços Desacoplados &amp; Resiliência Distribuída:</strong> 11 módulos Maven (1 biblioteca partilhada + 10 microsserviços) com Service Discovery dinâmico (Netflix Eureka), API Gateway reativo com rate limiting Token Bucket em Redis, mensageria assíncrona por RabbitMQ com Dead Letter Queue e Circuit Breakers Resilience4j com fallback gracioso.</li>
+              <li data-i18n="p4_bullet2"><strong>Suíte de 123 Testes Automatizados &amp; DevSecOps:</strong> Validação integral no Maven Reactor com 100% de aprovação (JUnit 5 + Mockito), migrações relacionais versionadas via Flyway com isolamento Database-per-Service, manifestos Kubernetes declarativos e verificação de vulnerabilidades em contentores com Trivy.</li>
+              <li data-i18n="p4_bullet3"><strong>Stack de Observabilidade LGTM &amp; Fórmulas de Negócio:</strong> Telemetria centralizada correlacionando métricas (Prometheus :9090), dashboards de JVM e tráfego (Grafana :3001), rastreio distribuído OTLP (Tempo :3200) e agregação de logs (Loki :3100), com algoritmo de distâncias Haversine, liquidações sandbox idempotentes e estimativa de poupança de CO2.</li>
+            </ul>
+
+            <div class="project-pipeline-tag" data-i18n="p4_pipeline">
+              API Gateway (Rate Limit) ➔ Eureka ➔ Spring Boot (OpenFeign / Circuit Breaker) ➔ RabbitMQ / Redis ➔ PostgreSQL &amp; LGTM Stack
+            </div>
+
+            <div class="project-tags-list">
+              <span class="tech-tag">Java 21 LTS</span>
+              <span class="tech-tag">Spring Boot 3</span>
+              <span class="tech-tag">Spring Cloud (Eureka)</span>
+              <span class="tech-tag">RabbitMQ (AMQP/DLQ)</span>
+              <span class="tech-tag">Redis 7 (Cache-Aside)</span>
+              <span class="tech-tag">PostgreSQL (Flyway)</span>
+              <span class="tech-tag">Prometheus &amp; Grafana</span>
+              <span class="tech-tag">Grafana Tempo &amp; Loki</span>
+              <span class="tech-tag">JUnit 5 (123 Testes)</span>
+              <span class="tech-tag">Docker (18 Containers)</span>
+              <span class="tech-tag">Kubernetes Kustomize</span>
+            </div>
+
+            <div class="project-action-links">
+              <a href="https://github.com/RafaCr3z/car-pooling-sharing" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span data-i18n="btn_view_github">Ver no GitHub</span>
+              </a>
+              <a href="https://github.com/RafaCr3z/car-pooling-sharing#readme" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" data-i18n="btn_carpooling_docs">
+                Ver Arquitetura ➔
+              </a>
+            </div>
+          </div>
+
+          <!-- Microservices Architecture & Observability Graphic -->
+          <div class="project-right">
+            <div class="blueprint-card">
+              <div class="blueprint-bar">
+                <div class="blueprint-dots">
+                  <span class="b-dot red"></span>
+                  <span class="b-dot yellow"></span>
+                  <span class="b-dot green"></span>
+                </div>
+                <div class="blueprint-name">carpooling_grafana.png (LGTM Observability)</div>
+                <div class="blueprint-status" style="color: var(--accent-emerald);" data-i18n="bp_status_carpooling">● Spring Cloud &amp; LGTM</div>
+              </div>
+
+              <div class="blueprint-tabs">
+                <button type="button" class="bp-tab active" onclick="switchBlueprintTab(4, 'grafana', this)" data-i18n="bp_tab_grafana">Cockpit Grafana</button>
+                <button type="button" class="bp-tab" onclick="switchBlueprintTab(4, 'leaflet', this)" data-i18n="bp_tab_leaflet">Rotas &amp; Leaflet</button>
+              </div>
+
+              <div class="blueprint-canvas">
+                <div id="bp4-view-grafana" class="bp-view active">
+                  <img src="carpooling_grafana.png" alt="Cockpit de Observabilidade Grafana" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/car-pooling-sharing', '_blank')">
+                  <p class="blueprint-img-note" data-i18n="bp_carpooling_note1">▲ Cockpit de Observabilidade Grafana (JVM, RPS, Latência e Actuator · Clique p/ repositório)</p>
+                </div>
+                <div id="bp4-view-leaflet" class="bp-view" style="display: none;">
+                  <img src="carpooling_leaflet.png" alt="Pesquisa de Viagens e Rotas Leaflet" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/car-pooling-sharing', '_blank')">
+                  <p class="blueprint-img-note" data-i18n="bp_carpooling_note2">▲ Pesquisa de Viagens com Rotas Geodésicas e Mapa Leaflet (Clique p/ repositório)</p>
+                </div>
+              </div>
+
+              <div class="blueprint-metrics-bar">
+                <div class="metric-item">
+                  <div class="metric-val" data-i18n="p4_metric1_val">123 / 123</div>
+                  <div class="metric-lbl" data-i18n="p4_metric1_lbl">Testes Automatizados</div>
+                </div>
+                <div class="metric-item">
+                  <div class="metric-val" data-i18n="p4_metric2_val">18</div>
+                  <div class="metric-lbl" data-i18n="p4_metric2_lbl">Contentores Docker (LGTM)</div>
+                </div>
+                <div class="metric-item">
+                  <div class="metric-val" data-i18n="p4_metric3_val">11</div>
+                  <div class="metric-lbl" data-i18n="p4_metric3_lbl">Módulos Maven</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= Projeto 4: PDS Design Patterns Monorepo ================= -->
         <div class="project-showcase-card" data-track="backend">
           <div class="project-left">
             <div class="project-badge-row">
@@ -878,13 +736,13 @@
             <h3 class="project-title" data-i18n="p3_title">Padrões de Desenho de Software &amp; Arquitetura Modular (PDS Monorepo)</h3>
 
             <p class="project-lead" data-i18n="p3_lead">
-              <strong>Monorepo de Engenharia de Software:</strong> Tecnologias: Java 17/21, Padrões GoF (State, Strategy, Observer, Factory, Command, Singleton), Princípios SOLID, Modelação UML. Soluções empresariais desacoplando lógica de domínio e interfaces.
+              <strong>Monorepo de Engenharia de Software:</strong> Tecnologias: Java 17/21, Padrões GoF (State, Strategy, Observer, Factory, Command, Singleton), Princípios SOLID e Modelação UML. Arquitetura orientada a objetos desacoplando lógica de domínio e interfaces.
             </p>
 
             <ul class="project-key-points">
               <li data-i18n="p3_bullet1"><strong>EST Global Airways (Reserva &amp; Gestão de Voos):</strong> Sistema de pesquisa multicritério, cálculo dinâmico de gamas tarifárias por milhagem e taxas aeroportuárias, gestão integral de reservas com ID único alfanumérico e ciclo pós-venda (alteração de datas, lugares e cancelamento com reembolso).</li>
-              <li data-i18n="p3_bullet2"><strong>Banco do FaroEST (Refactoring &amp; Packs de Expansão):</strong> Modernização de software legado com transição de lógica monolítica procedural para arquitetura orientada a estados (<em>State Pattern</em>), desacoplamento de eventos (<em>Observer</em>) e extensibilidade de regras de jogo sem quebra de contratos.</li>
-              <li data-i18n="p3_bullet3"><strong>Engenharia de Software &amp; Diagramas UML:</strong> Aplicação rigorosa dos princípios SOLID (SRP, OCP, DIP), polimorfismo, interfaces defensivas, tratamento de exceções customizadas e modelação arquitetural através de diagramas de classes UML estruturados.</li>
+              <li data-i18n="p3_bullet2"><strong>Banco do FaroEST (Refactoring Orientado a Objetos):</strong> Modernização de lógica procedural para arquitetura orientada a estados (<em>State Pattern</em>), desacoplamento de eventos (<em>Observer</em>) e extensibilidade de regras sem regressões em testes.</li>
+              <li data-i18n="p3_bullet3"><strong>Padrões de Desenho &amp; Modelação UML:</strong> Aplicação rigorosa dos princípios SOLID (SRP, OCP, DIP), polimorfismo, interfaces defensivas, tratamento de exceções customizadas e modelação arquitetural através de diagramas de classes UML estruturados.</li>
             </ul>
 
             <div class="project-pipeline-tag" data-i18n="p3_pipeline">
@@ -923,7 +781,7 @@
                   <span class="b-dot green"></span>
                 </div>
                 <div class="blueprint-name">pds_classes.jpeg (UML Architecture)</div>
-                <div class="blueprint-status" style="color: var(--accent-emerald);">● Design Patterns GoF</div>
+                <div class="blueprint-status" style="color: var(--accent-emerald);" data-i18n="bp_status_pds">● Padrões de Desenho GoF</div>
               </div>
 
               <div class="blueprint-tabs">
@@ -943,8 +801,8 @@
                   <div class="metric-lbl" data-i18n="p3_metric1_lbl">Padrões de Desenho</div>
                 </div>
                 <div class="metric-item">
-                  <div class="metric-val" data-i18n="p3_metric2_val">100%</div>
-                  <div class="metric-lbl" data-i18n="p3_metric2_lbl">SOLID Clean Code</div>
+                  <div class="metric-val" data-i18n="p3_metric2_val">SOLID</div>
+                  <div class="metric-lbl" data-i18n="p3_metric2_lbl">Padrões GoF & Clean Code</div>
                 </div>
                 <div class="metric-item">
                   <div class="metric-val" data-i18n="p3_metric3_val">2</div>
@@ -955,105 +813,262 @@
           </div>
         </div>
 
-        <!-- ================= Projeto 4: CarPooling PT ================= -->
-        <div class="project-showcase-card" data-track="backend">
-          <div class="project-left">
-            <div class="project-badge-row">
-              <span class="project-grade-pill" data-i18n="p4_grade">Microsserviços Distribuídos · Spring Cloud &amp; LGTM Observability</span>
-              <span class="tech-tag" style="color: var(--accent-emerald);">Java 21 · Spring Boot 3</span>
-              <span class="tech-tag">RabbitMQ &amp; Redis 7</span>
-              <span class="tech-tag">LGTM Stack</span>
-              <span class="tech-tag">Docker (18 Containers)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Section 3: Career History (Interactive Timeline) ==================== -->
+  <section class="section" id="history">
+    <div class="container">
+      <span class="section-label" data-i18n="history_label">Educação & Experiência</span>
+      <h2 class="section-title" data-i18n="history_title">Career History</h2>
+      <p class="section-desc" data-i18n="history_desc">
+        Linha cronológica integrando percurso académico, mobilidade internacional e experiência profissional complementar descritas no CV.
+      </p>
+
+      <!-- Executive Timeline HUD: Milestone Stepper & Controls -->
+      <div class="timeline-hud">
+        <div class="timeline-stepper" id="timelineStepper" role="tablist" aria-label="Etapas do percurso">
+          <button type="button" class="timeline-step-pill active" data-step="0">
+            <span class="step-pill-idx">01</span>
+            <span class="step-pill-label" data-i18n="step_1_short">IPCB</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="1">
+            <span class="step-pill-idx">02</span>
+            <span class="step-pill-label" data-i18n="step_2_short">Brisa</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="2">
+            <span class="step-pill-idx">03</span>
+            <span class="step-pill-label" data-i18n="step_3_short">Weimar</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="3">
+            <span class="step-pill-idx">04</span>
+            <span class="step-pill-label" data-i18n="step_4_short">Lusiaves</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="4">
+            <span class="step-pill-idx">05</span>
+            <span class="step-pill-label" data-i18n="step_5_short">ARTE PoC</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="5">
+            <span class="step-pill-idx">06</span>
+            <span class="step-pill-label" data-i18n="step_6_short">Roménia</span>
+          </button>
+          <button type="button" class="timeline-step-pill" data-step="6">
+            <span class="step-pill-idx">07</span>
+            <span class="step-pill-label" data-i18n="step_7_short">Presente</span>
+          </button>
+        </div>
+
+        <div class="timeline-action-buttons">
+          <button type="button" class="timeline-ctrl-btn" id="timelineBtnPrev" aria-label="Recuar no percurso" title="Anterior">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span data-i18n="timeline_prev">Anterior</span>
+          </button>
+          <button type="button" class="timeline-ctrl-btn timeline-autoroll-btn active" id="timelineAutoRollToggle" aria-label="Alternar rodagem automática" title="Rodagem Automática">
+            <span class="autoroll-indicator"></span>
+            <span class="autoroll-icon" id="timelineAutoRollIcon">⏸</span>
+            <span class="autoroll-text" data-i18n="timeline_autoroll">Auto-Roll</span>
+          </button>
+          <button type="button" class="timeline-ctrl-btn" id="timelineBtnNext" aria-label="Avançar no percurso" title="Seguinte">
+            <span data-i18n="timeline_next">Seguinte</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="timeline-carousel-container" id="timelineCarouselContainer">
+        <!-- Floating Lateral Arrow: Left -->
+        <button type="button" class="timeline-float-arrow prev" id="timelineFloatPrev" aria-label="Recuar na linha do tempo" title="Recuar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+
+        <div class="timeline-wrapper" id="timelineWrapper">
+          <div class="timeline-items" id="timelineItems">
+            <!-- Continuous Horizontal Axis Track passing directly through all markers -->
+            <div class="timeline-track" aria-hidden="true">
+              <div class="timeline-track-pulse"></div>
             </div>
 
-            <h3 class="project-title" data-i18n="p4_title">Plataforma Distribuída de Partilha de Viagens (CarPooling PT)</h3>
-
-            <p class="project-lead" data-i18n="p4_lead">
-              <strong>Arquitetura de Microsserviços Corporativa:</strong> Tecnologias: Java 21 LTS, Spring Boot 3, Spring Cloud (Eureka, Gateway, OpenFeign), RabbitMQ (Topic Exchange + DLQ), Redis 7 (Cache-Aside &amp; Rate Limiting), PostgreSQL (Database-per-Service), Docker Compose (18 contentores), Kubernetes declarativo e Observabilidade LGTM.
-            </p>
-
-            <ul class="project-key-points">
-              <li data-i18n="p4_bullet1"><strong>Microsserviços Desacoplados &amp; Resiliência Distribuída:</strong> 11 módulos Maven (1 biblioteca partilhada + 10 microsserviços) com Service Discovery dinâmico (Netflix Eureka), API Gateway reativo com rate limiting Token Bucket em Redis, mensageria assíncrona por RabbitMQ com Dead Letter Queue e Circuit Breakers Resilience4j com fallbacks gracioso.</li>
-              <li data-i18n="p4_bullet2"><strong>Suíte de 123 Testes Automatizados &amp; DevSecOps:</strong> Validação integral no Maven Reactor com 100% de aprovação (JUnit 5 + Mockito), migrações relacionais versionadas via Flyway com isolamento Database-per-Service, manifestos Kubernetes declarativos e auditoria de vulnerabilidades com Trivy.</li>
-              <li data-i18n="p4_bullet3"><strong>Stack de Observabilidade LGTM &amp; Fórmulas de Negócio:</strong> Telemetria centralizada correlacionando métricas (Prometheus :9090), dashboards de JVM e tráfego (Grafana :3001), rastreio distribuído OTLP (Tempo :3200) e agregação de logs (Loki :3100), com algoritmo de distâncias Haversine, liquidações sandbox idempotentes e poupança de CO2.</li>
-            </ul>
-
-            <div class="project-pipeline-tag" data-i18n="p4_pipeline">
-              API Gateway (Rate Limit) ➔ Eureka ➔ Spring Boot (OpenFeign / Circuit Breaker) ➔ RabbitMQ / Redis ➔ PostgreSQL &amp; LGTM Stack
-            </div>
-
-            <div class="project-tags-list">
-              <span class="tech-tag">Java 21 LTS</span>
-              <span class="tech-tag">Spring Boot 3</span>
-              <span class="tech-tag">Spring Cloud (Eureka)</span>
-              <span class="tech-tag">RabbitMQ (AMQP/DLQ)</span>
-              <span class="tech-tag">Redis 7 (Cache-Aside)</span>
-              <span class="tech-tag">PostgreSQL (Flyway)</span>
-              <span class="tech-tag">Prometheus &amp; Grafana</span>
-              <span class="tech-tag">Grafana Tempo &amp; Loki</span>
-              <span class="tech-tag">JUnit 5 (123 Testes)</span>
-              <span class="tech-tag">Docker (18 Containers)</span>
-              <span class="tech-tag">Kubernetes Kustomize</span>
-            </div>
-
-            <div class="project-action-links">
-              <a href="https://github.com/RafaCr3z/car-pooling-platform" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                <span data-i18n="btn_view_github">Ver no GitHub</span>
-              </a>
-              <a href="https://github.com/RafaCr3z/car-pooling-platform#readme" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" data-i18n="btn_carpooling_docs">
-                Ver Arquitetura ➔
-              </a>
-            </div>
-          </div>
-
-          <!-- Microservices Architecture & Observability Graphic -->
-          <div class="project-right">
-            <div class="blueprint-card">
-              <div class="blueprint-bar">
-                <div class="blueprint-dots">
-                  <span class="b-dot red"></span>
-                  <span class="b-dot yellow"></span>
-                  <span class="b-dot green"></span>
-                </div>
-                <div class="blueprint-name">carpooling_grafana.png (LGTM Observability)</div>
-                <div class="blueprint-status" style="color: var(--accent-emerald);">● Spring Cloud &amp; LGTM</div>
+            <!-- Node 1: IPCB Licenciatura -->
+            <div class="timeline-node is-active" data-node-index="0">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">01</span>
+                <span class="timeline-date" data-i18n="hist_1_date">Out 2022 — Jun 2026</span>
               </div>
-
-              <div class="blueprint-tabs">
-                <button type="button" class="bp-tab active" onclick="switchBlueprintTab(4, 'grafana', this)" data-i18n="bp_tab_grafana">Cockpit Grafana</button>
-                <button type="button" class="bp-tab" onclick="switchBlueprintTab(4, 'leaflet', this)" data-i18n="bp_tab_leaflet">Rotas &amp; Leaflet</button>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">🎓</div>
+                <div class="timeline-stem"></div>
               </div>
-
-              <div class="blueprint-canvas">
-                <div id="bp4-view-grafana" class="bp-view active">
-                  <img src="carpooling_grafana.png" alt="Cockpit de Observabilidade Grafana" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/car-pooling-platform', '_blank')">
-                  <p class="blueprint-img-note" data-i18n="bp_carpooling_note1">▲ Cockpit de Observabilidade Grafana (JVM, RPS, Latência e Actuator · Clique p/ repositório)</p>
+              <div class="timeline-card">
+                <div class="timeline-card-top">
+                  <span class="timeline-tag" data-i18n="hist_1_tag">Académico · Nível 6 EQF</span>
                 </div>
-                <div id="bp4-view-leaflet" class="bp-view" style="display: none;">
-                  <img src="carpooling_leaflet.png" alt="Pesquisa de Viagens e Rotas Leaflet" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/car-pooling-platform', '_blank')">
-                  <p class="blueprint-img-note" data-i18n="bp_carpooling_note2">▲ Pesquisa de Viagens com Rotas Geodésicas e Mapa Leaflet (Clique p/ repositório)</p>
-                </div>
-              </div>
-
-              <div class="blueprint-metrics-bar">
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p4_metric1_val">123 / 123</div>
-                  <div class="metric-lbl" data-i18n="p4_metric1_lbl">Testes Automatizados</div>
-                </div>
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p4_metric2_val">18</div>
-                  <div class="metric-lbl" data-i18n="p4_metric2_lbl">Contentores Docker (LGTM)</div>
-                </div>
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p4_metric3_val">11</div>
-                  <div class="metric-lbl" data-i18n="p4_metric3_lbl">Módulos Maven</div>
-                </div>
+                <div class="timeline-role" data-i18n="hist_1_role">Licenciatura em Engenharia Informática</div>
+                <div class="timeline-org" data-i18n="hist_1_org">IPCB-ESTCB · Média Final: 15 / 20</div>
+                <p class="timeline-desc" data-i18n="hist_1_desc">
+                  Castelo Branco, Portugal. Formação sólida em redes, sistemas distribuídos, arquitetura computacional, bases de dados e segurança.
+                </p>
               </div>
             </div>
+
+            <!-- Node 2: Brisa (Jun 2024 — Ago 2024) -->
+            <div class="timeline-node" data-node-index="1">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">02</span>
+                <span class="timeline-date" data-i18n="hist_2_date">Jun 2024 — Ago 2024</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">🚗</div>
+                <div class="timeline-stem"></div>
+              </div>
+              <div class="timeline-card">
+                <div class="timeline-card-top">
+                  <span class="timeline-tag" data-i18n="hist_2_tag">Operações &amp; SLA</span>
+                </div>
+                <div class="timeline-role" data-i18n="hist_2_role">Operador de Atendimento ao Cliente</div>
+                <div class="timeline-org" data-i18n="hist_2_org">Brisa Auto-estradas de Portugal</div>
+                <p class="timeline-desc" data-i18n="hist_2_desc">
+                  Monte Redondo, Leiria, Portugal. Resolução ágil de incidentes sob pressão em períodos de tráfego intenso e cumprimento rigoroso de protocolos de reconciliação de caixa.
+                </p>
+              </div>
+            </div>
+
+            <!-- Node 3: Erasmus Weimar -->
+            <div class="timeline-node" data-node-index="2">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">03</span>
+                <span class="timeline-date" data-i18n="hist_3_date">Fev 2025 — Mar 2025</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">🏛️</div>
+                <div class="timeline-stem"></div>
+              </div>
+              <div class="timeline-card">
+                <div class="timeline-card-top">
+                  <span class="timeline-tag" data-i18n="hist_3_tag">Mobilidade Internacional</span>
+                </div>
+                <div class="timeline-role" data-i18n="hist_3_role">Curso Intensivo: Ferramentas Digitais e Património Cultural</div>
+                <div class="timeline-org" data-i18n="hist_3_org">Bauhaus-Universität Weimar (Erasmus+ BIP)</div>
+                <p class="timeline-desc" data-i18n="hist_3_desc">
+                  Weimar, Alemanha. Ferramentas digitais avançadas, processamento e preservação de património cultural tecnológico.
+                </p>
+              </div>
+            </div>
+
+            <!-- Node 4: Lusiaves (Jun 2025 — Ago 2025) -->
+            <div class="timeline-node" data-node-index="3">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">04</span>
+                <span class="timeline-date" data-i18n="hist_4_date">Jun 2025 — Ago 2025</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">📦</div>
+                <div class="timeline-stem"></div>
+              </div>
+              <div class="timeline-card">
+                <div class="timeline-card-top">
+                  <span class="timeline-tag" data-i18n="hist_4_tag">Logística &amp; Sistemas</span>
+                </div>
+                <div class="timeline-role" data-i18n="hist_4_role">Operador de Logística e Expedição</div>
+                <div class="timeline-org" data-i18n="hist_4_org">Grupo Lusiaves</div>
+                <p class="timeline-desc" data-i18n="hist_4_desc">
+                  Marinha das Ondas, Portugal. Operação logística de ritmo acelerado, controlo de inventário por terminais de armazém e cumprimento de normas em turnos rotativos.
+                </p>
+              </div>
+            </div>
+
+            <!-- Node 5: Capstone ARTE I.P. -->
+            <div class="timeline-node" data-node-index="4">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">05</span>
+                <span class="timeline-date" data-i18n="hist_5_date">Set 2025 — Ago 2026</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">🚀</div>
+                <div class="timeline-stem"></div>
+              </div>
+              <div class="timeline-card">
+                <div class="timeline-card-top">
+                  <span class="timeline-tag timeline-tag-highlight" data-i18n="hist_5_tag">Capstone · Nota: 19 / 20</span>
+                </div>
+                <div class="timeline-role" data-i18n="hist_5_role">Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)</div>
+                <div class="timeline-org" data-i18n="hist_5_org">Projeto de Fim de Curso (19/20) · Parceria: ARTE, I.P. (ex-AMA)</div>
+                <p class="timeline-desc" data-i18n="hist_5_desc">
+                  Arquitetura orientada a eventos para autorrecuperação closed-loop em redes críticas (Overlay VPN IPsec sobre Underlay MPLS).
+                </p>
+              </div>
+            </div>
+
+            <!-- Node 6: Erasmus Ploiesti -->
+            <div class="timeline-node" data-node-index="5">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">06</span>
+                <span class="timeline-date" data-i18n="hist_6_date">Abr 2026</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker">🌍</div>
+                <div class="timeline-stem"></div>
+              </div>
+              <div class="timeline-card">
+                <div class="timeline-card-top">
+                  <span class="timeline-tag" data-i18n="hist_6_tag">Mobilidade Internacional</span>
+                </div>
+                <div class="timeline-role" data-i18n="hist_6_role">Curso Intensivo: Liderança e Gestão da Mudança Rumo à Sustentabilidade</div>
+                <div class="timeline-org" data-i18n="hist_6_org">Universidade de Petróleo e Gás de Ploiești (Erasmus+ BIP)</div>
+                <p class="timeline-desc" data-i18n="hist_6_desc">
+                  Ploiești, Roménia. Liderança e gestão da mudança rumo à sustentabilidade em organizações e equipas técnicas.
+                </p>
+              </div>
+            </div>
+
+            <!-- Node 7: Presente / Disponibilidade -->
+            <div class="timeline-node" data-node-index="6">
+              <div class="timeline-node-header">
+                <span class="timeline-step-num">07</span>
+                <span class="timeline-date" data-i18n="hist_7_date">2026 — Presente</span>
+              </div>
+              <div class="timeline-marker-wrap">
+                <div class="timeline-marker timeline-marker-emerald">💼</div>
+                <div class="timeline-stem"></div>
+              </div>
+              <div class="timeline-card timeline-card-featured">
+                <div class="timeline-card-top">
+                  <span class="timeline-tag timeline-tag-highlight" data-i18n="hist_7_tag">Open to Work · IEFP Nível 6</span>
+                </div>
+                <div class="timeline-role" data-i18n="hist_7_role">Disponibilidade Imediata (Remoto, Híbrido ou Mobilidade)</div>
+                <div class="timeline-org" style="color: var(--accent-emerald);" data-i18n="hist_7_org">Elegível para Estágios +Talento (IEFP Nível 6)</div>
+                <p class="timeline-desc" data-i18n="hist_7_desc">
+                  Licenciado em Engenharia Informática focado em Automação de Redes, Cloud/DevSecOps e SRE, com sólida base em Backend Java. Elegível para Estágios +Talento (IEFP Nível 6).
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
 
+        <!-- Floating Lateral Arrow: Right -->
+        <button type="button" class="timeline-float-arrow next" id="timelineFloatNext" aria-label="Avançar na linha do tempo" title="Avançar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- Interactive Progress Scrubber & Telemetry Bar -->
+      <div class="timeline-footer-bar">
+        <div class="timeline-counter">
+          <span class="counter-current" id="timelineActiveStep">01</span>
+          <span class="counter-sep">/</span>
+          <span class="counter-total">07</span>
+        </div>
+        <div class="timeline-scrubber" id="timelineScrubber" role="slider" aria-label="Progresso da linha do tempo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="timeline-scrubber-track">
+            <div class="timeline-scrubber-fill" id="timelineScrubberFill"></div>
+            <div class="timeline-scrubber-thumb" id="timelineScrubberThumb"></div>
+          </div>
+        </div>
+        <div class="timeline-scroll-hint">
+          <span class="timeline-hint-pulse"></span>
+          <span data-i18n="timeline_hint">Arraste, use a roda do rato ou clique num marco para navegar</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1073,7 +1088,7 @@
         <div class="writeup-card">
           <div class="writeup-meta">
             <span>#01 · NETDEVOPS</span>
-            <span>6 min leitura</span>
+            <span data-i18n="w1_read_time">6 min leitura</span>
           </div>
           <h3 class="writeup-title" data-i18n="w1_title">Remediação Closed-Loop de Configuration Drift em FortiOS via REST API e NetBox</h3>
           <p class="writeup-snippet" data-i18n="w1_snippet">
@@ -1088,7 +1103,7 @@
         <div class="writeup-card">
           <div class="writeup-meta">
             <span>#02 · SECDEVOPS</span>
-            <span>4 min leitura</span>
+            <span data-i18n="w2_read_time">4 min leitura</span>
           </div>
           <h3 class="writeup-title" data-i18n="w2_title">Eliminando Segredos Estáticos em CI/CD: Autenticação Federada com GitHub Actions e Azure OIDC</h3>
           <p class="writeup-snippet" data-i18n="w2_snippet">
@@ -1103,7 +1118,7 @@
         <div class="writeup-card">
           <div class="writeup-meta">
             <span>#03 · MULTI-CLOUD</span>
-            <span>5 min leitura</span>
+            <span data-i18n="w3_read_time">5 min leitura</span>
           </div>
           <h3 class="writeup-title" data-i18n="w3_title">Arquitetura Multi-Cloud Resiliente: Mitigando Falhas com Fallback Desacoplado entre Azure e GCP</h3>
           <p class="writeup-snippet" data-i18n="w3_snippet">
@@ -1157,6 +1172,19 @@
           <p class="contact-desc-text" data-i18n="contact_desc">
             Se a sua organização procura um profissional com perfil analítico e prático em <strong>Automação de Redes (NetDevOps)</strong>, <strong>Cloud &amp; DevSecOps</strong>, <strong>SRE</strong> ou <strong>Backend Java / Spring Boot</strong>, estou totalmente disponível para conversas e processos de recrutamento (Disponibilidade Imediata [Remoto, Híbrido ou Mobilidade] · Elegível para Estágios +Talento [IEFP Nível 6]).
           </p>
+          <div class="hero-cv-group" style="margin-top: 20px;">
+            <div class="hero-cv-label" data-i18n="contact_cv_label">Acesso Rápido aos CVs:</div>
+            <div class="hero-cv-buttons">
+              <a href="CV_Rafael_Cruz_Redes_Cloud.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-pill" download="CV_Rafael_Cruz_Redes_Cloud.pdf">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span data-i18n="btn_cv_net">📄 CV Redes &amp; Cloud</span>
+              </a>
+              <a href="CV_Rafael_Cruz_Desenvolvimento_Software.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-pill" download="CV_Rafael_Cruz_Desenvolvimento_Software.pdf">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span data-i18n="btn_cv_dev">💻 CV Software &amp; Backend</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="contact-channels-grid">
