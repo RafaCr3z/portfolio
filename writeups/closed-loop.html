@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remediação closed-loop em FortiOS com NetBox — Rafael Cruz</title>
+  <meta name="description" content="Como desenhei um motor de autorrecuperação para firewalls FortiGate com NetBox como fonte de verdade: 10 cenários de chaos engineering, 24 incidentes, 100% das falhas lógicas corrigidas." />
+  <link rel="canonical" href="https://rafacr3z.github.io/portfolio/writeups/closed-loop.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Remediação closed-loop de configuration drift em FortiOS com NetBox" />
+  <meta property="og:description" content="Motor de autorrecuperação para firewalls FortiGate: 24 incidentes injetados, 100% das falhas lógicas corrigidas em 4–7 s." />
+  <meta property="og:image" content="https://rafacr3z.github.io/portfolio/assets/img/og-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2318181b'/><text x='16' y='21' font-family='monospace' font-size='13' font-weight='700' fill='%23fff' text-anchor='middle'>RC</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="../assets/css/main.css?v=2" />
+  <script>
+    (function () {
+      var d = document.documentElement; d.classList.remove('no-js');
+      try {
+        var t = localStorage.getItem('rc_theme'); if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+        if (localStorage.getItem('rc_lang') === 'en') d.lang = 'en';
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body data-title-pt="Remediação closed-loop em FortiOS com NetBox — Rafael Cruz" data-title-en="Closed-loop remediation in FortiOS with NetBox — Rafael Cruz">
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" aria-label="Principal">
+        <a href="../index.html" class="brand"><span class="brand-mark">RC</span>Rafael Cruz</a>
+        <div class="nav-tools">
+          <button type="button" class="lang-btn" id="langBtn" aria-label="Switch language / Mudar idioma"><span data-l="pt">EN</span><span data-l="en">PT</span></button>
+          <button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro">
+            <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article">
+    <a href="../index.html#writeups" class="article-back">← <span data-l="pt">Todos os writeups</span><span data-l="en">All writeups</span></a>
+    <p class="eyebrow">NetDevOps · 6 min</p>
+
+    <!-- ======================= PT ======================= -->
+    <div data-l="pt">
+      <h1>Remediação closed-loop de configuration drift em FortiOS com NetBox</h1>
+      <ul class="tags article-meta">
+        <li class="tag">FortiOS 7.6.4</li><li class="tag">NetBox</li><li class="tag">n8n</li><li class="tag">Python · Netmiko</li><li class="tag">MongoDB</li><li class="tag">19/20</li>
+      </ul>
+
+      <div class="callout"><p><strong>Resumo:</strong> em 24 incidentes injetados em laboratório, o sistema corrigiu sozinho todas as 15 falhas lógicas, em 4 a 7 segundos por SSH e em menos de 2 segundos por transação via REST API. As falhas físicas foram detetadas em menos de 10 segundos e escaladas ao operador.</p></div>
+
+      <figure>
+        <img src="../assets/img/topologia-arte.webp" width="1344" height="477" alt="Topologia Hub-and-Spoke: FortiGate HUB na sede e SPOKE na Loja do Cidadão, ligados por MPLS e túnel IPsec IKEv2" />
+        <figcaption>Topologia do laboratório: FortiGate HUB (sede) e SPOKE (Loja do Cidadão), underlay MPLS <code>172.16.0.0/30</code> e overlay IPsec IKEv2 <code>10.10.10.0/30</code>.</figcaption>
+      </figure>
+
+      <h2>O problema</h2>
+      <p>Em redes críticas do Estado com túneis VPN IPsec IKEv2 sobre circuitos MPLS, desvios manuais de configuração (gateway remoto, seletores CIDR da Phase 2, políticas de firewall) provocam quebras silenciosas. A triagem manual demora <strong>15 a 30 minutos</strong>. O trabalho decorreu em duas fases, em parceria com a <strong>ARTE, I.P.</strong> (Agência para a Reforma Tecnológica do Estado, ex-AMA).</p>
+      <ul>
+        <li><strong>Projeto I (fev 2026), diagnóstico:</strong> topologia Hub-and-Spoke em VMware Workstation Pro com FortiOS 7.6.4, em 4 segmentos isolados (gestão OOB, WAN MPLS, túnel IPsec com IKEv2 AES256-SHA256 / DH 20, LAN do Spoke). Uma árvore de decisão no n8n correlaciona alertas do PRTG com consultas SSH para separar falhas físicas de erros lógicos e alertar por Telegram em menos de 3,2 s.</li>
+        <li><strong>Projeto II (jun 2026), remediação:</strong> evolução para ciclo fechado com NetBox como fonte de verdade, motor de remediação híbrido (Netmiko por SSH e REST API CMDB do FortiOS), escalonamento automático ao operador WAN por email e auditoria em MongoDB + Metabase.</li>
+      </ul>
+
+      <h2>Arquitetura</h2>
+      <figure>
+        <img src="../assets/img/netdevops-arquitetura.webp" width="1583" height="829" loading="lazy" alt="Fluxo: PRTG, n8n, NetBox, FortiOS, MongoDB e Metabase" />
+        <figcaption>Fluxo de deteção (PRTG), orquestração (n8n), validação (NetBox), remediação (FortiOS) e auditoria (MongoDB / Metabase).</figcaption>
+      </figure>
+      <ol>
+        <li><strong>Deteção e pre-check ICMP.</strong> Um webhook do PRTG dispara quando o tráfego do túnel cai para 0 KB/s. Antes de qualquer ação, o n8n faz <code>ping -c 2 -W 2 172.16.0.2</code>. Se falhar, a causa é física (<code>mpls_down</code> ou <code>power_or_hardware_failure</code>) e não vale a pena tentar SSH ou API. Isto baixou o tempo de deteção de <strong>~15 min para menos de 10 s</strong>.</li>
+        <li><strong>Fonte de verdade.</strong> O NetBox guarda a configuração esperada. O n8n consulta <code>GET /api/dcim/devices/?name=FGT-HUB</code> antes de alterar o equipamento.</li>
+        <li><strong>Remediação híbrida.</strong>
+          <ul>
+            <li><em>Fase 1, licença de avaliação:</em> a licença trial do FortiGate-VM bloqueia escrita por HTTP. Contornei isso com scripts Python (<code>remediate_config.py</code>, <code>remediate_phase2.py</code>, <code>remediate_tunnel.py</code>) que corrigem por SSH via Netmiko, num virtualenv isolado no Ubuntu Server 24.04.</li>
+            <li><em>Fase 2, licença comercial:</em> <code>HTTP PUT</code> direto na CMDB (<code>/api/v2/cmdb/vpn.ipsec/phase1-interface/…</code>, <code>/api/v2/cmdb/firewall/policy/…</code>), com token restrito a um único host de gestão. Menos de 2 s por transação.</li>
+          </ul>
+        </li>
+        <li><strong>Auditoria.</strong> Cada incidente fica registado em MongoDB (<code>incident_runs</code> e <code>incident_runs_enterprise</code>), com alertas Telegram, tickets por email e painéis de MTTR em Metabase.</li>
+      </ol>
+
+      <h2>Validação: 10 cenários, 24 incidentes</h2>
+      <table>
+        <thead><tr><th>Cenário</th><th>Falha</th><th>Inc.</th><th>Resultado</th></tr></thead>
+        <tbody>
+          <tr><td>A · F</td><td><code>mpls_down</code></td><td>4 + 1</td><td>Escalado ao operador</td></tr>
+          <tr><td>B · I</td><td><code>phase2_mismatch</code></td><td>2 + 2</td><td>Corrigido · 7,0 s (SSH) / &lt; 2 s (API)</td></tr>
+          <tr><td>C</td><td><code>zero_traffic</code></td><td>2</td><td>Corrigido · 7,0 s</td></tr>
+          <tr><td>D · H</td><td><code>rgwy_mismatch</code></td><td>3 + 3</td><td>Corrigido · 4,0 s (SSH) / &lt; 2 s (API)</td></tr>
+          <tr><td>E · G</td><td><code>power_or_hardware_failure</code></td><td>2 + 2</td><td>Alerta crítico, sem SSH</td></tr>
+          <tr><td>J</td><td><code>policy_disabled</code></td><td>3</td><td>Corrigido · &lt; 2 s (API)</td></tr>
+        </tbody>
+      </table>
+      <p>Na Fase 1 (13 incidentes), 7 foram recuperados automaticamente: 100% das falhas lógicas. Na Fase 2 (11 incidentes), 8 foram recuperados: também 100% das falhas lógicas. Os tempos vêm dos syslogs do FortiOS (por exemplo, <code>15:47:55 → 15:47:59</code> no cenário D).</p>
+
+      <h2>O que aprendi</h2>
+      <ul>
+        <li>Verificar a camada física primeiro poupa tempo e evita ações erradas: metade do valor está em saber quando <em>não</em> agir.</li>
+        <li>Ter uma fonte de verdade (NetBox) é o que torna a correção segura. Sem ela, o sistema não sabe qual é o estado certo.</li>
+        <li>Desenhar para restrições reais (a licença de avaliação) levou a um motor com dois caminhos, que é mais robusto do que só um.</li>
+      </ul>
+
+      <p>Equipa: Rafael Cruz e Rafael Victorino. Mentoria de indústria: Eng.º Nuno Batuca (ARTE, I.P.). Orientação: Prof. Doutor Vasco Soares; coorientação: Prof. Doutor Alexandre Fonte. Classificação final: <strong>19/20</strong>.</p>
+    </div>
+
+    <!-- ======================= EN ======================= -->
+    <div data-l="en">
+      <h1>Closed-loop remediation of configuration drift in FortiOS with NetBox</h1>
+      <ul class="tags article-meta">
+        <li class="tag">FortiOS 7.6.4</li><li class="tag">NetBox</li><li class="tag">n8n</li><li class="tag">Python · Netmiko</li><li class="tag">MongoDB</li><li class="tag">19/20</li>
+      </ul>
+
+      <div class="callout"><p><strong>TL;DR:</strong> across 24 incidents injected in the lab, the system fixed all 15 logical faults on its own, in 4–7 seconds over SSH and under 2 seconds per call via the REST API. Physical failures were detected in under 10 seconds and escalated to the carrier.</p></div>
+
+      <figure>
+        <img src="../assets/img/topologia-arte.webp" width="1344" height="477" alt="Hub-and-spoke topology: FortiGate HUB at HQ and SPOKE at a citizen service branch, linked by MPLS and an IPsec IKEv2 tunnel" />
+        <figcaption>Lab topology: FortiGate HUB (HQ) and SPOKE (citizen service branch), MPLS underlay <code>172.16.0.0/30</code> and IPsec IKEv2 overlay <code>10.10.10.0/30</code>.</figcaption>
+      </figure>
+
+      <h2>The problem</h2>
+      <p>In public-sector networks running IPsec IKEv2 tunnels over MPLS circuits, manual configuration drift (remote gateway, Phase 2 CIDR selectors, firewall policies) causes silent outages. Manual triage takes <strong>15 to 30 minutes</strong>. The work ran in two stages, in partnership with <strong>ARTE, I.P.</strong>, Portugal's state agency for technology reform.</p>
+      <ul>
+        <li><strong>Project I (Feb 2026), diagnostics:</strong> hub-and-spoke topology in VMware Workstation Pro with FortiOS 7.6.4 across 4 isolated segments (OOB management, MPLS WAN, IPsec tunnel with IKEv2 AES256-SHA256 / DH 20, spoke LAN). An n8n decision tree correlates PRTG alerts with SSH checks to separate physical failures from logical errors, alerting via Telegram in under 3.2 s.</li>
+        <li><strong>Project II (Jun 2026), remediation:</strong> closed loop with NetBox as the source of truth, a hybrid remediation engine (Netmiko over SSH and the FortiOS CMDB REST API), automatic email escalation to the WAN carrier, and auditing in MongoDB + Metabase.</li>
+      </ul>
+
+      <h2>Architecture</h2>
+      <figure>
+        <img src="../assets/img/netdevops-arquitetura.webp" width="1583" height="829" loading="lazy" alt="Flow: PRTG, n8n, NetBox, FortiOS, MongoDB and Metabase" />
+        <figcaption>Detection (PRTG), orchestration (n8n), validation (NetBox), remediation (FortiOS) and auditing (MongoDB / Metabase).</figcaption>
+      </figure>
+      <ol>
+        <li><strong>Detection and ICMP pre-check.</strong> A PRTG webhook fires when tunnel traffic drops to 0 KB/s. Before doing anything, n8n runs <code>ping -c 2 -W 2 172.16.0.2</code>. If it fails, the cause is physical (<code>mpls_down</code> or <code>power_or_hardware_failure</code>) and there is no point trying SSH or the API. This cut detection time from <strong>~15 min to under 10 s</strong>.</li>
+        <li><strong>Source of truth.</strong> NetBox holds the expected configuration. n8n queries <code>GET /api/dcim/devices/?name=FGT-HUB</code> before changing the device.</li>
+        <li><strong>Hybrid remediation.</strong>
+          <ul>
+            <li><em>Stage 1, evaluation licence:</em> the FortiGate-VM trial licence blocks HTTP writes. I worked around it with Python scripts (<code>remediate_config.py</code>, <code>remediate_phase2.py</code>, <code>remediate_tunnel.py</code>) that fix the device over SSH via Netmiko, in an isolated virtualenv on Ubuntu Server 24.04.</li>
+            <li><em>Stage 2, commercial licence:</em> direct <code>HTTP PUT</code> to the CMDB (<code>/api/v2/cmdb/vpn.ipsec/phase1-interface/…</code>, <code>/api/v2/cmdb/firewall/policy/…</code>) with a token restricted to a single management host. Under 2 s per call.</li>
+          </ul>
+        </li>
+        <li><strong>Auditing.</strong> Every incident is recorded in MongoDB (<code>incident_runs</code> and <code>incident_runs_enterprise</code>), with Telegram alerts, email tickets and MTTR dashboards in Metabase.</li>
+      </ol>
+
+      <h2>Validation: 10 scenarios, 24 incidents</h2>
+      <table>
+        <thead><tr><th>Scenario</th><th>Fault</th><th>Inc.</th><th>Outcome</th></tr></thead>
+        <tbody>
+          <tr><td>A · F</td><td><code>mpls_down</code></td><td>4 + 1</td><td>Escalated to carrier</td></tr>
+          <tr><td>B · I</td><td><code>phase2_mismatch</code></td><td>2 + 2</td><td>Fixed · 7.0 s (SSH) / &lt; 2 s (API)</td></tr>
+          <tr><td>C</td><td><code>zero_traffic</code></td><td>2</td><td>Fixed · 7.0 s</td></tr>
+          <tr><td>D · H</td><td><code>rgwy_mismatch</code></td><td>3 + 3</td><td>Fixed · 4.0 s (SSH) / &lt; 2 s (API)</td></tr>
+          <tr><td>E · G</td><td><code>power_or_hardware_failure</code></td><td>2 + 2</td><td>Critical alert, no SSH</td></tr>
+          <tr><td>J</td><td><code>policy_disabled</code></td><td>3</td><td>Fixed · &lt; 2 s (API)</td></tr>
+        </tbody>
+      </table>
+      <p>In stage 1 (13 incidents), 7 were recovered automatically: 100% of logical faults. In stage 2 (11 incidents), 8 were recovered: again 100% of logical faults. Timings come from FortiOS syslogs (e.g. <code>15:47:55 → 15:47:59</code> in scenario D).</p>
+
+      <h2>What I learned</h2>
+      <ul>
+        <li>Checking the physical layer first saves time and prevents wrong actions: half the value is knowing when <em>not</em> to act.</li>
+        <li>A source of truth (NetBox) is what makes remediation safe. Without it, the system doesn't know what "correct" looks like.</li>
+        <li>Designing around a real constraint (the evaluation licence) produced a two-path engine, which is more robust than one.</li>
+      </ul>
+
+      <p>Team: Rafael Cruz and Rafael Victorino. Industry mentor: Nuno Batuca (ARTE, I.P.). Supervisor: Prof. Vasco Soares; co-supervisor: Prof. Alexandre Fonte. Final grade: <strong>19/20</strong>.</p>
+    </div>
+
+    <div class="article-next">
+      <a href="https://github.com/RafaCr3z/netdevops-closed-loop-platform" target="_blank" rel="noopener" class="link-arrow"><span data-l="pt">Código no GitHub</span><span data-l="en">Code on GitHub</span> ↗</a>
+      <a href="oidc-github-actions-azure.html" class="link-arrow"><span data-l="pt">Próximo: CI/CD sem segredos</span><span data-l="en">Next: CI/CD without secrets</span> →</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© 2026 Rafael Cruz</span>
+      <a href="../index.html#contacto"><span data-l="pt">Contacto</span><span data-l="en">Contact</span></a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js?v=2" defer></script>
+</body>
+</html>

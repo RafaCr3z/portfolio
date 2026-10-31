@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-cloud resiliente: fallbacks entre Azure e GCP — Rafael Cruz</title>
+  <meta name="description" content="CityGuards: plataforma multi-cloud Azure + GCP Firestore com degradação graciosa, transações atómicas e análise RGPD vs. US CLOUD Act. Classificação 20/20." />
+  <link rel="canonical" href="https://rafacr3z.github.io/portfolio/writeups/multicloud-azure-gcp.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Multi-cloud resiliente: fallbacks entre Azure e GCP" />
+  <meta property="og:description" content="Degradação graciosa, transações atómicas no Firestore e o impacto do US CLOUD Act." />
+  <meta property="og:image" content="https://rafacr3z.github.io/portfolio/assets/img/og-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2318181b'/><text x='16' y='21' font-family='monospace' font-size='13' font-weight='700' fill='%23fff' text-anchor='middle'>RC</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="../assets/css/main.css?v=2" />
+  <script>
+    (function () {
+      var d = document.documentElement; d.classList.remove('no-js');
+      try {
+        var t = localStorage.getItem('rc_theme'); if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+        if (localStorage.getItem('rc_lang') === 'en') d.lang = 'en';
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body data-title-pt="Multi-cloud resiliente: fallbacks entre Azure e GCP — Rafael Cruz" data-title-en="Resilient multi-cloud: fallbacks across Azure and GCP — Rafael Cruz">
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav" aria-label="Principal">
+        <a href="../index.html" class="brand"><span class="brand-mark">RC</span>Rafael Cruz</a>
+        <div class="nav-tools">
+          <button type="button" class="lang-btn" id="langBtn" aria-label="Switch language / Mudar idioma"><span data-l="pt">EN</span><span data-l="en">PT</span></button>
+          <button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro">
+            <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article">
+    <a href="../index.html#writeups" class="article-back">← <span data-l="pt">Todos os writeups</span><span data-l="en">All writeups</span></a>
+    <p class="eyebrow">Multi-cloud · 5 min</p>
+
+    <!-- ======================= PT ======================= -->
+    <div data-l="pt">
+      <h1>Multi-cloud resiliente: fallbacks entre Azure e GCP</h1>
+      <ul class="tags article-meta">
+        <li class="tag">Azure App Service</li><li class="tag">GCP Firestore</li><li class="tag">Node.js</li><li class="tag">Docker · ACI</li><li class="tag">20/20</li>
+      </ul>
+
+      <div class="callout"><p><strong>Resumo:</strong> a plataforma CityGuards corre em Azure com os dados no GCP Firestore. Quando um serviço falha ou fica caro demais, há sempre uma alternativa que mantém a aplicação a funcionar. Custo final: cerca de 72 € por mês.</p></div>
+
+      <figure>
+        <img src="../assets/img/cityguards-painel.webp" width="1502" height="844" alt="Painel de gestão municipal da plataforma CityGuards" />
+        <figcaption>Painel de gestão municipal da CityGuards (Azure + GCP Firestore).</figcaption>
+      </figure>
+
+      <h2>O desafio</h2>
+      <p>Uma plataforma de reporte cívico e gestão de ocorrências municipais tem de continuar disponível quando um fornecedor cloud falha, e proteger os dados dos cidadãos de acordo com o <strong>RGPD</strong>.</p>
+
+      <h2>As decisões de engenharia</h2>
+      <ul>
+        <li><strong>Persistência desacoplada.</strong> A meio do projeto, os créditos de estudante do Azure Cosmos DB esgotaram-se. Em vez de um problema, foi uma oportunidade: migrei a camada NoSQL para o <strong>Google Cloud Firestore</strong>, mantendo o frontend e a API no Azure App Service e os uploads no Azure Blob Storage.</li>
+        <li><strong>Transações atómicas (<code>db.runTransaction</code>).</strong> Os pontos de gamificação e o resgate de vouchers são alterados dentro de transações no Firestore, para evitar race conditions com muitos pedidos em simultâneo e manter os dados de cada município isolados.</li>
+        <li><strong>Degradação graciosa.</strong>
+          <ul>
+            <li>Se o Azure AI Vision atingir a quota ou ficar lento, o backend usa um classificador local (<code>TextHeuristicFallback</code>) baseado em padrões de texto, e o cidadão consegue submeter na mesma.</li>
+            <li>O serviço de PDFs em Azure Container Instances só corre quando é preciso, para poupar custos. Se o contentor estiver parado, o PDF é gerado diretamente no Node.js.</li>
+          </ul>
+        </li>
+        <li><strong>Soberania de dados.</strong> Analisámos a compatibilidade entre guardar dados de cidadãos na UE e o acesso extraterritorial permitido pelo US CLOUD Act a fornecedores com sede nos EUA.</li>
+      </ul>
+
+      <h2>Resultado</h2>
+      <p>Projeto de equipa (Diogo Oliveira, Rafael Cruz, Tiago Alves), orientado pelo Prof. Osvaldo Santos, com classificação final de <strong>20/20</strong>. A minha parte: backend Node.js/Express, migração para Firestore com transações atómicas e o serviço de PDFs em Docker.</p>
+    </div>
+
+    <!-- ======================= EN ======================= -->
+    <div data-l="en">
+      <h1>Resilient multi-cloud: fallbacks across Azure and GCP</h1>
+      <ul class="tags article-meta">
+        <li class="tag">Azure App Service</li><li class="tag">GCP Firestore</li><li class="tag">Node.js</li><li class="tag">Docker · ACI</li><li class="tag">20/20</li>
+      </ul>
+
+      <div class="callout"><p><strong>TL;DR:</strong> the CityGuards platform runs on Azure with its data on GCP Firestore. When a service fails or gets too expensive, there is always a fallback that keeps the app working. Final cost: about €72 per month.</p></div>
+
+      <figure>
+        <img src="../assets/img/cityguards-painel.webp" width="1502" height="844" alt="CityGuards municipal management dashboard" />
+        <figcaption>CityGuards municipal dashboard (Azure + GCP Firestore).</figcaption>
+      </figure>
+
+      <h2>The challenge</h2>
+      <p>A civic reporting and municipal incident platform has to stay available when a cloud provider fails, and protect citizens' data in line with the <strong>GDPR</strong>.</p>
+
+      <h2>Engineering decisions</h2>
+      <ul>
+        <li><strong>Decoupled persistence.</strong> Midway through the project, our Azure Cosmos DB student credits ran out. Rather than a blocker, it became an opportunity: I migrated the NoSQL layer to <strong>Google Cloud Firestore</strong>, keeping the frontend and API on Azure App Service and uploads on Azure Blob Storage.</li>
+        <li><strong>Atomic transactions (<code>db.runTransaction</code>).</strong> Gamification points and voucher redemptions change inside Firestore transactions, preventing race conditions under concurrent load and keeping each municipality's data isolated.</li>
+        <li><strong>Graceful degradation.</strong>
+          <ul>
+            <li>If Azure AI Vision hits its quota or slows down, the backend switches to a local text-pattern classifier (<code>TextHeuristicFallback</code>), so citizens can still submit.</li>
+            <li>The PDF service on Azure Container Instances only runs when needed, to save cost. If the container is stopped, the PDF is generated directly in Node.js.</li>
+          </ul>
+        </li>
+        <li><strong>Data sovereignty.</strong> We analysed how storing EU citizens' data fits with the extraterritorial access the US CLOUD Act grants over US-based providers.</li>
+      </ul>
+
+      <h2>Outcome</h2>
+      <p>Team project (Diogo Oliveira, Rafael Cruz, Tiago Alves), supervised by Prof. Osvaldo Santos, graded <strong>20/20</strong>. My part: the Node.js/Express backend, the Firestore migration with atomic transactions, and the Docker PDF service.</p>
+    </div>
+
+    <div class="article-next">
+      <a href="oidc-github-actions-azure.html" class="link-arrow">← <span data-l="pt">CI/CD sem segredos</span><span data-l="en">CI/CD without secrets</span></a>
+      <a href="https://github.com/RafaCr3z/cityguards-platform-core" target="_blank" rel="noopener" class="link-arrow"><span data-l="pt">Código no GitHub</span><span data-l="en">Code on GitHub</span> ↗</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© 2026 Rafael Cruz</span>
+      <a href="../index.html#contacto"><span data-l="pt">Contacto</span><span data-l="en">Contact</span></a>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js?v=2" defer></script>
+</body>
+</html>

@@ -1,1265 +1,692 @@
 <!DOCTYPE html>
-<html lang="pt-PT" data-theme="dark">
+<html lang="pt-PT" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rafael Cruz — Security Automation, NetDevOps & SRE Engineer</title>
-  <meta name="description" content="Portfólio Profissional de Rafael Cruz — Engenheiro Informático focado em Automação de Redes (NetDevOps), Engenharia Multi-Cloud (SecDevOps) e SRE." />
-  <meta name="keywords" content="Rafael Cruz, Security Automation, NetDevOps, SRE, Closed-Loop Remediation, SecDevOps, Cloud Security, Fortinet, NetBox, Python, Azure, GCP" />
+  <title>Rafael Cruz — Engenheiro de Redes &amp; Cloud (NetDevOps)</title>
+  <meta name="description" content="Rafael Cruz, Engenheiro Informático focado em automação de redes (NetDevOps), Cloud e Backend. Projeto final com a ARTE, I.P.: correção automática de falhas em firewalls FortiGate em 4–7 segundos." />
   <meta name="author" content="Rafael Cruz" />
+  <link rel="canonical" href="https://rafacr3z.github.io/portfolio/" />
+  <meta name="theme-color" content="#0b0c0e" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
-
-  <!-- Open Graph / Social Previews -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://rafacr3z.github.io/portfolio/" />
-  <meta property="og:title" content="Rafael Cruz — Security Automation, NetDevOps & SRE Engineer" />
-  <meta property="og:description" content="Engenheiro Informático focado em Automação de Redes (NetDevOps), Engenharia Multi-Cloud (SecDevOps) e SRE. Closed-Loop Remediation e Infraestruturas Críticas." />
-  <meta property="og:image" content="https://rafacr3z.github.io/portfolio/avatar_rafael.jpg" />
+  <meta property="og:title" content="Rafael Cruz — Engenheiro de Redes &amp; Cloud (NetDevOps)" />
+  <meta property="og:description" content="Construo redes que se corrigem sozinhas. Automação closed-loop, Cloud e Backend." />
+  <meta property="og:image" content="https://rafacr3z.github.io/portfolio/assets/img/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:locale:alternate" content="en_GB" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="stylesheet" href="style.css?v=20261014_cv" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2318181b'/><text x='16' y='21' font-family='monospace' font-size='13' font-weight='700' fill='%23fff' text-anchor='middle'>RC</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="assets/css/main.css?v=2" />
+
+  <!-- Apply saved theme/language before first paint (avoids flash) -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.remove('no-js');
+      try {
+        var t = localStorage.getItem('rc_theme');
+        if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+        var l = localStorage.getItem('rc_lang');
+        if (l === 'en') d.lang = 'en';
+      } catch (e) {}
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rafael Cruz",
+    "jobTitle": "Network & Cloud Engineer (NetDevOps)",
+    "url": "https://rafacr3z.github.io/portfolio/",
+    "email": "mailto:rafael.lourenco.cruz20@gmail.com",
+    "alumniOf": "Instituto Politécnico de Castelo Branco",
+    "knowsLanguage": ["pt", "en", "es"],
+    "sameAs": [
+      "https://github.com/RafaCr3z",
+      "https://www.linkedin.com/in/rafael-cruz-7159092b2/"
+    ]
+  }
+  </script>
 </head>
-<body>
+<body data-title-pt="Rafael Cruz — Engenheiro de Redes &amp; Cloud (NetDevOps)" data-title-en="Rafael Cruz — Network &amp; Cloud Engineer (NetDevOps)">
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></g></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></g></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></g></symbol>
+  </svg>
 
-  <!-- ==================== Header & Navigation ==================== -->
-  <header class="header">
+  <a href="#main" class="skip-link"><span data-l="pt">Saltar para o conteúdo</span><span data-l="en">Skip to content</span></a>
+
+  <!-- ============ Header ============ -->
+  <header class="site-header" id="top">
     <div class="container">
-      <nav class="nav">
-        <div class="nav-left">
-          <!-- Theme Toggle (Dark / Light) -->
-          <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Alternar tema claro/escuro" title="Alternar tema">
-            <svg id="themeIconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <svg id="themeIconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <nav class="nav" aria-label="Principal">
+        <a href="#top" class="brand"><span class="brand-mark">RC</span>Rafael Cruz</a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#projetos"><span data-l="pt">Projetos</span><span data-l="en">Projects</span></a></li>
+          <li><a href="#competencias"><span data-l="pt">Competências</span><span data-l="en">Skills</span></a></li>
+          <li><a href="#percurso"><span data-l="pt">Percurso</span><span data-l="en">Experience</span></a></li>
+          <li><a href="#writeups">Writeups</a></li>
+          <li><a href="#contacto"><span data-l="pt">Contacto</span><span data-l="en">Contact</span></a></li>
+        </ul>
+
+        <div class="nav-tools">
+          <button type="button" class="lang-btn" id="langBtn" aria-label="Switch language / Mudar idioma">
+            <span data-l="pt">EN</span><span data-l="en">PT</span>
           </button>
-
-          <!-- Language Switcher -->
-          <div class="lang-switcher">
-            <button type="button" class="lang-btn active" data-lang="pt" id="btnLangPt">PT</button>
-            <button type="button" class="lang-btn" data-lang="en" id="btnLangEn">EN</button>
-          </div>
-        </div>
-
-        <div class="nav-right">
-          <ul class="nav-links">
-            <li><a href="#expertise" class="nav-link" data-i18n="nav_expertise">Expertise</a></li>
-            <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projetos</a></li>
-            <li><a href="#history" class="nav-link" data-i18n="nav_history">Histórico</a></li>
-            <li><a href="#writeups" class="nav-link" data-i18n="nav_writeups">Writeups</a></li>
-            <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contacto</a></li>
-          </ul>
+          <button type="button" class="icon-btn" id="themeBtn" aria-label="Alternar tema claro/escuro">
+            <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+          </button>
+          <button type="button" class="icon-btn menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- ==================== Hero Section ==================== -->
-  <section class="hero" id="hero">
-    <!-- Dynamic Cyber Green Vector Ribbon Wave -->
-    <div class="hero-wave-canvas" aria-hidden="true">
-      <svg class="hero-wave-svg" viewBox="0 0 1440 600" fill="none" preserveAspectRatio="none">
-        <path class="wave-ribbon" d="M -100,320 C 200,420 400,180 750,290 C 1100,400 1250,150 1600,250" stroke="#10b981" stroke-width="1.8" stroke-opacity="0.75" />
-        <path class="wave-ribbon" d="M -100,340 C 220,440 420,200 770,310 C 1120,420 1270,170 1600,270" stroke="#059669" stroke-width="1.2" stroke-opacity="0.55" />
-        <path class="wave-ribbon" d="M -100,300 C 180,400 380,160 730,270 C 1080,380 1230,130 1600,230" stroke="#06b6d4" stroke-width="1.2" stroke-opacity="0.45" />
-        <path class="wave-ribbon" d="M -100,360 C 240,460 440,220 790,330 C 1140,440 1290,190 1600,290" stroke="#10b981" stroke-width="1.0" stroke-opacity="0.35" />
-        <path class="wave-ribbon" d="M -100,280 C 160,380 360,140 710,250 C 1060,360 1210,110 1600,210" stroke="#059669" stroke-width="0.8" stroke-opacity="0.25" />
-        <path class="wave-ribbon" d="M -100,380 C 260,480 460,240 810,350 C 1160,460 1310,210 1600,310" stroke="#06b6d4" stroke-width="0.7" stroke-opacity="0.20" />
-      </svg>
-    </div>
+  <main id="main">
 
-    <div class="container hero-container">
-      <div class="hero-main">
-        <!-- Direct Social Links above Name -->
-        <div class="hero-social-links">
-          <a href="https://github.com/RafaCr3z" target="_blank" rel="noopener noreferrer" class="hero-social-link" title="GitHub Profile">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" rel="noopener noreferrer" class="hero-social-link" title="LinkedIn Profile">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          </a>
-          <a href="mailto:rafael.lourenco.cruz20@gmail.com" class="hero-social-link" title="Enviar Email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          </a>
-        </div>
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="status-pill">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span data-l="pt">Disponível · remoto, híbrido ou mobilidade · elegível +Talento (IEFP)</span>
+            <span data-l="en">Available now · remote, hybrid or relocation</span>
+          </span>
 
-        <div class="hero-status-pill" data-i18n="hero_status">
-          <span class="status-dot"></span>
-          Disponibilidade Imediata (Remoto, Híbrido ou Mobilidade) · Elegível para Estágios +Talento (IEFP Nível 6)
-        </div>
+          <div class="hero-id">
+            <img src="assets/img/avatar.webp" width="64" height="64" alt="Rafael Cruz" class="hero-avatar" />
+            <div>
+              <p class="hero-name">Rafael Cruz</p>
+              <div class="hero-loc">
+                <span data-l="pt">Engenheiro de Redes &amp; Cloud · Portugal</span>
+                <span data-l="en">Network &amp; Cloud Engineer · Portugal</span>
+              </div>
+            </div>
+          </div>
 
-        <h1 class="hero-name" data-i18n="hero_name">Rafael Cruz</h1>
-        <h2 class="hero-role" data-i18n="hero_role">Licenciado em Engenharia Informática · Automação de Redes (NetDevOps), Cloud &amp; DevSecOps, SRE e Backend Java</h2>
+          <h1 class="hero-title">
+            <span data-l="pt">Construo redes que <em>se corrigem sozinhas</em>.</span>
+            <span data-l="en">I build networks that <em>fix themselves</em>.</span>
+          </h1>
 
-        <p class="hero-bio" data-i18n="hero_bio">
-          Licenciado em Engenharia Informática focado em <strong>Automação de Redes (NetDevOps)</strong>, <strong>Cloud &amp; DevSecOps</strong> e <strong>SRE</strong>, com sólida base em <strong>Engenharia de Backend (Java / Spring Boot)</strong>. Experiência em projeto com parceiro público (ARTE, I.P. – ex-AMA) no desenvolvimento de sistemas de autorremediação em ciclo fechado (<em>closed-loop</em>), Infraestrutura como Código (IaC) e pipelines de CI/CD seguras. Procura integrar uma equipa de Engenharia de Redes, Cloud, Infraestrutura ou Backend (Júnior / Trainee).
-        </p>
+          <p class="hero-lead">
+            <span data-l="pt">Licenciado em Engenharia Informática (IPCB, 2026). No projeto final, em parceria com a ARTE, I.P., desenvolvi uma plataforma <strong>NetDevOps closed-loop</strong> que deteta e corrige desvios de configuração em firewalls FortiGate em <strong>4–7 segundos</strong>. Procuro uma primeira função em Redes, Cloud, Infraestrutura ou Backend.</span>
+            <span data-l="en">Computer Science &amp; Engineering graduate (IPCB, 2026). For my capstone, in partnership with Portugal's state technology agency (ARTE, I.P.), I built a <strong>closed-loop NetDevOps platform</strong> that detects and fixes configuration drift on FortiGate firewalls in <strong>4–7 seconds</strong>. Looking for a first role in Networking, Cloud, Infrastructure or Backend.</span>
+          </p>
 
-        <div class="hero-cta-group">
-          <a href="#projects" class="btn btn-primary" data-i18n="btn_explore_projects">Explorar Projetos</a>
-          <a href="#contact" class="btn btn-secondary" data-i18n="btn_contact_me">Falar Comigo ➔</a>
-        </div>
-
-        <!-- Direct Dual CV Downloads -->
-        <div class="hero-cv-group">
-          <div class="hero-cv-label" data-i18n="hero_cv_label">Curriculum Vitae (PDF):</div>
-          <div class="hero-cv-buttons">
-            <a href="CV_Rafael_Cruz_Redes_Cloud.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-pill" download="CV_Rafael_Cruz_Redes_Cloud.pdf">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span data-i18n="btn_cv_net">📄 CV Redes &amp; Cloud</span>
+          <div class="hero-cta">
+            <a href="#projetos" class="btn btn-primary">
+              <span data-l="pt">Ver projetos</span><span data-l="en">See projects</span>
+              <svg aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
-            <a href="CV_Rafael_Cruz_Desenvolvimento_Software.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-pill" download="CV_Rafael_Cruz_Desenvolvimento_Software.pdf">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span data-i18n="btn_cv_dev">💻 CV Software &amp; Backend</span>
+            <a href="CV_Rafael_Cruz_Redes_Cloud.pdf" class="btn btn-outline" download>
+              <svg aria-hidden="true"><use href="#i-download"/></svg>
+              <span data-l="pt">CV Redes &amp; Cloud</span><span data-l="en">CV Network &amp; Cloud</span>
+            </a>
+            <a href="CV_Rafael_Cruz_Desenvolvimento_Software.pdf" class="btn btn-outline" download>
+              <svg aria-hidden="true"><use href="#i-download"/></svg>
+              <span data-l="pt">CV Software</span><span data-l="en">CV Software</span>
             </a>
           </div>
+
+          <div class="hero-links">
+            <a href="https://github.com/RafaCr3z" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+            <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+            <a href="mailto:rafael.lourenco.cruz20@gmail.com"><svg aria-hidden="true"><use href="#i-mail"/></svg>Email</a>
+          </div>
+        </div>
+
+        <!-- Closed-loop simulator -->
+        <div>
+          <div class="sim" id="sim" aria-label="Simulação do sistema closed-loop">
+            <div class="sim-bar">
+              <div class="sim-title">
+                <span aria-hidden="true">●</span>
+                <strong>closed-loop · lab replay</strong>
+              </div>
+              <span class="sim-state" id="simState" data-state="ok">HEALTHY</span>
+            </div>
+
+            <div class="sim-topo" aria-hidden="true">
+              <svg viewBox="0 0 440 112">
+                <path id="simTunnel" class="topo-link" d="M 130,62 Q 220,0 310,62" />
+                <line id="simMpls" class="topo-link" x1="130" y1="78" x2="310" y2="78" />
+                <text class="topo-link-label" x="220" y="20" text-anchor="middle">IPsec IKEv2 · overlay</text>
+                <text class="topo-link-label" x="220" y="96" text-anchor="middle">MPLS underlay · 172.16.0.0/30</text>
+                <circle id="simPacket" class="topo-packet" r="3.5">
+                  <animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#simTunnel"/></animateMotion>
+                </circle>
+                <g class="topo-node">
+                  <rect x="8" y="55" width="122" height="46" rx="8" />
+                  <text x="69" y="75" text-anchor="middle">FGT-HUB</text>
+                  <text class="sub" x="69" y="90" text-anchor="middle">Sede</text>
+                </g>
+                <g class="topo-node">
+                  <rect x="310" y="55" width="122" height="46" rx="8" />
+                  <text x="371" y="75" text-anchor="middle">FGT-SPOKE</text>
+                  <text class="sub" x="371" y="90" text-anchor="middle">Loja do Cidadão</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="sim-pipeline" id="simPipeline">
+              <div class="pipe-step" data-stage="detect"><b>PRTG</b><span data-l="pt">detetar</span><span data-l="en">detect</span></div>
+              <div class="pipe-step" data-stage="diagnose"><b>n8n</b><span data-l="pt">diagnosticar</span><span data-l="en">diagnose</span></div>
+              <div class="pipe-step" data-stage="ssot"><b>NetBox</b><span data-l="pt">fonte verdade</span><span data-l="en">source of truth</span></div>
+              <div class="pipe-step" data-stage="fix"><b>FortiOS</b><span data-l="pt">corrigir</span><span data-l="en">remediate</span></div>
+              <div class="pipe-step" data-stage="audit"><b>MongoDB</b><span data-l="pt">auditar</span><span data-l="en">audit</span></div>
+            </div>
+
+            <ol class="sim-log" id="simLog">
+              <li class="ph"><span class="placeholder">
+                <span data-l="pt">$ rede estável. Injeta uma falha abaixo para ver o ciclo completo.</span>
+                <span data-l="en">$ network stable. Inject a fault below to watch the full loop.</span>
+              </span></li>
+            </ol>
+
+            <div class="sim-controls">
+              <div class="sim-controls-label"><span data-l="pt">Injetar falha</span><span data-l="en">Inject fault</span></div>
+              <div class="fault-list" id="faultList" role="group">
+                <button type="button" class="fault-btn" data-scenario="rgwy_mismatch" aria-pressed="false">rgwy_mismatch</button>
+                <button type="button" class="fault-btn" data-scenario="phase2_mismatch" aria-pressed="false">phase2_mismatch</button>
+                <button type="button" class="fault-btn" data-scenario="zero_traffic" aria-pressed="false">zero_traffic</button>
+                <button type="button" class="fault-btn" data-scenario="policy_disabled" aria-pressed="false">policy_disabled</button>
+                <button type="button" class="fault-btn" data-scenario="mpls_down" aria-pressed="false">mpls_down</button>
+              </div>
+              <div class="sim-foot">
+                <span id="simResult" aria-live="polite">
+                  <span data-l="pt">10 cenários · 24 incidentes auditados</span>
+                  <span data-l="en">10 scenarios · 24 audited incidents</span>
+                </span>
+                <span class="sim-timer">t = <b id="simTimer">0.0</b> s</span>
+              </div>
+            </div>
+          </div>
+          <p class="sim-note">
+            <span data-l="pt">Replay ilustrativo dos cenários de chaos engineering do projeto. As durações finais são as medidas em laboratório.</span>
+            <span data-l="en">Illustrative replay of the project's chaos engineering scenarios. Final durations match those measured in the lab.</span>
+          </p>
         </div>
       </div>
+    </section>
 
-      <!-- Professional Circular Headshot (Monochrome Original Photo) -->
-      <div class="hero-avatar-wrapper">
-        <div class="hero-avatar-frame">
-          <img src="avatar_rafael.jpg" alt="Rafael Cruz — Security Automation Engineer" class="hero-avatar-img" />
+    <!-- ============ Proof strip ============ -->
+    <div class="proof">
+      <div class="container proof-grid">
+        <div class="proof-item">
+          <div class="proof-val">19/20</div>
+          <div class="proof-lbl"><span data-l="pt">Projeto final com a ARTE, I.P.</span><span data-l="en">Capstone with ARTE, I.P.</span></div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-val">15/15</div>
+          <div class="proof-lbl"><span data-l="pt">Falhas lógicas corrigidas sem intervenção</span><span data-l="en">Logical faults auto-remediated</span></div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-val">20/20</div>
+          <div class="proof-lbl"><span data-l="pt">Plataforma multi-cloud CityGuards</span><span data-l="en">CityGuards multi-cloud platform</span></div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-val">123</div>
+          <div class="proof-lbl"><span data-l="pt">Testes automatizados no CarPooling PT</span><span data-l="en">Automated tests in CarPooling PT</span></div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ==================== Section 1: Expertise & Certifications ==================== -->
-  <section class="section" id="expertise">
-    <div class="container">
-      <span class="section-label" data-i18n="expertise_label">Competências Técnicas</span>
-      <h2 class="section-title" data-i18n="expertise_title">Expertise</h2>
-      <p class="section-desc" data-i18n="expertise_desc">
-        Competências de engenharia organizadas pelos três pilares centrais do CV, aliando automação de redes, aprovisionamento cloud declarativo e resiliência SRE.
-      </p>
-
-      <!-- 3 Strategic Pillars -->
-      <div class="expertise-grid">
-        
-        <!-- Pillar 1: Redes e NetDevOps -->
-        <div class="expertise-card">
-          <div class="expertise-icon-wrapper">⚙️</div>
-          <h3 class="expertise-card-title" data-i18n="p1_card_title">Redes & NetDevOps (Closed-Loop)</h3>
-          <p class="expertise-card-desc" data-i18n="p1_card_desc">
-            Arquiteturas orientadas a eventos e autorrecuperação em ciclo fechado (<em>closed-loop</em>). Mitigação autónoma de <em>configuration drift</em> (Gateway, Phase 2 CIDR, Firewall Policies e SAs) via <strong>REST API do FortiOS</strong> (Token/Trusted Hosts) e contingência SSH (<strong>Netmiko</strong>), convergindo em <strong>4–7s</strong>. Reconciliação dinâmica com <strong>NetBox como SSoT/IPAM</strong>, orquestração no <strong>n8n</strong> e sondas preventivas ICMP via <strong>PRTG</strong> (&lt;10s, redução &gt;95% MTTD).
-          </p>
-          <div class="expertise-tags">
-            <span class="tech-tag">Fortinet FortiGate (CLI & REST API)</span>
-            <span class="tech-tag">NetBox (SSoT/IPAM)</span>
-            <span class="tech-tag">n8n</span>
-            <span class="tech-tag">PRTG</span>
-            <span class="tech-tag">Python (Netmiko)</span>
-            <span class="tech-tag">Ansible</span>
-            <span class="tech-tag">IPsec IKEv2</span>
-            <span class="tech-tag">MPLS</span>
-            <span class="tech-tag">pfSense</span>
-            <span class="tech-tag">Palo Alto</span>
-          </div>
-        </div>
-
-        <!-- Pillar 2: Cloud, IaC e SecDevOps -->
-        <div class="expertise-card">
-          <div class="expertise-icon-wrapper">☁️</div>
-          <h3 class="expertise-card-title" data-i18n="p2_card_title">Cloud, IaC & SecDevOps</h3>
-          <p class="expertise-card-desc" data-i18n="p2_card_desc">
-            Engenharia multi-cloud em <strong>Microsoft Azure, AWS e GCP</strong>. Aprovisionamento declarativo via <strong>Bicep e Terraform</strong> com injeção dinâmica de Connection Strings. Pipelines CI/CD no <strong>GitHub Actions com autenticação federada via OIDC (<code>azure/login@v2</code>)</strong> sem credenciais estáticas, contentorização <strong>Docker</strong>, administração <strong>Linux (Ubuntu Server)</strong> e <strong>Windows Server</strong>, otimização <strong>FinOps</strong> e conformidade RGPD vs. US CLOUD Act.
-          </p>
-          <div class="expertise-tags">
-            <span class="tech-tag">Microsoft Azure</span>
-            <span class="tech-tag">AWS</span>
-            <span class="tech-tag">GCP</span>
-            <span class="tech-tag">Bicep</span>
-            <span class="tech-tag">Terraform</span>
-            <span class="tech-tag">Docker</span>
-            <span class="tech-tag">GitHub Actions (OIDC)</span>
-            <span class="tech-tag">Linux (Ubuntu Server)</span>
-            <span class="tech-tag">Windows Server</span>
-            <span class="tech-tag">FinOps</span>
-          </div>
-        </div>
-
-        <!-- Pillar 3: SRE, Observabilidade e Segurança -->
-        <div class="expertise-card">
-          <div class="expertise-icon-wrapper">🛡️</div>
-          <h3 class="expertise-card-title" data-i18n="p3_card_title">SRE, Observabilidade & Segurança</h3>
-          <p class="expertise-card-desc" data-i18n="p3_card_desc">
-            Resiliência operacional com testes de injeção de falhas via <strong>Chaos Engineering</strong> (24 ensaios empíricos), persistência forense de syslogs em <strong>MongoDB (Docker)</strong> e dashboards SRE/MTTR em <strong>Metabase</strong> em conformidade com a norma <strong>ISO 27001</strong>. Monitorização em tempo real via <strong>SIEM (Wazuh, Splunk)</strong>, análise com <strong>Wireshark</strong>, <strong>OpenSSL</strong>, <strong>Nmap</strong> e <strong>OpenVAS</strong>.
-          </p>
-          <div class="expertise-tags">
-            <span class="tech-tag">Automação Closed-Loop</span>
-            <span class="tech-tag">Chaos Engineering</span>
-            <span class="tech-tag">Metabase</span>
-            <span class="tech-tag">SIEM (Wazuh & Splunk)</span>
-            <span class="tech-tag">Wireshark</span>
-            <span class="tech-tag">OpenSSL</span>
-            <span class="tech-tag">Nmap</span>
-            <span class="tech-tag">OpenVAS</span>
-            <span class="tech-tag">ISO 27001</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Languages & Data Stack Block -->
-      <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 22px 28px; margin-bottom: 36px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
-          <div style="font-weight: 700; font-size: 0.95rem; color: var(--text-main); display: flex; align-items: center; gap: 8px;">
-            <span>💻</span>
-            <span data-i18n="lang_data_title">Linguagens & Ecossistema de Dados:</span>
-          </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-            <span class="tech-tag" style="color: var(--accent-emerald);">Java (17/21 LTS)</span>
-            <span class="tech-tag" style="color: var(--accent-emerald);">Spring Boot 3 / Cloud</span>
-            <span class="tech-tag" style="color: var(--accent-emerald);">Python 3</span>
-            <span class="tech-tag">TypeScript / Node.js</span>
-            <span class="tech-tag">RabbitMQ &amp; Redis 7</span>
-            <span class="tech-tag">PostgreSQL &amp; MySQL</span>
-            <span class="tech-tag">NoSQL (MongoDB, Firestore, Neo4j)</span>
-            <span class="tech-tag">Bash &amp; PowerShell</span>
-            <span class="tech-tag">APIs RESTful</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Integrated Certifications Section (Distinguishing Industry Certs from Academic Credentials) -->
-      <div class="certs-container">
-        <div class="certs-header">
-          <div class="certs-heading">
-            <span>🔒</span>
-            <span data-i18n="certs_subhead">Certificações Técnicas Oficiais da Indústria</span>
-          </div>
-          <span class="cert-status-badge" data-i18n="certs_active_badge">● 4 Certificações Ativas</span>
-        </div>
-
-        <div class="certs-grid">
-          
-          <!-- Fortinet NSE 2 -->
-          <div class="cert-badge-card">
-            <div class="cert-icon" style="color: #ef4444;">🛡️</div>
-            <div class="cert-details">
-              <div class="cert-name">Fortinet NSE 2 Certified in Cybersecurity</div>
-              <div class="cert-issuer" data-i18n="cert_fortinet_nse2_date">Fortinet · Out 2026</div>
-            </div>
-            <span class="cert-status-badge" data-i18n="cert_badge_label">Certificação</span>
-          </div>
-
-          <!-- Fortinet NSE 1 -->
-          <div class="cert-badge-card">
-            <div class="cert-icon" style="color: #ef4444;">🛡️</div>
-            <div class="cert-details">
-              <div class="cert-name">Fortinet NSE 1 Certified in Cybersecurity</div>
-              <div class="cert-issuer" data-i18n="cert_fortinet_nse1_date">Fortinet · Out 2026</div>
-            </div>
-            <span class="cert-status-badge" data-i18n="cert_badge_label">Certificação</span>
-          </div>
-
-          <!-- Neo4j Certified Professional -->
-          <div class="cert-badge-card">
-            <div class="cert-icon" style="color: #06b6d4;">📊</div>
-            <div class="cert-details">
-              <div class="cert-name">Neo4j Certified Professional</div>
-              <div class="cert-issuer" data-i18n="cert_neo4j_pro_date">Neo4j Graph Database · Fev 2026</div>
-            </div>
-            <span class="cert-status-badge" data-i18n="cert_badge_label">Certificação</span>
-          </div>
-
-          <!-- Neo4j Graph Data Science -->
-          <div class="cert-badge-card">
-            <div class="cert-icon" style="color: #06b6d4;">🔬</div>
-            <div class="cert-details">
-              <div class="cert-name">Neo4j Graph Data Science Certification</div>
-              <div class="cert-issuer" data-i18n="cert_neo4j_gds_date">Neo4j Data Science · Fev 2026</div>
-            </div>
-            <span class="cert-status-badge" data-i18n="cert_badge_label">Certificação</span>
-          </div>
-
-        </div>
-
-        <div class="certs-header" style="margin-top: 32px; padding-top: 24px; border-top: 1px dashed var(--border);">
-          <div class="certs-heading">
-            <span>☁️</span>
-            <span data-i18n="certs_academic_subhead">Formações &amp; Credenciais Académicas (AWS Academy)</span>
-          </div>
-          <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b; border-color: rgba(245, 158, 11, 0.3);" data-i18n="certs_academic_badge">● 3 Credenciais AWS Academy</span>
-        </div>
-
-        <div class="certs-grid">
-
-          <!-- AWS Academy Cloud Operations -->
-          <div class="cert-badge-card">
-            <div class="cert-icon" style="color: #f59e0b;">⚙️</div>
-            <div class="cert-details">
-              <div class="cert-name">AWS Academy Graduate — Cloud Operations</div>
-              <div class="cert-issuer" data-i18n="cert_aws_ops_date">Amazon Web Services · Jul 2026</div>
-            </div>
-            <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;" data-i18n="cert_academic_label">Académica</span>
-          </div>
-
-          <!-- AWS Academy Cloud Security Foundations -->
-          <div class="cert-badge-card">
-            <div class="cert-icon" style="color: #f59e0b;">☁️</div>
-            <div class="cert-details">
-              <div class="cert-name">AWS Academy Graduate — Cloud Security Foundations</div>
-              <div class="cert-issuer" data-i18n="cert_aws_sec_date">Amazon Web Services · Jun 2026</div>
-            </div>
-            <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;" data-i18n="cert_academic_label">Académica</span>
-          </div>
-
-          <!-- AWS Academy Cloud Foundations -->
-          <div class="cert-badge-card">
-            <div class="cert-icon" style="color: #f59e0b;">🌐</div>
-            <div class="cert-details">
-              <div class="cert-name">AWS Academy Graduate — Cloud Foundations</div>
-              <div class="cert-issuer" data-i18n="cert_aws_found_date">Amazon Web Services · Mai 2026</div>
-            </div>
-            <span class="cert-status-badge" style="background: rgba(245, 158, 11, 0.12); color: #f59e0b;" data-i18n="cert_academic_label">Académica</span>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== Section 2: Personal Projects (Architecture Showcases) ==================== -->
-  <section class="section" id="projects">
-    <div class="container">
-      <span class="section-label" data-i18n="projects_label">Experiência de Engenharia</span>
-      <h2 class="section-title" data-i18n="projects_title">Projetos Técnicos</h2>
-      <p class="section-desc" data-i18n="projects_desc">
-        Projetos práticos demonstrados com métricas laboratoriais medidas, contextualização de ambiente e diagramas interativos de arquitetura.
-      </p>
-
-      <!-- Track Selector Filter Tabs -->
-      <div class="project-track-tabs" role="tablist" aria-label="Project Tracks">
-        <button type="button" class="track-tab active" onclick="filterProjectTrack('all', this)" data-track="all">
-          <span data-i18n="track_all">Todos os Projetos</span>
-          <span class="track-tab-count">4</span>
-        </button>
-        <button type="button" class="track-tab" onclick="filterProjectTrack('cloud', this)" data-track="cloud">
-          <span>☁️</span>
-          <span data-i18n="track_cloud">Track A: Cloud, NetDevOps &amp; SRE</span>
-          <span class="track-tab-count">2</span>
-        </button>
-        <button type="button" class="track-tab" onclick="filterProjectTrack('backend', this)" data-track="backend">
-          <span>💻</span>
-          <span data-i18n="track_backend">Track B: Software Engineering &amp; Backend</span>
-          <span class="track-tab-count">3</span>
-        </button>
-      </div>
-
-      <div class="projects-container">
-        
-        <!-- ================= Projeto 1: NetDevOps Closed-Loop ================= -->
-        <div class="project-showcase-card" data-track="cloud">
-          <div class="project-left">
-            <div class="project-badge-row">
-              <span class="project-grade-pill" data-i18n="p1_grade">Classificação: 19 / 20 · Parceria: ARTE, I.P. (ex-AMA) · Set 2025 – Ago 2026</span>
-              <span class="tech-tag" style="color: var(--accent-emerald);">MTTR Lab: ~60s ciclo completo</span>
-              <span class="tech-tag">MTTD: &lt; 10s (-95% redução)</span>
-              <span class="tech-tag">Convergência: 4–7s</span>
-            </div>
-
-            <h3 class="project-title" data-i18n="p1_title">Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)</h3>
-
-            <p class="project-lead" data-i18n="p1_lead">
-              <strong>Protótipo de Fim de Curso em Laboratório Virtualizado (Parceria: ARTE, I.P. – ex-AMA · Equipa: Rafael Cruz &amp; Rafael Victorino · Mentoria: Nuno Batuca, ARTE, I.P.):</strong> Tecnologias: n8n, Python, Fortinet FortiGate, NetBox, MongoDB, Docker. Arquitetura orientada a eventos para autorrecuperação em ciclo fechado (<em>closed-loop</em>) em rede simulada (Overlay VPN IPsec sobre Underlay MPLS em VMware).<br><strong>Contribuição Individual:</strong> Desenvolvimento dos scripts de remediação determinística em Python (Netmiko), integração da REST API do FortiOS CMDB, modelos de dados no NetBox IPAM e automação dos nós de decisão no n8n.
+    <!-- ============ Projects ============ -->
+    <section class="section" id="projetos">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow"><span data-l="pt">Projetos</span><span data-l="en">Projects</span></p>
+            <h2 class="section-title"><span data-l="pt">Trabalho com resultados medidos</span><span data-l="en">Work with measured results</span></h2>
+            <p class="section-sub">
+              <span data-l="pt">Cada projeto indica o problema, o que fiz eu (nos trabalhos de equipa) e o resultado.</span>
+              <span data-l="en">Each project shows the problem, my own contribution (on team work) and the outcome.</span>
             </p>
+          </div>
+          <div class="filters" role="group" aria-label="Filtrar projetos">
+            <button type="button" class="filter-btn" data-filter="all" aria-pressed="true"><span data-l="pt">Todos</span><span data-l="en">All</span></button>
+            <button type="button" class="filter-btn" data-filter="cloud" aria-pressed="false"><span data-l="pt">Redes &amp; Cloud</span><span data-l="en">Network &amp; Cloud</span></button>
+            <button type="button" class="filter-btn" data-filter="backend" aria-pressed="false">Software &amp; Backend</button>
+          </div>
+        </div>
 
-            <ul class="project-key-points">
-              <li data-i18n="p1_bullet1"><strong>Diagnóstico Diferencial Automatizado:</strong> Workflows no n8n disparados por webhooks do PRTG que isolam falhas físicas (MPLS) de lógicas (VPN IPsec) em <strong>&lt;10s (-95% no MTTD)</strong> através de pré-validação ICMP antes de comandos SSH/API.</li>
-              <li data-i18n="p1_bullet2"><strong>Motor Híbrido de Remediação (PoC):</strong> Correção automática de <em>configuration drift</em> no FortiGate (REST API direta e contingência SSH com Python/Netmiko para contornar limitações de licença de teste). Tempo de convergência ativa do drift medido entre <strong>4 e 7s</strong> (reduzindo o MTTR total do ciclo para <strong>~60s</strong> vs ~30 min de triagem manual).</li>
-              <li data-i18n="p1_bullet3"><strong>Fonte Canónica (SSoT) e Registo de Incidentes:</strong> Reconciliação com parâmetros canónicos no NetBox IPAM e persistência estruturada de auditoria em MongoDB (Docker) com painéis analíticos no Metabase, validados em <strong>24 ensaios de injeção de falhas (Chaos Engineering em ambiente de teste)</strong> alinhados com boas práticas de rastreabilidade (ISO 27001).</li>
-            </ul>
-
-            <div class="project-pipeline-tag" data-i18n="p1_pipeline">
-              PRTG (Webhooks) ➔ n8n Orchestrator ➔ NetBox (SSoT/IPAM) ➔ FortiOS REST API / Netmiko SSH ➔ MongoDB, Metabase &amp; Telegram
+        <!-- Featured case study -->
+        <article class="case reveal" data-track="cloud">
+          <div class="case-head">
+            <div class="case-meta">
+              <span class="badge">19/20</span>
+              <span data-l="pt">Projeto final · Parceria ARTE, I.P. (ex-AMA)</span>
+              <span data-l="en">Capstone · Partnership with ARTE, I.P.</span>
+              <span>Set 2025 – Ago 2026</span>
+              <span data-l="pt">Equipa de 2</span><span data-l="en">Team of 2</span>
             </div>
+            <h3 class="case-title">
+              <span data-l="pt">Automação NetDevOps closed-loop para VPN IPsec sobre MPLS</span>
+              <span data-l="en">Closed-loop NetDevOps automation for IPsec VPN over MPLS</span>
+            </h3>
+            <p class="case-summary">
+              <span data-l="pt">Prova de conceito num laboratório virtualizado (VMware, FortiOS 7.6) que deteta, diagnostica e corrige falhas numa rede Hub-and-Spoke sem intervenção humana, e escala para o operador o que não pode corrigir.</span>
+              <span data-l="en">Proof of concept in a virtualised lab (VMware, FortiOS 7.6) that detects, diagnoses and fixes faults in a hub-and-spoke network without human intervention, and escalates what it cannot fix to the carrier.</span>
+            </p>
+          </div>
 
-            <div class="project-tags-list">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Fortinet FortiGate</span>
-              <span class="tech-tag">NetBox (SSoT/IPAM)</span>
-              <span class="tech-tag">n8n</span>
-              <span class="tech-tag">Netmiko (SSH)</span>
-              <span class="tech-tag">PRTG</span>
-              <span class="tech-tag">Chaos Engineering (Lab)</span>
-              <span class="tech-tag">MongoDB</span>
-              <span class="tech-tag">Metabase</span>
-              <span class="tech-tag">Docker</span>
-              <span class="tech-tag">ISO 27001</span>
+          <div class="case-cols">
+            <div class="case-col">
+              <h4><span data-l="pt">Problema</span><span data-l="en">Problem</span></h4>
+              <p>
+                <span data-l="pt">Em redes do Estado com túneis IPsec sobre MPLS, um desvio de configuração (gateway, seletores da Phase 2, políticas de firewall) causa quebras silenciosas. A triagem manual demora <strong>15 a 30 minutos</strong>.</span>
+                <span data-l="en">In public-sector networks running IPsec tunnels over MPLS, configuration drift (gateway, Phase 2 selectors, firewall policies) causes silent outages. Manual triage takes <strong>15 to 30 minutes</strong>.</span>
+              </p>
             </div>
+            <div class="case-col">
+              <h4><span data-l="pt">O meu contributo</span><span data-l="en">My contribution</span></h4>
+              <ul data-l="pt">
+                <li>Scripts de remediação em <strong>Python / Netmiko</strong></li>
+                <li>Integração com a <strong>REST API CMDB do FortiOS</strong></li>
+                <li>Modelo de dados no <strong>NetBox</strong> como fonte de verdade</li>
+                <li>Nós de decisão no <strong>n8n</strong> (pre-check ICMP, diagnóstico)</li>
+              </ul>
+              <ul data-l="en">
+                <li>Remediation scripts in <strong>Python / Netmiko</strong></li>
+                <li><strong>FortiOS CMDB REST API</strong> integration</li>
+                <li><strong>NetBox</strong> data model as source of truth</li>
+                <li>Decision nodes in <strong>n8n</strong> (ICMP pre-check, diagnosis)</li>
+              </ul>
+            </div>
+            <div class="case-col">
+              <h4><span data-l="pt">Resultado</span><span data-l="en">Outcome</span></h4>
+              <p>
+                <span data-l="pt">Em <strong>24 incidentes injetados</strong> (10 cenários), todas as 15 falhas lógicas foram corrigidas automaticamente. As falhas físicas foram escaladas ao operador sem tentativas inúteis de SSH/API.</span>
+                <span data-l="en">Across <strong>24 injected incidents</strong> (10 scenarios), all 15 logical faults were fixed automatically. Physical failures were escalated to the carrier without futile SSH/API attempts.</span>
+              </p>
+            </div>
+          </div>
 
-            <div class="project-action-links">
-              <a href="https://github.com/RafaCr3z/netdevops-closed-loop-platform" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                <span data-i18n="btn_view_github">Ver no GitHub</span>
-              </a>
-              <button type="button" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" onclick="openWriteupModal(1)" data-i18n="btn_read_poc_brief">
-                Ler Análise da Topologia ➔
+          <div class="case-metrics">
+            <div class="case-metric"><div class="v">4–7 s</div><div class="l"><span data-l="pt">Correção de drift (SSH)</span><span data-l="en">Drift fix (SSH)</span></div></div>
+            <div class="case-metric"><div class="v">&lt; 2 s</div><div class="l"><span data-l="pt">Por transação REST API</span><span data-l="en">Per REST API call</span></div></div>
+            <div class="case-metric"><div class="v">&lt; 10 s</div><div class="l"><span data-l="pt">Deteção (antes ~15 min)</span><span data-l="en">Detection (was ~15 min)</span></div></div>
+            <div class="case-metric"><div class="v">24</div><div class="l"><span data-l="pt">Incidentes auditados</span><span data-l="en">Audited incidents</span></div></div>
+          </div>
+
+          <div class="case-figs">
+            <figure class="fig">
+              <button type="button" class="fig-btn contain" data-zoom="assets/img/topologia-arte.webp">
+                <img src="assets/img/topologia-arte.webp" width="1344" height="477" loading="lazy" alt="Topologia Hub-and-Spoke: FortiGate na sede e na Loja do Cidadão, ligados por MPLS e túnel IPsec" />
               </button>
-            </div>
-          </div>
-
-          <!-- Interactive Network Architecture Blueprint -->
-          <div class="project-right">
-            <div class="blueprint-card">
-              <div class="blueprint-bar">
-                <div class="blueprint-dots">
-                  <span class="b-dot red"></span>
-                  <span class="b-dot yellow"></span>
-                  <span class="b-dot green"></span>
-                </div>
-                <div class="blueprint-name">closed_loop_topology.svg</div>
-                <div class="blueprint-status" data-i18n="bp_status_netdevops">● Topologia & Telemetria</div>
-              </div>
-
-              <!-- Blueprint Interactive Tabs -->
-              <div class="blueprint-tabs">
-                <button type="button" class="bp-tab active" onclick="switchBlueprintTab(1, 'svg', this)" data-i18n="bp_tab_logical">Blueprint Lógico</button>
-                <button type="button" class="bp-tab" onclick="switchBlueprintTab(1, 'arte', this)" data-i18n="bp_tab_arte">Topologia Real ARTE</button>
-                <button type="button" class="bp-tab" onclick="switchBlueprintTab(1, 'macro', this)" data-i18n="bp_tab_macro">Macro NetDevOps</button>
-              </div>
-
-              <div class="blueprint-canvas">
-                <!-- View 1: SVG Blueprint -->
-                <div id="bp1-view-svg" class="bp-view active">
-                  <svg class="blueprint-svg" viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Connection Lines -->
-                    <path d="M 80,60 L 230,60" stroke="#10b981" stroke-width="2" stroke-dasharray="4 3" />
-                    <path d="M 230,60 L 380,60" stroke="#10b981" stroke-width="2" />
-                    <path d="M 230,60 L 230,150" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4 3" />
-                    <path d="M 230,150 L 100,230" stroke="#34d399" stroke-width="2" />
-                    <path d="M 230,150 L 360,230" stroke="#34d399" stroke-width="2" />
-                    <path d="M 100,230 L 230,230" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" />
-                    <path d="M 230,230 L 360,230" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" />
-
-                    <!-- Node 1: Underlay MPLS / IPsec -->
-                    <rect x="20" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
-                    <text x="80" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">Underlay / IPsec</text>
-                    <text x="80" y="73" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">FortiOS VPN Hub</text>
-
-                    <!-- Node 2: PRTG Sonda -->
-                    <rect x="170" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="1.5" />
-                    <text x="230" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">PRTG Probing</text>
-                    <text x="230" y="73" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">MTTD &lt; 10s (&gt;95%)</text>
-
-                    <!-- Node 3: n8n Event Broker -->
-                    <rect x="320" y="35" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
-                    <text x="380" y="58" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">n8n Orchestrator</text>
-                    <text x="380" y="73" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Event-Driven Hook</text>
-
-                    <!-- Node 4: NetBox SSOT -->
-                    <rect x="170" y="125" width="120" height="50" rx="8" fill="#131e2c" stroke="#06b6d4" stroke-width="1.5" />
-                    <text x="230" y="148" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">NetBox SSoT/IPAM</text>
-                    <text x="230" y="163" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Golden Config</text>
-
-                    <!-- Node 5: Hybrid Remediation Engine -->
-                    <rect x="30" y="205" width="140" height="55" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="2" />
-                    <text x="100" y="228" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">Hybrid Engine</text>
-                    <text x="100" y="243" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">REST API (4–7s) / SSH</text>
-
-                    <!-- Node 6: Observability / Telegram -->
-                    <rect x="290" y="205" width="140" height="55" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
-                    <text x="360" y="228" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">Auditoria SRE</text>
-                    <text x="360" y="243" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">MongoDB, Metabase (ISO)</text>
-                  </svg>
-                </div>
-
-                <!-- View 2: Topologia Real ARTE -->
-                <div id="bp1-view-arte" class="bp-view" style="display: none;">
-                  <img src="figura4_topologia_arte.png" alt="Topologia Real ARTE I.P." class="blueprint-real-img" onclick="openWriteupModal(1)">
-                  <p class="blueprint-img-note" data-i18n="bp_topo_note">▲ Topologia da Infraestrutura Híbrida ARTE, I.P. (Relatório Técnico · Clique p/ expandir)</p>
-                </div>
-
-                <!-- View 3: Macro NetDevOps -->
-                <div id="bp1-view-macro" class="bp-view" style="display: none;">
-                  <img src="figura3_netdevops_arquitetura.png" alt="Macro Arquitetura NetDevOps" class="blueprint-real-img" onclick="openWriteupModal(1)">
-                  <p class="blueprint-img-note" data-i18n="bp_macro_note">▲ Diagrama do Fluxo de Remediação NetDevOps (Relatório Técnico · Clique p/ expandir)</p>
-                </div>
-              </div>
-
-              <div class="blueprint-metrics-bar">
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p1_metric1_val">4–7s</div>
-                  <div class="metric-lbl" data-i18n="p1_metric1_lbl">Convergência Drift (Lab)</div>
-                </div>
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p1_metric2_val">&lt; 10s</div>
-                  <div class="metric-lbl" data-i18n="p1_metric2_lbl">Isolamento MTTD</div>
-                </div>
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p1_metric3_val">24 / 24</div>
-                  <div class="metric-lbl" data-i18n="p1_metric3_lbl">Ensaios Chaos Lab (19/20)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ================= Projeto 2: CityGuards Multi-Cloud ================= -->
-        <div class="project-showcase-card" data-track="cloud backend">
-          <div class="project-left">
-            <div class="project-badge-row">
-              <span class="project-grade-pill" data-i18n="p2_grade">Classificação: 20 / 20 · Projeto de Engenharia Cloud · Fev 2026 – Mai 2026</span>
-              <span class="tech-tag" style="color: var(--accent-cyan);">Multi-Cloud IaC</span>
-              <span class="tech-tag">Azure &amp; GCP Firestore</span>
-              <span class="tech-tag">FinOps Optimizado</span>
-            </div>
-
-            <h3 class="project-title" data-i18n="p2_title">Plataforma Multi-Cloud Segura e Resiliente (CityGuards)</h3>
-
-            <p class="project-lead" data-i18n="p2_lead">
-              <strong>Projeto Académico de Engenharia Cloud (Equipa: Diogo Oliveira, Rafael Cruz, Tiago Alves · Orientação: Prof. Osvaldo Santos):</strong> Tecnologias: Azure, GCP Firestore, Next.js, TypeScript, Node.js, Docker, Bicep, OIDC. Plataforma híbrida ativa de reporte cívico combinando serviços Azure PaaS e Google Cloud Platform (GCP).<br><strong>Contribuição Individual:</strong> Engenharia do backend em Node.js/Express, migração desacoplada da camada NoSQL para GCP Firestore com transações atómicas ACID (<code>db.runTransaction</code>) e empacotamento do serviço de PDFs em Docker container.
-            </p>
-
-            <ul class="project-key-points">
-              <li data-i18n="p2_bullet1"><strong>Arquitetura Híbrida e Degradação Graciosa:</strong> Interoperabilidade entre Microsoft Azure (App Service, Blob Storage, Functions e ACI) e GCP Firestore, com fallback heurístico local para classificação de texto e microsserviço de relatórios PDF em Docker.</li>
-              <li data-i18n="p2_bullet2"><strong>Persistência Desacoplada e Transações ACID:</strong> Migração desacoplada da persistência NoSQL para GCP Firestore e implementação de transações atómicas (<code>db.runTransaction</code>) para prevenir <em>race conditions</em> na gamificação cívica sob concorrência multi-tenant.</li>
-              <li data-i18n="p2_bullet3"><strong>Autenticação Federada e Otimização Cloud:</strong> Infraestrutura declarativa no Azure com Bicep e pipelines CI/CD no GitHub Actions usando federação OIDC (<code>azure/login@v2</code>) sem credenciais estáticas de longa duração, otimizando custos cloud para <strong>~72 €/mês (FinOps)</strong> e analisando soberania de dados (RGPD vs. US CLOUD Act).</li>
-            </ul>
-
-            <div class="project-pipeline-tag" data-i18n="p2_pipeline">
-              Bicep Declarativo ➔ GitHub Actions OIDC (azure/login@v2) ➔ Checkov SAST ➔ Azure App Service &amp; GCP Firestore
-            </div>
-
-            <div class="project-tags-list">
-              <span class="tech-tag">Microsoft Azure</span>
-              <span class="tech-tag">GCP Firestore</span>
-              <span class="tech-tag">Next.js</span>
-              <span class="tech-tag">TypeScript</span>
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">Docker (ACI)</span>
-              <span class="tech-tag">Bicep</span>
-              <span class="tech-tag">GitHub Actions (OIDC)</span>
-              <span class="tech-tag">db.runTransaction (ACID)</span>
-              <span class="tech-tag">FinOps (~72 €/mês)</span>
-              <span class="tech-tag">RGPD vs. US CLOUD Act</span>
-            </div>
-
-            <div class="project-action-links">
-              <a href="https://github.com/RafaCr3z/cityguards-platform-core" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                <span data-i18n="btn_view_github">Ver no GitHub</span>
-              </a>
-              <button type="button" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" onclick="openWriteupModal(3)" data-i18n="btn_read_cloud_brief">
-                Ler Análise Multi-Cloud ➔
+              <figcaption><span data-l="pt">Topologia do laboratório (Hub-and-Spoke)</span><span data-l="en">Lab topology (hub-and-spoke)</span></figcaption>
+            </figure>
+            <figure class="fig">
+              <button type="button" class="fig-btn contain" data-zoom="assets/img/netdevops-arquitetura.webp">
+                <img src="assets/img/netdevops-arquitetura.webp" width="1583" height="829" loading="lazy" alt="Arquitetura: PRTG, n8n, NetBox, FortiOS, MongoDB e Metabase" />
               </button>
-            </div>
+              <figcaption><span data-l="pt">Fluxo de deteção, decisão e remediação</span><span data-l="en">Detection, decision and remediation flow</span></figcaption>
+            </figure>
           </div>
 
-          <!-- Architecture Blueprint Graphic (Multi-Cloud Topology) -->
-          <div class="project-right">
-            <div class="blueprint-card">
-              <div class="blueprint-bar">
-                <div class="blueprint-dots">
-                  <span class="b-dot red"></span>
-                  <span class="b-dot yellow"></span>
-                  <span class="b-dot green"></span>
-                </div>
-                <div class="blueprint-name">multicloud_resilience.svg</div>
-                <div class="blueprint-status" style="color: var(--accent-cyan);" data-i18n="bp_status_cityguards">● Autenticação OIDC Federada</div>
-              </div>
-
-              <!-- Blueprint Interactive Tabs -->
-              <div class="blueprint-tabs">
-                <button type="button" class="bp-tab active" onclick="switchBlueprintTab(2, 'svg', this)" data-i18n="bp_tab_multicloud">Fluxo Multi-Cloud</button>
-                <button type="button" class="bp-tab" onclick="switchBlueprintTab(2, 'dashboard', this)" data-i18n="bp_tab_dashboard">Painel Real Autarquia</button>
-              </div>
-
-              <div class="blueprint-canvas">
-                <!-- View 1: SVG Multi-Cloud -->
-                <div id="bp2-view-svg" class="bp-view active">
-                  <svg class="blueprint-svg" viewBox="0 0 460 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Flow Paths -->
-                    <path d="M 70,140 L 170,80" stroke="#06b6d4" stroke-width="2" />
-                    <path d="M 70,140 L 170,200" stroke="#10b981" stroke-width="2" stroke-dasharray="4 3" />
-                    <path d="M 290,80 L 380,140" stroke="#06b6d4" stroke-width="2" />
-                    <path d="M 290,200 L 380,140" stroke="#10b981" stroke-width="2" />
-                    <path d="M 230,110 L 230,170" stroke="#34d399" stroke-width="1.8" stroke-dasharray="3 3" />
-
-                    <!-- Node: Client Request -->
-                    <rect x="10" y="115" width="100" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
-                    <text x="60" y="138" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600" text-anchor="middle">HTTPS Client</text>
-                    <text x="60" y="153" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">TLS 1.3 Strict</text>
-
-                    <!-- Node: Azure App Service -->
-                    <rect x="160" y="55" width="140" height="52" rx="8" fill="#131e2c" stroke="#06b6d4" stroke-width="2" />
-                    <text x="230" y="78" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">Azure App Service</text>
-                    <text x="230" y="93" fill="#06b6d4" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">Bicep IaC Declarativo</text>
-
-                    <!-- Node: Fallback Docker ACI -->
-                    <rect x="160" y="175" width="140" height="52" rx="8" fill="#131e2c" stroke="#10b981" stroke-width="1.5" />
-                    <text x="230" y="198" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">GCP Firestore &amp; Run</text>
-                    <text x="230" y="213" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">ACID (db.runTransaction)</text>
-
-                    <!-- Node: OIDC CI/CD Pipeline -->
-                    <rect x="330" y="115" width="120" height="50" rx="8" fill="#131e2c" stroke="#25384e" stroke-width="1.5" />
-                    <text x="390" y="138" fill="#f1f5f9" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="600" text-anchor="middle">GitHub Actions</text>
-                    <text x="390" y="153" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">OIDC (azure/login@v2)</text>
-                  </svg>
-                </div>
-
-                <!-- View 2: Dashboard Real Autarquia -->
-                <div id="bp2-view-dashboard" class="bp-view" style="display: none;">
-                  <img src="figura11_cityguards_multicloud_real.png" alt="Painel Real Autarquia CityGuards" class="blueprint-real-img" onclick="openWriteupModal(2)">
-                  <p class="blueprint-img-note" data-i18n="bp_cg_dashboard_note">▲ Painel de Gestão Municipal CityGuards (Relatório Técnico · Clique p/ expandir)</p>
-                </div>
-              </div>
-
-              <div class="blueprint-metrics-bar">
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p2_metric1_val">20 / 20</div>
-                  <div class="metric-lbl" data-i18n="p2_metric1_lbl">Classificação Final</div>
-                </div>
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p2_metric2_val">ACID</div>
-                  <div class="metric-lbl" data-i18n="p2_metric2_lbl">Transações Concorrentes</div>
-                </div>
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p2_metric3_val">OIDC</div>
-                  <div class="metric-lbl" data-i18n="p2_metric3_lbl">Sem Segredos Estáticos</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ================= Projeto 3: CarPooling PT (Reordered before PDS) ================= -->
-        <div class="project-showcase-card" data-track="backend">
-          <div class="project-left">
-            <div class="project-badge-row">
-              <span class="project-grade-pill" data-i18n="p4_grade">Microsserviços Distribuídos · Spring Cloud &amp; LGTM Observability</span>
-              <span class="tech-tag" style="color: var(--accent-emerald);">Java 21 · Spring Boot 3</span>
-              <span class="tech-tag">RabbitMQ &amp; Redis 7</span>
-              <span class="tech-tag">LGTM Stack</span>
-              <span class="tech-tag">Docker (18 Containers)</span>
-            </div>
-
-            <h3 class="project-title" data-i18n="p4_title">Plataforma Distribuída de Partilha de Viagens (CarPooling PT)</h3>
-
-            <p class="project-lead" data-i18n="p4_lead">
-              <strong>Arquitetura Distribuída de Microsserviços:</strong> Tecnologias: Java 21 LTS, Spring Boot 3, Spring Cloud (Eureka, Gateway, OpenFeign), RabbitMQ (Topic Exchange + DLQ), Redis 7 (Cache-Aside &amp; Rate Limiting), PostgreSQL (Database-per-Service), Docker Compose (18 contentores), Kubernetes declarativo e Observabilidade LGTM.
-            </p>
-
-            <ul class="project-key-points">
-              <li data-i18n="p4_bullet1"><strong>Microsserviços Desacoplados &amp; Resiliência Distribuída:</strong> 11 módulos Maven (1 biblioteca partilhada + 10 microsserviços) com Service Discovery dinâmico (Netflix Eureka), API Gateway reativo com rate limiting Token Bucket em Redis, mensageria assíncrona por RabbitMQ com Dead Letter Queue e Circuit Breakers Resilience4j com fallback gracioso.</li>
-              <li data-i18n="p4_bullet2"><strong>Suíte de 123 Testes Automatizados &amp; DevSecOps:</strong> Validação integral no Maven Reactor com 100% de aprovação (JUnit 5 + Mockito), migrações relacionais versionadas via Flyway com isolamento Database-per-Service, manifestos Kubernetes declarativos e verificação de vulnerabilidades em contentores com Trivy.</li>
-              <li data-i18n="p4_bullet3"><strong>Stack de Observabilidade LGTM &amp; Fórmulas de Negócio:</strong> Telemetria centralizada correlacionando métricas (Prometheus :9090), dashboards de JVM e tráfego (Grafana :3001), rastreio distribuído OTLP (Tempo :3200) e agregação de logs (Loki :3100), com algoritmo de distâncias Haversine, liquidações sandbox idempotentes e estimativa de poupança de CO2.</li>
+          <div class="case-foot">
+            <ul class="tags">
+              <li class="tag">Python</li><li class="tag">Netmiko</li><li class="tag">FortiOS REST API</li><li class="tag">NetBox</li><li class="tag">n8n</li><li class="tag">PRTG</li><li class="tag">MongoDB</li><li class="tag">Metabase</li><li class="tag">Docker</li>
             </ul>
-
-            <div class="project-pipeline-tag" data-i18n="p4_pipeline">
-              API Gateway (Rate Limit) ➔ Eureka ➔ Spring Boot (OpenFeign / Circuit Breaker) ➔ RabbitMQ / Redis ➔ PostgreSQL &amp; LGTM Stack
-            </div>
-
-            <div class="project-tags-list">
-              <span class="tech-tag">Java 21 LTS</span>
-              <span class="tech-tag">Spring Boot 3</span>
-              <span class="tech-tag">Spring Cloud (Eureka)</span>
-              <span class="tech-tag">RabbitMQ (AMQP/DLQ)</span>
-              <span class="tech-tag">Redis 7 (Cache-Aside)</span>
-              <span class="tech-tag">PostgreSQL (Flyway)</span>
-              <span class="tech-tag">Prometheus &amp; Grafana</span>
-              <span class="tech-tag">Grafana Tempo &amp; Loki</span>
-              <span class="tech-tag">JUnit 5 (123 Testes)</span>
-              <span class="tech-tag">Docker (18 Containers)</span>
-              <span class="tech-tag">Kubernetes Kustomize</span>
-            </div>
-
-            <div class="project-action-links">
-              <a href="https://github.com/RafaCr3z/car-pooling-sharing" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                <span data-i18n="btn_view_github">Ver no GitHub</span>
+            <div class="case-links">
+              <a href="writeups/closed-loop.html" class="btn btn-primary btn-sm">
+                <span data-l="pt">Ler o caso completo</span><span data-l="en">Read the full case</span>
+                <svg aria-hidden="true"><use href="#i-arrow"/></svg>
               </a>
-              <a href="https://github.com/RafaCr3z/car-pooling-sharing#readme" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" data-i18n="btn_carpooling_docs">
-                Ver Arquitetura ➔
+              <a href="https://github.com/RafaCr3z/netdevops-closed-loop-platform" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                <svg aria-hidden="true"><use href="#i-github"/></svg>GitHub
               </a>
             </div>
           </div>
+        </article>
 
-          <!-- Microservices Architecture & Observability Graphic -->
-          <div class="project-right">
-            <div class="blueprint-card">
-              <div class="blueprint-bar">
-                <div class="blueprint-dots">
-                  <span class="b-dot red"></span>
-                  <span class="b-dot yellow"></span>
-                  <span class="b-dot green"></span>
-                </div>
-                <div class="blueprint-name">carpooling_grafana.png (LGTM Observability)</div>
-                <div class="blueprint-status" style="color: var(--accent-emerald);" data-i18n="bp_status_carpooling">● Spring Cloud &amp; LGTM</div>
+        <!-- Other projects -->
+        <div class="projects-grid">
+
+          <article class="card reveal" data-track="cloud backend">
+            <button type="button" class="fig-btn" data-zoom="assets/img/cityguards-painel.webp">
+              <img src="assets/img/cityguards-painel.webp" width="1502" height="844" loading="lazy" alt="Painel de gestão municipal da plataforma CityGuards" />
+            </button>
+            <div class="card-body">
+              <div class="card-kicker">
+                <span class="badge">20/20</span>
+                <span>Cloud · Fev–Mai 2026</span>
+                <span data-l="pt">Equipa de 3</span><span data-l="en">Team of 3</span>
               </div>
-
-              <div class="blueprint-tabs">
-                <button type="button" class="bp-tab active" onclick="switchBlueprintTab(4, 'grafana', this)" data-i18n="bp_tab_grafana">Cockpit Grafana</button>
-                <button type="button" class="bp-tab" onclick="switchBlueprintTab(4, 'leaflet', this)" data-i18n="bp_tab_leaflet">Rotas &amp; Leaflet</button>
+              <h3 class="card-title">
+                <span data-l="pt">CityGuards: plataforma multi-cloud Azure + GCP</span>
+                <span data-l="en">CityGuards: multi-cloud platform on Azure + GCP</span>
+              </h3>
+              <p class="card-text">
+                <span data-l="pt">Plataforma de reporte cívico em Azure (App Service, Functions, Blob) com dados no GCP Firestore e alternativas automáticas quando um serviço falha. <strong>Fiz:</strong> backend Node.js, migração da base de dados para Firestore com transações atómicas e serviço de PDFs em Docker.</span>
+                <span data-l="en">Civic reporting platform on Azure (App Service, Functions, Blob) with data on GCP Firestore and automatic fallbacks when a service fails. <strong>I built:</strong> the Node.js backend, the database migration to Firestore with atomic transactions, and the Docker PDF service.</span>
+              </p>
+              <div class="card-stats">
+                <div><b>OIDC</b><span data-l="pt">sem segredos</span><span data-l="en">no secrets</span></div>
+                <div><b>~72 €</b><span data-l="pt">por mês</span><span data-l="en">per month</span></div>
+                <div><b>Bicep</b>IaC</div>
               </div>
-
-              <div class="blueprint-canvas">
-                <div id="bp4-view-grafana" class="bp-view active">
-                  <img src="carpooling_grafana.png" alt="Cockpit de Observabilidade Grafana" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/car-pooling-sharing', '_blank')">
-                  <p class="blueprint-img-note" data-i18n="bp_carpooling_note1">▲ Cockpit de Observabilidade Grafana (JVM, RPS, Latência e Actuator · Clique p/ repositório)</p>
-                </div>
-                <div id="bp4-view-leaflet" class="bp-view" style="display: none;">
-                  <img src="carpooling_leaflet.png" alt="Pesquisa de Viagens e Rotas Leaflet" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/car-pooling-sharing', '_blank')">
-                  <p class="blueprint-img-note" data-i18n="bp_carpooling_note2">▲ Pesquisa de Viagens com Rotas Geodésicas e Mapa Leaflet (Clique p/ repositório)</p>
-                </div>
-              </div>
-
-              <div class="blueprint-metrics-bar">
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p4_metric1_val">123 / 123</div>
-                  <div class="metric-lbl" data-i18n="p4_metric1_lbl">Testes Automatizados</div>
-                </div>
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p4_metric2_val">18</div>
-                  <div class="metric-lbl" data-i18n="p4_metric2_lbl">Contentores Docker (LGTM)</div>
-                </div>
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p4_metric3_val">11</div>
-                  <div class="metric-lbl" data-i18n="p4_metric3_lbl">Módulos Maven</div>
-                </div>
+              <div class="card-links">
+                <a href="writeups/multicloud-azure-gcp.html" class="link-arrow"><span data-l="pt">Ler writeup</span><span data-l="en">Read writeup</span> →</a>
+                <a href="https://github.com/RafaCr3z/cityguards-platform-core" target="_blank" rel="noopener" class="link-arrow">GitHub ↗</a>
               </div>
             </div>
+          </article>
+
+          <article class="card reveal" data-track="backend">
+            <button type="button" class="fig-btn" data-zoom="assets/img/carpooling-grafana.webp">
+              <img src="assets/img/carpooling-grafana.webp" width="1582" height="898" loading="lazy" alt="Dashboard Grafana com métricas JVM, pedidos por segundo e latência" />
+            </button>
+            <div class="card-body">
+              <div class="card-kicker">
+                <span class="badge">Backend</span>
+                <span>Java 21 · Spring Cloud</span>
+              </div>
+              <h3 class="card-title">
+                <span data-l="pt">CarPooling PT: microsserviços com observabilidade</span>
+                <span data-l="en">CarPooling PT: microservices with observability</span>
+              </h3>
+              <p class="card-text">
+                <span data-l="pt">10 microsserviços Spring Boot com Eureka, API Gateway com rate limiting em Redis, RabbitMQ com dead-letter queue e circuit breakers. Métricas, traces e logs com Prometheus, Grafana, Tempo e Loki.</span>
+                <span data-l="en">10 Spring Boot microservices with Eureka, an API Gateway with Redis rate limiting, RabbitMQ with a dead-letter queue and circuit breakers. Metrics, traces and logs via Prometheus, Grafana, Tempo and Loki.</span>
+              </p>
+              <div class="card-stats">
+                <div><b>123</b><span data-l="pt">testes</span><span data-l="en">tests</span></div>
+                <div><b>18</b><span data-l="pt">contentores</span><span data-l="en">containers</span></div>
+                <div><b>11</b><span data-l="pt">módulos</span><span data-l="en">modules</span></div>
+              </div>
+              <div class="card-links">
+                <a href="https://github.com/RafaCr3z/car-pooling-sharing#readme" target="_blank" rel="noopener" class="link-arrow"><span data-l="pt">Arquitetura</span><span data-l="en">Architecture</span> ↗</a>
+                <a href="https://github.com/RafaCr3z/car-pooling-sharing" target="_blank" rel="noopener" class="link-arrow">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal" data-track="backend">
+            <button type="button" class="fig-btn contain" data-zoom="assets/img/pds-uml.webp">
+              <img src="assets/img/pds-uml.webp" width="1551" height="898" loading="lazy" alt="Diagrama de classes UML" />
+            </button>
+            <div class="card-body">
+              <div class="card-kicker">
+                <span class="badge"><span data-l="pt">Eng. Software</span><span data-l="en">Software Eng.</span></span>
+                <span>2024/25</span>
+              </div>
+              <h3 class="card-title">
+                <span data-l="pt">Padrões de desenho em Java (GoF + SOLID)</span>
+                <span data-l="en">Design patterns in Java (GoF + SOLID)</span>
+              </h3>
+              <p class="card-text">
+                <span data-l="pt">Dois sistemas, reservas de voos e refactoring de um banco, modelados em UML e estruturados com State, Strategy, Observer e Factory.</span>
+                <span data-l="en">Two systems, flight booking and a bank refactor, modelled in UML and structured with State, Strategy, Observer and Factory.</span>
+              </p>
+              <div class="card-stats">
+                <div><b>6+</b><span data-l="pt">padrões</span><span data-l="en">patterns</span></div>
+                <div><b>2</b><span data-l="pt">sistemas</span><span data-l="en">systems</span></div>
+                <div><b>UML</b><span data-l="pt">modelação</span><span data-l="en">modelling</span></div>
+              </div>
+              <div class="card-links">
+                <a href="https://github.com/RafaCr3z/pds-software-design-patterns" target="_blank" rel="noopener" class="link-arrow">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Skills ============ -->
+    <section class="section" id="competencias">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow"><span data-l="pt">Competências</span><span data-l="en">Skills</span></p>
+            <h2 class="section-title"><span data-l="pt">Ferramentas que já usei em projetos</span><span data-l="en">Tools I've used in real projects</span></h2>
           </div>
         </div>
 
-        <!-- ================= Projeto 4: PDS Design Patterns Monorepo ================= -->
-        <div class="project-showcase-card" data-track="backend">
-          <div class="project-left">
-            <div class="project-badge-row">
-              <span class="project-grade-pill" data-i18n="p3_grade">Engenharia de Software · Padrões de Desenho 2024/25</span>
-              <span class="tech-tag" style="color: var(--accent-emerald);">Padrões GoF</span>
-              <span class="tech-tag">Clean Architecture &amp; SOLID</span>
-              <span class="tech-tag">Monorepo Estruturado</span>
-            </div>
-
-            <h3 class="project-title" data-i18n="p3_title">Padrões de Desenho de Software &amp; Arquitetura Modular (PDS Monorepo)</h3>
-
-            <p class="project-lead" data-i18n="p3_lead">
-              <strong>Monorepo de Engenharia de Software:</strong> Tecnologias: Java 17/21, Padrões GoF (State, Strategy, Observer, Factory, Command, Singleton), Princípios SOLID e Modelação UML. Arquitetura orientada a objetos desacoplando lógica de domínio e interfaces.
-            </p>
-
-            <ul class="project-key-points">
-              <li data-i18n="p3_bullet1"><strong>EST Global Airways (Reserva &amp; Gestão de Voos):</strong> Sistema de pesquisa multicritério, cálculo dinâmico de gamas tarifárias por milhagem e taxas aeroportuárias, gestão integral de reservas com ID único alfanumérico e ciclo pós-venda (alteração de datas, lugares e cancelamento com reembolso).</li>
-              <li data-i18n="p3_bullet2"><strong>Banco do FaroEST (Refactoring Orientado a Objetos):</strong> Modernização de lógica procedural para arquitetura orientada a estados (<em>State Pattern</em>), desacoplamento de eventos (<em>Observer</em>) e extensibilidade de regras sem regressões em testes.</li>
-              <li data-i18n="p3_bullet3"><strong>Padrões de Desenho &amp; Modelação UML:</strong> Aplicação rigorosa dos princípios SOLID (SRP, OCP, DIP), polimorfismo, interfaces defensivas, tratamento de exceções customizadas e modelação arquitetural através de diagramas de classes UML estruturados.</li>
+        <div class="skills-grid">
+          <div class="skill-group reveal">
+            <h3><span data-l="pt">Redes &amp; automação</span><span data-l="en">Networking &amp; automation</span></h3>
+            <p><span data-l="pt">Configuração, deteção e correção automática de falhas.</span><span data-l="en">Configuration, fault detection and automated remediation.</span></p>
+            <ul class="tags">
+              <li class="tag">Fortinet FortiGate</li><li class="tag">IPsec IKEv2</li><li class="tag">MPLS</li><li class="tag">NetBox</li><li class="tag">n8n</li><li class="tag">Python · Netmiko</li><li class="tag">Ansible</li><li class="tag">PRTG</li><li class="tag">pfSense</li><li class="tag">Palo Alto</li>
             </ul>
-
-            <div class="project-pipeline-tag" data-i18n="p3_pipeline">
-              Java 17/21 ➔ GoF Patterns (State, Strategy, Observer) ➔ SOLID &amp; Clean Architecture ➔ UML Class Modeling
-            </div>
-
-            <div class="project-tags-list">
-              <span class="tech-tag">Java 17/21</span>
-              <span class="tech-tag">GoF Design Patterns</span>
-              <span class="tech-tag">State &amp; Strategy</span>
-              <span class="tech-tag">Observer &amp; Factory</span>
-              <span class="tech-tag">Clean Architecture</span>
-              <span class="tech-tag">SOLID Principles</span>
-              <span class="tech-tag">OOP &amp; Polimorfismo</span>
-              <span class="tech-tag">UML Modeling</span>
-            </div>
-
-            <div class="project-action-links">
-              <a href="https://github.com/RafaCr3z/pds-software-design-patterns" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                <span data-i18n="btn_view_github">Ver no GitHub</span>
-              </a>
-              <a href="https://github.com/RafaCr3z/pds-software-design-patterns#readme" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="padding: 8px 14px; font-size: 0.85rem;" data-i18n="btn_pds_docs">
-                Explorar Arquitetura ➔
-              </a>
-            </div>
           </div>
-
-          <!-- UML Diagram Showcase Graphic -->
-          <div class="project-right">
-            <div class="blueprint-card">
-              <div class="blueprint-bar">
-                <div class="blueprint-dots">
-                  <span class="b-dot red"></span>
-                  <span class="b-dot yellow"></span>
-                  <span class="b-dot green"></span>
-                </div>
-                <div class="blueprint-name">pds_classes.jpeg (UML Architecture)</div>
-                <div class="blueprint-status" style="color: var(--accent-emerald);" data-i18n="bp_status_pds">● Padrões de Desenho GoF</div>
-              </div>
-
-              <div class="blueprint-tabs">
-                <button type="button" class="bp-tab active" data-i18n="bp_tab_uml">Diagrama UML de Classes</button>
-              </div>
-
-              <div class="blueprint-canvas">
-                <div class="bp-view active">
-                  <img src="pds_classes.jpeg" alt="Diagrama de Classes UML PDS" class="blueprint-real-img" onclick="window.open('https://github.com/RafaCr3z/pds-software-design-patterns', '_blank')">
-                  <p class="blueprint-img-note" data-i18n="bp_uml_note">▲ Diagrama de Classes UML (Modelação de Domínio e Padrões GoF · Clique p/ repositório)</p>
-                </div>
-              </div>
-
-              <div class="blueprint-metrics-bar">
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p3_metric1_val">6+ GoF</div>
-                  <div class="metric-lbl" data-i18n="p3_metric1_lbl">Padrões de Desenho</div>
-                </div>
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p3_metric2_val">SOLID</div>
-                  <div class="metric-lbl" data-i18n="p3_metric2_lbl">Padrões GoF & Clean Code</div>
-                </div>
-                <div class="metric-item">
-                  <div class="metric-val" data-i18n="p3_metric3_val">2</div>
-                  <div class="metric-lbl" data-i18n="p3_metric3_lbl">Sistemas (Airways + Banco)</div>
-                </div>
-              </div>
-            </div>
+          <div class="skill-group reveal">
+            <h3>Cloud &amp; IaC</h3>
+            <p><span data-l="pt">Infraestrutura declarativa e pipelines sem credenciais estáticas.</span><span data-l="en">Declarative infrastructure and pipelines without static credentials.</span></p>
+            <ul class="tags">
+              <li class="tag">Azure</li><li class="tag">AWS</li><li class="tag">GCP</li><li class="tag">Bicep</li><li class="tag">Terraform</li><li class="tag">GitHub Actions · OIDC</li><li class="tag">Docker</li><li class="tag">Kubernetes</li><li class="tag">Linux</li><li class="tag">Windows Server</li>
+            </ul>
+          </div>
+          <div class="skill-group reveal">
+            <h3><span data-l="pt">Observabilidade &amp; segurança</span><span data-l="en">Observability &amp; security</span></h3>
+            <p><span data-l="pt">Métricas, logs, auditoria e análise de vulnerabilidades.</span><span data-l="en">Metrics, logs, auditing and vulnerability analysis.</span></p>
+            <ul class="tags">
+              <li class="tag">Prometheus</li><li class="tag">Grafana · Loki · Tempo</li><li class="tag">Metabase</li><li class="tag">Wazuh</li><li class="tag">Splunk</li><li class="tag">Wireshark</li><li class="tag">Nmap</li><li class="tag">OpenVAS</li><li class="tag">Checkov</li><li class="tag">Trivy</li>
+            </ul>
+          </div>
+          <div class="skill-group reveal">
+            <h3><span data-l="pt">Backend &amp; dados</span><span data-l="en">Backend &amp; data</span></h3>
+            <p><span data-l="pt">APIs, microsserviços e mensagens assíncronas.</span><span data-l="en">APIs, microservices and async messaging.</span></p>
+            <ul class="tags">
+              <li class="tag">Java 17/21</li><li class="tag">Spring Boot 3</li><li class="tag">Spring Cloud</li><li class="tag">Node.js · TypeScript</li><li class="tag">RabbitMQ</li><li class="tag">Redis</li><li class="tag">PostgreSQL</li><li class="tag">MongoDB</li><li class="tag">Neo4j</li><li class="tag">Bash · PowerShell</li>
+            </ul>
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== Section 3: Career History (Interactive Timeline) ==================== -->
-  <section class="section" id="history">
-    <div class="container">
-      <span class="section-label" data-i18n="history_label">Educação & Experiência</span>
-      <h2 class="section-title" data-i18n="history_title">Career History</h2>
-      <p class="section-desc" data-i18n="history_desc">
-        Linha cronológica integrando percurso académico, mobilidade internacional e experiência profissional complementar descritas no CV.
-      </p>
-
-      <!-- Executive Timeline HUD: Milestone Stepper & Controls -->
-      <div class="timeline-hud">
-        <div class="timeline-stepper" id="timelineStepper" role="tablist" aria-label="Etapas do percurso">
-          <button type="button" class="timeline-step-pill active" data-step="0">
-            <span class="step-pill-idx">01</span>
-            <span class="step-pill-label" data-i18n="step_1_short">IPCB</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="1">
-            <span class="step-pill-idx">02</span>
-            <span class="step-pill-label" data-i18n="step_2_short">Brisa</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="2">
-            <span class="step-pill-idx">03</span>
-            <span class="step-pill-label" data-i18n="step_3_short">Weimar</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="3">
-            <span class="step-pill-idx">04</span>
-            <span class="step-pill-label" data-i18n="step_4_short">Lusiaves</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="4">
-            <span class="step-pill-idx">05</span>
-            <span class="step-pill-label" data-i18n="step_5_short">ARTE PoC</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="5">
-            <span class="step-pill-idx">06</span>
-            <span class="step-pill-label" data-i18n="step_6_short">Roménia</span>
-          </button>
-          <button type="button" class="timeline-step-pill" data-step="6">
-            <span class="step-pill-idx">07</span>
-            <span class="step-pill-label" data-i18n="step_7_short">Presente</span>
-          </button>
-        </div>
-
-        <div class="timeline-action-buttons">
-          <button type="button" class="timeline-ctrl-btn" id="timelineBtnPrev" aria-label="Recuar no percurso" title="Anterior">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            <span data-i18n="timeline_prev">Anterior</span>
-          </button>
-          <button type="button" class="timeline-ctrl-btn timeline-autoroll-btn active" id="timelineAutoRollToggle" aria-label="Alternar rodagem automática" title="Rodagem Automática">
-            <span class="autoroll-indicator"></span>
-            <span class="autoroll-icon" id="timelineAutoRollIcon">⏸</span>
-            <span class="autoroll-text" data-i18n="timeline_autoroll">Auto-Roll</span>
-          </button>
-          <button type="button" class="timeline-ctrl-btn" id="timelineBtnNext" aria-label="Avançar no percurso" title="Seguinte">
-            <span data-i18n="timeline_next">Seguinte</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
+        <div class="creds">
+          <div class="cred-box reveal">
+            <h3><span data-l="pt">Certificações</span><span data-l="en">Certifications</span></h3>
+            <ul class="cred-list">
+              <li><span>Fortinet NSE 2 — Cybersecurity</span><span class="when"><span data-l="pt">Out 2026</span><span data-l="en">Oct 2026</span></span></li>
+              <li><span>Fortinet NSE 1 — Cybersecurity</span><span class="when"><span data-l="pt">Out 2026</span><span data-l="en">Oct 2026</span></span></li>
+              <li><span>Neo4j Certified Professional</span><span class="when"><span data-l="pt">Fev 2026</span><span data-l="en">Feb 2026</span></span></li>
+              <li><span>Neo4j Graph Data Science</span><span class="when"><span data-l="pt">Fev 2026</span><span data-l="en">Feb 2026</span></span></li>
+            </ul>
+          </div>
+          <div class="cred-box reveal">
+            <h3><span data-l="pt">Formação AWS Academy</span><span data-l="en">AWS Academy training</span></h3>
+            <ul class="cred-list">
+              <li><span>Cloud Operations</span><span class="when">Jul 2026</span></li>
+              <li><span>Cloud Security Foundations</span><span class="when">Jun 2026</span></li>
+              <li><span>Cloud Foundations</span><span class="when"><span data-l="pt">Mai 2026</span><span data-l="en">May 2026</span></span></li>
+            </ul>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="timeline-carousel-container" id="timelineCarouselContainer">
-        <!-- Floating Lateral Arrow: Left -->
-        <button type="button" class="timeline-float-arrow prev" id="timelineFloatPrev" aria-label="Recuar na linha do tempo" title="Recuar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-
-        <div class="timeline-wrapper" id="timelineWrapper">
-          <div class="timeline-items" id="timelineItems">
-            <!-- Continuous Horizontal Axis Track passing directly through all markers -->
-            <div class="timeline-track" aria-hidden="true">
-              <div class="timeline-track-pulse"></div>
-            </div>
-
-            <!-- Node 1: IPCB Licenciatura -->
-            <div class="timeline-node is-active" data-node-index="0">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">01</span>
-                <span class="timeline-date" data-i18n="hist_1_date">Set 2023 — Set 2026</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">🎓</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag" data-i18n="hist_1_tag">Académico · Nível 6 EQF</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_1_role">Licenciatura em Engenharia Informática</div>
-                <div class="timeline-org" data-i18n="hist_1_org">IPCB-ESTCB · Média Final: 15 / 20</div>
-                <p class="timeline-desc" data-i18n="hist_1_desc">
-                  Castelo Branco, Portugal. Formação sólida em redes, sistemas distribuídos, arquitetura computacional, bases de dados e segurança.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 2: Brisa (Jun 2024 — Ago 2024) -->
-            <div class="timeline-node" data-node-index="1">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">02</span>
-                <span class="timeline-date" data-i18n="hist_2_date">Jun 2024 — Ago 2024</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">🚗</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag" data-i18n="hist_2_tag">Operações &amp; SLA</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_2_role">Operador de Atendimento ao Cliente</div>
-                <div class="timeline-org" data-i18n="hist_2_org">Brisa Auto-estradas de Portugal</div>
-                <p class="timeline-desc" data-i18n="hist_2_desc">
-                  Monte Redondo, Leiria, Portugal. Resolução ágil de incidentes sob pressão em períodos de tráfego intenso e cumprimento rigoroso de protocolos de reconciliação de caixa.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 3: Erasmus Weimar -->
-            <div class="timeline-node" data-node-index="2">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">03</span>
-                <span class="timeline-date" data-i18n="hist_3_date">Fev 2025 — Mar 2025</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">🏛️</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag" data-i18n="hist_3_tag">Mobilidade Internacional</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_3_role">Curso Intensivo: Ferramentas Digitais e Património Cultural</div>
-                <div class="timeline-org" data-i18n="hist_3_org">Bauhaus-Universität Weimar (Erasmus+ BIP)</div>
-                <p class="timeline-desc" data-i18n="hist_3_desc">
-                  Weimar, Alemanha. Ferramentas digitais avançadas, processamento e preservação de património cultural tecnológico.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 4: Lusiaves (Jun 2025 — Ago 2025) -->
-            <div class="timeline-node" data-node-index="3">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">04</span>
-                <span class="timeline-date" data-i18n="hist_4_date">Jun 2025 — Ago 2025</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">📦</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag" data-i18n="hist_4_tag">Logística &amp; Sistemas</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_4_role">Operador de Logística e Expedição</div>
-                <div class="timeline-org" data-i18n="hist_4_org">Grupo Lusiaves</div>
-                <p class="timeline-desc" data-i18n="hist_4_desc">
-                  Marinha das Ondas, Portugal. Operação logística de ritmo acelerado, controlo de inventário por terminais de armazém e cumprimento de normas em turnos rotativos.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 5: Capstone ARTE I.P. -->
-            <div class="timeline-node" data-node-index="4">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">05</span>
-                <span class="timeline-date" data-i18n="hist_5_date">Set 2025 — Ago 2026</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">🚀</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag timeline-tag-highlight" data-i18n="hist_5_tag">Capstone · Nota: 19 / 20</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_5_role">Automação NetDevOps em Ciclo Fechado e Resiliência de Rede (PoC)</div>
-                <div class="timeline-org" data-i18n="hist_5_org">Projeto de Fim de Curso (19/20) · Parceria: ARTE, I.P. (ex-AMA)</div>
-                <p class="timeline-desc" data-i18n="hist_5_desc">
-                  Arquitetura orientada a eventos para autorrecuperação closed-loop em redes críticas (Overlay VPN IPsec sobre Underlay MPLS).
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 6: Erasmus Ploiesti -->
-            <div class="timeline-node" data-node-index="5">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">06</span>
-                <span class="timeline-date" data-i18n="hist_6_date">Abr 2026</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker">🌍</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag" data-i18n="hist_6_tag">Mobilidade Internacional</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_6_role">Curso Intensivo: Liderança e Gestão da Mudança Rumo à Sustentabilidade</div>
-                <div class="timeline-org" data-i18n="hist_6_org">Universidade de Petróleo e Gás de Ploiești (Erasmus+ BIP)</div>
-                <p class="timeline-desc" data-i18n="hist_6_desc">
-                  Ploiești, Roménia. Liderança e gestão da mudança rumo à sustentabilidade em organizações e equipas técnicas.
-                </p>
-              </div>
-            </div>
-
-            <!-- Node 7: Presente / Disponibilidade -->
-            <div class="timeline-node" data-node-index="6">
-              <div class="timeline-node-header">
-                <span class="timeline-step-num">07</span>
-                <span class="timeline-date" data-i18n="hist_7_date">2026 — Presente</span>
-              </div>
-              <div class="timeline-marker-wrap">
-                <div class="timeline-marker timeline-marker-emerald">💼</div>
-                <div class="timeline-stem"></div>
-              </div>
-              <div class="timeline-card timeline-card-featured">
-                <div class="timeline-card-top">
-                  <span class="timeline-tag timeline-tag-highlight" data-i18n="hist_7_tag">Open to Work · IEFP Nível 6</span>
-                </div>
-                <div class="timeline-role" data-i18n="hist_7_role">Disponibilidade Imediata (Remoto, Híbrido ou Mobilidade)</div>
-                <div class="timeline-org" style="color: var(--accent-emerald);" data-i18n="hist_7_org">Elegível para Estágios +Talento (IEFP Nível 6)</div>
-                <p class="timeline-desc" data-i18n="hist_7_desc">
-                  Licenciado em Engenharia Informática focado em Automação de Redes, Cloud/DevSecOps e SRE, com sólida base em Backend Java. Elegível para Estágios +Talento (IEFP Nível 6).
-                </p>
-              </div>
-            </div>
-
+    <!-- ============ Timeline ============ -->
+    <section class="section" id="percurso">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow"><span data-l="pt">Percurso</span><span data-l="en">Experience</span></p>
+            <h2 class="section-title"><span data-l="pt">Formação e experiência</span><span data-l="en">Education and experience</span></h2>
           </div>
         </div>
 
-        <!-- Floating Lateral Arrow: Right -->
-        <button type="button" class="timeline-float-arrow next" id="timelineFloatNext" aria-label="Avançar na linha do tempo" title="Avançar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
+        <ol class="timeline">
+          <li class="tl-item is-key reveal">
+            <div class="tl-date"><span data-l="pt">Set 2023 – Set 2026</span><span data-l="en">Sep 2023 – Sep 2026</span></div>
+            <div class="tl-body">
+              <span class="tl-kind"><span data-l="pt">Formação</span><span data-l="en">Education</span></span>
+              <div class="tl-role"><span data-l="pt">Licenciatura em Engenharia Informática</span><span data-l="en">BSc in Computer Science &amp; Engineering</span></div>
+              <div class="tl-org"><span data-l="pt">IPCB · ESTCB, Castelo Branco · Média final 15/20</span><span data-l="en">IPCB · ESTCB, Castelo Branco · Final grade 15/20</span></div>
+              <p class="tl-desc"><span data-l="pt">Redes, sistemas distribuídos, bases de dados, segurança e engenharia de software.</span><span data-l="en">Networking, distributed systems, databases, security and software engineering.</span></p>
+            </div>
+          </li>
+          <li class="tl-item is-key reveal">
+            <div class="tl-date"><span data-l="pt">Set 2025 – Ago 2026</span><span data-l="en">Sep 2025 – Aug 2026</span></div>
+            <div class="tl-body">
+              <span class="tl-kind"><span data-l="pt">Projeto final · 19/20</span><span data-l="en">Capstone · 19/20</span></span>
+              <div class="tl-role"><span data-l="pt">Automação NetDevOps closed-loop</span><span data-l="en">Closed-loop NetDevOps automation</span></div>
+              <div class="tl-org"><span data-l="pt">Parceria com a ARTE, I.P. · mentoria de Nuno Batuca (ARTE)</span><span data-l="en">Partnership with ARTE, I.P. · mentored by Nuno Batuca (ARTE)</span></div>
+              <p class="tl-desc"><span data-l="pt">Correção automática de falhas em VPN IPsec sobre MPLS. <a href="#projetos">Ver projeto ↑</a></span><span data-l="en">Automated fault remediation for IPsec VPN over MPLS. <a href="#projetos">See project ↑</a></span></p>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <div class="tl-date"><span data-l="pt">Abr 2026</span><span data-l="en">Apr 2026</span></div>
+            <div class="tl-body">
+              <span class="tl-kind"><span data-l="pt">Mobilidade · Erasmus+</span><span data-l="en">Exchange · Erasmus+</span></span>
+              <div class="tl-role"><span data-l="pt">Liderança e gestão da mudança para a sustentabilidade</span><span data-l="en">Leadership and change management for sustainability</span></div>
+              <div class="tl-org"><span data-l="pt">Universidade de Petróleo e Gás de Ploiești, Roménia</span><span data-l="en">Petroleum-Gas University of Ploiești, Romania</span></div>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <div class="tl-date"><span data-l="pt">Jun – Ago 2025</span><span data-l="en">Jun – Aug 2025</span></div>
+            <div class="tl-body">
+              <span class="tl-kind"><span data-l="pt">Experiência</span><span data-l="en">Work</span></span>
+              <div class="tl-role"><span data-l="pt">Operador de logística e expedição</span><span data-l="en">Logistics &amp; dispatch operator</span></div>
+              <div class="tl-org">Grupo Lusiaves · Marinha das Ondas</div>
+              <p class="tl-desc"><span data-l="pt">Controlo de inventário em terminais de armazém e turnos rotativos.</span><span data-l="en">Warehouse terminal inventory control and rotating shifts.</span></p>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <div class="tl-date"><span data-l="pt">Fev – Mar 2025</span><span data-l="en">Feb – Mar 2025</span></div>
+            <div class="tl-body">
+              <span class="tl-kind"><span data-l="pt">Mobilidade · Erasmus+</span><span data-l="en">Exchange · Erasmus+</span></span>
+              <div class="tl-role"><span data-l="pt">Ferramentas digitais e património cultural</span><span data-l="en">Digital tools and cultural heritage</span></div>
+              <div class="tl-org">Bauhaus-Universität Weimar, <span data-l="pt">Alemanha</span><span data-l="en">Germany</span></div>
+            </div>
+          </li>
+          <li class="tl-item reveal">
+            <div class="tl-date"><span data-l="pt">Jun – Ago 2024</span><span data-l="en">Jun – Aug 2024</span></div>
+            <div class="tl-body">
+              <span class="tl-kind"><span data-l="pt">Experiência</span><span data-l="en">Work</span></span>
+              <div class="tl-role"><span data-l="pt">Operador de atendimento ao cliente</span><span data-l="en">Customer service operator</span></div>
+              <div class="tl-org">Brisa Auto-estradas de Portugal · Leiria</div>
+              <p class="tl-desc"><span data-l="pt">Resolução de incidentes sob pressão em períodos de tráfego intenso.</span><span data-l="en">Handling incidents under pressure during peak traffic.</span></p>
+            </div>
+          </li>
+        </ol>
       </div>
+    </section>
 
-      <!-- Interactive Progress Scrubber & Telemetry Bar -->
-      <div class="timeline-footer-bar">
-        <div class="timeline-counter">
-          <span class="counter-current" id="timelineActiveStep">01</span>
-          <span class="counter-sep">/</span>
-          <span class="counter-total">07</span>
-        </div>
-        <div class="timeline-scrubber" id="timelineScrubber" role="slider" aria-label="Progresso da linha do tempo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-          <div class="timeline-scrubber-track">
-            <div class="timeline-scrubber-fill" id="timelineScrubberFill"></div>
-            <div class="timeline-scrubber-thumb" id="timelineScrubberThumb"></div>
+    <!-- ============ Writeups ============ -->
+    <section class="section" id="writeups">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Writeups</p>
+            <h2 class="section-title"><span data-l="pt">Notas de engenharia</span><span data-l="en">Engineering notes</span></h2>
+            <p class="section-sub"><span data-l="pt">Como resolvi os problemas, com as decisões e os números.</span><span data-l="en">How I solved the problems, with the decisions and the numbers.</span></p>
           </div>
         </div>
-        <div class="timeline-scroll-hint">
-          <span class="timeline-hint-pulse"></span>
-          <span data-i18n="timeline_hint">Arraste, use a roda do rato ou clique num marco para navegar</span>
+        <div class="writeups-grid">
+          <a class="writeup reveal" href="writeups/closed-loop.html">
+            <div class="writeup-meta"><span>NETDEVOPS</span><span>6 min</span></div>
+            <h3><span data-l="pt">Remediação closed-loop de configuration drift em FortiOS com NetBox</span><span data-l="en">Closed-loop remediation of configuration drift in FortiOS with NetBox</span></h3>
+            <p><span data-l="pt">Um motor de autorrecuperação para firewalls Fortinet, e como contornei a licença de avaliação com SSH via Netmiko.</span><span data-l="en">A self-healing engine for Fortinet firewalls, and how I worked around the evaluation licence with SSH via Netmiko.</span></p>
+            <span class="link-arrow"><span data-l="pt">Ler</span><span data-l="en">Read</span> →</span>
+          </a>
+          <a class="writeup reveal" href="writeups/oidc-github-actions-azure.html">
+            <div class="writeup-meta"><span>DEVSECOPS</span><span>4 min</span></div>
+            <h3><span data-l="pt">CI/CD sem segredos estáticos: GitHub Actions + Azure OIDC</span><span data-l="en">CI/CD without static secrets: GitHub Actions + Azure OIDC</span></h3>
+            <p><span data-l="pt">Federação de identidade com Entra ID, tokens de curta duração e Checkov no pipeline.</span><span data-l="en">Identity federation with Entra ID, short-lived tokens and Checkov in the pipeline.</span></p>
+            <span class="link-arrow"><span data-l="pt">Ler</span><span data-l="en">Read</span> →</span>
+          </a>
+          <a class="writeup reveal" href="writeups/multicloud-azure-gcp.html">
+            <div class="writeup-meta"><span>MULTI-CLOUD</span><span>5 min</span></div>
+            <h3><span data-l="pt">Multi-cloud resiliente: fallbacks entre Azure e GCP</span><span data-l="en">Resilient multi-cloud: fallbacks across Azure and GCP</span></h3>
+            <p><span data-l="pt">Degradação graciosa, transações atómicas no Firestore e o impacto do US CLOUD Act.</span><span data-l="en">Graceful degradation, atomic Firestore transactions and the impact of the US CLOUD Act.</span></p>
+            <span class="link-arrow"><span data-l="pt">Ler</span><span data-l="en">Read</span> →</span>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ==================== Section 4: Technical Writeups ==================== -->
-  <section class="section" id="writeups">
-    <div class="container">
-      <span class="section-label" data-i18n="writeups_label">Artigos &amp; Investigação</span>
-      <h2 class="section-title" data-i18n="writeups_title">Writeups &amp; Engineering Notes</h2>
-      <p class="section-desc" data-i18n="writeups_desc">
-        Notas de engenharia e análises técnicas detalhadas sobre desafios reais resolvidos em automação de redes, segurança em CI/CD e resiliência de sistemas.
-      </p>
-
-      <div class="writeups-grid">
-        
-        <!-- Writeup 1 -->
-        <div class="writeup-card">
-          <div class="writeup-meta">
-            <span>#01 · NETDEVOPS</span>
-            <span data-i18n="w1_read_time">6 min leitura</span>
-          </div>
-          <h3 class="writeup-title" data-i18n="w1_title">Remediação Closed-Loop de Configuration Drift em FortiOS via REST API e NetBox</h3>
-          <p class="writeup-snippet" data-i18n="w1_snippet">
-            Como projetar um motor de autorrecuperação determinístico para firewalls Fortinet com NetBox como SSoT, superando limitações de escrita de licença de teste através de contingência SSH por Netmiko.
+    <!-- ============ Contact ============ -->
+    <section class="section" id="contacto">
+      <div class="container contact">
+        <div class="reveal">
+          <p class="eyebrow"><span data-l="pt">Contacto</span><span data-l="en">Contact</span></p>
+          <h2 class="contact-title"><span data-l="pt">Vamos conversar.</span><span data-l="en">Let's talk.</span></h2>
+          <p>
+            <span data-l="pt">Procuro uma primeira função (júnior / trainee) em Redes, Cloud, Infraestrutura ou Backend. Disponível de imediato, em remoto, híbrido ou com mobilidade. Elegível para estágios +Talento (IEFP, nível 6).</span>
+            <span data-l="en">I'm looking for a first role (junior / trainee) in Networking, Cloud, Infrastructure or Backend. Available immediately, remote, hybrid or willing to relocate.</span>
           </p>
-          <button type="button" class="writeup-action-btn" onclick="openWriteupModal(1)">
-            <span data-i18n="btn_read_brief">Ler Resumo Técnico</span> ➔
-          </button>
-        </div>
-
-        <!-- Writeup 2 -->
-        <div class="writeup-card">
-          <div class="writeup-meta">
-            <span>#02 · SECDEVOPS</span>
-            <span data-i18n="w2_read_time">4 min leitura</span>
+          <div class="hero-cta">
+            <a href="CV_Rafael_Cruz_Redes_Cloud.pdf" class="btn btn-outline btn-sm" download><svg aria-hidden="true"><use href="#i-download"/></svg><span data-l="pt">CV Redes &amp; Cloud</span><span data-l="en">CV Network &amp; Cloud</span></a>
+            <a href="CV_Rafael_Cruz_Desenvolvimento_Software.pdf" class="btn btn-outline btn-sm" download><svg aria-hidden="true"><use href="#i-download"/></svg>CV Software</a>
           </div>
-          <h3 class="writeup-title" data-i18n="w2_title">Eliminando Segredos Estáticos em CI/CD: Autenticação Federada com GitHub Actions e Azure OIDC</h3>
-          <p class="writeup-snippet" data-i18n="w2_snippet">
-            Eliminação total de credenciais estáticas de longa duração em pipelines de IaC. Configuração de confiança federada no Azure AD / Entra ID via azure/login@v2 com verificação de compliance no Checkov.
-          </p>
-          <button type="button" class="writeup-action-btn" onclick="openWriteupModal(2)">
-            <span data-i18n="btn_read_brief">Ler Resumo Técnico</span> ➔
-          </button>
-        </div>
-
-        <!-- Writeup 3 -->
-        <div class="writeup-card">
-          <div class="writeup-meta">
-            <span>#03 · MULTI-CLOUD</span>
-            <span data-i18n="w3_read_time">5 min leitura</span>
-          </div>
-          <h3 class="writeup-title" data-i18n="w3_title">Arquitetura Multi-Cloud Resiliente: Mitigando Falhas com Fallback Desacoplado entre Azure e GCP</h3>
-          <p class="writeup-snippet" data-i18n="w3_snippet">
-            Estratégias de graceful degradation em serviços críticos: garantia de atomicidade de dados no Firestore aliada a microsserviços desacoplados em ACI e análise do impacto do US CLOUD Act.
-          </p>
-          <button type="button" class="writeup-action-btn" onclick="openWriteupModal(3)">
-            <span data-i18n="btn_read_brief">Ler Resumo Técnico</span> ➔
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== Section 5: Languages & Contact ==================== -->
-  <section class="section" id="contact">
-    <div class="container">
-      
-      <!-- Languages Box (Direct from CV) -->
-      <div class="languages-wrapper" style="margin-top: 0; margin-bottom: 48px;">
-        <div class="languages-title">
-          <span>🌐</span>
-          <span data-i18n="languages_head">Competências Linguísticas & Idiomas</span>
-        </div>
-        <div class="languages-grid">
-          
-          <div class="language-card">
-            <span class="lang-name">🇵🇹 Português</span>
-            <span class="lang-level" data-i18n="lang_pt_lvl">Língua Materna</span>
-          </div>
-
-          <div class="language-card">
-            <span class="lang-name">🇬🇧 Inglês</span>
-            <span class="lang-level" data-i18n="lang_en_lvl">C1 (Proficiência Profissional)</span>
-          </div>
-
-          <div class="language-card">
-            <span class="lang-name">🇪🇸 Espanhol</span>
-            <span class="lang-level" data-i18n="lang_es_lvl">B2 (Intermédio Avançado)</span>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Contact Container -->
-      <div class="contact-container">
-        
-        <div class="contact-left">
-          <span class="section-label" data-i18n="contact_label">Comunicação Direta</span>
-          <h2 class="section-title" data-i18n="contact_title">Entrar em Contacto</h2>
-          <p class="contact-desc-text" data-i18n="contact_desc">
-            Se a sua organização procura um profissional com perfil analítico e prático em <strong>Automação de Redes (NetDevOps)</strong>, <strong>Cloud &amp; DevSecOps</strong>, <strong>SRE</strong> ou <strong>Backend Java / Spring Boot</strong>, estou totalmente disponível para conversas e processos de recrutamento (Disponibilidade Imediata [Remoto, Híbrido ou Mobilidade] · Elegível para Estágios +Talento [IEFP Nível 6]).
-          </p>
-          <div class="hero-cv-group" style="margin-top: 20px;">
-            <div class="hero-cv-label" data-i18n="contact_cv_label">Acesso Rápido aos CVs:</div>
-            <div class="hero-cv-buttons">
-              <a href="CV_Rafael_Cruz_Redes_Cloud.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-pill" download="CV_Rafael_Cruz_Redes_Cloud.pdf">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                <span data-i18n="btn_cv_net">📄 CV Redes &amp; Cloud</span>
-              </a>
-              <a href="CV_Rafael_Cruz_Desenvolvimento_Software.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv-pill" download="CV_Rafael_Cruz_Desenvolvimento_Software.pdf">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                <span data-i18n="btn_cv_dev">💻 CV Software &amp; Backend</span>
-              </a>
-            </div>
+          <div class="langs">
+            <span><b>PT</b> <span data-l="pt">nativo</span><span data-l="en">native</span></span>
+            <span><b>EN</b> C1</span>
+            <span><b>ES</b> B2</span>
           </div>
         </div>
 
-        <div class="contact-channels-grid">
-          
-          <!-- Email Button with Copy Feature -->
-          <div class="contact-channel-btn" onclick="copyEmailToClipboard()" title="Clique para copiar o email">
-            <div class="channel-icon">✉️</div>
-            <div class="channel-info">
-              <div class="channel-label" data-i18n="ch_email_lbl">Email (Clique p/ Copiar)</div>
+        <div class="channels reveal">
+          <button type="button" class="channel" id="copyEmail" data-email="rafael.lourenco.cruz20@gmail.com">
+            <svg aria-hidden="true"><use href="#i-mail"/></svg>
+            <div>
+              <div class="channel-lbl">Email</div>
               <div class="channel-val">rafael.lourenco.cruz20@gmail.com</div>
             </div>
-          </div>
-
-          <!-- Phone Link -->
-          <a href="tel:+351935264794" class="contact-channel-btn">
-            <div class="channel-icon">📞</div>
-            <div class="channel-info">
-              <div class="channel-label" data-i18n="ch_phone_lbl">Contacto Telefónico</div>
-              <div class="channel-val">+351 935 264 794</div>
-            </div>
-          </a>
-
-          <!-- LinkedIn Link -->
-          <a href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" rel="noopener noreferrer" class="contact-channel-btn">
-            <div class="channel-icon">💼</div>
-            <div class="channel-info">
-              <div class="channel-label">LinkedIn</div>
+            <span class="channel-action"><span data-l="pt">Copiar</span><span data-l="en">Copy</span></span>
+          </button>
+          <a class="channel" href="https://www.linkedin.com/in/rafael-cruz-7159092b2/" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-linkedin"/></svg>
+            <div>
+              <div class="channel-lbl">LinkedIn</div>
               <div class="channel-val">in/rafael-cruz-7159092b2</div>
             </div>
+            <span class="channel-action">↗</span>
           </a>
-
-          <!-- GitHub Link -->
-          <a href="https://github.com/RafaCr3z" target="_blank" rel="noopener noreferrer" class="contact-channel-btn">
-            <div class="channel-icon">🐙</div>
-            <div class="channel-info">
-              <div class="channel-label">GitHub</div>
+          <a class="channel" href="https://github.com/RafaCr3z" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-github"/></svg>
+            <div>
+              <div class="channel-lbl">GitHub</div>
               <div class="channel-val">github.com/RafaCr3z</div>
             </div>
+            <span class="channel-action">↗</span>
           </a>
-
         </div>
+      </div>
+    </section>
+  </main>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== Footer ==================== -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <div class="footer-copy">
-        © 2026 Rafael Cruz · <span data-i18n="footer_role">Automação de Redes, Cloud &amp; DevSecOps, SRE</span>
-      </div>
-      <div class="footer-status-tag">
-        <span class="status-dot"></span>
-        <span data-i18n="footer_status">Status: Disponibilidade Imediata (Elegível Estágios +Talento · IEFP Nível 6)</span>
-      </div>
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>© 2026 Rafael Cruz</span>
+      <span>
+        <span data-l="pt">Feito à mão em HTML, CSS e JavaScript, sem frameworks.</span>
+        <span data-l="en">Hand-built with HTML, CSS and JavaScript, no frameworks.</span>
+        <a href="https://github.com/RafaCr3z/portfolio" target="_blank" rel="noopener"><span data-l="pt">Código</span><span data-l="en">Source</span></a>
+      </span>
     </div>
   </footer>
 
-  <!-- ==================== Technical Writeup Modal ==================== -->
-  <div class="brief-modal" id="writeupModal" aria-hidden="true" role="dialog">
-    <div class="brief-modal-content">
-      <button type="button" class="brief-close-btn" onclick="closeWriteupModal()" aria-label="Fechar modal">✕</button>
-      
-      <div id="modalContentDynamic">
-        <!-- Injected via JavaScript -->
-      </div>
-    </div>
-  </div>
+  <dialog class="lightbox" id="lightbox">
+    <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Fechar">✕</button>
+    <img id="lightboxImg" src="" alt="" />
+    <p id="lightboxCaption"></p>
+  </dialog>
 
-  <!-- Floating Toast Notification for Copy -->
-  <div class="copy-toast" id="copyToast">
-    ✓ Email copiado para a área de transferência!
-  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="script.js?v=20261014_cv"></script>
+  <script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>
