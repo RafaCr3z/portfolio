@@ -858,6 +858,49 @@ li code {
   font-size: 0.82rem;
   color: var(--faint);
 }
+.case-demo {
+  padding: 28px 40px 8px;
+}
+.case-demo-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.case-demo-head h4 {
+  font: 600 0.75rem/1 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin: 0;
+}
+.case-demo-meta {
+  font-size: 0.8rem;
+  color: var(--faint);
+}
+.case-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: #0b0c0e;
+}
+.case-demo-note {
+  font-size: 0.85rem;
+  color: var(--faint);
+  margin: 10px 0 20px;
+}
+.sim-note a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.sim-note a:hover {
+  text-decoration: underline;
+}
 .case-figs {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1566,6 +1609,7 @@ li code {
   }
   .case-head,
   .case-cols,
+  .case-demo,
   .case-figs,
   .case-foot {
     padding-left: 20px;

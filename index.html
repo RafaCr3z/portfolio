@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
-  <link rel="stylesheet" href="assets/css/main.css?v=2" />
+  <link rel="stylesheet" href="assets/css/main.css?v=3" />
 
   <!-- Apply saved theme/language before first paint (avoids flash) -->
   <script>
@@ -222,8 +222,8 @@
             </div>
           </div>
           <p class="sim-note">
-            <span data-l="pt">Replay ilustrativo dos cenários de chaos engineering do projeto. As durações finais são as medidas em laboratório.</span>
-            <span data-l="en">Illustrative replay of the project's chaos engineering scenarios. Final durations match those measured in the lab.</span>
+            <span data-l="pt">Replay ilustrativo dos cenários de chaos engineering do projeto. As durações finais são as medidas em laboratório. <a href="#demo-video">Ver o sistema real em vídeo ↓</a></span>
+            <span data-l="en">Illustrative replay of the project's chaos engineering scenarios. Final durations match those measured in the lab. <a href="#demo-video">Watch the real system ↓</a></span>
           </p>
         </div>
       </div>
@@ -327,6 +327,21 @@
             <div class="case-metric"><div class="v">&lt; 2 s</div><div class="l"><span data-l="pt">Por transação REST API</span><span data-l="en">Per REST API call</span></div></div>
             <div class="case-metric"><div class="v">&lt; 10 s</div><div class="l"><span data-l="pt">Deteção (antes ~15 min)</span><span data-l="en">Detection (was ~15 min)</span></div></div>
             <div class="case-metric"><div class="v">24</div><div class="l"><span data-l="pt">Incidentes auditados</span><span data-l="en">Audited incidents</span></div></div>
+          </div>
+
+          <div class="case-demo" id="demo-video">
+            <div class="case-demo-head">
+              <h4><span data-l="pt">O sistema real a funcionar</span><span data-l="en">The real system running</span></h4>
+              <span class="case-demo-meta"><span data-l="pt">70 s · gravação do laboratório · sem som</span><span data-l="en">70 s · lab recording · no audio</span></span>
+            </div>
+            <video class="case-video" controls preload="none" playsinline muted
+                   poster="assets/img/closed-loop-demo-poster.webp" width="1280" height="720">
+              <source src="assets/video/closed-loop-demo.mp4" type="video/mp4" />
+            </video>
+            <p class="case-demo-note">
+              <span data-l="pt">Duas falhas injetadas (seletor da Phase 2 e firewall policies desativadas), deteção pelo PRTG, correção pelo n8n e registo no MongoDB/Metabase. Partes de espera aceleradas.</span>
+              <span data-l="en">Two injected faults (Phase 2 selector and disabled firewall policies), detection by PRTG, remediation by n8n and logging in MongoDB/Metabase. Waiting parts sped up.</span>
+            </p>
           </div>
 
           <div class="case-figs">
@@ -712,6 +727,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="assets/js/main.js?v=2" defer></script>
+  <script src="assets/js/main.js?v=3" defer></script>
 </body>
 </html>
