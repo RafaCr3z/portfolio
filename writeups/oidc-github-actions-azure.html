@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CI/CD sem segredos estáticos: GitHub Actions + Azure OIDC — Rafael Cruz</title>
-  <meta name="description" content="Federação de identidade entre GitHub Actions e Microsoft Entra ID com OIDC: tokens de curta duração, Bicep e Checkov, sem credenciais guardadas no repositório." />
+  <meta name="description" content="Federação de identidade entre GitHub Actions e Microsoft Entra ID com OIDC: tokens de curta duração, validação de Bicep e Trivy, sem credenciais guardadas no repositório." />
   <link rel="canonical" href="https://rafacr3z.github.io/portfolio/writeups/oidc-github-actions-azure.html" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="CI/CD sem segredos estáticos: GitHub Actions + Azure OIDC" />
-  <meta property="og:description" content="Federação de identidade com Entra ID, tokens de curta duração e Checkov no pipeline." />
+  <meta property="og:description" content="Federação de identidade com Entra ID, tokens de curta duração e Trivy no pipeline." />
   <meta property="og:image" content="https://rafacr3z.github.io/portfolio/assets/img/og-card-2026.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2318181b'/><text x='16' y='21' font-family='monospace' font-size='13' font-weight='700' fill='%23fff' text-anchor='middle'>RC</text></svg>" />
@@ -50,10 +50,10 @@
     <div data-l="pt">
       <h1>CI/CD sem segredos estáticos: GitHub Actions + Azure OIDC</h1>
       <ul class="tags article-meta">
-        <li class="tag">GitHub Actions</li><li class="tag">azure/login@v2</li><li class="tag">Entra ID</li><li class="tag">Bicep</li><li class="tag">Checkov</li>
+        <li class="tag">GitHub Actions</li><li class="tag">azure/login@v2</li><li class="tag">Entra ID</li><li class="tag">Bicep</li><li class="tag">Trivy</li>
       </ul>
 
-      <div class="callout"><p><strong>Resumo:</strong> no projeto CityGuards, o pipeline de deploy autentica-se no Azure com tokens OIDC de curta duração. Não há nenhuma password ou chave de Service Principal guardada no repositório.</p></div>
+      <div class="callout"><p><strong>Resumo:</strong> no CityGuards, depois da entrega académica, preparei o pipeline para se autenticar no Azure com tokens OIDC de curta duração, sem nenhuma password ou chave de Service Principal no repositório. Neste repositório público os identificadores do Azure não estão configurados, por isso o pipeline corre em modo de validação: compila o Bicep sem criar recursos.</p></div>
 
       <h2>O risco</h2>
       <p>Guardar segredos de Service Principal de longa duração nos secrets do repositório é um dos vetores mais explorados em ataques à cadeia de fornecimento de software. Uma fuga num log de build ou um commit acidental dá acesso persistente à cloud, e obriga a rotações de emergência e auditorias.</p>
@@ -62,22 +62,23 @@
       <ul>
         <li><strong>Claims assinadas:</strong> o runner do GitHub pede um token OIDC (JWT) assinado com organização, repositório, branch (por exemplo <code>refs/heads/main</code>) e ambiente.</li>
         <li><strong>Troca de token (<code>azure/login@v2</code>):</strong> o Azure valida o emissor (<code>https://token.actions.githubusercontent.com</code>) e devolve um access token válido no máximo 60 minutos, limitado ao Resource Group do projeto.</li>
-        <li><strong>Infraestrutura em Bicep:</strong> connection strings e chaves são injetadas em tempo de deploy com funções nativas como <code>listKeys()</code>, por isso nenhum valor sensível fica no código.</li>
-        <li><strong>Checkov no pipeline:</strong> análise estática dos templates Bicep e Dockerfiles antes do deploy, para apanhar portas de gestão expostas, protocolos antigos ou permissões RBAC a mais.</li>
+        <li><strong>Infraestrutura em Bicep:</strong> o template (de base académica, escrito por um colega e adaptado por mim) é compilado com <code>az bicep build</code> em cada push, para apanhar erros antes de qualquer deploy.</li>
+        <li><strong>Trivy no pipeline:</strong> análise de vulnerabilidades (CRITICAL e HIGH) às dependências e ao container. Por agora é informativa e não bloqueia o build; torná-la bloqueante é o passo seguinte.</li>
+        <li><strong>Deploy condicional:</strong> o login com <code>azure/login@v2</code> e o deploy só correm quando os três identificadores (client, tenant, subscription) existem. Sem eles, o pipeline faz um dry-run e termina com sucesso.</li>
       </ul>
 
       <h2>Resultado</h2>
-      <p>Zero credenciais de longa duração no repositório e cada operação no Azure Activity Log fica ligada ao commit e ao workflow do GitHub que a originou.</p>
+      <p>Zero credenciais de longa duração no repositório. Com a federação configurada, cada operação no Azure Activity Log fica ligada ao commit e ao workflow do GitHub que a originou.</p>
     </div>
 
     <!-- ======================= EN ======================= -->
     <div data-l="en">
       <h1>CI/CD without static secrets: GitHub Actions + Azure OIDC</h1>
       <ul class="tags article-meta">
-        <li class="tag">GitHub Actions</li><li class="tag">azure/login@v2</li><li class="tag">Entra ID</li><li class="tag">Bicep</li><li class="tag">Checkov</li>
+        <li class="tag">GitHub Actions</li><li class="tag">azure/login@v2</li><li class="tag">Entra ID</li><li class="tag">Bicep</li><li class="tag">Trivy</li>
       </ul>
 
-      <div class="callout"><p><strong>TL;DR:</strong> in the CityGuards project, the deploy pipeline authenticates to Azure with short-lived OIDC tokens. No password or Service Principal key is stored in the repository.</p></div>
+      <div class="callout"><p><strong>TL;DR:</strong> after the coursework, I set up the CityGuards pipeline to authenticate to Azure with short-lived OIDC tokens, with no password or Service Principal key in the repository. In this public repository the Azure identifiers are not configured, so the pipeline runs in validation mode: it compiles the Bicep without creating resources.</p></div>
 
       <h2>The risk</h2>
       <p>Storing long-lived Service Principal secrets in repository secrets is one of the most exploited vectors in software supply chain attacks. A leak in a build log or an accidental commit gives persistent cloud access, forcing emergency rotations and audits.</p>
@@ -86,12 +87,13 @@
       <ul>
         <li><strong>Signed claims:</strong> the GitHub runner requests a signed OIDC token (JWT) with organisation, repository, branch (e.g. <code>refs/heads/main</code>) and environment.</li>
         <li><strong>Token exchange (<code>azure/login@v2</code>):</strong> Azure validates the issuer (<code>https://token.actions.githubusercontent.com</code>) and returns an access token valid for at most 60 minutes, scoped to the project's Resource Group.</li>
-        <li><strong>Infrastructure in Bicep:</strong> connection strings and keys are injected at deploy time with native functions such as <code>listKeys()</code>, so no sensitive value lives in the code.</li>
-        <li><strong>Checkov in the pipeline:</strong> static analysis of Bicep templates and Dockerfiles before deploy, catching exposed management ports, outdated protocols or excessive RBAC permissions.</li>
+        <li><strong>Infrastructure in Bicep:</strong> the template (academic baseline written by a teammate, adapted by me) is compiled with <code>az bicep build</code> on every push, catching errors before any deploy.</li>
+        <li><strong>Trivy in the pipeline:</strong> vulnerability scan (CRITICAL and HIGH) of dependencies and the container. For now it is informational and does not fail the build; making it blocking is the next step.</li>
+        <li><strong>Conditional deploy:</strong> the <code>azure/login@v2</code> login and the deploy only run when the three identifiers (client, tenant, subscription) exist. Without them, the pipeline does a dry run and succeeds.</li>
       </ul>
 
       <h2>Outcome</h2>
-      <p>Zero long-lived credentials in the repository, and every operation in the Azure Activity Log is traceable to the commit and GitHub workflow that triggered it.</p>
+      <p>Zero long-lived credentials in the repository. With the federation configured, every operation in the Azure Activity Log is traceable to the commit and GitHub workflow that triggered it.</p>
     </div>
 
     <div class="article-next">
