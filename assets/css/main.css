@@ -1406,11 +1406,14 @@ li code {
   transform: translate(-50%, 0);
 }
 
-/* ---------- Reveal on scroll ---------- */
+/* ---------- Reveal on scroll (staggered via --d, set in JS) ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s),
+    transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0s),
+    border-color 0.2s;
 }
 .reveal.is-in {
   opacity: 1;
@@ -1419,6 +1422,105 @@ li code {
 .no-js .reveal {
   opacity: 1;
   transform: none;
+}
+
+/* ---------- Hero title: word-by-word reveal ---------- */
+.anim .hero-title {
+  visibility: hidden;
+  animation: title-fallback 0s 2.5s forwards; /* never stay hidden if JS fails */
+}
+.anim .hero-title.is-split {
+  visibility: visible;
+  animation: none;
+}
+@keyframes title-fallback {
+  to { visibility: visible; }
+}
+.hero-title .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0.04em 0 0.16em;
+  margin: -0.04em 0 -0.16em;
+}
+.hero-title .w > span {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--wd, 0s);
+}
+.hero-title.is-revealed .w > span {
+  transform: none;
+}
+
+/* ---------- Spotlight that follows the cursor ---------- */
+.spot {
+  position: relative;
+  isolation: isolate;
+}
+.spot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 20%, transparent),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.spot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 90%, transparent),
+    transparent 70%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .spot:hover::before,
+  .spot:hover::after {
+    opacity: 1;
+  }
+}
+
+/* ---------- Network mesh behind the hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero > .container {
+  position: relative;
+  z-index: 1;
+}
+.hero-net {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 65% 45%, #000 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 85% 75% at 65% 45%, #000 30%, transparent 80%);
+}
+.hero-net.is-on {
+  opacity: 1;
 }
 
 /* ==========================================================================

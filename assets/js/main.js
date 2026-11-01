@@ -25,6 +25,7 @@
       var next = current === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       store('rc_theme', next);
+      document.dispatchEvent(new Event('rc:theme'));
     });
   }
 
@@ -45,6 +46,7 @@
       var next = isEn() ? 'pt' : 'en';
       applyLang(next);
       store('rc_lang', next);
+      document.dispatchEvent(new Event('rc:lang'));
     });
   }
 
@@ -88,22 +90,41 @@
     });
   }
 
+  /* ---------------- Staggered cascade ---------------- */
+  // Children of these grids reveal one after another (90 ms apart).
+  // The delay is cleared once shown so hover transitions stay instant.
+  var groups = $all('.proof-grid, .projects-grid, .skills-grid, .creds, .writeups-grid, .timeline');
+  groups.forEach(function (group) {
+    Array.prototype.slice.call(group.children).forEach(function (child, i) {
+      child.classList.add('reveal');
+      child.setAttribute('data-stagger', '');
+      child.style.setProperty('--d', (i * 0.09).toFixed(2) + 's');
+    });
+  });
+  function showGroup(group) {
+    Array.prototype.slice.call(group.children).forEach(function (child) {
+      child.classList.add('is-in');
+      setTimeout(function () { child.style.removeProperty('--d'); }, 1600);
+    });
+  }
+
   /* ---------------- Reveal on scroll ---------------- */
-  var reveals = $all('.reveal');
-  if (reveals.length) {
-    if (reduceMotion || !('IntersectionObserver' in window)) {
-      reveals.forEach(function (el) { el.classList.add('is-in'); });
-    } else {
-      var ro = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-in');
-            ro.unobserve(entry.target);
-          }
-        });
-      }, { rootMargin: '0px 0px -8% 0px' });
-      reveals.forEach(function (el) { ro.observe(el); });
-    }
+  // Single elements reveal on their own; staggered grids reveal as a group.
+  var reveals = $all('.reveal:not([data-stagger])');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-in'); });
+    groups.forEach(showGroup);
+  } else {
+    var ro = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        if (entry.target.hasAttribute('data-group')) showGroup(entry.target);
+        else entry.target.classList.add('is-in');
+        ro.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { ro.observe(el); });
+    groups.forEach(function (g) { g.setAttribute('data-group', ''); ro.observe(g); });
   }
 
   /* ---------------- Project filters ---------------- */
@@ -179,6 +200,173 @@
      the values measured in the lab (Projeto II report); intermediate step
      timings are illustrative.
      ========================================================================== */
+  /* ==========================================================================
+     Design animations: title reveal, cursor spotlight, hero network mesh
+     All skipped when the visitor prefers reduced motion.
+     ========================================================================== */
+  var animate = root.classList.contains('anim');
+
+  /* ---- Hero title: split into words and slide them up ---- */
+  var heroTitle = $('.hero-title');
+  if (heroTitle && animate) {
+    var wordIndex = 0;
+    var splitWords = function (node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var outer = document.createElement('span');
+            outer.className = 'w';
+            var inner = document.createElement('span');
+            inner.textContent = part;
+            inner.style.setProperty('--wd', (wordIndex++ * 0.07).toFixed(2) + 's');
+            outer.appendChild(inner);
+            frag.appendChild(outer);
+          });
+          child.parentNode.replaceChild(frag, child);
+        } else if (child.nodeType === 1) {
+          splitWords(child);
+        }
+      });
+    };
+    $all('[data-l]', heroTitle).forEach(function (langSpan) {
+      wordIndex = 0;
+      splitWords(langSpan);
+    });
+    heroTitle.classList.add('is-split');
+    var revealTitle = function () {
+      heroTitle.classList.remove('is-revealed');
+      void heroTitle.offsetWidth;
+      setTimeout(function () { heroTitle.classList.add('is-revealed'); }, 30);
+    };
+    revealTitle();
+    document.addEventListener('rc:lang', revealTitle);
+  } else if (heroTitle) {
+    heroTitle.classList.add('is-split', 'is-revealed');
+  }
+
+  /* ---- Spotlight that follows the cursor (desktop only) ---- */
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (finePointer) {
+    $all('.card, .case, .skill-group, .cred-box, .writeup, .channel').forEach(function (el) {
+      el.classList.add('spot');
+    });
+    document.addEventListener('pointermove', function (e) {
+      var el = e.target.closest && e.target.closest('.spot');
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }, { passive: true });
+  }
+
+  /* ---- Network mesh behind the hero ---- */
+  var net = $('#heroNet');
+  if (net && net.getContext) {
+    var ctx = net.getContext('2d');
+    var hero = net.parentElement;
+    var nodes = [];
+    var mouse = { x: -9999, y: -9999 };
+    var W = 0, H = 0, dpr = 1, running = false, visible = true, netRaf = null;
+    var colors = {};
+    var LINK = 150;
+
+    var readColors = function () {
+      var cs = getComputedStyle(root);
+      var dark = cs.getPropertyValue('color-scheme').trim() === 'dark';
+      colors.accent = cs.getPropertyValue('--accent').trim() || '#34d399';
+      colors.node = dark ? 'rgba(161,161,170,0.7)' : 'rgba(82,82,91,0.5)';
+      colors.lineAlpha = dark ? 0.4 : 0.3;
+      colors.lineRgb = dark ? '52,211,153' : '4,120,87';
+    };
+    var resize = function () {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = hero.clientWidth;
+      H = hero.clientHeight;
+      net.width = Math.round(W * dpr);
+      net.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var target = Math.max(18, Math.min(70, Math.round((W * H) / 16000)));
+      while (nodes.length < target) {
+        nodes.push({
+          x: Math.random() * W, y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+          r: Math.random() * 1.2 + 1
+        });
+      }
+      nodes.length = target;
+    };
+    var draw = function () {
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < nodes.length; i++) {
+        var a = nodes[i];
+        if (animate) {
+          a.x += a.vx; a.y += a.vy;
+          if (a.x < 0 || a.x > W) a.vx *= -1;
+          if (a.y < 0 || a.y > H) a.vy *= -1;
+        }
+        for (var j = i + 1; j < nodes.length; j++) {
+          var b = nodes[j];
+          var dx = a.x - b.x, dy = a.y - b.y;
+          var d = Math.sqrt(dx * dx + dy * dy);
+          if (d < LINK) {
+            ctx.strokeStyle = 'rgba(' + colors.lineRgb + ',' + ((1 - d / LINK) * colors.lineAlpha).toFixed(3) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+        var dm = Math.sqrt((a.x - mouse.x) * (a.x - mouse.x) + (a.y - mouse.y) * (a.y - mouse.y));
+        var near = dm < 150;
+        if (near) {
+          ctx.strokeStyle = 'rgba(' + colors.lineRgb + ',' + ((1 - dm / 150) * 0.5).toFixed(3) + ')';
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+        }
+        ctx.fillStyle = near ? colors.accent : colors.node;
+        ctx.beginPath(); ctx.arc(a.x, a.y, near ? a.r + 1 : a.r, 0, Math.PI * 2); ctx.fill();
+      }
+    };
+    var loop = function () {
+      draw();
+      netRaf = running ? requestAnimationFrame(loop) : null;
+    };
+    var setRunning = function () {
+      var should = animate && visible && !document.hidden;
+      if (should && !running) { running = true; netRaf = requestAnimationFrame(loop); }
+      if (!should) { running = false; if (netRaf) cancelAnimationFrame(netRaf); netRaf = null; }
+    };
+
+    readColors();
+    resize();
+    draw();
+    net.classList.add('is-on');
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () { resize(); draw(); }, 150);
+    });
+    document.addEventListener('rc:theme', function () { readColors(); draw(); });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { readColors(); draw(); });
+    document.addEventListener('visibilitychange', setRunning);
+    if (finePointer) {
+      hero.addEventListener('pointermove', function (e) {
+        var r = hero.getBoundingClientRect();
+        mouse.x = e.clientX - r.left;
+        mouse.y = e.clientY - r.top;
+      }, { passive: true });
+      hero.addEventListener('pointerleave', function () { mouse.x = mouse.y = -9999; });
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        setRunning();
+      }).observe(hero);
+    }
+    setRunning();
+  }
+
   var sim = $('#sim');
   if (!sim) return;
 
